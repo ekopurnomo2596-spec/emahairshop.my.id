@@ -137,7 +137,7 @@
         /* --- ABOUT SECTION --- */
         .about { 
             text-align: center; 
-            background-color: #fafafa; 
+            background-color: var(--white); /* DISAMAKAN WARNANYA JADI PUTIH BERSIH */
             align-items: center; 
             padding-top: 150px; 
             display: flex;
@@ -145,7 +145,7 @@
             gap: 60px; 
         } 
 
-        /* --- STYLING UTAMA: PREVIEW GALERI --- */
+        /* --- STYLING UTAMA: PREVIEW  --- */
         .product-preview-gallery {
             display: grid;
             grid-template-columns: 1.2fr 1fr;
@@ -155,7 +155,7 @@
             margin: 0 auto;
         }
 
-        /* Box Wrapper Umum untuk Efek Overlay */
+        /* Box Wrapper Umum untuk Efek Gambar */
         .preview-box {
             position: relative;
             width: 100%;
@@ -173,7 +173,7 @@
             cursor: zoom-in; 
         }
 
-        /* Lapisan Gradasi Gelap di Bawah Foto */
+        /* Lapisan Gradasi Gelap Khusus Foto Kiri */
         .preview-overlay {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -226,7 +226,6 @@
             display: inline-block;
         }
         .badge-pink { background-color: var(--circle-pink); color: var(--white); }
-        .badge-yellow { background-color: #FFDE4D; color: #111111; }
 
         /* Tombol View Products */
         .view-products-btn {
@@ -245,21 +244,12 @@
             transform: translateY(-2px);
         }
 
-        /* Pengaturan Sisi Kanan (Sejajar Presisi) */
+        /* Pengaturan Sisi Kanan (Sejajar Ukuran Presisi) */
         .preview-right-grid {
             display: grid;
             grid-template-rows: 1fr 1fr;
             gap: 20px;
-            height: 480px;
-        }
-        .preview-right-grid .preview-overlay {
-            padding: 20px 25px;
-        }
-        .preview-right-grid h4 {
-            font-family: 'Lato', sans-serif;
-            font-size: 1.25rem;
-            font-weight: 700;
-            text-transform: none;
+            height: 480px; /* Mengunci tinggi agar sama persis dengan sisi kiri */
         }
 
         /* --- DUA KOTAK BANNER --- */
@@ -745,6 +735,7 @@
 
     <section id="about" class="about">
         
+        <!-- PRATINJAU GALERI PRODUK (TULISAN FOTO KANAN SUDAH DIHAPUS TOTAL) -->
         <div class="product-preview-gallery">
             <div class="preview-box preview-left" data-aos="fade-right">
                 <img src="hairbulk2.webp" alt="Premium Hair Extensions Showcase">
@@ -757,19 +748,13 @@
             </div>
             
             <div class="preview-right-grid" data-aos="fade-left">
+                <!-- Atas Bersih Tanpa Overlay Teks -->
                 <div class="preview-box">
                     <img src="hairbulk3.avif" alt="Hair Weft">
-                    <div class="preview-overlay">
-                        <span class="preview-badge badge-yellow">BEST SELLER</span>
-                        <h4>Hair Weft</h4>
-                    </div>
                 </div>
+                <!-- Bawah Bersih Tanpa Overlay Teks -->
                 <div class="preview-box">
                     <img src="hairbukl1.jpg" alt="Tape In Extension">
-                    <div class="preview-overlay">
-                        <span class="preview-badge badge-pink">POPULAR</span>
-                        <h4>Tape In Extension</h4>
-                    </div>
                 </div>
             </div>
         </div>
