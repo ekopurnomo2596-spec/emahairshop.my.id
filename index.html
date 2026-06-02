@@ -153,6 +153,7 @@
             width: 100%;
             max-width: 1100px;
             margin: 0 auto;
+            overflow-anchor: none; /* Cegah halaman naik/bergeser sendiri saat foto berganti */
         }
 
         /* Box Wrapper Umum untuk Efek Overlay */
@@ -171,7 +172,8 @@
             object-fit: cover;
             display: block;
             cursor: zoom-in; 
-            transition: opacity 0.4s ease-in-out; /* ANIMASI HALUS SAAT RANDOM ROTATE ACAK */
+            transition: opacity 0.6s ease, transform 0.6s ease; /* ANIMASI SLIDE SAAT RANDOM ROTATE ACAK */
+            will-change: transform, opacity;
         }
 
         /* Lapisan Gradasi Gelap di Bawah Foto */
@@ -682,7 +684,10 @@
             
             .product-preview-gallery { grid-template-columns: 1fr; gap: 15px; }
             .preview-left { height: 320px; }
-            .preview-right-grid { height: auto; grid-template-rows: 1fr 1fr; gap: 15px; }
+            /* Tinggi dikunci agar layout tidak bergeser/naik sendiri saat foto berganti acak */
+            .preview-right-grid { height: 320px; grid-template-rows: 1fr 1fr; gap: 15px; }
+            .preview-right-grid .preview-box { height: 100%; min-height: 0; }
+            .preview-right-grid .preview-box img { height: 100%; }
             .top-banners { display: flex; flex-direction: column; gap: 15px; width: 100%; }
             
             /* GRID 2X2 UNTUK 4 LINGKARAN DI HP */
@@ -1400,14 +1405,21 @@
             let shuffledImages = [...previewImagesPool].sort(() => Math.random() - 0.5);
             
             galleryImages.forEach((img, index) => {
-                img.style.opacity = '0'; // Efek transisi memudar keluar
+                // Animasi slide keluar ke kiri sambil memudar
+                img.style.opacity = '0';
+                img.style.transform = 'translateX(-40px)';
                 
                 setTimeout(() => {
                     img.src = shuffledImages[index];
-                    img.style.opacity = '1'; // Efek transisi memudar masuk kembali
-                }, 400); // Durasi pemudaran
+                    // Mulai dari kanan, lalu slide masuk ke posisi semula
+                    img.style.transform = 'translateX(40px)';
+                    requestAnimationFrame(() => {
+                        img.style.opacity = '1';
+                        img.style.transform = 'translateX(0)';
+                    });
+                }, 600); // Durasi slide keluar
             });
-        }, 3000); // Berputar konstan secara acak setiap 3 detik
+        }, 10000); // Berganti secara acak setiap 10 detik
 
         // ==========================================================
         // --- LOGIKA JAVASCRIPT: INTERAKSI ZOOM KLIK DENGAN SLIDE --- 
