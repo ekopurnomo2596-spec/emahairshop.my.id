@@ -155,7 +155,7 @@
             margin: 0 auto;
         }
 
-        /* Box Wrapper Umum untuk Efek Slider */
+        /* Box Wrapper Umum untuk Efek Overlay */
         .preview-box {
             position: relative;
             width: 100%;
@@ -171,15 +171,10 @@
             object-fit: cover;
             display: block;
             cursor: zoom-in; 
+            transition: opacity 0.4s ease-in-out; /* ANIMASI HALUS SAAT RANDOM ROTATE ACAK */
         }
 
-        /* Swiper Khusus untuk Galeri Atas */
-        .preview-swiper {
-            width: 100%;
-            height: 100%;
-        }
-
-        /* Lapisan Gradasi Gelap di Bawah Foto Kiri */
+        /* Lapisan Gradasi Gelap di Bawah Foto */
         .preview-overlay {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -191,7 +186,6 @@
             color: var(--white);
             text-align: left;
             pointer-events: none; 
-            z-index: 10; /* Menjaga teks overlay tetap di atas slider */
         }
         
         .preview-overlay a {
@@ -338,19 +332,6 @@
             transform: translateY(-5px); 
         }
 
-        .icon-wrapper {
-            width: 65px;
-            height: 65px;
-            background-color: var(--circle-pink);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 15px; 
-            transition: 0.3s;
-            box-shadow: 0 5px 15px rgba(216, 84, 107, 0.3);
-        }
-        
         .icon-wrapper {
             width: 65px;
             height: 65px;
@@ -736,7 +717,6 @@
 <body>
 
     <nav>
-        <!-- LOGO DIBUAT DENGAN HTML & CSS (Diperkecil) -->
         <div class="logo">
             <div class="logo-top">
                 <span class="line-top"></span>
@@ -756,20 +736,9 @@
 
     <section id="about" class="about">
         
-        <!-- 1. PRATINJAU GALERI PRODUK (SWIPER CAROUSEL 10 DETIK DRAG EFFECT) -->
         <div class="product-preview-gallery">
-            <!-- Kotak Besar Sisi Kiri -->
             <div class="preview-box preview-left" data-aos="fade-right">
-                <div class="swiper previewSwiper1">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img src="hairbulk2.jpg" alt="Preview 1"></div>
-                        <div class="swiper-slide"><img src="clip.jpg" alt="Preview 2"></div>
-                        <div class="swiper-slide"><img src="hair-flat.jpg" alt="Preview 3"></div>
-                        <div class="swiper-slide"><img src="nano1.jpg" alt="Preview 4"></div>
-                        <div class="swiper-slide"><img src="weftx1.webp" alt="Preview 5"></div>
-                        <div class="swiper-slide"><img src="wig.webp" alt="Preview 6"></div>
-                    </div>
-                </div>
+                <img src="hairbulk2.webp" alt="Premium Hair Extensions Showcase">
                 <div class="preview-overlay">
                     <span class="preview-badge badge-pink">100% HUMAN HAIR</span>
                     <h2>Premium Hair Extensions</h2>
@@ -778,40 +747,16 @@
                 </div>
             </div>
             
-            <!-- Dua Kotak Kecil Sisi Kanan -->
             <div class="preview-right-grid" data-aos="fade-left">
-                <!-- Kotak Atas -->
                 <div class="preview-box">
-                    <div class="swiper previewSwiper2">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide"><img src="hairbulk3.avif" alt="Preview 7"></div>
-                            <div class="swiper-slide"><img src="genius.jpg" alt="Preview 8"></div>
-                            <div class="swiper-slide"><img src="hair-i-tip.avif" alt="Preview 9"></div>
-                            <div class="swiper-slide"><img src="nano2.png" alt="Preview 10"></div>
-                            <div class="swiper-slide"><img src="weftx2.jpg" alt="Preview 11"></div>
-                            <div class="swiper-slide"><img src="wig2.webp" alt="Preview 12"></div>
-                        </div>
-                    </div>
+                    <img src="hairbulk3.avif" alt="Hair Weft">
                 </div>
-                <!-- Kotak Bawah -->
                 <div class="preview-box">
-                    <div class="swiper previewSwiper3">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide"><img src="hairbukl1.jpg" alt="Preview 13"></div>
-                            <div class="swiper-slide"><img src="clip2.webp" alt="Preview 14"></div>
-                            <div class="swiper-slide"><img src="genius2.webp" alt="Preview 15"></div>
-                            <div class="swiper-slide"><img src="hair-tape1.jpg" alt="Preview 16"></div>
-                            <div class="swiper-slide"><img src="hair-tape2.jpg" alt="Preview 17"></div>
-                            <div class="swiper-slide"><img src="hair-u-tip.jpg" alt="Preview 18"></div>
-                            <div class="swiper-slide"><img src="nano3.jpg" alt="Preview 19"></div>
-                            <div class="swiper-slide"><img src="weftx3.webp" alt="Preview 20"></div>
-                        </div>
-                    </div>
+                    <img src="hairbukl1.webp" alt="Tape In Extension">
                 </div>
             </div>
         </div>
 
-        <!-- 2. DUA KOTAK BANNER -->
         <div class="top-banners">
             <div class="banner-box box-dark" data-aos="fade-up" data-aos-delay="100">
                 <i class="fa-solid fa-globe"></i>
@@ -829,7 +774,6 @@
             </div>
         </div>
 
-        <!-- 3. 4 IKON LINGKARAN HIGHLIGHTS (OTOMATIS JADI GRID 2X2 DI HP) -->
         <div id="highlights" class="highlights">
             <div class="highlight-box" data-aos="zoom-in" data-aos-delay="0">
                 <div class="icon-wrapper">
@@ -867,19 +811,17 @@
     </section>
 
     <section id="produk" class="produk">
-        <!-- HEADER PRODUK -->
         <div class="produk-header" data-aos="fade-up">
             <span class="sub-title">Our Products</span>
             <h2>Top Quality Product - <span class="highlight-text">Hair Extension</span></h2>
         </div>
         
         <div class="grid">
-            <!-- PRODUCT 1 (HAIR BULK) -->
             <div class="card" data-aos="fade-up">
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img src="hairbukl1.jpg" alt="Hair Bulk Product Option 1"></div>
-                        <div class="swiper-slide"><img src="hairbulk2.jpg" alt="Hair Bulk Product Option 2"></div>
+                        <div class="swiper-slide"><img src="hairbukl1.webp" alt="Hair Bulk Product Option 1"></div>
+                        <div class="swiper-slide"><img src="hairbulk2.webp" alt="Hair Bulk Product Option 2"></div>
                         <div class="swiper-slide"><img src="hairbulk3.avif" alt="Hair Bulk Product Option 3"></div>
                     </div>
                     <div class="swiper-button-next"></div><div class="swiper-button-prev"></div><div class="swiper-pagination"></div>
@@ -935,12 +877,12 @@
                 </a>
             </div>
 
-            <!-- PRODUCT 2 -->
             <div class="card" data-aos="fade-up" data-aos-delay="100">
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1492158244976-29b84ba93025?auto=format&fit=crop&q=80&w=400" alt="Foto 1"></div>
-                        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1560869713-7d0a29430803?auto=format&fit=crop&q=80&w=400" alt="Foto 2"></div>
+                        <div class="swiper-slide"><img src="weftx1.webp" alt="Foto 1"></div>
+                        <div class="swiper-slide"><img src="weftx2.jpg" alt="Foto 2"></div>
+                        <div class="swiper-slide"><img src="weftx3.webp" alt="Foto 3"></div>
                     </div>
                     <div class="swiper-button-next"></div><div class="swiper-button-prev"></div><div class="swiper-pagination"></div>
                 </div>
@@ -982,7 +924,7 @@
                         <div class="details-content">
                             <table class="detail-table">
                                 <tr><th>Information</th><th>Checklist Shipping</th></tr>
-                                	<tr><td>DHL</td><td><i class="fa-solid fa-check check-icon"></i> Yes</td></tr>
+                                <tr><td>DHL</td><td><i class="fa-solid fa-check check-icon"></i> Yes</td></tr>
                                 <tr><td>EMS</td><td><i class="fa-solid fa-check check-icon"></i> Yes</td></tr>
                                 <tr><td>FedEx</td><td><i class="fa-solid fa-check check-icon"></i> Yes</td></tr>
                             </table>
@@ -995,12 +937,11 @@
                 </a>
             </div>
 
-            <!-- PRODUCT 3 -->
             <div class="card" data-aos="fade-up" data-aos-delay="200">
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&q=80&w=400" alt="Foto 1"></div>
-                        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1620331311520-246422fd82f9?auto=format&fit=crop&q=80&w=400" alt="Foto 2"></div>
+                        <div class="swiper-slide"><img src="hair-tape1.jpg" alt="Foto 1"></div>
+                        <div class="swiper-slide"><img src="hair-tape2.jpg" alt="Foto 2"></div>
                     </div>
                     <div class="swiper-button-next"></div><div class="swiper-button-prev"></div><div class="swiper-pagination"></div>
                 </div>
@@ -1055,12 +996,12 @@
                 </a>
             </div>
 
-            <!-- PRODUCT 4 -->
             <div class="card" data-aos="fade-up" data-aos-delay="300">
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1560869713-7d0a29430803?auto=format&fit=crop&q=80&w=400" alt="Foto 1"></div>
-                        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=400" alt="Foto 2"></div>
+                        <div class="swiper-slide"><img src="hair-u-tip.jpg" alt="Foto 1"></div>
+                        <div class="swiper-slide"><img src="hair-i-tip.avif" alt="Foto 2"></div>
+                        <div class="swiper-slide"><img src="hair-flat.jpg" alt="Foto 3"></div>
                     </div>
                     <div class="swiper-button-next"></div><div class="swiper-button-prev"></div><div class="swiper-pagination"></div>
                 </div>
@@ -1115,12 +1056,12 @@
                 </a>
             </div>
 
-            <!-- PRODUCT 5 -->
             <div class="card" data-aos="fade-up">
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&q=80&w=400" alt="Foto 1"></div>
-                        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&q=80&w=400" alt="Foto 2"></div>
+                        <div class="swiper-slide"><img src="nano1.jpg" alt="Foto 1"></div>
+                        <div class="swiper-slide"><img src="nano2.png" alt="Foto 2"></div>
+                        <div class="swiper-slide"><img src="nano3.jpg" alt="Foto 3"></div>
                     </div>
                     <div class="swiper-button-next"></div><div class="swiper-button-prev"></div><div class="swiper-pagination"></div>
                 </div>
@@ -1175,12 +1116,11 @@
                 </a>
             </div>
 
-            <!-- PRODUCT 6 -->
             <div class="card" data-aos="fade-up" data-aos-delay="100">
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1620331311520-246422fd82f9?auto=format&fit=crop&q=80&w=400" alt="Foto 1"></div>
-                        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&q=80&w=400" alt="Foto 2"></div>
+                        <div class="swiper-slide"><img src="genius.jpg" alt="Foto 1"></div>
+                        <div class="swiper-slide"><img src="genius2.webp" alt="Foto 2"></div>
                     </div>
                     <div class="swiper-button-next"></div><div class="swiper-button-prev"></div><div class="swiper-pagination"></div>
                 </div>
@@ -1235,12 +1175,11 @@
                 </a>
             </div>
 
-            <!-- PRODUCT 7 -->
             <div class="card" data-aos="fade-up" data-aos-delay="200">
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&q=80&w=400" alt="Foto 1"></div>
-                        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=400" alt="Foto 2"></div>
+                        <div class="swiper-slide"><img src="clip.jpg" alt="Foto 1"></div>
+                        <div class="swiper-slide"><img src="clip2.webp" alt="Foto 2"></div>
                     </div>
                     <div class="swiper-button-next"></div><div class="swiper-button-prev"></div><div class="swiper-pagination"></div>
                 </div>
@@ -1295,12 +1234,11 @@
                 </a>
             </div>
 
-            <!-- PRODUCT 8 -->
             <div class="card" data-aos="fade-up" data-aos-delay="300">
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&q=80&w=400" alt="Foto 1"></div>
-                        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&q=80&w=400" alt="Foto 2"></div>
+                        <div class="swiper-slide"><img src="wig.webp" alt="Foto 1"></div>
+                        <div class="swiper-slide"><img src="wig2.webp" alt="Foto 2"></div>
                     </div>
                     <div class="swiper-button-next"></div><div class="swiper-button-prev"></div><div class="swiper-pagination"></div>
                 </div>
@@ -1384,12 +1322,10 @@
         </div>
     </section>
 
-    <!-- TOMBOL MENGAMBANG BACK TO TOP -->
     <a href="#" id="backToTop" class="back-to-top">
         <i class="fa-solid fa-arrow-up"></i>
     </a>
 
-    <!-- OVERLAY LIGHTBOX MODAL ZOOM DENGAN NAVIGASI SLIDE -->
     <div id="imageLightbox" class="lightbox">
         <span class="lightbox-close">&times;</span>
         <span class="lightbox-arrow lightbox-prev">&#10094;</span>
@@ -1411,8 +1347,8 @@
             offset: 100           
         });
 
-        // Inisialisasi Swiper Utama (Slider Foto Kartu Produk)
-        var productSwiper = new Swiper(".mySwiper", {
+        // Inisialisasi Swiper (Slider Foto)
+        var swiper = new Swiper(".mySwiper", {
             loop: true, 
             navigation: {
                 nextEl: ".swiper-button-next",
@@ -1423,24 +1359,6 @@
                 clickable: true,
             }
         });
-
-        // ===============================================================================
-        // --- INISIALISASI SWIPER PREVIEW UTAMA: AUTOMATIC SLIDE CAROUSELiap 10 DETIK --- 
-        // ===============================================================================
-        const swiperConfig = {
-            loop: true,
-            effect: "slide", // EFEK GANTINYA DIUBAH MENJADI SLIDE GESER
-            speed: 800,      
-            allowTouchMove: true, 
-            autoplay: {
-                delay: 10000, // LAMBAT DIUBAH MENJADI KUNCIAN WAKTU 10 DETIK (10000ms)
-                disableOnInteraction: false,
-            }
-        };
-
-        var previewSwiper1 = new Swiper(".previewSwiper1", swiperConfig);
-        var previewSwiper2 = new Swiper(".previewSwiper2", swiperConfig);
-        var previewSwiper3 = new Swiper(".previewSwiper3", swiperConfig);
 
         // Smooth Scroll Menu & Back to Top
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1465,6 +1383,32 @@
             }
         });
 
+        // =========================================================================
+        // --- LOGIKA JAVASCRIPT: INTERAKSI SLIDESHOW ACAK 3 DETIK DI FOTO PREVIEW --- 
+        // =========================================================================
+        const previewImagesPool = [
+            'clip.jpg', 'clip2.webp', 'genius.jpg', 'genius2.webp', 
+            'hair-flat.jpg', 'hair-i-tip.avif', 'hair-tape1.jpg', 'hair-tape2.jpg', 
+            'hair-u-tip.jpg', 'hairbukl1.webp', 'hairbulk2.webp', 'hairbulk3.avif', 
+            'nano1.jpg', 'nano2.png', 'nano3.jpg', 'weftx1.webp', 'weftx2.jpg', 
+            'weftx3.webp', 'wig.webp', 'wig2.webp'
+        ];
+        const galleryImages = document.querySelectorAll('.product-preview-gallery img');
+
+        setInterval(() => {
+            // Mengacak 20 urutan foto agar gambar antar kotak tidak pernah kembar/sama
+            let shuffledImages = [...previewImagesPool].sort(() => Math.random() - 0.5);
+            
+            galleryImages.forEach((img, index) => {
+                img.style.opacity = '0'; // Efek transisi memudar keluar
+                
+                setTimeout(() => {
+                    img.src = shuffledImages[index];
+                    img.style.opacity = '1'; // Efek transisi memudar masuk kembali
+                }, 400); // Durasi pemudaran
+            });
+        }, 3000); // Berputar konstan secara acak setiap 3 detik
+
         // ==========================================================
         // --- LOGIKA JAVASCRIPT: INTERAKSI ZOOM KLIK DENGAN SLIDE --- 
         // ==========================================================
@@ -1482,22 +1426,19 @@
             if (e.target.matches('.preview-box img, .swiper-slide img')) {
                 const img = e.target;
                 let groupImages = [];
+                const previewGallery = img.closest('.product-preview-gallery');
+                const swiperWrapper = img.closest('.swiper-wrapper');
 
-                // Jika diklik dari Swiper (baik di galeri pratinjau maupun di kartu produk)
-                const swiperContainer = img.closest('.swiper');
-                
-                if (swiperContainer) {
-                    // Hanya mengambil gambar asli yang bukan hasil duplikasi (loop clone) Swiper
-                    groupImages = Array.from(swiperContainer.querySelectorAll('.swiper-slide:not(.swiper-slide-duplicate) img'));
+                if (previewGallery) {
+                    groupImages = Array.from(previewGallery.querySelectorAll('img'));
+                } else if (swiperWrapper) {
+                    groupImages = Array.from(swiperWrapper.querySelectorAll('img'));
                 } else {
                     groupImages = [img];
                 }
 
                 currentGroup = groupImages.map(el => el.src);
                 currentIndex = currentGroup.indexOf(img.src);
-
-                // Jika karena satu hal index tidak terdeteksi, default ke 0
-                if (currentIndex === -1) currentIndex = 0;
 
                 showImage(currentIndex);
                 lightbox.classList.add('show');
