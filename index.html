@@ -137,7 +137,7 @@
         /* --- ABOUT SECTION --- */
         .about { 
             text-align: center; 
-            background-color: var(--white); /* DISAMAKAN WARNANYA JADI PUTIH BERSIH */
+            background-color: var(--white); 
             align-items: center; 
             padding-top: 150px; 
             display: flex;
@@ -145,7 +145,7 @@
             gap: 60px; 
         } 
 
-        /* --- STYLING UTAMA: PREVIEW  --- */
+        /* --- STYLING UTAMA: PREVIEW GALERI --- */
         .product-preview-gallery {
             display: grid;
             grid-template-columns: 1.2fr 1fr;
@@ -155,7 +155,7 @@
             margin: 0 auto;
         }
 
-        /* Box Wrapper Umum untuk Efek Gambar */
+        /* Box Wrapper Umum untuk Efek Overlay */
         .preview-box {
             position: relative;
             width: 100%;
@@ -171,9 +171,10 @@
             object-fit: cover;
             display: block;
             cursor: zoom-in; 
+            transition: opacity 0.4s ease-in-out; /* ANIMASI HALUS SAAT RANDOM ROTATE ACAK */
         }
 
-        /* Lapisan Gradasi Gelap Khusus Foto Kiri */
+        /* Lapisan Gradasi Gelap di Bawah Foto */
         .preview-overlay {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -244,12 +245,12 @@
             transform: translateY(-2px);
         }
 
-        /* Pengaturan Sisi Kanan (Sejajar Ukuran Presisi) */
+        /* Pengaturan Sisi Kanan (Sejajar Presisi) */
         .preview-right-grid {
             display: grid;
             grid-template-rows: 1fr 1fr;
             gap: 20px;
-            height: 480px; /* Mengunci tinggi agar sama persis dengan sisi kiri */
+            height: 480px;
         }
 
         /* --- DUA KOTAK BANNER --- */
@@ -299,7 +300,7 @@
             line-height: 1.4;
         }
 
-        .box-dark { background-color: var(--dark-blue); }
+        .box-dark { background-color: var(--black); }
         .box-dark i { color: var(--circle-pink); } 
         
         .box-pink { background-color: var(--circle-pink); }
@@ -735,7 +736,6 @@
 
     <section id="about" class="about">
         
-        <!-- PRATINJAU GALERI PRODUK (TULISAN FOTO KANAN SUDAH DIHAPUS TOTAL) -->
         <div class="product-preview-gallery">
             <div class="preview-box preview-left" data-aos="fade-right">
                 <img src="hairbulk2.webp" alt="Premium Hair Extensions Showcase">
@@ -748,13 +748,11 @@
             </div>
             
             <div class="preview-right-grid" data-aos="fade-left">
-                <!-- Atas Bersih Tanpa Overlay Teks -->
                 <div class="preview-box">
                     <img src="hairbulk3.avif" alt="Hair Weft">
                 </div>
-                <!-- Bawah Bersih Tanpa Overlay Teks -->
                 <div class="preview-box">
-                    <img src="hairbukl1.jpg" alt="Tape In Extension">
+                    <img src="hairbukl1.webp" alt="Tape In Extension">
                 </div>
             </div>
         </div>
@@ -1063,7 +1061,7 @@
                     <div class="swiper-wrapper">
                         <div class="swiper-slide"><img src="nano1.jpg" alt="Foto 1"></div>
                         <div class="swiper-slide"><img src="nano2.png" alt="Foto 2"></div>
-                        <div class="swiper-slide"><img src="nano3.jpg" alt="Foto 2"></div>
+                        <div class="swiper-slide"><img src="nano3.jpg" alt="Foto 3"></div>
                     </div>
                     <div class="swiper-button-next"></div><div class="swiper-button-prev"></div><div class="swiper-pagination"></div>
                 </div>
@@ -1385,6 +1383,32 @@
             }
         });
 
+        // =========================================================================
+        // --- LOGIKA JAVASCRIPT: INTERAKSI SLIDESHOW ACAK 3 DETIK DI FOTO PREVIEW --- 
+        // =========================================================================
+        const previewImagesPool = [
+            'clip.jpg', 'clip2.webp', 'genius.jpg', 'genius2.webp', 
+            'hair-flat.jpg', 'hair-i-tip.avif', 'hair-tape1.jpg', 'hair-tape2.jpg', 
+            'hair-u-tip.jpg', 'hairbukl1.webp', 'hairbulk2.webp', 'hairbulk3.avif', 
+            'nano1.jpg', 'nano2.png', 'nano3.jpg', 'weftx1.webp', 'weftx2.jpg', 
+            'weftx3.webp', 'wig.webp', 'wig2.webp'
+        ];
+        const galleryImages = document.querySelectorAll('.product-preview-gallery img');
+
+        setInterval(() => {
+            // Mengacak 20 urutan foto agar gambar antar kotak tidak pernah kembar/sama
+            let shuffledImages = [...previewImagesPool].sort(() => Math.random() - 0.5);
+            
+            galleryImages.forEach((img, index) => {
+                img.style.opacity = '0'; // Efek transisi memudar keluar
+                
+                setTimeout(() => {
+                    img.src = shuffledImages[index];
+                    img.style.opacity = '1'; // Efek transisi memudar masuk kembali
+                }, 400); // Durasi pemudaran
+            });
+        }, 3000); // Berputar konstan secara acak setiap 3 detik
+
         // ==========================================================
         // --- LOGIKA JAVASCRIPT: INTERAKSI ZOOM KLIK DENGAN SLIDE --- 
         // ==========================================================
@@ -1398,11 +1422,9 @@
         let currentIndex = 0;
 
         // Pilih seluruh elemen foto produk yang bisa dizoom
-        const zoomImages = document.querySelectorAll('.preview-box img, .swiper-slide img');
-
-        zoomImages.forEach(img => {
-            img.addEventListener('click', () => {
-                // Kelompokkan secara pintar berdasarkan induk elemen (companion images)
+        document.addEventListener('click', (e) => {
+            if (e.target.matches('.preview-box img, .swiper-slide img')) {
+                const img = e.target;
                 let groupImages = [];
                 const previewGallery = img.closest('.product-preview-gallery');
                 const swiperWrapper = img.closest('.swiper-wrapper');
@@ -1415,14 +1437,13 @@
                     groupImages = [img];
                 }
 
-                // Masukkan daftar tautan gambar ke array grup saat ini
                 currentGroup = groupImages.map(el => el.src);
                 currentIndex = currentGroup.indexOf(img.src);
 
                 showImage(currentIndex);
                 lightbox.classList.add('show');
-                document.body.style.overflow = 'hidden'; // Kunci scroll halaman belakang
-            });
+                document.body.style.overflow = 'hidden';
+            }
         });
 
         function showImage(index) {
@@ -1432,7 +1453,6 @@
             currentIndex = index;
             lightboxImg.src = currentGroup[currentIndex];
 
-            // Sembunyikan panah navigasi jika gambar di grup tersebut cuma ada 1
             if (currentGroup.length <= 1) {
                 prevBtn.style.display = 'none';
                 nextBtn.style.display = 'none';
@@ -1442,9 +1462,8 @@
             }
         }
 
-        // Fungsi Tombol Navigasi Kanan/Kiri
         prevBtn.addEventListener('click', (e) => {
-            e.stopPropagation(); // Mencegah modal tertutup karena klik panah
+            e.stopPropagation();
             showImage(currentIndex - 1);
         });
 
@@ -1453,22 +1472,19 @@
             showImage(currentIndex + 1);
         });
 
-        // Fungsi Menutup Zoom Modal
         function closeLightbox() {
             lightbox.classList.remove('show');
-            document.body.style.overflow = ''; // Buka kembali kunci scroll
+            document.body.style.overflow = '';
         }
 
         closeBtn.addEventListener('click', closeLightbox);
         
-        // Menutup jika pengguna mengklik area hitam di luar foto
         lightbox.addEventListener('click', (e) => {
             if (e.target !== lightboxImg && e.target !== prevBtn && e.target !== nextBtn) {
                 closeLightbox();
             }
         });
 
-        // --- DUKUNGAN SWIPE GESER LAYAR DI HP ---
         let touchStartX = 0;
         let touchEndX = 0;
 
@@ -1483,11 +1499,9 @@
 
         function handleSwipeGesture() {
             if (touchEndX < touchStartX - 50) {
-                // Geser Kiri -> Gambar Selanjutnya
                 showImage(currentIndex + 1);
             }
             if (touchEndX > touchStartX + 50) {
-                // Geser Kanan -> Gambar Sebelumnya
                 showImage(currentIndex - 1);
             }
         }
