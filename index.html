@@ -165,11 +165,12 @@
             border: 1px solid #eaeaea;
         }
 
-        .preview-box img {
+        .preview-box img, .swiper-slide img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
+            cursor: zoom-in; 
         }
 
         /* Lapisan Gradasi Gelap di Bawah Foto */
@@ -183,6 +184,11 @@
             align-items: flex-start;
             color: var(--white);
             text-align: left;
+            pointer-events: none; 
+        }
+        
+        .preview-overlay a {
+            pointer-events: auto;
         }
 
         /* Pengaturan Sisi Kiri */
@@ -420,9 +426,7 @@
             font-family: 'Lato', sans-serif;
         }
 
-        /* --- STYLING UNTUK SLIDER FOTO --- */
         .swiper { width: 100%; height: 320px; margin-bottom: 20px; border-radius: 4px; }
-        .swiper-slide img { width: 100%; height: 100%; object-fit: cover; }
         .swiper-button-next, .swiper-button-prev {
             color: var(--black) !important; background: rgba(255, 255, 255, 0.8);
             width: 35px !important; height: 35px !important; border-radius: 50%;
@@ -430,7 +434,6 @@
         .swiper-button-next:after, .swiper-button-prev:after { font-size: 15px !important; font-weight: bold; }
         .swiper-pagination-bullet-active { background: var(--circle-pink) !important; }
 
-        /* --- KOTAK SPESIFIKASI HIJAU TERANG --- */
         .specs-container { 
             display: flex; 
             flex-direction: row; 
@@ -474,7 +477,6 @@
             font-weight: 700; 
         }
 
-        /* --- BUKA TUTUP (ACCORDION) TABEL --- */
         .accordion-wrapper {
             margin-top: 15px;
             background: #fafafa;
@@ -515,7 +517,6 @@
         .detail-table th:last-child, .detail-table td:last-child { text-align: right; }
         .check-icon { color: var(--circle-pink); margin-right: 5px; font-size: 0.8rem;}
 
-        /* --- TOMBOL BUY NOW --- */
         .buy-now-btn {
             display: flex;
             justify-content: center;
@@ -545,7 +546,7 @@
             color: var(--white);
         }
 
-        /* --- CONTACT SECTION (KEMBALI GELAP) --- */
+        /* --- CONTACT SECTION --- */
         .kontak { text-align: center; background-color: var(--black); color: var(--white); }
         .kontak h2 { font-size: 2.5rem; letter-spacing: 3px; margin-bottom: 10px; font-family: 'Playfair Display', serif;}
         .kontak > p { color: #cccccc; margin-bottom: 40px; font-size: 1.1rem; }
@@ -623,25 +624,81 @@
             color: var(--white);
         }
 
+        /* --- STYLING MODAL LIGHTBOX OVERLAY --- */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 2000; 
+            left: 0; top: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .lightbox.show {
+            display: flex;
+            opacity: 1;
+        }
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 85%;
+            border-radius: 8px;
+            transform: scale(0.7);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); 
+        }
+        .lightbox.show .lightbox-content {
+            transform: scale(1);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 25px; right: 35px;
+            color: var(--white);
+            font-size: 45px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+            line-height: 1;
+            z-index: 2020;
+        }
+        .lightbox-close:hover { color: var(--circle-pink); }
+
+        /* PANAH NAVIGASI LIGHTBOX (TAMPIL DI PC) */
+        .lightbox-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--white);
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+            user-select: none;
+            padding: 15px 25px;
+            z-index: 2010;
+        }
+        .lightbox-arrow:hover { color: var(--circle-pink); }
+        .lightbox-prev { left: 20px; }
+        .lightbox-next { right: 20px; }
+
         /* =======================================================
-           --- MEDIA QUERY RESPONSIVE (HANYA MENGUBAH HIGHLIGHTS) --- 
+           --- MEDIA QUERY RESPONSIVE (MENGUBAH HIGHLIGHTS) --- 
            ======================================================= */
         @media (max-width: 768px) {
             .nav-links { display: none; }
             section { padding: 80px 5%; }
             .about { padding-top: 100px; gap: 50px; }
             
-            /* Penyesuaian Responsif Standar untuk Galeri dan Banner Atas (Tetap Muncul Berurutan) */
             .product-preview-gallery { grid-template-columns: 1fr; gap: 15px; }
             .preview-left { height: 320px; }
             .preview-right-grid { height: auto; grid-template-rows: 1fr 1fr; gap: 15px; }
             .top-banners { display: flex; flex-direction: column; gap: 15px; width: 100%; }
             
-            /* HANYA BAGIAN INI YANG BERUBAH DI HP SESUAI SCREENSHOT KAMU */
+            /* GRID 2X2 UNTUK 4 LINGKARAN DI HP */
             .highlights {
                 display: grid;
-                grid-template-columns: 1fr 1fr; /* Membentuk grid 2x2 */
-                gap: 40px 20px; /* Jarak atas-bawah dan kiri-kanan antar lingkaran */
+                grid-template-columns: 1fr 1fr; 
+                gap: 40px 20px; 
                 width: 100%;
             }
             .highlight-box {
@@ -650,7 +707,7 @@
             }
             .highlight-box h4 {
                 font-size: 1rem;
-                font-weight: 800; /* Teks tebal kapital sesuai contoh gambar */
+                font-weight: 800; 
             }
             .highlight-box p {
                 font-size: 0.85rem;
@@ -659,13 +716,16 @@
             
             .logo { transform: scale(0.85); transform-origin: left center; }
             .back-to-top { bottom: 20px; right: 20px; width: 42px; height: 42px; }
+            .lightbox-close { top: 20px; right: 25px; font-size: 38px; }
+            .lightbox-arrow { padding: 10px; font-size: 30px; }
+            .lightbox-prev { left: 5px; }
+            .lightbox-next { right: 5px; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <!-- LOGO DIBUAT DENGAN HTML & CSS (Diperkecil) -->
         <div class="logo">
             <div class="logo-top">
                 <span class="line-top"></span>
@@ -685,10 +745,9 @@
 
     <section id="about" class="about">
         
-        <!-- 1. PRATINJAU GALERI PRODUK -->
         <div class="product-preview-gallery">
             <div class="preview-box preview-left" data-aos="fade-right">
-                <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&q=80&w=800" alt="Premium Hair Extensions Showcase">
+                <img src="hairbulk2.jpg" alt="Premium Hair Extensions Showcase">
                 <div class="preview-overlay">
                     <span class="preview-badge badge-pink">100% HUMAN HAIR</span>
                     <h2>Premium Hair Extensions</h2>
@@ -699,14 +758,14 @@
             
             <div class="preview-right-grid" data-aos="fade-left">
                 <div class="preview-box">
-                    <img src="https://images.unsplash.com/photo-1492158244976-29b84ba93025?auto=format&fit=crop&q=80&w=500" alt="Hair Weft">
+                    <img src="hairbulk3.avif" alt="Hair Weft">
                     <div class="preview-overlay">
                         <span class="preview-badge badge-yellow">BEST SELLER</span>
                         <h4>Hair Weft</h4>
                     </div>
                 </div>
                 <div class="preview-box">
-                    <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&q=80&w=500" alt="Tape In Extension">
+                    <img src="hairbukl1.jpg" alt="Tape In Extension">
                     <div class="preview-overlay">
                         <span class="preview-badge badge-pink">POPULAR</span>
                         <h4>Tape In Extension</h4>
@@ -715,7 +774,6 @@
             </div>
         </div>
 
-        <!-- 2. DUA KOTAK BANNER -->
         <div class="top-banners">
             <div class="banner-box box-dark" data-aos="fade-up" data-aos-delay="100">
                 <i class="fa-solid fa-globe"></i>
@@ -733,7 +791,6 @@
             </div>
         </div>
 
-        <!-- 3. 4 IKON LINGKARAN HIGHLIGHTS (OTOMATIS JADI GRID 2X2 DI HP) -->
         <div id="highlights" class="highlights">
             <div class="highlight-box" data-aos="zoom-in" data-aos-delay="0">
                 <div class="icon-wrapper">
@@ -771,19 +828,17 @@
     </section>
 
     <section id="produk" class="produk">
-        <!-- HEADER PRODUK -->
         <div class="produk-header" data-aos="fade-up">
             <span class="sub-title">Our Products</span>
             <h2>Top Quality Product - <span class="highlight-text">Hair Extension</span></h2>
         </div>
         
         <div class="grid">
-            <!-- PRODUCT 1 -->
             <div class="card" data-aos="fade-up">
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img src="hairbukl1.webp" alt="Hair Bulk Product Option 1"></div>
-                        <div class="swiper-slide"><img src="hairbulk2.webp" alt="Hair Bulk Product Option 2"></div>
+                        <div class="swiper-slide"><img src="hairbukl1.jpg" alt="Hair Bulk Product Option 1"></div>
+                        <div class="swiper-slide"><img src="hairbulk2.jpg" alt="Hair Bulk Product Option 2"></div>
                         <div class="swiper-slide"><img src="hairbulk3.avif" alt="Hair Bulk Product Option 3"></div>
                     </div>
                     <div class="swiper-button-next"></div><div class="swiper-button-prev"></div><div class="swiper-pagination"></div>
@@ -839,7 +894,6 @@
                 </a>
             </div>
 
-            <!-- PRODUCT 2 -->
             <div class="card" data-aos="fade-up" data-aos-delay="100">
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
@@ -899,7 +953,6 @@
                 </a>
             </div>
 
-            <!-- PRODUCT 3 -->
             <div class="card" data-aos="fade-up" data-aos-delay="200">
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
@@ -919,7 +972,7 @@
                     <div class="spec-box">
                         <i class="fa-regular fa-clock"></i>
                         <span class="spec-title">Production Time</span>
-                        <span class="spec-value">500 Gram</span>
+                        <span class="spec-value">7 Days</span>
                     </div>
                     <div class="spec-box">
                         <i class="fa-solid fa-ribbon"></i>
@@ -959,12 +1012,11 @@
                 </a>
             </div>
 
-            <!-- PRODUCT 4 -->
             <div class="card" data-aos="fade-up" data-aos-delay="300">
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1560869713-7d0a29430803?auto=format&fit=crop&q=80&w=400" alt="Foto 1"></div>
-                        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&q=80&w=400" alt="Foto 2"></div>
+                        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=400" alt="Foto 2"></div>
                     </div>
                     <div class="swiper-button-next"></div><div class="swiper-button-prev"></div><div class="swiper-pagination"></div>
                 </div>
@@ -1019,7 +1071,6 @@
                 </a>
             </div>
 
-            <!-- PRODUCT 5 -->
             <div class="card" data-aos="fade-up">
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
@@ -1079,7 +1130,6 @@
                 </a>
             </div>
 
-            <!-- PRODUCT 6 -->
             <div class="card" data-aos="fade-up" data-aos-delay="100">
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
@@ -1139,12 +1189,11 @@
                 </a>
             </div>
 
-            <!-- PRODUCT 7 -->
             <div class="card" data-aos="fade-up" data-aos-delay="200">
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&q=80&w=400" alt="Foto 1"></div>
-                        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&q=80&w=400" alt="Foto 2"></div>
+                        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=400" alt="Foto 2"></div>
                     </div>
                     <div class="swiper-button-next"></div><div class="swiper-button-prev"></div><div class="swiper-pagination"></div>
                 </div>
@@ -1199,7 +1248,6 @@
                 </a>
             </div>
 
-            <!-- PRODUCT 8 -->
             <div class="card" data-aos="fade-up" data-aos-delay="300">
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
@@ -1288,10 +1336,16 @@
         </div>
     </section>
 
-    <!-- TOMBOL MENGAMBANG BACK TO TOP -->
     <a href="#" id="backToTop" class="back-to-top">
         <i class="fa-solid fa-arrow-up"></i>
     </a>
+
+    <div id="imageLightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <span class="lightbox-arrow lightbox-prev">&#10094;</span>
+        <img class="lightbox-content" id="lightboxImg" alt="Zoomed Product Preview">
+        <span class="lightbox-arrow lightbox-next">&#10095;</span>
+    </div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     
@@ -1342,6 +1396,113 @@
                 backToTopBtn.classList.remove('show');
             }
         });
+
+        // ==========================================================
+        // --- LOGIKA JAVASCRIPT: INTERAKSI ZOOM KLIK DENGAN SLIDE --- 
+        // ==========================================================
+        const lightbox = document.getElementById('imageLightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const closeBtn = document.querySelector('.lightbox-close');
+        const prevBtn = document.querySelector('.lightbox-prev');
+        const nextBtn = document.querySelector('.lightbox-next');
+
+        let currentGroup = [];
+        let currentIndex = 0;
+
+        // Pilih seluruh elemen foto produk yang bisa dizoom
+        const zoomImages = document.querySelectorAll('.preview-box img, .swiper-slide img');
+
+        zoomImages.forEach(img => {
+            img.addEventListener('click', () => {
+                // Kelompokkan secara pintar berdasarkan induk elemen (companion images)
+                let groupImages = [];
+                const previewGallery = img.closest('.product-preview-gallery');
+                const swiperWrapper = img.closest('.swiper-wrapper');
+
+                if (previewGallery) {
+                    groupImages = Array.from(previewGallery.querySelectorAll('img'));
+                } else if (swiperWrapper) {
+                    groupImages = Array.from(swiperWrapper.querySelectorAll('img'));
+                } else {
+                    groupImages = [img];
+                }
+
+                // Masukkan daftar tautan gambar ke array grup saat ini
+                currentGroup = groupImages.map(el => el.src);
+                currentIndex = currentGroup.indexOf(img.src);
+
+                showImage(currentIndex);
+                lightbox.classList.add('show');
+                document.body.style.overflow = 'hidden'; // Kunci scroll halaman belakang
+            });
+        });
+
+        function showImage(index) {
+            if (index < 0) index = currentGroup.length - 1;
+            if (index >= currentGroup.length) index = 0;
+            
+            currentIndex = index;
+            lightboxImg.src = currentGroup[currentIndex];
+
+            // Sembunyikan panah navigasi jika gambar di grup tersebut cuma ada 1
+            if (currentGroup.length <= 1) {
+                prevBtn.style.display = 'none';
+                nextBtn.style.display = 'none';
+            } else {
+                prevBtn.style.display = 'block';
+                nextBtn.style.display = 'block';
+            }
+        }
+
+        // Fungsi Tombol Navigasi Kanan/Kiri
+        prevBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Mencegah modal tertutup karena klik panah
+            showImage(currentIndex - 1);
+        });
+
+        nextBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            showImage(currentIndex + 1);
+        });
+
+        // Fungsi Menutup Zoom Modal
+        function closeLightbox() {
+            lightbox.classList.remove('show');
+            document.body.style.overflow = ''; // Buka kembali kunci scroll
+        }
+
+        closeBtn.addEventListener('click', closeLightbox);
+        
+        // Menutup jika pengguna mengklik area hitam di luar foto
+        lightbox.addEventListener('click', (e) => {
+            if (e.target !== lightboxImg && e.target !== prevBtn && e.target !== nextBtn) {
+                closeLightbox();
+            }
+        });
+
+        // --- DUKUNGAN SWIPE GESER LAYAR DI HP ---
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        lightbox.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        lightbox.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipeGesture();
+        }, { passive: true });
+
+        function handleSwipeGesture() {
+            if (touchEndX < touchStartX - 50) {
+                // Geser Kiri -> Gambar Selanjutnya
+                showImage(currentIndex + 1);
+            }
+            if (touchEndX > touchStartX + 50) {
+                // Geser Kanan -> Gambar Sebelumnya
+                showImage(currentIndex - 1);
+            }
+        }
     </script>
 </body>
 </html>
