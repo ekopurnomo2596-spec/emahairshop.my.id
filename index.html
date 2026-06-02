@@ -137,7 +137,7 @@
         /* --- ABOUT SECTION --- */
         .about { 
             text-align: center; 
-            background-color: var(--white); /* DISAMAKAN WARNANYA JADI PUTIH BERSIH */
+            background-color: var(--white); /* PURE WHITE BACKGROUND */
             align-items: center; 
             padding-top: 150px; 
             display: flex;
@@ -145,7 +145,7 @@
             gap: 60px; 
         } 
 
-        /* --- STYLING UTAMA: PREVIEW  --- */
+        /* --- STYLING UTAMA: PREVIEW GALERI --- */
         .product-preview-gallery {
             display: grid;
             grid-template-columns: 1.2fr 1fr;
@@ -155,7 +155,7 @@
             margin: 0 auto;
         }
 
-        /* Box Wrapper Umum untuk Efek Gambar */
+        /* Box Wrapper Umum untuk Efek Overlay */
         .preview-box {
             position: relative;
             width: 100%;
@@ -173,7 +173,7 @@
             cursor: zoom-in; 
         }
 
-        /* Lapisan Gradasi Gelap Khusus Foto Kiri */
+        /* Lapisan Gradasi Gelap di Bawah Foto */
         .preview-overlay {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -244,15 +244,15 @@
             transform: translateY(-2px);
         }
 
-        /* Pengaturan Sisi Kanan (Sejajar Ukuran Presisi) */
+        /* Pengaturan Sisi Kanan (Sejajar Presisi) */
         .preview-right-grid {
             display: grid;
             grid-template-rows: 1fr 1fr;
             gap: 20px;
-            height: 480px; /* Mengunci tinggi agar sama persis dengan sisi kiri */
+            height: 480px;
         }
 
-        /* --- DUA KOTAK BANNER --- */
+        /* --- DUA KOTAK BANNER (WARNA SUDAH DISAMAKAN HITAM DAN MERAH BRAND) --- */
         .top-banners {
             display: flex;
             justify-content: center;
@@ -299,10 +299,10 @@
             line-height: 1.4;
         }
 
-        .box-dark { background-color: var(--dark-blue); }
+        .box-dark { background-color: var(--black); } /* WARNA HITAM DISAMAKAN UTAMA */
         .box-dark i { color: var(--circle-pink); } 
         
-        .box-pink { background-color: var(--circle-pink); }
+        .box-pink { background-color: var(--circle-pink); } /* WARNA MERAH DISAMAKAN UTAMA */
         .box-pink i { color: var(--white); } 
 
         /* --- 4 HIGHLIGHTS BOX --- */
@@ -507,6 +507,7 @@
         .detail-table th:last-child, .detail-table td:last-child { text-align: right; }
         .check-icon { color: var(--circle-pink); margin-right: 5px; font-size: 0.8rem;}
 
+        /* --- TOMBOL BUY NOW --- */
         .buy-now-btn {
             display: flex;
             justify-content: center;
@@ -536,7 +537,7 @@
             color: var(--white);
         }
 
-        /* --- CONTACT SECTION --- */
+        /* --- CONTACT SECTION (KEMBALI GELAP) --- */
         .kontak { text-align: center; background-color: var(--black); color: var(--white); }
         .kontak h2 { font-size: 2.5rem; letter-spacing: 3px; margin-bottom: 10px; font-family: 'Playfair Display', serif;}
         .kontak > p { color: #cccccc; margin-bottom: 40px; font-size: 1.1rem; }
@@ -735,10 +736,9 @@
 
     <section id="about" class="about">
         
-        <!-- PRATINJAU GALERI PRODUK (TULISAN FOTO KANAN SUDAH DIHAPUS TOTAL) -->
         <div class="product-preview-gallery">
             <div class="preview-box preview-left" data-aos="fade-right">
-                <img src="hairbulk2.webp" alt="Premium Hair Extensions Showcase">
+                <img src="hairbulk2.jpg" alt="Premium Hair Extensions Showcase">
                 <div class="preview-overlay">
                     <span class="preview-badge badge-pink">100% HUMAN HAIR</span>
                     <h2>Premium Hair Extensions</h2>
@@ -748,11 +748,9 @@
             </div>
             
             <div class="preview-right-grid" data-aos="fade-left">
-                <!-- Atas Bersih Tanpa Overlay Teks -->
                 <div class="preview-box">
                     <img src="hairbulk3.avif" alt="Hair Weft">
                 </div>
-                <!-- Bawah Bersih Tanpa Overlay Teks -->
                 <div class="preview-box">
                     <img src="hairbukl1.jpg" alt="Tape In Extension">
                 </div>
@@ -822,8 +820,8 @@
             <div class="card" data-aos="fade-up">
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img src="hairbukl1.webp" alt="Hair Bulk Product Option 1"></div>
-                        <div class="swiper-slide"><img src="hairbulk2.webp" alt="Hair Bulk Product Option 2"></div>
+                        <div class="swiper-slide"><img src="hairbukl1.jpg" alt="Hair Bulk Product Option 1"></div>
+                        <div class="swiper-slide"><img src="hairbulk2.jpg" alt="Hair Bulk Product Option 2"></div>
                         <div class="swiper-slide"><img src="hairbulk3.avif" alt="Hair Bulk Product Option 3"></div>
                     </div>
                     <div class="swiper-button-next"></div><div class="swiper-button-prev"></div><div class="swiper-pagination"></div>
@@ -882,9 +880,8 @@
             <div class="card" data-aos="fade-up" data-aos-delay="100">
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img src="weftx1.webp" alt="Foto 1"></div>
-                        <div class="swiper-slide"><img src="weftx2.jpg" alt="Foto 2"></div>
-                        <div class="swiper-slide"><img src="weftx3.webp" alt="Foto 3"></div>
+                        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1492158244976-29b84ba93025?auto=format&fit=crop&q=80&w=400" alt="Foto 1"></div>
+                        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1560869713-7d0a29430803?auto=format&fit=crop&q=80&w=400" alt="Foto 2"></div>
                     </div>
                     <div class="swiper-button-next"></div><div class="swiper-button-prev"></div><div class="swiper-pagination"></div>
                 </div>
@@ -942,8 +939,8 @@
             <div class="card" data-aos="fade-up" data-aos-delay="200">
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img src="hair-tape1.jpg" alt="Foto 1"></div>
-                        <div class="swiper-slide"><img src="hair-tape2.jpg" alt="Foto 2"></div>
+                        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&q=80&w=400" alt="Foto 1"></div>
+                        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1620331311520-246422fd82f9?auto=format&fit=crop&q=80&w=400" alt="Foto 2"></div>
                     </div>
                     <div class="swiper-button-next"></div><div class="swiper-button-prev"></div><div class="swiper-pagination"></div>
                 </div>
@@ -1001,9 +998,8 @@
             <div class="card" data-aos="fade-up" data-aos-delay="300">
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img src="hair-u-tip.jpg" alt="Foto 1"></div>
-                        <div class="swiper-slide"><img src="hair-i-tip.avif" alt="Foto 2"></div>
-                        <div class="swiper-slide"><img src="hair-flat.jpg" alt="Foto 3"></div>
+                        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1560869713-7d0a29430803?auto=format&fit=crop&q=80&w=400" alt="Foto 1"></div>
+                        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=400" alt="Foto 2"></div>
                     </div>
                     <div class="swiper-button-next"></div><div class="swiper-button-prev"></div><div class="swiper-pagination"></div>
                 </div>
@@ -1061,9 +1057,8 @@
             <div class="card" data-aos="fade-up">
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img src="nano1.jpg" alt="Foto 1"></div>
-                        <div class="swiper-slide"><img src="nano2.png" alt="Foto 2"></div>
-                        <div class="swiper-slide"><img src="nano3.jpg" alt="Foto 2"></div>
+                        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&q=80&w=400" alt="Foto 1"></div>
+                        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&q=80&w=400" alt="Foto 2"></div>
                     </div>
                     <div class="swiper-button-next"></div><div class="swiper-button-prev"></div><div class="swiper-pagination"></div>
                 </div>
@@ -1121,8 +1116,8 @@
             <div class="card" data-aos="fade-up" data-aos-delay="100">
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img src="genius.jpg" alt="Foto 1"></div>
-                        <div class="swiper-slide"><img src="genius2.webp" alt="Foto 2"></div>
+                        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1620331311520-246422fd82f9?auto=format&fit=crop&q=80&w=400" alt="Foto 1"></div>
+                        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&q=80&w=400" alt="Foto 2"></div>
                     </div>
                     <div class="swiper-button-next"></div><div class="swiper-button-prev"></div><div class="swiper-pagination"></div>
                 </div>
@@ -1180,8 +1175,8 @@
             <div class="card" data-aos="fade-up" data-aos-delay="200">
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img src="clip.jpg" alt="Foto 1"></div>
-                        <div class="swiper-slide"><img src="clip2.webp" alt="Foto 2"></div>
+                        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&q=80&w=400" alt="Foto 1"></div>
+                        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=400" alt="Foto 2"></div>
                     </div>
                     <div class="swiper-button-next"></div><div class="swiper-button-prev"></div><div class="swiper-pagination"></div>
                 </div>
@@ -1239,8 +1234,8 @@
             <div class="card" data-aos="fade-up" data-aos-delay="300">
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img src="wig.webp" alt="Foto 1"></div>
-                        <div class="swiper-slide"><img src="wig2.webp" alt="Foto 2"></div>
+                        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&q=80&w=400" alt="Foto 1"></div>
+                        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&q=80&w=400" alt="Foto 2"></div>
                     </div>
                     <div class="swiper-button-next"></div><div class="swiper-button-prev"></div><div class="swiper-pagination"></div>
                 </div>
