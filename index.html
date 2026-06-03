@@ -137,7 +137,6 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.15);
         } 
 
-        /* Tombol Hamburger (Disembunyikan di PC) */
         .menu-toggle {
             display: none; 
             font-size: 1.8rem;
@@ -158,7 +157,7 @@
             gap: 60px; 
         } 
 
-        /* --- STYLING UTAMA: PREVIEW GALERI --- */
+        /* --- STYLING UTAMA: PREVIEW GALERI DENGAN KOTAK SEPERTI PRODUK --- */
         .product-preview-gallery {
             display: grid;
             grid-template-columns: 1.2fr 1fr;
@@ -169,19 +168,22 @@
             overflow-anchor: none; 
         }
 
+        /* Kotak putih seperti .card */
         .preview-box {
             position: relative;
             width: 100%;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            border: 1px solid #eaeaea;
+            background: var(--white); 
+            padding: 20px; 
+            border-radius: 8px; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
+            border: 1px solid #f0f0f0; 
         }
 
         .preview-box img, .swiper-slide img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            border-radius: 4px; /* Sudut sedikit membulat untuk gambar */
             display: block;
             transition: opacity 0.6s ease, transform 0.6s ease; 
             will-change: transform, opacity;
@@ -189,9 +191,12 @@
         
         .swiper-slide img { cursor: zoom-in; }
 
+        /* Overlay hitam transparan diletakkan di dalam batas padding */
         .preview-overlay {
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 20px; left: 20px; 
+            width: calc(100% - 40px); height: calc(100% - 40px);
+            border-radius: 4px;
             background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.1) 60%, rgba(0,0,0,0) 100%);
             display: flex;
             flex-direction: column;
@@ -232,7 +237,7 @@
 
         .preview-right-grid { display: grid; grid-template-rows: 1fr 1fr; gap: 20px; height: 480px; }
 
-        /* --- DUA KOTAK BANNER (HIJAU TERANG, IKON SAMPING, TEKS TENGAH PRESISI) --- */
+        /* --- DUA KOTAK BANNER --- */
         .top-banners { display: flex; justify-content: center; gap: 25px; width: 100%; max-width: 1100px; flex-wrap: wrap; }
         .banner-box { 
             display: flex; 
@@ -248,26 +253,10 @@
             box-shadow: 0 5px 15px rgba(16, 185, 129, 0.15); 
             transition: transform 0.3s, box-shadow 0.3s; 
         }
-        .banner-box:hover { 
-            transform: translateY(-4px); 
-            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3); 
-        }
-        .banner-box i { 
-            font-size: 2.8rem; 
-            color: var(--white); 
-            flex: 0 0 50px; 
-            text-align: left;
-        }
-        .banner-box::after {
-            content: '';
-            display: block;
-            flex: 0 0 50px; 
-        }
-        .banner-content {
-            flex: 1; 
-            text-align: center; 
-            padding: 0 15px; 
-        }
+        .banner-box:hover { transform: translateY(-4px); box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3); }
+        .banner-box i { font-size: 2.8rem; color: var(--white); flex: 0 0 50px; text-align: left; }
+        .banner-box::after { content: ''; display: block; flex: 0 0 50px; }
+        .banner-content { flex: 1; text-align: center; padding: 0 15px; }
         .banner-box h4 { font-family: 'Lato', sans-serif; font-weight: 700; font-size: 1.05rem; margin-bottom: 5px; color: var(--white); letter-spacing: 0.5px; text-transform: uppercase; }
         .banner-box p { font-family: 'Lato', sans-serif; font-size: 0.85rem; color: rgba(255, 255, 255, 0.9); margin: 0; line-height: 1.4; }
 
@@ -275,19 +264,9 @@
         .highlights { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; width: 100%; max-width: 1100px; }
         .highlight-box { background-color: transparent; padding: 10px; display: flex; flex-direction: column; align-items: center; text-align: center; flex: 1; min-width: 200px; transition: transform 0.3s; }
         .highlight-box:hover { transform: translateY(-5px); }
-        
-        /* Ikon hijau terang agar senada dengan kotak banner */
-        .icon-wrapper { 
-            width: 65px; height: 65px; 
-            background-color: var(--bright-green); 
-            border-radius: 50%; display: flex; justify-content: center; align-items: center; 
-            margin-bottom: 15px; transition: 0.3s; 
-            box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3); 
-        }
+        .icon-wrapper { width: 65px; height: 65px; background-color: var(--bright-green); border-radius: 50%; display: flex; justify-content: center; align-items: center; margin-bottom: 15px; transition: 0.3s; box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3); }
         .highlight-box:hover .icon-wrapper { transform: scale(1.1); }
         .highlight-box i { font-size: 1.6rem; color: var(--white); } 
-        
-        /* Teks dibuat monokrom (hitam tegas dan abu-abu) untuk kontras yang baik */
         .highlight-box h4 { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 0.95rem; color: var(--black); margin-bottom: 5px; letter-spacing: 0.5px; text-transform: uppercase; }
         .highlight-box p { font-family: 'Lato', sans-serif; font-size: 0.85rem; line-height: 1.4; color: var(--gray); margin: 0; }
 
@@ -339,9 +318,7 @@
         .buy-now-btn:hover { background-color: #25D366; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3); color: var(--white); }
 
 
-        /* =========================================
-           --- PRICE LIST SECTION --- 
-           ========================================= */
+        /* --- PRICE LIST SECTION --- */
         .price-section { background-color: #F9F8F6; } 
         .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 40px; align-items: start; }
         .price-card { background-color: var(--white); border-radius: 16px; padding: 40px 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); border: 1px solid #eaeaea; transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative; }
@@ -373,7 +350,6 @@
         .modern-table tbody tr:hover { background-color: #fdfdfd; }
         .price-value { color: var(--circle-pink); font-weight: 900; }
 
-        /* --- CONTACT CTA --- */
         .contact-cta { text-align: center; margin-top: 30px; padding: 20px; background-color: #f9f9f9; border-radius: 8px; border: 1px solid #eaeaea;}
         .contact-cta p { font-size: 0.9rem; color: var(--gray); margin-bottom: 15px; }
         .contact-cta .btn-whatsapp { display: inline-flex; align-items: center; gap: 8px; background-color: #25D366; color: var(--white); padding: 10px 20px; border-radius: 25px; text-decoration: none; font-weight: 700; font-size: 0.9rem; transition: all 0.3s; justify-content: center; }
@@ -405,7 +381,7 @@
         .back-to-top.show { opacity: 1; visibility: visible; }
         .back-to-top:hover { background-color: var(--black); transform: translateY(-4px); color: var(--white); }
 
-        /* --- STYLING MODAL LIGHTBOX OVERLAY --- */
+        /* --- LIGHTBOX --- */
         .lightbox { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease-in-out; }
         .lightbox.show { display: flex; opacity: 1; }
         .lightbox-content { max-width: 90%; max-height: 85%; border-radius: 8px; transform: scale(0.7); transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
@@ -421,7 +397,6 @@
            --- MEDIA QUERY RESPONSIVE (TAMPILAN KHUSUS HP) --- 
            ======================================================= */
         @media (max-width: 768px) {
-            /* PENGATURAN HAMBURGER MENU */
             .menu-toggle { display: block; }
             
             .nav-links { 
@@ -449,12 +424,20 @@
 
             .about { padding-top: 100px; gap: 50px; }
             .product-preview-gallery { grid-template-columns: 1fr; gap: 15px; }
+            
+            /* Penyesuaian frame/kotak agar lebih proporsional di HP */
+            .preview-box { padding: 8px; border-radius: 6px; }
+            .preview-overlay { top: 8px; left: 8px; width: calc(100% - 16px); height: calc(100% - 16px); }
+            
             .preview-left { height: 320px; }
+            .preview-left .preview-overlay { padding: 15px; }
+            .preview-left h2 { font-size: 1.5rem; }
+            .preview-left p { font-size: 0.75rem; margin-bottom: 10px;}
+            
             .preview-right-grid { height: 320px; grid-template-rows: 1fr 1fr; gap: 15px; }
             .preview-right-grid .preview-box { height: 100%; min-height: 0; }
             .preview-right-grid .preview-box img { height: 100%; }
             
-            /* Penyesuaian Banner Box di HP agar tetap minimalis dan rapi */
             .top-banners { display: flex; flex-direction: column; gap: 12px; width: 100%; }
             .banner-box { padding: 15px 18px; min-width: unset; width: 100%; }
             .banner-box i { font-size: 2.2rem; flex: 0 0 35px; }
@@ -474,7 +457,6 @@
             .lightbox-prev { left: 5px; }
             .lightbox-next { right: 5px; }
 
-            /* PENGATURAN PRODUK: WAJIB 2 KOLOM DI HP */
             section { padding: 80px 3%; } 
             .grid { grid-template-columns: repeat(2, 1fr); gap: 8px; align-items: start; }
             .card { padding: 8px; min-width: 0; overflow: hidden; }
@@ -495,7 +477,6 @@
             .detail-table { font-size: 0.5rem; }
             .detail-table th, .detail-table td { padding: 3px 2px; }
             
-            /* PERBAIKAN TOMBOL "ORDER VIA WHATSAPP" DI HP AGAR LEBIH RAPI */
             .buy-now-btn { 
                 padding: 8px 4px; 
                 font-size: 0.55rem; 
@@ -509,9 +490,6 @@
             }
             .buy-now-btn i { font-size: 0.8rem; }
 
-            /* ======================================================== */
-            /* PENGATURAN PRICE LIST KHUSUS HP (WAJIB 2 KOLOM RAPI)     */
-            /* ======================================================== */
             .price-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; align-items: start; }
             .price-card { padding: 12px 6px; border-radius: 8px; }
             .price-card::before { border-radius: 8px 8px 0 0; height: 4px; }
@@ -588,7 +566,7 @@
             </div>
         </div>
 
-        <!-- DUA KOTAK BANNER (HIJAU TERANG, IKON SAMPING, TEKS TENGAH PRESISI) -->
+        <!-- DUA KOTAK BANNER -->
         <div class="top-banners">
             <div class="banner-box" data-aos="fade-up" data-aos-delay="100">
                 <i class="fa-solid fa-globe"></i>
@@ -606,7 +584,7 @@
             </div>
         </div>
 
-        <!-- 4 HIGHLIGHTS BOX DENGAN KOMBINASI WARNA MONOKROM DAN HIJAU -->
+        <!-- 4 HIGHLIGHTS BOX -->
         <div id="highlights" class="highlights">
             <div class="highlight-box" data-aos="zoom-in" data-aos-delay="0">
                 <div class="icon-wrapper"><i class="fa-solid fa-globe"></i></div>
