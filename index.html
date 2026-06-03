@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emahairshop | Premium Human Hair</title>
+    <title>Emahairshop</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,600&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -399,7 +399,12 @@
             color: var(--circle-pink);
         }
         
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
+        .grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+            gap: 40px; 
+            align-items: start; /* BAGIAN YANG DIPERBAIKI */
+        }
         
         .card {
             background: var(--white); padding: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
@@ -477,7 +482,7 @@
             border-radius: 6px;
             padding: 0 15px;
             margin-bottom: 20px; 
-            flex-grow: 1; 
+            /* flex-grow: 1; TELAH DIHAPUS DI SINI */
         }
         
         .custom-details { border-bottom: 1px solid #eaeaea; padding: 12px 0; }
