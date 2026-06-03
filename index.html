@@ -23,7 +23,7 @@
             --dark-blue: #4a5568; 
             --bright-green: #10B981; 
             --bright-red: #FF1E1E; 
-            --gold: #D4AF37; /* Warna emas untuk tulisan 2019 */
+            --gold: #D4AF37; 
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -54,7 +54,6 @@
             z-index: 1000; border-bottom: 1px solid #f0f0f0;
         }
 
-        /* --- DESAIN ULANG LOGO --- */
         .logo { 
             background-color: transparent; 
             padding: 0;
@@ -174,10 +173,7 @@
             will-change: transform, opacity;
         }
         
-        /* Hanya produk di swiper yang bisa di-zoom */
-        .swiper-slide img {
-            cursor: zoom-in; 
-        }
+        .swiper-slide img { cursor: zoom-in; }
 
         .preview-overlay {
             position: absolute;
@@ -192,16 +188,10 @@
             pointer-events: none; 
         }
         
-        .preview-overlay a {
-            pointer-events: auto;
-        }
+        .preview-overlay a { pointer-events: auto; }
 
-        .preview-left {
-            height: 480px;
-        }
-        .preview-left .preview-overlay {
-            padding: 35px;
-        }
+        .preview-left { height: 480px; }
+        .preview-left .preview-overlay { padding: 35px; }
         .preview-left h2 {
             font-family: 'Lato', sans-serif;
             font-size: 2.2rem;
@@ -211,24 +201,7 @@
             text-transform: none;
             letter-spacing: 0.5px;
         }
-        .preview-left p {
-            font-size: 0.85rem;
-            font-weight: 700;
-            opacity: 0.8;
-            letter-spacing: 1px;
-            margin-bottom: 20px;
-        }
-
-        .preview-badge {
-            font-size: 0.7rem;
-            font-weight: 900;
-            padding: 4px 10px;
-            border-radius: 4px;
-            margin-bottom: 12px;
-            letter-spacing: 0.5px;
-            display: inline-block;
-        }
-        .badge-pink { background-color: var(--circle-pink); color: var(--white); }
+        .preview-left p { font-size: 0.85rem; font-weight: 700; opacity: 0.8; letter-spacing: 1px; margin-bottom: 20px; }
 
         .view-products-btn {
             background-color: var(--circle-pink);
@@ -241,269 +214,67 @@
             transition: 0.3s;
             text-transform: none;
         }
-        .view-products-btn:hover {
-            background-color: #b83b51;
-            transform: translateY(-2px);
-        }
+        .view-products-btn:hover { background-color: #b83b51; transform: translateY(-2px); }
 
-        .preview-right-grid {
-            display: grid;
-            grid-template-rows: 1fr 1fr;
-            gap: 20px;
-            height: 480px;
-        }
+        .preview-right-grid { display: grid; grid-template-rows: 1fr 1fr; gap: 20px; height: 480px; }
 
         /* --- DUA KOTAK BANNER --- */
-        .top-banners {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            width: 100%;
-            max-width: 1100px;
-            flex-wrap: wrap;
-        }
-
-        .banner-box {
-            display: flex;
-            align-items: center;
-            padding: 25px 30px;
-            border-radius: 12px;
-            flex: 1;
-            min-width: 300px;
-            text-align: left;
-            gap: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
-        }
-
-        .banner-box:hover {
-            transform: translateY(-4px);
-        }
-
+        .top-banners { display: flex; justify-content: center; gap: 25px; width: 100%; max-width: 1100px; flex-wrap: wrap; }
+        .banner-box { display: flex; align-items: center; padding: 25px 30px; border-radius: 12px; flex: 1; min-width: 300px; text-align: left; gap: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: transform 0.3s; }
+        .banner-box:hover { transform: translateY(-4px); }
         .banner-box i { font-size: 2.8rem; }
-        
-        .banner-box h4 {
-            font-family: 'Lato', sans-serif;
-            font-weight: 700;
-            font-size: 1.05rem;
-            margin-bottom: 2px;
-            color: var(--white);
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-
-        .banner-box p {
-            font-family: 'Lato', sans-serif;
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.85);
-            margin: 0;
-            line-height: 1.4;
-        }
-
+        .banner-box h4 { font-family: 'Lato', sans-serif; font-weight: 700; font-size: 1.05rem; margin-bottom: 2px; color: var(--white); letter-spacing: 0.5px; text-transform: uppercase; }
+        .banner-box p { font-family: 'Lato', sans-serif; font-size: 0.85rem; color: rgba(255, 255, 255, 0.85); margin: 0; line-height: 1.4; }
         .box-dark { background-color: var(--black); }
         .box-dark i { color: var(--circle-pink); } 
-        
         .box-pink { background-color: var(--circle-pink); }
         .box-pink i { color: var(--white); } 
 
         /* --- 4 HIGHLIGHTS BOX --- */
-        .highlights {
-            display: flex;
-            justify-content: center;
-            gap: 25px; 
-            flex-wrap: wrap;
-            width: 100%;
-            max-width: 1100px;
-        }
-
-        .highlight-box {
-            background-color: transparent; 
-            padding: 10px;
-            display: flex;
-            flex-direction: column; 
-            align-items: center;
-            text-align: center;
-            flex: 1;
-            min-width: 200px;
-            transition: transform 0.3s;
-        }
-
-        .highlight-box:hover {
-            transform: translateY(-5px); 
-        }
-
-        .icon-wrapper {
-            width: 65px;
-            height: 65px;
-            background-color: var(--circle-pink);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 15px; 
-            transition: 0.3s;
-            box-shadow: 0 5px 15px rgba(216, 84, 107, 0.3);
-        }
-        
-        .highlight-box:hover .icon-wrapper {
-            transform: scale(1.1);
-        }
-
-        .highlight-box i { 
-            font-size: 1.6rem; 
-            color: var(--white); 
-        } 
-        
-        .highlight-box h4 { 
-            font-family: 'Lato', sans-serif; 
-            font-weight: 900; 
-            font-size: 0.95rem; 
-            color: #333333;
-            margin-bottom: 5px; 
-            letter-spacing: 0.5px; 
-            text-transform: uppercase;
-        }
-        
-        .highlight-box p { 
-            font-family: 'Lato', sans-serif;
-            font-size: 0.85rem; 
-            line-height: 1.4; 
-            color: #888888; 
-            margin: 0; 
-        }
+        .highlights { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; width: 100%; max-width: 1100px; }
+        .highlight-box { background-color: transparent; padding: 10px; display: flex; flex-direction: column; align-items: center; text-align: center; flex: 1; min-width: 200px; transition: transform 0.3s; }
+        .highlight-box:hover { transform: translateY(-5px); }
+        .icon-wrapper { width: 65px; height: 65px; background-color: var(--circle-pink); border-radius: 50%; display: flex; justify-content: center; align-items: center; margin-bottom: 15px; transition: 0.3s; box-shadow: 0 5px 15px rgba(216, 84, 107, 0.3); }
+        .highlight-box:hover .icon-wrapper { transform: scale(1.1); }
+        .highlight-box i { font-size: 1.6rem; color: var(--white); } 
+        .highlight-box h4 { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 0.95rem; color: #333333; margin-bottom: 5px; letter-spacing: 0.5px; text-transform: uppercase; }
+        .highlight-box p { font-family: 'Lato', sans-serif; font-size: 0.85rem; line-height: 1.4; color: #888888; margin: 0; }
 
         /* --- PRODUCT SECTION --- */
         .produk { background-color: var(--white); }
-        
         .produk-header { text-align: center; margin-bottom: 50px; }
-        .produk-header .sub-title {
-            color: var(--circle-pink);
-            font-size: 0.85rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            display: block;
-            margin-bottom: 10px;
-        }
-        .produk-header h2 { 
-            font-size: 2.2rem; 
-            letter-spacing: 0.5px; 
-            font-family: 'Lato', sans-serif; 
-            text-transform: none; 
-            font-weight: 800;
-            color: var(--dark-blue);
-        }
-        .produk-header h2 .highlight-text {
-            color: var(--circle-pink);
-        }
+        .produk-header .sub-title { color: var(--circle-pink); font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 10px; }
+        .produk-header h2 { font-size: 2.2rem; letter-spacing: 0.5px; font-family: 'Lato', sans-serif; text-transform: none; font-weight: 800; color: var(--dark-blue); }
+        .produk-header h2 .highlight-text { color: var(--circle-pink); }
         
-        .grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
-            gap: 40px; 
-            align-items: start; 
-        }
-        
-        .card {
-            background: var(--white); padding: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: 0.3s; border-radius: 8px; border: 1px solid #f0f0f0;
-            position: relative; 
-            display: flex;
-            flex-direction: column;
-        }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; align-items: start; }
+        .card { background: var(--white); padding: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; border-radius: 8px; border: 1px solid #f0f0f0; position: relative; display: flex; flex-direction: column; }
         .card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
-        
-        .card h3 { 
-            font-size: 1.25rem; 
-            letter-spacing: 1px; 
-            margin-bottom: 5px; 
-            text-align: center; 
-            font-weight: 700;
-            font-family: 'Lato', sans-serif;
-        }
+        .card h3 { font-size: 1.25rem; letter-spacing: 1px; margin-bottom: 5px; text-align: center; font-weight: 700; font-family: 'Lato', sans-serif; }
 
         .swiper { width: 100%; height: 320px; margin-bottom: 20px; border-radius: 4px; }
-        .swiper-button-next, .swiper-button-prev {
-            color: var(--black) !important; background: rgba(255, 255, 255, 0.8);
-            width: 35px !important; height: 35px !important; border-radius: 50%;
-        }
+        .swiper-button-next, .swiper-button-prev { color: var(--black) !important; background: rgba(255, 255, 255, 0.8); width: 35px !important; height: 35px !important; border-radius: 50%; }
         .swiper-button-next:after, .swiper-button-prev:after { font-size: 15px !important; font-weight: bold; }
         .swiper-pagination-bullet-active { background: var(--circle-pink) !important; }
 
-        .specs-container { 
-            display: flex; 
-            flex-direction: row; 
-            justify-content: space-between; 
-            gap: 12px; 
-            margin-top: 20px; 
-            margin-bottom: 20px;
-        }
-        .spec-box {
-            background-color: var(--bright-green); 
-            color: var(--white); 
-            padding: 15px 5px;
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            justify-content: center;
-            border-radius: 8px; 
-            transition: 0.3s; 
-            flex: 1;
-            text-align: center;
-            line-height: 1.2;
-            box-shadow: 0 4px 10px rgba(16, 185, 129, 0.15); 
-        }
-        .spec-box:hover { 
-            background-color: #0d9668; 
-            transform: translateY(-3px); 
-            box-shadow: 0 6px 15px rgba(16, 185, 129, 0.3);
-        }
-        .spec-box i { 
-            font-size: 1.5rem; 
-            margin-bottom: 8px; 
-        }
-        .spec-title { 
-            font-size: 0.7rem; 
-            font-weight: 400; 
-            margin-bottom: 3px; 
-            opacity: 0.9; 
-        }
-        .spec-value { 
-            font-size: 0.85rem; 
-            font-weight: 700; 
-        }
+        .specs-container { display: flex; flex-direction: row; justify-content: space-between; gap: 12px; margin-top: 20px; margin-bottom: 20px; }
+        .spec-box { background-color: var(--bright-green); color: var(--white); padding: 15px 5px; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 8px; transition: 0.3s; flex: 1; text-align: center; line-height: 1.2; box-shadow: 0 4px 10px rgba(16, 185, 129, 0.15); }
+        .spec-box:hover { background-color: #0d9668; transform: translateY(-3px); box-shadow: 0 6px 15px rgba(16, 185, 129, 0.3); }
+        .spec-box i { font-size: 1.5rem; margin-bottom: 8px; }
+        .spec-title { font-size: 0.7rem; font-weight: 400; margin-bottom: 3px; opacity: 0.9; }
+        .spec-value { font-size: 0.85rem; font-weight: 700; }
 
-        .accordion-wrapper {
-            margin-top: 15px;
-            background: #fafafa;
-            border: 1px solid #eaeaea;
-            border-radius: 6px;
-            padding: 0 15px;
-            margin-bottom: 20px; 
-        }
-        
+        .accordion-wrapper { margin-top: 15px; background: #fafafa; border: 1px solid #eaeaea; border-radius: 6px; padding: 0 15px; margin-bottom: 20px; }
         .custom-details { border-bottom: 1px solid #eaeaea; padding: 12px 0; }
         .custom-details:last-child { border-bottom: none; }
-        
-        .custom-summary {
-            font-size: 0.85rem; font-weight: 700; color: var(--black); text-align: left;
-            text-transform: uppercase; letter-spacing: 1px; cursor: pointer; list-style: none; 
-            display: flex; justify-content: space-between; align-items: center; transition: 0.3s;
-        }
+        .custom-summary { font-size: 0.85rem; font-weight: 700; color: var(--black); text-align: left; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; transition: 0.3s; }
         .custom-summary:hover { color: var(--circle-pink); }
         .custom-summary::-webkit-details-marker { display: none; }
-        
-        .custom-summary::after {
-            content: '\f078'; font-family: 'Font Awesome 6 Free'; font-weight: 900;
-            font-size: 0.8rem; transition: transform 0.3s ease; color: var(--gray);
-        }
+        .custom-summary::after { content: '\f078'; font-family: 'Font Awesome 6 Free'; font-weight: 900; font-size: 0.8rem; transition: transform 0.3s ease; color: var(--gray); }
         .custom-details[open] .custom-summary::after { transform: rotate(180deg); color: var(--circle-pink); }
-
         .details-content { padding-top: 15px; animation: fadeInDown 0.3s ease-in-out; }
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
         .detail-table { width: 100%; border-collapse: collapse; font-size: 0.75rem; }
         .detail-table th { text-align: left; padding: 8px 5px; color: var(--black); font-weight: 700; border-bottom: 1px solid #ccc; }
@@ -512,166 +283,80 @@
         .detail-table th:last-child, .detail-table td:last-child { text-align: right; }
         .check-icon { color: var(--circle-pink); margin-right: 5px; font-size: 0.8rem;}
 
-        .buy-now-btn {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            width: 100%;
-            background-color: var(--black);
-            color: var(--white);
-            padding: 14px 20px;
-            text-decoration: none;
-            border-radius: 8px;
-            font-family: 'Lato', sans-serif;
-            font-size: 1rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            margin-top: auto; 
-        }
-        .buy-now-btn i {
-            font-size: 1.3rem;
-        }
-        .buy-now-btn:hover {
-            background-color: #25D366; 
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
-            color: var(--white);
-        }
+        .buy-now-btn { display: flex; justify-content: center; align-items: center; gap: 10px; width: 100%; background-color: var(--black); color: var(--white); padding: 14px 20px; text-decoration: none; border-radius: 8px; font-family: 'Lato', sans-serif; font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease; margin-top: auto; }
+        .buy-now-btn i { font-size: 1.3rem; }
+        .buy-now-btn:hover { background-color: #25D366; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3); color: var(--white); }
+
+
+        /* =========================================
+           --- PRICE LIST SECTION (NEW) --- 
+           ========================================= */
+        .price-section { background-color: #F9F8F6; } /* Background beda agar memisah dari produk */
+        .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 40px; align-items: start; }
+        .price-card { background-color: var(--white); border-radius: 16px; padding: 40px 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); border: 1px solid #eaeaea; transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative; }
+        .price-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.08); }
+        .price-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: linear-gradient(90deg, var(--circle-pink), var(--black)); border-radius: 16px 16px 0 0; }
+        .price-card-title { text-align: center; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px dashed #eaeaea; }
+        .price-card-title h3 { font-family: 'Lato', sans-serif; font-size: 1.6rem; font-weight: 900; color: var(--black); letter-spacing: 2px; }
+
+        .price-accordion { margin-bottom: 15px; background-color: var(--white); border: 1px solid #eaeaea; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
+        .price-accordion:last-child { margin-bottom: 0; }
+        .price-summary { background-color: var(--circle-pink); color: var(--white); font-size: 0.95rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; padding: 12px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; transition: background-color 0.3s; }
+        .price-summary::-webkit-details-marker { display: none; }
+        .price-accordion:nth-of-type(2) .price-summary { background-color: var(--black); }
+        
+        .view-btn { font-size: 0.75rem; font-weight: 700; background-color: rgba(255, 255, 255, 0.2); padding: 6px 14px; border-radius: 20px; display: flex; align-items: center; gap: 6px; letter-spacing: 0.5px; transition: all 0.3s ease; }
+        .view-btn i { transition: transform 0.3s ease; }
+        .price-summary:hover .view-btn { background-color: rgba(255, 255, 255, 0.35); }
+        .price-accordion[open] .view-btn { background-color: var(--white); color: var(--circle-pink); }
+        .price-accordion:nth-of-type(2)[open] .view-btn { background-color: var(--white); color: var(--black); }
+        .price-accordion[open] .view-btn i { transform: rotate(180deg); }
+
+        .price-table-wrapper { background-color: var(--white); animation: fadeInDown 0.3s ease-in-out; }
+        .modern-table { width: 100%; border-collapse: collapse; font-family: 'Lato', sans-serif; }
+        .modern-table thead { background-color: #f9f9f9; color: var(--black); }
+        .modern-table th { padding: 12px 10px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; text-align: center; border-bottom: 2px solid #eaeaea; }
+        .modern-table td { padding: 12px 10px; text-align: center; font-size: 0.95rem; font-weight: 700; color: var(--dark-blue); border-bottom: 1px dashed #eaeaea; }
+        .modern-table td:first-child { text-align: left; padding-left: 20px; font-weight: 600; color: var(--gray); font-size: 0.85rem; }
+        .modern-table tbody tr:last-child td { border-bottom: none; }
+        .modern-table tbody tr:hover { background-color: #fdfdfd; }
+        .price-value { color: var(--circle-pink); font-weight: 900; }
+
 
         /* --- CONTACT SECTION --- */
         .kontak { text-align: center; background-color: var(--black); color: var(--white); }
         .kontak h2 { font-size: 2.5rem; letter-spacing: 3px; margin-bottom: 10px; font-family: 'Playfair Display', serif;}
         .kontak > p { color: #cccccc; margin-bottom: 40px; font-size: 1.1rem; }
         
-        .contact-grid {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-
-        .contact-card {
-            background: rgba(255, 255, 255, 0.05); 
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            padding: 30px 20px;
-            flex: 1;
-            min-width: 250px;
-            max-width: 350px;
-            text-decoration: none;
-            color: var(--white);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
+        .contact-grid { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 20px; }
+        .contact-card { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; padding: 30px 20px; flex: 1; min-width: 250px; max-width: 350px; text-decoration: none; color: var(--white); transition: all 0.3s ease; display: flex; flex-direction: column; align-items: center; }
         .contact-card h4 { font-family: 'Lato', sans-serif; font-weight: 700; font-size: 1.2rem; margin-bottom: 5px; letter-spacing: 1px; }
         .contact-card p { font-size: 0.9rem; color: #dddddd; transition: 0.3s; }
         .contact-card i { font-size: 3rem; margin-bottom: 15px; transition: all 0.3s ease; }
 
         .card-wa i { color: #25D366; } 
         .card-email i { color: #EA4335; } 
-        .card-ig i {
-            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+        .card-ig i { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
         .card-wa:hover { transform: translateY(-10px); background: #25D366; border-color: #25D366; }
         .card-ig:hover { transform: translateY(-10px); background: linear-gradient(45deg, #f09433, #dc2743, #bc1888); border-color: #dc2743; }
         .card-email:hover { transform: translateY(-10px); background: #EA4335; border-color: #EA4335; }
-
         .contact-card:hover i, .contact-card:hover h4, .contact-card:hover p { color: #ffffff !important; }
         .card-ig:hover i { background: none; -webkit-text-fill-color: #ffffff; }
 
         /* --- FLOATING UP ARROW --- */
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: var(--circle-pink);
-            color: var(--white);
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-decoration: none;
-            z-index: 1001;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-            transition: all 0.3s ease;
-            opacity: 0;
-            visibility: hidden;
-        }
-        .back-to-top.show {
-            opacity: 1;
-            visibility: visible;
-        }
-        .back-to-top:hover {
-            background-color: var(--black);
-            transform: translateY(-4px);
-            color: var(--white);
-        }
+        .back-to-top { position: fixed; bottom: 30px; right: 30px; background-color: var(--circle-pink); color: var(--white); width: 48px; height: 48px; border-radius: 50%; display: flex; justify-content: center; align-items: center; text-decoration: none; z-index: 1001; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); transition: all 0.3s ease; opacity: 0; visibility: hidden; }
+        .back-to-top.show { opacity: 1; visibility: visible; }
+        .back-to-top:hover { background-color: var(--black); transform: translateY(-4px); color: var(--white); }
 
         /* --- STYLING MODAL LIGHTBOX OVERLAY --- */
-        .lightbox {
-            display: none;
-            position: fixed;
-            z-index: 2000; 
-            left: 0; top: 0; width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.9);
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-        }
-        .lightbox.show {
-            display: flex;
-            opacity: 1;
-        }
-        .lightbox-content {
-            max-width: 90%;
-            max-height: 85%;
-            border-radius: 8px;
-            transform: scale(0.7);
-            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); 
-        }
-        .lightbox.show .lightbox-content {
-            transform: scale(1);
-        }
-        .lightbox-close {
-            position: absolute;
-            top: 25px; right: 35px;
-            color: var(--white);
-            font-size: 45px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.2s;
-            line-height: 1;
-            z-index: 2020;
-        }
+        .lightbox { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease-in-out; }
+        .lightbox.show { display: flex; opacity: 1; }
+        .lightbox-content { max-width: 90%; max-height: 85%; border-radius: 8px; transform: scale(0.7); transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        .lightbox.show .lightbox-content { transform: scale(1); }
+        .lightbox-close { position: absolute; top: 25px; right: 35px; color: var(--white); font-size: 45px; font-weight: bold; cursor: pointer; transition: 0.2s; line-height: 1; z-index: 2020; }
         .lightbox-close:hover { color: var(--circle-pink); }
-
-        /* PANAH NAVIGASI LIGHTBOX (TAMPIL DI PC) */
-        .lightbox-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--white);
-            font-size: 40px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.2s;
-            user-select: none;
-            padding: 15px 25px;
-            z-index: 2010;
-        }
+        .lightbox-arrow { position: absolute; top: 50%; transform: translateY(-50%); color: var(--white); font-size: 40px; font-weight: bold; cursor: pointer; transition: 0.2s; user-select: none; padding: 15px 25px; z-index: 2010; }
         .lightbox-arrow:hover { color: var(--circle-pink); }
         .lightbox-prev { left: 20px; }
         .lightbox-next { right: 20px; }
@@ -682,141 +367,55 @@
         @media (max-width: 768px) {
             .nav-links { display: none; }
             .about { padding-top: 100px; gap: 50px; }
-            
             .product-preview-gallery { grid-template-columns: 1fr; gap: 15px; }
             .preview-left { height: 320px; }
             .preview-right-grid { height: 320px; grid-template-rows: 1fr 1fr; gap: 15px; }
             .preview-right-grid .preview-box { height: 100%; min-height: 0; }
             .preview-right-grid .preview-box img { height: 100%; }
             .top-banners { display: flex; flex-direction: column; gap: 15px; width: 100%; }
+            .highlights { display: grid; grid-template-columns: 1fr 1fr; gap: 40px 20px; width: 100%; }
+            .highlight-box { min-width: unset; flex: unset; }
+            .highlight-box h4 { font-size: 1rem; font-weight: 800; }
+            .highlight-box p { font-size: 0.85rem; color: #777777; }
             
-            .highlights {
-                display: grid;
-                grid-template-columns: 1fr 1fr; 
-                gap: 40px 20px; 
-                width: 100%;
-            }
-            .highlight-box {
-                min-width: unset;
-                flex: unset;
-            }
-            .highlight-box h4 {
-                font-size: 1rem;
-                font-weight: 800; 
-            }
-            .highlight-box p {
-                font-size: 0.85rem;
-                color: #777777;
-            }
-            
-            /* Logo dikembalikan merapat ke kiri */
-            .logo { 
-                transform: scale(0.85); 
-                transform-origin: left center; 
-            }
-            
+            .logo { transform: scale(0.85); transform-origin: left center; }
             .back-to-top { bottom: 20px; right: 20px; width: 42px; height: 42px; }
             .lightbox-close { top: 20px; right: 25px; font-size: 38px; }
             .lightbox-arrow { padding: 10px; font-size: 30px; }
             .lightbox-prev { left: 5px; }
             .lightbox-next { right: 5px; }
 
-            /* ======================================================
-               --- PENGATURAN PRODUK: WAJIB 2 KOLOM DI HP ---
-               ====================================================== */
+            /* PENGATURAN PRODUK: WAJIB 2 KOLOM DI HP */
             section { padding: 80px 3%; } 
-            
-            .grid { 
-                grid-template-columns: repeat(2, 1fr); 
-                gap: 8px; 
-                align-items: start;
-            }
-            
-            .card {
-                padding: 8px; 
-                min-width: 0; 
-                overflow: hidden; 
-            }
-            
-            .swiper { 
-                height: 150px; 
-                margin-bottom: 10px; 
-            }
-            
-            .swiper-button-next, .swiper-button-prev {
-                width: 20px !important; 
-                height: 20px !important;
-            }
-            .swiper-button-next:after, .swiper-button-prev:after { 
-                font-size: 10px !important; 
-            }
-            .swiper-pagination-bullet {
-                width: 5px !important;
-                height: 5px !important;
-            }
-            
-            .card h3 {
-                font-size: 0.75rem; 
-                margin-bottom: 8px;
-                line-height: 1.3;
-            }
-            
-            .specs-container {
-                gap: 3px;
-                margin-top: 8px;
-                margin-bottom: 12px;
-            }
-            .spec-box {
-                padding: 6px 2px;
-                border-radius: 4px;
-                min-width: 0; 
-                word-wrap: break-word; 
-            }
-            .spec-box i {
-                font-size: 0.9rem;
-                margin-bottom: 3px;
-            }
-            .spec-title {
-                font-size: 0.45rem; 
-                line-height: 1.1;
-                margin-bottom: 2px;
-                display: block;
-            }
-            .spec-value {
-                font-size: 0.55rem;
-                display: block;
-            }
-            
-            .accordion-wrapper {
-                padding: 0 6px;
-                margin-bottom: 12px;
-            }
-            .custom-summary {
-                font-size: 0.55rem;
-                padding: 8px 0;
-                letter-spacing: 0; 
-            }
-            .custom-summary::after {
-                font-size: 0.6rem;
-            }
-            .custom-details {
-                padding: 6px 0;
-            }
-            .detail-table {
-                font-size: 0.5rem;
-            }
-            .detail-table th, .detail-table td {
-                padding: 3px 2px;
-            }
-            
-            .buy-now-btn {
-                padding: 8px 5px;
-                font-size: 0.75rem;
-                border-radius: 6px;
-            }
-            .buy-now-btn i {
-                font-size: 1rem;
-            }
+            .grid { grid-template-columns: repeat(2, 1fr); gap: 8px; align-items: start; }
+            .card { padding: 8px; min-width: 0; overflow: hidden; }
+            .swiper { height: 150px; margin-bottom: 10px; }
+            .swiper-button-next, .swiper-button-prev { width: 20px !important; height: 20px !important; }
+            .swiper-button-next:after, .swiper-button-prev:after { font-size: 10px !important; }
+            .swiper-pagination-bullet { width: 5px !important; height: 5px !important; }
+            .card h3 { font-size: 0.75rem; margin-bottom: 8px; line-height: 1.3; }
+            .specs-container { gap: 3px; margin-top: 8px; margin-bottom: 12px; }
+            .spec-box { padding: 6px 2px; border-radius: 4px; min-width: 0; word-wrap: break-word; }
+            .spec-box i { font-size: 0.9rem; margin-bottom: 3px; }
+            .spec-title { font-size: 0.45rem; line-height: 1.1; margin-bottom: 2px; display: block; }
+            .spec-value { font-size: 0.55rem; display: block; }
+            .accordion-wrapper { padding: 0 6px; margin-bottom: 12px; }
+            .custom-summary { font-size: 0.55rem; padding: 8px 0; letter-spacing: 0; }
+            .custom-summary::after { font-size: 0.6rem; }
+            .custom-details { padding: 6px 0; }
+            .detail-table { font-size: 0.5rem; }
+            .detail-table th, .detail-table td { padding: 3px 2px; }
+            .buy-now-btn { padding: 8px 5px; font-size: 0.75rem; border-radius: 6px; }
+            .buy-now-btn i { font-size: 1rem; }
+
+            /* PENGATURAN PRICE LIST KHUSUS HP (TETAP 1 KOLOM AGAR TABEL MUAT) */
+            .price-grid { grid-template-columns: 1fr; gap: 25px; }
+            .price-card { padding: 25px 15px; }
+            .price-summary { padding: 10px 15px; font-size: 0.85rem; }
+            .view-btn { font-size: 0.65rem; padding: 4px 10px; }
+            .modern-table th { padding: 10px 5px; font-size: 0.65rem; }
+            .modern-table td { padding: 12px 5px; font-size: 0.75rem; }
+            .modern-table td:first-child { padding-left: 10px; font-size: 0.7rem; }
         }
     </style>
 </head>
@@ -836,30 +435,25 @@
         <ul class="nav-links">
             <li><a href="#about">ABOUT</a></li>
             <li><a href="#produk">PRODUK</a></li>
+            <li><a href="#pricelist">PRICE LIST</a></li> <!-- TAMBAHAN MENU PRICE LIST -->
             <li><a href="#kontak">KONTAK</a></li>
         </ul>
     </nav>
 
+    <!-- SECTION 1: ABOUT -->
     <section id="about" class="about">
-        
         <div class="product-preview-gallery">
             <div class="preview-box preview-left" data-aos="fade-right">
                 <img src="hairbulk2.webp" alt="Premium Hair Extensions Showcase">
                 <div class="preview-overlay">
-                 
                     <h2>Premium Hair Extensions</h2>
                     <p>100% HUMAN HAIR</p>
                     <a href="#produk" class="view-products-btn">View Products</a>
                 </div>
             </div>
-            
             <div class="preview-right-grid" data-aos="fade-left">
-                <div class="preview-box">
-                    <img src="hairbulk3.avif" alt="Hair Weft">
-                </div>
-                <div class="preview-box">
-                    <img src="hairbukl1.webp" alt="Tape In Extension">
-                </div>
+                <div class="preview-box"><img src="hairbulk3.avif" alt="Hair Weft"></div>
+                <div class="preview-box"><img src="hairbukl1.webp" alt="Tape In Extension"></div>
             </div>
         </div>
 
@@ -882,40 +476,29 @@
 
         <div id="highlights" class="highlights">
             <div class="highlight-box" data-aos="zoom-in" data-aos-delay="0">
-                <div class="icon-wrapper">
-                    <i class="fa-solid fa-globe"></i>
-                </div>
+                <div class="icon-wrapper"><i class="fa-solid fa-globe"></i></div>
                 <h4>WORLDWIDE SHIPPING</h4>
                 <p>Ship to more than 15 countries worldwide</p>
             </div>
-            
             <div class="highlight-box" data-aos="zoom-in" data-aos-delay="100">
-                <div class="icon-wrapper">
-                    <i class="fa-solid fa-ribbon"></i>
-                </div>
+                <div class="icon-wrapper"><i class="fa-solid fa-ribbon"></i></div>
                 <h4>100% HUMAN HAIR</h4>
                 <p>Premium quality guaranteed</p>
             </div>
-
             <div class="highlight-box" data-aos="zoom-in" data-aos-delay="200">
-                <div class="icon-wrapper">
-                    <i class="fa-solid fa-handshake"></i>
-                </div>
+                <div class="icon-wrapper"><i class="fa-solid fa-handshake"></i></div>
                 <h4>COMMITMENT</h4>
                 <p>Quality and service excellence</p>
             </div>
-
             <div class="highlight-box" data-aos="zoom-in" data-aos-delay="300">
-                <div class="icon-wrapper">
-                    <i class="fa-solid fa-users"></i>
-                </div>
+                <div class="icon-wrapper"><i class="fa-solid fa-users"></i></div>
                 <h4>GROW TOGETHER</h4>
                 <p>Partnership for success</p>
             </div>
         </div>
-
     </section>
 
+    <!-- SECTION 2: PRODUK -->
     <section id="produk" class="produk">
         <div class="produk-header" data-aos="fade-up">
             <span class="sub-title">Our Products</span>
@@ -923,6 +506,8 @@
         </div>
         
         <div class="grid">
+            <!-- 8 KARTU PRODUK SAMA SEPERTI SEBELUMNYA -->
+            
             <div class="card" data-aos="fade-up">
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
@@ -933,25 +518,11 @@
                     <div class="swiper-button-next"></div><div class="swiper-button-prev"></div><div class="swiper-pagination"></div>
                 </div>
                 <h3>HAIR BULK</h3>
-                
                 <div class="specs-container">
-                    <div class="spec-box">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        <span class="spec-title">Minimum Order</span>
-                        <span class="spec-value">500 Gram</span>
-                    </div>
-                    <div class="spec-box">
-                        <i class="fa-regular fa-clock"></i>
-                        <span class="spec-title">Production Time</span>
-                        <span class="spec-value">7 Days</span>
-                    </div>
-                    <div class="spec-box">
-                        <i class="fa-solid fa-ribbon"></i>
-                        <span class="spec-title">Certificate</span>
-                        <span class="spec-value">High Quality</span>
-                    </div>
+                    <div class="spec-box"><i class="fa-solid fa-cart-shopping"></i><span class="spec-title">Minimum Order</span><span class="spec-value">500 Gram</span></div>
+                    <div class="spec-box"><i class="fa-regular fa-clock"></i><span class="spec-title">Production Time</span><span class="spec-value">7 Days</span></div>
+                    <div class="spec-box"><i class="fa-solid fa-ribbon"></i><span class="spec-title">Certificate</span><span class="spec-value">High Quality</span></div>
                 </div>
-                
                 <div class="accordion-wrapper">
                     <details class="custom-details">
                         <summary class="custom-summary">Specifications Product</summary>
@@ -959,7 +530,7 @@
                             <table class="detail-table">
                                 <tr><th>Information</th><th>Description</th></tr>
                                 <tr><td>Hair Type</td><td>100% Human Remy Hair</td></tr>
-                                <tr><td>Hair Quality</td><td>Double Drawn / Super Double Drawn</td></tr>
+                                <tr><td>Hair Quality</td><td>Double / Super Double</td></tr>
                                 <tr><td>Length</td><td>11"–28"</td></tr>
                             </table>
                         </div>
@@ -976,7 +547,6 @@
                         </div>
                     </details>
                 </div>
-
                 <a href="https://wa.me/6285868872566?text=Hello,%20I%20want%20to%20buy%20HAIR%20BULK" target="_blank" class="buy-now-btn">
                     <i class="fa-brands fa-whatsapp"></i> Buy Now
                 </a>
@@ -992,25 +562,11 @@
                     <div class="swiper-button-next"></div><div class="swiper-button-prev"></div><div class="swiper-pagination"></div>
                 </div>
                 <h3>HAIR WEFT</h3>
-                
                 <div class="specs-container">
-                    <div class="spec-box">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        <span class="spec-title">Minimum Order</span>
-                        <span class="spec-value">500 Gram</span>
-                    </div>
-                    <div class="spec-box">
-                        <i class="fa-regular fa-clock"></i>
-                        <span class="spec-title">Production Time</span>
-                        <span class="spec-value">7 Days</span>
-                    </div>
-                    <div class="spec-box">
-                        <i class="fa-solid fa-ribbon"></i>
-                        <span class="spec-title">Certificate</span>
-                        <span class="spec-value">High Quality</span>
-                    </div>
+                    <div class="spec-box"><i class="fa-solid fa-cart-shopping"></i><span class="spec-title">Minimum Order</span><span class="spec-value">500 Gram</span></div>
+                    <div class="spec-box"><i class="fa-regular fa-clock"></i><span class="spec-title">Production Time</span><span class="spec-value">7 Days</span></div>
+                    <div class="spec-box"><i class="fa-solid fa-ribbon"></i><span class="spec-title">Certificate</span><span class="spec-value">High Quality</span></div>
                 </div>
-                
                 <div class="accordion-wrapper">
                     <details class="custom-details">
                         <summary class="custom-summary">Specifications Product</summary>
@@ -1018,7 +574,7 @@
                             <table class="detail-table">
                                 <tr><th>Information</th><th>Description</th></tr>
                                 <tr><td>Hair Type</td><td>100% Human Remy Hair</td></tr>
-                                <tr><td>Hair Quality</td><td>Double Drawn / Super Double Drawn</td></tr>
+                                <tr><td>Hair Quality</td><td>Double / Super Double</td></tr>
                                 <tr><td>Length</td><td>11"–28"</td></tr>
                             </table>
                         </div>
@@ -1035,7 +591,6 @@
                         </div>
                     </details>
                 </div>
-
                 <a href="https://wa.me/6285868872566?text=Hello,%20I%20want%20to%20buy%20HAIR%20WEFT" target="_blank" class="buy-now-btn">
                     <i class="fa-brands fa-whatsapp"></i> Buy Now
                 </a>
@@ -1050,25 +605,11 @@
                     <div class="swiper-button-next"></div><div class="swiper-button-prev"></div><div class="swiper-pagination"></div>
                 </div>
                 <h3>HAIR TAPE</h3>
-                
                 <div class="specs-container">
-                    <div class="spec-box">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        <span class="spec-title">Minimum Order</span>
-                        <span class="spec-value">500 Gram</span>
-                    </div>
-                    <div class="spec-box">
-                        <i class="fa-regular fa-clock"></i>
-                        <span class="spec-title">Production Time</span>
-                        <span class="spec-value">7 Days</span>
-                    </div>
-                    <div class="spec-box">
-                        <i class="fa-solid fa-ribbon"></i>
-                        <span class="spec-title">Certificate</span>
-                        <span class="spec-value">High Quality</span>
-                    </div>
+                    <div class="spec-box"><i class="fa-solid fa-cart-shopping"></i><span class="spec-title">Minimum Order</span><span class="spec-value">500 Gram</span></div>
+                    <div class="spec-box"><i class="fa-regular fa-clock"></i><span class="spec-title">Production Time</span><span class="spec-value">7 Days</span></div>
+                    <div class="spec-box"><i class="fa-solid fa-ribbon"></i><span class="spec-title">Certificate</span><span class="spec-value">High Quality</span></div>
                 </div>
-                
                 <div class="accordion-wrapper">
                     <details class="custom-details">
                         <summary class="custom-summary">Specifications Product</summary>
@@ -1076,7 +617,7 @@
                             <table class="detail-table">
                                 <tr><th>Information</th><th>Description</th></tr>
                                 <tr><td>Hair Type</td><td>100% Human Remy Hair</td></tr>
-                                <tr><td>Hair Quality</td><td>Double Drawn / Super Double Drawn</td></tr>
+                                <tr><td>Hair Quality</td><td>Double / Super Double</td></tr>
                                 <tr><td>Length</td><td>11"–28"</td></tr>
                             </table>
                         </div>
@@ -1093,7 +634,6 @@
                         </div>
                     </details>
                 </div>
-
                 <a href="https://wa.me/6285868872566?text=Hello,%20I%20want%20to%20buy%20HAIR%20TAPE" target="_blank" class="buy-now-btn">
                     <i class="fa-brands fa-whatsapp"></i> Buy Now
                 </a>
@@ -1109,25 +649,11 @@
                     <div class="swiper-button-next"></div><div class="swiper-button-prev"></div><div class="swiper-pagination"></div>
                 </div>
                 <h3>I TIP / KERATIN HAIR</h3>
-                
                 <div class="specs-container">
-                    <div class="spec-box">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        <span class="spec-title">Minimum Order</span>
-                        <span class="spec-value">500 Gram</span>
-                    </div>
-                    <div class="spec-box">
-                        <i class="fa-regular fa-clock"></i>
-                        <span class="spec-title">Production Time</span>
-                        <span class="spec-value">7 Days</span>
-                    </div>
-                    <div class="spec-box">
-                        <i class="fa-solid fa-ribbon"></i>
-                        <span class="spec-title">Certificate</span>
-                        <span class="spec-value">High Quality</span>
-                    </div>
+                    <div class="spec-box"><i class="fa-solid fa-cart-shopping"></i><span class="spec-title">Minimum Order</span><span class="spec-value">500 Gram</span></div>
+                    <div class="spec-box"><i class="fa-regular fa-clock"></i><span class="spec-title">Production Time</span><span class="spec-value">7 Days</span></div>
+                    <div class="spec-box"><i class="fa-solid fa-ribbon"></i><span class="spec-title">Certificate</span><span class="spec-value">High Quality</span></div>
                 </div>
-                
                 <div class="accordion-wrapper">
                     <details class="custom-details">
                         <summary class="custom-summary">Specifications Product</summary>
@@ -1135,7 +661,7 @@
                             <table class="detail-table">
                                 <tr><th>Information</th><th>Description</th></tr>
                                 <tr><td>Hair Type</td><td>100% Human Remy Hair</td></tr>
-                                <tr><td>Hair Quality</td><td>Double Drawn / Super Double Drawn</td></tr>
+                                <tr><td>Hair Quality</td><td>Double / Super Double</td></tr>
                                 <tr><td>Length</td><td>11"–28"</td></tr>
                             </table>
                         </div>
@@ -1152,7 +678,6 @@
                         </div>
                     </details>
                 </div>
-
                 <a href="https://wa.me/6285868872566?text=Hello,%20I%20want%20to%20buy%20I%20TIP%20/%20KERATIN%20HAIR" target="_blank" class="buy-now-btn">
                     <i class="fa-brands fa-whatsapp"></i> Buy Now
                 </a>
@@ -1168,25 +693,11 @@
                     <div class="swiper-button-next"></div><div class="swiper-button-prev"></div><div class="swiper-pagination"></div>
                 </div>
                 <h3>NANO RING</h3>
-                
                 <div class="specs-container">
-                    <div class="spec-box">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        <span class="spec-title">Minimum Order</span>
-                        <span class="spec-value">500 Gram</span>
-                    </div>
-                    <div class="spec-box">
-                        <i class="fa-regular fa-clock"></i>
-                        <span class="spec-title">Production Time</span>
-                        <span class="spec-value">7 Days</span>
-                    </div>
-                    <div class="spec-box">
-                        <i class="fa-solid fa-ribbon"></i>
-                        <span class="spec-title">Certificate</span>
-                        <span class="spec-value">High Quality</span>
-                    </div>
+                    <div class="spec-box"><i class="fa-solid fa-cart-shopping"></i><span class="spec-title">Minimum Order</span><span class="spec-value">500 Gram</span></div>
+                    <div class="spec-box"><i class="fa-regular fa-clock"></i><span class="spec-title">Production Time</span><span class="spec-value">7 Days</span></div>
+                    <div class="spec-box"><i class="fa-solid fa-ribbon"></i><span class="spec-title">Certificate</span><span class="spec-value">High Quality</span></div>
                 </div>
-                
                 <div class="accordion-wrapper">
                     <details class="custom-details">
                         <summary class="custom-summary">Specifications Product</summary>
@@ -1194,7 +705,7 @@
                             <table class="detail-table">
                                 <tr><th>Information</th><th>Description</th></tr>
                                 <tr><td>Hair Type</td><td>100% Human Remy Hair</td></tr>
-                                <tr><td>Hair Quality</td><td>Double Drawn / Super Double Drawn</td></tr>
+                                <tr><td>Hair Quality</td><td>Double / Super Double</td></tr>
                                 <tr><td>Length</td><td>11"–28"</td></tr>
                             </table>
                         </div>
@@ -1211,7 +722,6 @@
                         </div>
                     </details>
                 </div>
-
                 <a href="https://wa.me/6285868872566?text=Hello,%20I%20want%20to%20buy%20NANO%20RING" target="_blank" class="buy-now-btn">
                     <i class="fa-brands fa-whatsapp"></i> Buy Now
                 </a>
@@ -1226,25 +736,11 @@
                     <div class="swiper-button-next"></div><div class="swiper-button-prev"></div><div class="swiper-pagination"></div>
                 </div>
                 <h3>GENIUS WEFT</h3>
-                
                 <div class="specs-container">
-                    <div class="spec-box">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        <span class="spec-title">Minimum Order</span>
-                        <span class="spec-value">500 Gram</span>
-                    </div>
-                    <div class="spec-box">
-                        <i class="fa-regular fa-clock"></i>
-                        <span class="spec-title">Production Time</span>
-                        <span class="spec-value">7 Days</span>
-                    </div>
-                    <div class="spec-box">
-                        <i class="fa-solid fa-ribbon"></i>
-                        <span class="spec-title">Certificate</span>
-                        <span class="spec-value">High Quality</span>
-                    </div>
+                    <div class="spec-box"><i class="fa-solid fa-cart-shopping"></i><span class="spec-title">Minimum Order</span><span class="spec-value">500 Gram</span></div>
+                    <div class="spec-box"><i class="fa-regular fa-clock"></i><span class="spec-title">Production Time</span><span class="spec-value">7 Days</span></div>
+                    <div class="spec-box"><i class="fa-solid fa-ribbon"></i><span class="spec-title">Certificate</span><span class="spec-value">High Quality</span></div>
                 </div>
-                
                 <div class="accordion-wrapper">
                     <details class="custom-details">
                         <summary class="custom-summary">Specifications Product</summary>
@@ -1252,7 +748,7 @@
                             <table class="detail-table">
                                 <tr><th>Information</th><th>Description</th></tr>
                                 <tr><td>Hair Type</td><td>100% Human Remy Hair</td></tr>
-                                <tr><td>Hair Quality</td><td>Double Drawn / Super Double Drawn</td></tr>
+                                <tr><td>Hair Quality</td><td>Double / Super Double</td></tr>
                                 <tr><td>Length</td><td>11"–28"</td></tr>
                             </table>
                         </div>
@@ -1269,7 +765,6 @@
                         </div>
                     </details>
                 </div>
-
                 <a href="https://wa.me/6285868872566?text=Hello,%20I%20want%20to%20buy%20GENIUS%20WEFT" target="_blank" class="buy-now-btn">
                     <i class="fa-brands fa-whatsapp"></i> Buy Now
                 </a>
@@ -1284,25 +779,11 @@
                     <div class="swiper-button-next"></div><div class="swiper-button-prev"></div><div class="swiper-pagination"></div>
                 </div>
                 <h3>HAIR CLIP</h3>
-                
                 <div class="specs-container">
-                    <div class="spec-box">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        <span class="spec-title">Minimum Order</span>
-                        <span class="spec-value">500 Gram</span>
-                    </div>
-                    <div class="spec-box">
-                        <i class="fa-regular fa-clock"></i>
-                        <span class="spec-title">Production Time</span>
-                        <span class="spec-value">7 Days</span>
-                    </div>
-                    <div class="spec-box">
-                        <i class="fa-solid fa-ribbon"></i>
-                        <span class="spec-title">Certificate</span>
-                        <span class="spec-value">High Quality</span>
-                    </div>
+                    <div class="spec-box"><i class="fa-solid fa-cart-shopping"></i><span class="spec-title">Minimum Order</span><span class="spec-value">500 Gram</span></div>
+                    <div class="spec-box"><i class="fa-regular fa-clock"></i><span class="spec-title">Production Time</span><span class="spec-value">7 Days</span></div>
+                    <div class="spec-box"><i class="fa-solid fa-ribbon"></i><span class="spec-title">Certificate</span><span class="spec-value">High Quality</span></div>
                 </div>
-                
                 <div class="accordion-wrapper">
                     <details class="custom-details">
                         <summary class="custom-summary">Specifications Product</summary>
@@ -1310,7 +791,7 @@
                             <table class="detail-table">
                                 <tr><th>Information</th><th>Description</th></tr>
                                 <tr><td>Hair Type</td><td>100% Human Remy Hair</td></tr>
-                                <tr><td>Hair Quality</td><td>Double Drawn / Super Double Drawn</td></tr>
+                                <tr><td>Hair Quality</td><td>Double / Super Double</td></tr>
                                 <tr><td>Length</td><td>11"–28"</td></tr>
                             </table>
                         </div>
@@ -1327,7 +808,6 @@
                         </div>
                     </details>
                 </div>
-
                 <a href="https://wa.me/6285868872566?text=Hello,%20I%20want%20to%20buy%20HAIR%20CLIP" target="_blank" class="buy-now-btn">
                     <i class="fa-brands fa-whatsapp"></i> Buy Now
                 </a>
@@ -1342,25 +822,11 @@
                     <div class="swiper-button-next"></div><div class="swiper-button-prev"></div><div class="swiper-pagination"></div>
                 </div>
                 <h3>WIGS</h3>
-                
                 <div class="specs-container">
-                    <div class="spec-box">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        <span class="spec-title">Minimum Order</span>
-                        <span class="spec-value">500 Gram</span>
-                    </div>
-                    <div class="spec-box">
-                        <i class="fa-regular fa-clock"></i>
-                        <span class="spec-title">Production Time</span>
-                        <span class="spec-value">7 Days</span>
-                    </div>
-                    <div class="spec-box">
-                        <i class="fa-solid fa-ribbon"></i>
-                        <span class="spec-title">Certificate</span>
-                        <span class="spec-value">High Quality</span>
-                    </div>
+                    <div class="spec-box"><i class="fa-solid fa-cart-shopping"></i><span class="spec-title">Minimum Order</span><span class="spec-value">500 Gram</span></div>
+                    <div class="spec-box"><i class="fa-regular fa-clock"></i><span class="spec-title">Production Time</span><span class="spec-value">7 Days</span></div>
+                    <div class="spec-box"><i class="fa-solid fa-ribbon"></i><span class="spec-title">Certificate</span><span class="spec-value">High Quality</span></div>
                 </div>
-                
                 <div class="accordion-wrapper">
                     <details class="custom-details">
                         <summary class="custom-summary">Specifications Product</summary>
@@ -1368,7 +834,7 @@
                             <table class="detail-table">
                                 <tr><th>Information</th><th>Description</th></tr>
                                 <tr><td>Hair Type</td><td>100% Human Remy Hair</td></tr>
-                                <tr><td>Hair Quality</td><td>Double Drawn / Super Double Drawn</td></tr>
+                                <tr><td>Hair Quality</td><td>Double / Super Double</td></tr>
                                 <tr><td>Length</td><td>11"–28"</td></tr>
                             </table>
                         </div>
@@ -1385,7 +851,6 @@
                         </div>
                     </details>
                 </div>
-
                 <a href="https://wa.me/6285868872566?text=Hello,%20I%20want%20to%20buy%20WIGS" target="_blank" class="buy-now-btn">
                     <i class="fa-brands fa-whatsapp"></i> Buy Now
                 </a>
@@ -1393,6 +858,334 @@
         </div>
     </section>
 
+    <!-- ============================================ -->
+    <!-- SECTION 3: PRICE LIST (BAGIAN BARU)          -->
+    <!-- ============================================ -->
+    <section id="pricelist" class="price-section">
+        <div class="produk-header" data-aos="fade-down">
+            <span class="sub-title">Wholesale Rates</span>
+            <h2>Our <span class="highlight-text">Price List</span></h2>
+            <p style="color: var(--gray); margin-top: 10px;">Click the sections below to reveal our best wholesale prices.</p>
+        </div>
+
+        <div class="price-grid">
+            
+            <!-- PRICE: HAIR BULK -->
+            <div class="price-card" data-aos="fade-up">
+                <div class="price-card-title"><h3>HAIR BULK</h3></div>
+                <details class="price-accordion">
+                    <summary class="price-summary"><span>Double Drawn</span><span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span></summary>
+                    <div class="price-table-wrapper">
+                        <table class="modern-table">
+                            <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
+                            <tbody>
+                                <tr><td>16 INCH / 40 CM</td><td>84$ / 100 Gram</td><td class="price-value">86$ / 100 Gram</td></tr>
+                                <tr><td>18 INCH / 45 CM</td><td>94$ / 100 Gram</td><td class="price-value">96$ / 100 Gram</td></tr>
+                                <tr><td>20 INCH / 50 CM</td><td>99$ / 100 Gram</td><td class="price-value">101$ / 100 Gram</td></tr>
+                                <tr><td>22 INCH / 55 CM</td><td>114$ / 100 Gram</td><td class="price-value">116$ / 100 Gram</td></tr>
+                                <tr><td>24 INCH / 60 CM</td><td>119$ / 100 Gram</td><td class="price-value">121$ / 100 Gram</td></tr>
+                                <tr><td>26 INCH / 65 CM</td><td>124$ / 100 Gram</td><td class="price-value">126$ / 100 Gram</td></tr>
+                                <tr><td>28 INCH / 70 CM</td><td>130$ / 100 Gram</td><td class="price-value">132$ / 100 Gram</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </details>
+                <details class="price-accordion">
+                    <summary class="price-summary"><span>Super Double Drawn</span><span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span></summary>
+                    <div class="price-table-wrapper">
+                        <table class="modern-table">
+                            <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
+                            <tbody>
+                                <tr><td>16 INCH / 40 CM</td><td>84$ / 100 Gram</td><td class="price-value">86$ / 100 Gram</td></tr>
+                                <tr><td>18 INCH / 45 CM</td><td>94$ / 100 Gram</td><td class="price-value">96$ / 100 Gram</td></tr>
+                                <tr><td>20 INCH / 50 CM</td><td>99$ / 100 Gram</td><td class="price-value">101$ / 100 Gram</td></tr>
+                                <tr><td>22 INCH / 55 CM</td><td>114$ / 100 Gram</td><td class="price-value">116$ / 100 Gram</td></tr>
+                                <tr><td>24 INCH / 60 CM</td><td>119$ / 100 Gram</td><td class="price-value">121$ / 100 Gram</td></tr>
+                                <tr><td>26 INCH / 65 CM</td><td>124$ / 100 Gram</td><td class="price-value">126$ / 100 Gram</td></tr>
+                                <tr><td>28 INCH / 70 CM</td><td>130$ / 100 Gram</td><td class="price-value">132$ / 100 Gram</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </details>
+            </div>
+
+            <!-- PRICE: HAIR WEFT -->
+            <div class="price-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="price-card-title"><h3>HAIR WEFT</h3></div>
+                <details class="price-accordion">
+                    <summary class="price-summary"><span>Double Drawn</span><span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span></summary>
+                    <div class="price-table-wrapper">
+                        <table class="modern-table">
+                            <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
+                            <tbody>
+                                <tr><td>16 INCH / 40 CM</td><td>84$ / 100 Gram</td><td class="price-value">86$ / 100 Gram</td></tr>
+                                <tr><td>18 INCH / 45 CM</td><td>94$ / 100 Gram</td><td class="price-value">96$ / 100 Gram</td></tr>
+                                <tr><td>20 INCH / 50 CM</td><td>99$ / 100 Gram</td><td class="price-value">101$ / 100 Gram</td></tr>
+                                <tr><td>22 INCH / 55 CM</td><td>114$ / 100 Gram</td><td class="price-value">116$ / 100 Gram</td></tr>
+                                <tr><td>24 INCH / 60 CM</td><td>119$ / 100 Gram</td><td class="price-value">121$ / 100 Gram</td></tr>
+                                <tr><td>26 INCH / 65 CM</td><td>124$ / 100 Gram</td><td class="price-value">126$ / 100 Gram</td></tr>
+                                <tr><td>28 INCH / 70 CM</td><td>130$ / 100 Gram</td><td class="price-value">132$ / 100 Gram</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </details>
+                <details class="price-accordion">
+                    <summary class="price-summary"><span>Super Double Drawn</span><span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span></summary>
+                    <div class="price-table-wrapper">
+                        <table class="modern-table">
+                            <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
+                            <tbody>
+                                <tr><td>16 INCH / 40 CM</td><td>84$ / 100 Gram</td><td class="price-value">86$ / 100 Gram</td></tr>
+                                <tr><td>18 INCH / 45 CM</td><td>94$ / 100 Gram</td><td class="price-value">96$ / 100 Gram</td></tr>
+                                <tr><td>20 INCH / 50 CM</td><td>99$ / 100 Gram</td><td class="price-value">101$ / 100 Gram</td></tr>
+                                <tr><td>22 INCH / 55 CM</td><td>114$ / 100 Gram</td><td class="price-value">116$ / 100 Gram</td></tr>
+                                <tr><td>24 INCH / 60 CM</td><td>119$ / 100 Gram</td><td class="price-value">121$ / 100 Gram</td></tr>
+                                <tr><td>26 INCH / 65 CM</td><td>124$ / 100 Gram</td><td class="price-value">126$ / 100 Gram</td></tr>
+                                <tr><td>28 INCH / 70 CM</td><td>130$ / 100 Gram</td><td class="price-value">132$ / 100 Gram</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </details>
+            </div>
+
+            <!-- PRICE: HAIR TAPE -->
+            <div class="price-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="price-card-title"><h3>HAIR TAPE</h3></div>
+                <details class="price-accordion">
+                    <summary class="price-summary"><span>Double Drawn</span><span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span></summary>
+                    <div class="price-table-wrapper">
+                        <table class="modern-table">
+                            <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
+                            <tbody>
+                                <tr><td>16 INCH / 40 CM</td><td>84$ / 100 Gram</td><td class="price-value">86$ / 100 Gram</td></tr>
+                                <tr><td>18 INCH / 45 CM</td><td>94$ / 100 Gram</td><td class="price-value">96$ / 100 Gram</td></tr>
+                                <tr><td>20 INCH / 50 CM</td><td>99$ / 100 Gram</td><td class="price-value">101$ / 100 Gram</td></tr>
+                                <tr><td>22 INCH / 55 CM</td><td>114$ / 100 Gram</td><td class="price-value">116$ / 100 Gram</td></tr>
+                                <tr><td>24 INCH / 60 CM</td><td>119$ / 100 Gram</td><td class="price-value">121$ / 100 Gram</td></tr>
+                                <tr><td>26 INCH / 65 CM</td><td>124$ / 100 Gram</td><td class="price-value">126$ / 100 Gram</td></tr>
+                                <tr><td>28 INCH / 70 CM</td><td>130$ / 100 Gram</td><td class="price-value">132$ / 100 Gram</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </details>
+                <details class="price-accordion">
+                    <summary class="price-summary"><span>Super Double Drawn</span><span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span></summary>
+                    <div class="price-table-wrapper">
+                        <table class="modern-table">
+                            <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
+                            <tbody>
+                                <tr><td>16 INCH / 40 CM</td><td>84$ / 100 Gram</td><td class="price-value">86$ / 100 Gram</td></tr>
+                                <tr><td>18 INCH / 45 CM</td><td>94$ / 100 Gram</td><td class="price-value">96$ / 100 Gram</td></tr>
+                                <tr><td>20 INCH / 50 CM</td><td>99$ / 100 Gram</td><td class="price-value">101$ / 100 Gram</td></tr>
+                                <tr><td>22 INCH / 55 CM</td><td>114$ / 100 Gram</td><td class="price-value">116$ / 100 Gram</td></tr>
+                                <tr><td>24 INCH / 60 CM</td><td>119$ / 100 Gram</td><td class="price-value">121$ / 100 Gram</td></tr>
+                                <tr><td>26 INCH / 65 CM</td><td>124$ / 100 Gram</td><td class="price-value">126$ / 100 Gram</td></tr>
+                                <tr><td>28 INCH / 70 CM</td><td>130$ / 100 Gram</td><td class="price-value">132$ / 100 Gram</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </details>
+            </div>
+
+            <!-- PRICE: I TIP / KERATIN -->
+            <div class="price-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="price-card-title"><h3>I TIP / KERATIN</h3></div>
+                <details class="price-accordion">
+                    <summary class="price-summary"><span>Double Drawn</span><span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span></summary>
+                    <div class="price-table-wrapper">
+                        <table class="modern-table">
+                            <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
+                            <tbody>
+                                <tr><td>16 INCH / 40 CM</td><td>84$ / 100 Gram</td><td class="price-value">86$ / 100 Gram</td></tr>
+                                <tr><td>18 INCH / 45 CM</td><td>94$ / 100 Gram</td><td class="price-value">96$ / 100 Gram</td></tr>
+                                <tr><td>20 INCH / 50 CM</td><td>99$ / 100 Gram</td><td class="price-value">101$ / 100 Gram</td></tr>
+                                <tr><td>22 INCH / 55 CM</td><td>114$ / 100 Gram</td><td class="price-value">116$ / 100 Gram</td></tr>
+                                <tr><td>24 INCH / 60 CM</td><td>119$ / 100 Gram</td><td class="price-value">121$ / 100 Gram</td></tr>
+                                <tr><td>26 INCH / 65 CM</td><td>124$ / 100 Gram</td><td class="price-value">126$ / 100 Gram</td></tr>
+                                <tr><td>28 INCH / 70 CM</td><td>130$ / 100 Gram</td><td class="price-value">132$ / 100 Gram</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </details>
+                <details class="price-accordion">
+                    <summary class="price-summary"><span>Super Double Drawn</span><span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span></summary>
+                    <div class="price-table-wrapper">
+                        <table class="modern-table">
+                            <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
+                            <tbody>
+                                <tr><td>16 INCH / 40 CM</td><td>84$ / 100 Gram</td><td class="price-value">86$ / 100 Gram</td></tr>
+                                <tr><td>18 INCH / 45 CM</td><td>94$ / 100 Gram</td><td class="price-value">96$ / 100 Gram</td></tr>
+                                <tr><td>20 INCH / 50 CM</td><td>99$ / 100 Gram</td><td class="price-value">101$ / 100 Gram</td></tr>
+                                <tr><td>22 INCH / 55 CM</td><td>114$ / 100 Gram</td><td class="price-value">116$ / 100 Gram</td></tr>
+                                <tr><td>24 INCH / 60 CM</td><td>119$ / 100 Gram</td><td class="price-value">121$ / 100 Gram</td></tr>
+                                <tr><td>26 INCH / 65 CM</td><td>124$ / 100 Gram</td><td class="price-value">126$ / 100 Gram</td></tr>
+                                <tr><td>28 INCH / 70 CM</td><td>130$ / 100 Gram</td><td class="price-value">132$ / 100 Gram</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </details>
+            </div>
+
+            <!-- PRICE: NANO RING -->
+            <div class="price-card" data-aos="fade-up">
+                <div class="price-card-title"><h3>NANO RING</h3></div>
+                <details class="price-accordion">
+                    <summary class="price-summary"><span>Double Drawn</span><span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span></summary>
+                    <div class="price-table-wrapper">
+                        <table class="modern-table">
+                            <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
+                            <tbody>
+                                <tr><td>16 INCH / 40 CM</td><td>84$ / 100 Gram</td><td class="price-value">86$ / 100 Gram</td></tr>
+                                <tr><td>18 INCH / 45 CM</td><td>94$ / 100 Gram</td><td class="price-value">96$ / 100 Gram</td></tr>
+                                <tr><td>20 INCH / 50 CM</td><td>99$ / 100 Gram</td><td class="price-value">101$ / 100 Gram</td></tr>
+                                <tr><td>22 INCH / 55 CM</td><td>114$ / 100 Gram</td><td class="price-value">116$ / 100 Gram</td></tr>
+                                <tr><td>24 INCH / 60 CM</td><td>119$ / 100 Gram</td><td class="price-value">121$ / 100 Gram</td></tr>
+                                <tr><td>26 INCH / 65 CM</td><td>124$ / 100 Gram</td><td class="price-value">126$ / 100 Gram</td></tr>
+                                <tr><td>28 INCH / 70 CM</td><td>130$ / 100 Gram</td><td class="price-value">132$ / 100 Gram</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </details>
+                <details class="price-accordion">
+                    <summary class="price-summary"><span>Super Double Drawn</span><span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span></summary>
+                    <div class="price-table-wrapper">
+                        <table class="modern-table">
+                            <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
+                            <tbody>
+                                <tr><td>16 INCH / 40 CM</td><td>84$ / 100 Gram</td><td class="price-value">86$ / 100 Gram</td></tr>
+                                <tr><td>18 INCH / 45 CM</td><td>94$ / 100 Gram</td><td class="price-value">96$ / 100 Gram</td></tr>
+                                <tr><td>20 INCH / 50 CM</td><td>99$ / 100 Gram</td><td class="price-value">101$ / 100 Gram</td></tr>
+                                <tr><td>22 INCH / 55 CM</td><td>114$ / 100 Gram</td><td class="price-value">116$ / 100 Gram</td></tr>
+                                <tr><td>24 INCH / 60 CM</td><td>119$ / 100 Gram</td><td class="price-value">121$ / 100 Gram</td></tr>
+                                <tr><td>26 INCH / 65 CM</td><td>124$ / 100 Gram</td><td class="price-value">126$ / 100 Gram</td></tr>
+                                <tr><td>28 INCH / 70 CM</td><td>130$ / 100 Gram</td><td class="price-value">132$ / 100 Gram</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </details>
+            </div>
+
+            <!-- PRICE: GENIUS WEFT -->
+            <div class="price-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="price-card-title"><h3>GENIUS WEFT</h3></div>
+                <details class="price-accordion">
+                    <summary class="price-summary"><span>Double Drawn</span><span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span></summary>
+                    <div class="price-table-wrapper">
+                        <table class="modern-table">
+                            <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
+                            <tbody>
+                                <tr><td>16 INCH / 40 CM</td><td>84$ / 100 Gram</td><td class="price-value">86$ / 100 Gram</td></tr>
+                                <tr><td>18 INCH / 45 CM</td><td>94$ / 100 Gram</td><td class="price-value">96$ / 100 Gram</td></tr>
+                                <tr><td>20 INCH / 50 CM</td><td>99$ / 100 Gram</td><td class="price-value">101$ / 100 Gram</td></tr>
+                                <tr><td>22 INCH / 55 CM</td><td>114$ / 100 Gram</td><td class="price-value">116$ / 100 Gram</td></tr>
+                                <tr><td>24 INCH / 60 CM</td><td>119$ / 100 Gram</td><td class="price-value">121$ / 100 Gram</td></tr>
+                                <tr><td>26 INCH / 65 CM</td><td>124$ / 100 Gram</td><td class="price-value">126$ / 100 Gram</td></tr>
+                                <tr><td>28 INCH / 70 CM</td><td>130$ / 100 Gram</td><td class="price-value">132$ / 100 Gram</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </details>
+                <details class="price-accordion">
+                    <summary class="price-summary"><span>Super Double Drawn</span><span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span></summary>
+                    <div class="price-table-wrapper">
+                        <table class="modern-table">
+                            <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
+                            <tbody>
+                                <tr><td>16 INCH / 40 CM</td><td>84$ / 100 Gram</td><td class="price-value">86$ / 100 Gram</td></tr>
+                                <tr><td>18 INCH / 45 CM</td><td>94$ / 100 Gram</td><td class="price-value">96$ / 100 Gram</td></tr>
+                                <tr><td>20 INCH / 50 CM</td><td>99$ / 100 Gram</td><td class="price-value">101$ / 100 Gram</td></tr>
+                                <tr><td>22 INCH / 55 CM</td><td>114$ / 100 Gram</td><td class="price-value">116$ / 100 Gram</td></tr>
+                                <tr><td>24 INCH / 60 CM</td><td>119$ / 100 Gram</td><td class="price-value">121$ / 100 Gram</td></tr>
+                                <tr><td>26 INCH / 65 CM</td><td>124$ / 100 Gram</td><td class="price-value">126$ / 100 Gram</td></tr>
+                                <tr><td>28 INCH / 70 CM</td><td>130$ / 100 Gram</td><td class="price-value">132$ / 100 Gram</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </details>
+            </div>
+
+            <!-- PRICE: HAIR CLIP -->
+            <div class="price-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="price-card-title"><h3>HAIR CLIP</h3></div>
+                <details class="price-accordion">
+                    <summary class="price-summary"><span>Double Drawn</span><span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span></summary>
+                    <div class="price-table-wrapper">
+                        <table class="modern-table">
+                            <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
+                            <tbody>
+                                <tr><td>16 INCH / 40 CM</td><td>84$ / 100 Gram</td><td class="price-value">86$ / 100 Gram</td></tr>
+                                <tr><td>18 INCH / 45 CM</td><td>94$ / 100 Gram</td><td class="price-value">96$ / 100 Gram</td></tr>
+                                <tr><td>20 INCH / 50 CM</td><td>99$ / 100 Gram</td><td class="price-value">101$ / 100 Gram</td></tr>
+                                <tr><td>22 INCH / 55 CM</td><td>114$ / 100 Gram</td><td class="price-value">116$ / 100 Gram</td></tr>
+                                <tr><td>24 INCH / 60 CM</td><td>119$ / 100 Gram</td><td class="price-value">121$ / 100 Gram</td></tr>
+                                <tr><td>26 INCH / 65 CM</td><td>124$ / 100 Gram</td><td class="price-value">126$ / 100 Gram</td></tr>
+                                <tr><td>28 INCH / 70 CM</td><td>130$ / 100 Gram</td><td class="price-value">132$ / 100 Gram</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </details>
+                <details class="price-accordion">
+                    <summary class="price-summary"><span>Super Double Drawn</span><span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span></summary>
+                    <div class="price-table-wrapper">
+                        <table class="modern-table">
+                            <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
+                            <tbody>
+                                <tr><td>16 INCH / 40 CM</td><td>84$ / 100 Gram</td><td class="price-value">86$ / 100 Gram</td></tr>
+                                <tr><td>18 INCH / 45 CM</td><td>94$ / 100 Gram</td><td class="price-value">96$ / 100 Gram</td></tr>
+                                <tr><td>20 INCH / 50 CM</td><td>99$ / 100 Gram</td><td class="price-value">101$ / 100 Gram</td></tr>
+                                <tr><td>22 INCH / 55 CM</td><td>114$ / 100 Gram</td><td class="price-value">116$ / 100 Gram</td></tr>
+                                <tr><td>24 INCH / 60 CM</td><td>119$ / 100 Gram</td><td class="price-value">121$ / 100 Gram</td></tr>
+                                <tr><td>26 INCH / 65 CM</td><td>124$ / 100 Gram</td><td class="price-value">126$ / 100 Gram</td></tr>
+                                <tr><td>28 INCH / 70 CM</td><td>130$ / 100 Gram</td><td class="price-value">132$ / 100 Gram</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </details>
+            </div>
+
+            <!-- PRICE: WIGS -->
+            <div class="price-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="price-card-title"><h3>WIGS</h3></div>
+                <details class="price-accordion">
+                    <summary class="price-summary"><span>Double Drawn</span><span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span></summary>
+                    <div class="price-table-wrapper">
+                        <table class="modern-table">
+                            <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
+                            <tbody>
+                                <tr><td>16 INCH / 40 CM</td><td>84$ / 100 Gram</td><td class="price-value">86$ / 100 Gram</td></tr>
+                                <tr><td>18 INCH / 45 CM</td><td>94$ / 100 Gram</td><td class="price-value">96$ / 100 Gram</td></tr>
+                                <tr><td>20 INCH / 50 CM</td><td>99$ / 100 Gram</td><td class="price-value">101$ / 100 Gram</td></tr>
+                                <tr><td>22 INCH / 55 CM</td><td>114$ / 100 Gram</td><td class="price-value">116$ / 100 Gram</td></tr>
+                                <tr><td>24 INCH / 60 CM</td><td>119$ / 100 Gram</td><td class="price-value">121$ / 100 Gram</td></tr>
+                                <tr><td>26 INCH / 65 CM</td><td>124$ / 100 Gram</td><td class="price-value">126$ / 100 Gram</td></tr>
+                                <tr><td>28 INCH / 70 CM</td><td>130$ / 100 Gram</td><td class="price-value">132$ / 100 Gram</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </details>
+                <details class="price-accordion">
+                    <summary class="price-summary"><span>Super Double Drawn</span><span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span></summary>
+                    <div class="price-table-wrapper">
+                        <table class="modern-table">
+                            <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
+                            <tbody>
+                                <tr><td>16 INCH / 40 CM</td><td>84$ / 100 Gram</td><td class="price-value">86$ / 100 Gram</td></tr>
+                                <tr><td>18 INCH / 45 CM</td><td>94$ / 100 Gram</td><td class="price-value">96$ / 100 Gram</td></tr>
+                                <tr><td>20 INCH / 50 CM</td><td>99$ / 100 Gram</td><td class="price-value">101$ / 100 Gram</td></tr>
+                                <tr><td>22 INCH / 55 CM</td><td>114$ / 100 Gram</td><td class="price-value">116$ / 100 Gram</td></tr>
+                                <tr><td>24 INCH / 60 CM</td><td>119$ / 100 Gram</td><td class="price-value">121$ / 100 Gram</td></tr>
+                                <tr><td>26 INCH / 65 CM</td><td>124$ / 100 Gram</td><td class="price-value">126$ / 100 Gram</td></tr>
+                                <tr><td>28 INCH / 70 CM</td><td>130$ / 100 Gram</td><td class="price-value">132$ / 100 Gram</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </details>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 4: KONTAK -->
     <section id="kontak" class="kontak">
         <div data-aos="fade-up">
             <h2>Get In Touch</h2>
@@ -1420,6 +1213,7 @@
         </div>
     </section>
 
+    <!-- ELEMEN MELAYANG: KEMBALI KE ATAS & LIGHTBOX -->
     <a href="#" id="backToTop" class="back-to-top">
         <i class="fa-solid fa-arrow-up"></i>
     </a>
@@ -1431,12 +1225,11 @@
         <span class="lightbox-arrow lightbox-next">&#10095;</span>
     </div>
 
+    <!-- SCRIPT BAWAAN -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-    
     <script>
-        // Animasi Berulang Atas & Bawah (Entry & Exit Trigger)
+        // Animasi AOS
         AOS.init({ 
             duration: 800,        
             easing: 'ease-in-out', 
@@ -1445,17 +1238,11 @@
             offset: 100           
         });
 
-        // Inisialisasi Swiper (Slider Foto)
+        // Inisialisasi Swiper
         var swiper = new Swiper(".mySwiper", {
             loop: true, 
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            }
+            navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+            pagination: { el: ".swiper-pagination", clickable: true }
         });
 
         // Smooth Scroll Menu & Back to Top
@@ -1471,19 +1258,14 @@
             });
         });
 
-        // Logika memunculkan/menyembunyikan tombol panah atas saat di-scroll
+        // Tombol Kembali ke Atas
         const backToTopBtn = document.getElementById('backToTop');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 400) {
-                backToTopBtn.classList.add('show');
-            } else {
-                backToTopBtn.classList.remove('show');
-            }
+            if (window.scrollY > 400) { backToTopBtn.classList.add('show'); } 
+            else { backToTopBtn.classList.remove('show'); }
         });
 
-        // =========================================================================
-        // --- LOGIKA JAVASCRIPT: INTERAKSI SLIDESHOW ACAK 3 DETIK DI FOTO PREVIEW --- 
-        // =========================================================================
+        // Slideshow Acak di Preview Gallery
         const previewImagesPool = [
             'clip.jpg', 'clip2.webp', 'genius.jpg', 'genius2.webp', 
             'hair-flat.jpg', 'hair-i-tip.avif', 'hair-tape1.jpg', 'hair-tape2.jpg', 
@@ -1494,56 +1276,41 @@
         const galleryImages = document.querySelectorAll('.product-preview-gallery img');
 
         setInterval(() => {
-            // Mengacak 20 urutan foto agar gambar antar kotak tidak pernah kembar/sama
             let shuffledImages = [...previewImagesPool].sort(() => Math.random() - 0.5);
-            
             galleryImages.forEach((img, index) => {
-                // Setiap foto bergeser bergantian, ada jeda 2 detik antar foto
                 const stagger = index * 2000;
-                
                 setTimeout(() => {
-                    // Animasi slide keluar ke kiri sambil memudar
                     img.style.opacity = '0';
                     img.style.transform = 'translateX(-40px)';
-                    
                     setTimeout(() => {
                         img.src = shuffledImages[index];
-                        // Mulai dari kanan, lalu slide masuk ke posisi semula
                         img.style.transform = 'translateX(40px)';
                         requestAnimationFrame(() => {
                             img.style.opacity = '1';
                             img.style.transform = 'translateX(0)';
                         });
-                    }, 600); // Durasi slide keluar
-                }, stagger); // Jeda bergantian antar foto
+                    }, 600);
+                }, stagger);
             });
-        }, 10000); // Siklus pergantian acak setiap 10 detik
+        }, 10000); 
 
-        // ==========================================================
-        // --- LOGIKA JAVASCRIPT: INTERAKSI ZOOM KLIK DENGAN SLIDE --- 
-        // ==========================================================
+        // Lightbox Zoom Gambar
         const lightbox = document.getElementById('imageLightbox');
         const lightboxImg = document.getElementById('lightboxImg');
         const closeBtn = document.querySelector('.lightbox-close');
         const prevBtn = document.querySelector('.lightbox-prev');
         const nextBtn = document.querySelector('.lightbox-next');
-
         let currentGroup = [];
         let currentIndex = 0;
 
-        // PILIH FOTO PRODUK SAJA UNTUK DIZOOM
         document.addEventListener('click', (e) => {
-            // Hanya aktif jika yang diklik adalah gambar di dalam swiper-slide
             if (e.target.matches('.swiper-slide img')) {
                 const img = e.target;
                 let groupImages = [];
                 const swiperWrapper = img.closest('.swiper-wrapper');
 
-                if (swiperWrapper) {
-                    groupImages = Array.from(swiperWrapper.querySelectorAll('img'));
-                } else {
-                    groupImages = [img];
-                }
+                if (swiperWrapper) { groupImages = Array.from(swiperWrapper.querySelectorAll('img')); } 
+                else { groupImages = [img]; }
 
                 currentGroup = groupImages.map(el => el.src);
                 currentIndex = currentGroup.indexOf(img.src);
@@ -1557,28 +1324,15 @@
         function showImage(index) {
             if (index < 0) index = currentGroup.length - 1;
             if (index >= currentGroup.length) index = 0;
-            
             currentIndex = index;
             lightboxImg.src = currentGroup[currentIndex];
 
-            if (currentGroup.length <= 1) {
-                prevBtn.style.display = 'none';
-                nextBtn.style.display = 'none';
-            } else {
-                prevBtn.style.display = 'block';
-                nextBtn.style.display = 'block';
-            }
+            if (currentGroup.length <= 1) { prevBtn.style.display = 'none'; nextBtn.style.display = 'none'; } 
+            else { prevBtn.style.display = 'block'; nextBtn.style.display = 'block'; }
         }
 
-        prevBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            showImage(currentIndex - 1);
-        });
-
-        nextBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            showImage(currentIndex + 1);
-        });
+        prevBtn.addEventListener('click', (e) => { e.stopPropagation(); showImage(currentIndex - 1); });
+        nextBtn.addEventListener('click', (e) => { e.stopPropagation(); showImage(currentIndex + 1); });
 
         function closeLightbox() {
             lightbox.classList.remove('show');
@@ -1586,33 +1340,18 @@
         }
 
         closeBtn.addEventListener('click', closeLightbox);
-        
         lightbox.addEventListener('click', (e) => {
-            if (e.target !== lightboxImg && e.target !== prevBtn && e.target !== nextBtn) {
-                closeLightbox();
-            }
+            if (e.target !== lightboxImg && e.target !== prevBtn && e.target !== nextBtn) { closeLightbox(); }
         });
 
         let touchStartX = 0;
         let touchEndX = 0;
-
-        lightbox.addEventListener('touchstart', e => {
-            touchStartX = e.changedTouches[0].screenX;
-        }, { passive: true });
-
+        lightbox.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
         lightbox.addEventListener('touchend', e => {
             touchEndX = e.changedTouches[0].screenX;
-            handleSwipeGesture();
+            if (touchEndX < touchStartX - 50) { showImage(currentIndex + 1); }
+            if (touchEndX > touchStartX + 50) { showImage(currentIndex - 1); }
         }, { passive: true });
-
-        function handleSwipeGesture() {
-            if (touchEndX < touchStartX - 50) {
-                showImage(currentIndex + 1);
-            }
-            if (touchEndX > touchStartX + 50) {
-                showImage(currentIndex - 1);
-            }
-        }
     </script>
 </body>
 </html>
