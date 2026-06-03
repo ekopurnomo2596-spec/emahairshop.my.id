@@ -50,7 +50,7 @@
             line-height: 1.8;
             font-weight: 300;
             overflow-x: hidden;
-            scroll-behavior: smooth; /* Penting untuk animasi deep linking */
+            scroll-behavior: smooth;
         }
 
         h1, h2, h3 {
@@ -159,7 +159,7 @@
         }
         .menu-toggle:hover { color: var(--circle-pink); }
 
-        /* --- ABOUT SECTION DENGAN BACKGROUND HIJAU ZAMRUD --- */
+        /* --- ABOUT SECTION --- */
         .about { 
             text-align: center; 
             background-color: #152219; 
@@ -371,7 +371,10 @@
         .price-accordion[open] .view-btn, .price-accordion[open] .share-btn { background-color: var(--white); color: var(--bright-green); }
         .price-accordion[open] .view-btn i { transform: rotate(180deg); }
 
-        .price-table-wrapper { background-color: var(--white); animation: fadeInDown 0.3s ease-in-out; }
+        /* Catatan Harga Minimalis */
+        .price-note { display: block; text-align: right; font-size: 0.65rem; color: var(--gray); font-style: italic; padding: 10px 15px 5px 0; }
+
+        .price-table-wrapper { background-color: var(--white); animation: fadeInDown 0.3s ease-in-out; padding-bottom: 10px; }
         .modern-table { width: 100%; border-collapse: collapse; font-family: 'Lato', sans-serif; }
         .modern-table thead { background-color: #f9f9f9; color: var(--black); }
         .modern-table th { padding: 12px 10px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; text-align: center; border-bottom: 2px solid #eaeaea; }
@@ -538,8 +541,8 @@
             .share-btn { width: 22px; height: 22px; font-size: 0.6rem; }
             
             .modern-table th { padding: 6px 2px; font-size: 0.45rem; letter-spacing: 0; }
-            .modern-table td { padding: 6px 2px; font-size: 0.5rem; line-height: 1.3; }
-            .modern-table td:first-child { padding-left: 2px; font-size: 0.45rem; }
+            .modern-table td { padding: 6px 2px; font-size: 0.55rem; line-height: 1.3; } /* Font sedikit dibesarkan dari sblmnya */
+            .modern-table td:first-child { padding-left: 2px; font-size: 0.5rem; }
 
             .contact-cta { margin-top: 15px; padding: 12px 8px; }
             .contact-cta p { font-size: 0.6rem; margin-bottom: 8px; line-height: 1.3;}
@@ -1013,16 +1016,17 @@
                         </div>
                     </summary>
                     <div class="price-table-wrapper">
+                        <span class="price-note">* All prices are per 100 grams</span>
                         <table class="modern-table">
                             <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
                             <tbody>
-                                <tr><td>16 INCH / 40 CM</td><td>50$ / 100 Gram</td><td class="price-value">53$ / 100 Gram</td></tr>
-                                <tr><td>18 INCH / 45 CM</td><td>55$ / 100 Gram</td><td class="price-value">58$ / 100 Gram</td></tr>
-                                <tr><td>20 INCH / 50 CM</td><td>60$ / 100 Gram</td><td class="price-value">63$ / 100 Gram</td></tr>
-                                <tr><td>22 INCH / 55 CM</td><td>64$ / 100 Gram</td><td class="price-value">66$ / 100 Gram</td></tr>
-                                <tr><td>24 INCH / 60 CM</td><td>68$ / 100 Gram</td><td class="price-value">70$ / 100 Gram</td></tr>
-                                <tr><td>26 INCH / 65 CM</td><td>70$ / 100 Gram</td><td class="price-value">72$ / 100 Gram</td></tr>
-                                <tr><td>28 INCH / 70 CM</td><td>74$ / 100 Gram</td><td class="price-value">76$ / 100 Gram</td></tr>
+                                <tr><td>16" / 40cm</td><td>$50</td><td class="price-value">$53</td></tr>
+                                <tr><td>18" / 45cm</td><td>$55</td><td class="price-value">$58</td></tr>
+                                <tr><td>20" / 50cm</td><td>$60</td><td class="price-value">$63</td></tr>
+                                <tr><td>22" / 55cm</td><td>$64</td><td class="price-value">$66</td></tr>
+                                <tr><td>24" / 60cm</td><td>$68</td><td class="price-value">$70</td></tr>
+                                <tr><td>26" / 65cm</td><td>$70</td><td class="price-value">$72</td></tr>
+                                <tr><td>28" / 70cm</td><td>$74</td><td class="price-value">$76</td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -1037,16 +1041,17 @@
                         </div>
                     </summary>
                     <div class="price-table-wrapper">
+                        <span class="price-note">* All prices are per 100 grams</span>
                         <table class="modern-table">
                             <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
                             <tbody>
-                                <tr><td>16 INCH / 40 CM</td><td>69$ / 100 Gram</td><td class="price-value">71$ / 100 Gram</td></tr>
-                                <tr><td>18 INCH / 45 CM</td><td>79$ / 100 Gram</td><td class="price-value">81$ / 100 Gram</td></tr>
-                                <tr><td>20 INCH / 50 CM</td><td>84$ / 100 Gram</td><td class="price-value">86$ / 100 Gram</td></tr>
-                                <tr><td>22 INCH / 55 CM</td><td>88$ / 100 Gram</td><td class="price-value">90$ / 100 Gram</td></tr>
-                                <tr><td>24 INCH / 60 CM</td><td>94$ / 100 Gram</td><td class="price-value">96$ / 100 Gram</td></tr>
-                                <tr><td>26 INCH / 65 CM</td><td>99$ / 100 Gram</td><td class="price-value">102$ / 100 Gram</td></tr>
-                                <tr><td>28 INCH / 70 CM</td><td>102$ / 100 Gram</td><td class="price-value">105$ / 100 Gram</td></tr>
+                                <tr><td>16" / 40cm</td><td>$69</td><td class="price-value">$71</td></tr>
+                                <tr><td>18" / 45cm</td><td>$79</td><td class="price-value">$81</td></tr>
+                                <tr><td>20" / 50cm</td><td>$84</td><td class="price-value">$86</td></tr>
+                                <tr><td>22" / 55cm</td><td>$88</td><td class="price-value">$90</td></tr>
+                                <tr><td>24" / 60cm</td><td>$94</td><td class="price-value">$96</td></tr>
+                                <tr><td>26" / 65cm</td><td>$99</td><td class="price-value">$102</td></tr>
+                                <tr><td>28" / 70cm</td><td>$102</td><td class="price-value">$105</td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -1066,16 +1071,17 @@
                         </div>
                     </summary>
                     <div class="price-table-wrapper">
+                        <span class="price-note">* All prices are per 100 grams</span>
                         <table class="modern-table">
                             <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
                             <tbody>
-                                <tr><td>16 INCH / 40 CM</td><td>52$ / 100 Gram</td><td class="price-value">54$ / 100 Gram</td></tr>
-                                <tr><td>18 INCH / 45 CM</td><td>57$ / 100 Gram</td><td class="price-value">59$ / 100 Gram</td></tr>
-                                <tr><td>20 INCH / 50 CM</td><td>62$ / 100 Gram</td><td class="price-value">64$ / 100 Gram</td></tr>
-                                <tr><td>22 INCH / 55 CM</td><td>66$ / 100 Gram</td><td class="price-value">68$ / 100 Gram</td></tr>
-                                <tr><td>24 INCH / 60 CM</td><td>70$ / 100 Gram</td><td class="price-value">72$ / 100 Gram</td></tr>
-                                <tr><td>26 INCH / 65 CM</td><td>72$ / 100 Gram</td><td class="price-value">74$ / 100 Gram</td></tr>
-                                <tr><td>28 INCH / 70 CM</td><td>76$ / 100 Gram</td><td class="price-value">78$ / 100 Gram</td></tr>
+                                <tr><td>16" / 40cm</td><td>$52</td><td class="price-value">$54</td></tr>
+                                <tr><td>18" / 45cm</td><td>$57</td><td class="price-value">$59</td></tr>
+                                <tr><td>20" / 50cm</td><td>$62</td><td class="price-value">$64</td></tr>
+                                <tr><td>22" / 55cm</td><td>$66</td><td class="price-value">$68</td></tr>
+                                <tr><td>24" / 60cm</td><td>$70</td><td class="price-value">$72</td></tr>
+                                <tr><td>26" / 65cm</td><td>$72</td><td class="price-value">$74</td></tr>
+                                <tr><td>28" / 70cm</td><td>$76</td><td class="price-value">$78</td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -1090,16 +1096,17 @@
                         </div>
                     </summary>
                     <div class="price-table-wrapper">
+                        <span class="price-note">* All prices are per 100 grams</span>
                         <table class="modern-table">
                             <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
                             <tbody>
-                                <tr><td>16 INCH / 40 CM</td><td>71$ / 100 Gram</td><td class="price-value">73$ / 100 Gram</td></tr>
-                                <tr><td>18 INCH / 45 CM</td><td>81$ / 100 Gram</td><td class="price-value">83$ / 100 Gram</td></tr>
-                                <tr><td>20 INCH / 50 CM</td><td>86$ / 100 Gram</td><td class="price-value">88$ / 100 Gram</td></tr>
-                                <tr><td>22 INCH / 55 CM</td><td>90$ / 100 Gram</td><td class="price-value">92$ / 100 Gram</td></tr>
-                                <tr><td>24 INCH / 60 CM</td><td>96$ / 100 Gram</td><td class="price-value">98$ / 100 Gram</td></tr>
-                                <tr><td>26 INCH / 65 CM</td><td>101$ / 100 Gram</td><td class="price-value">103$ / 100 Gram</td></tr>
-                                <tr><td>28 INCH / 70 CM</td><td>103$ / 100 Gram</td><td class="price-value">105$ / 100 Gram</td></tr>
+                                <tr><td>16" / 40cm</td><td>$71</td><td class="price-value">$73</td></tr>
+                                <tr><td>18" / 45cm</td><td>$81</td><td class="price-value">$83</td></tr>
+                                <tr><td>20" / 50cm</td><td>$86</td><td class="price-value">$88</td></tr>
+                                <tr><td>22" / 55cm</td><td>$90</td><td class="price-value">$92</td></tr>
+                                <tr><td>24" / 60cm</td><td>$96</td><td class="price-value">$98</td></tr>
+                                <tr><td>26" / 65cm</td><td>$101</td><td class="price-value">$103</td></tr>
+                                <tr><td>28" / 70cm</td><td>$103</td><td class="price-value">$105</td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -1119,16 +1126,17 @@
                         </div>
                     </summary>
                     <div class="price-table-wrapper">
+                        <span class="price-note">* All prices are per 100 grams</span>
                         <table class="modern-table">
                             <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
                             <tbody>
-                                <tr><td>16 INCH / 40 CM</td><td>62$ / 100 Gram</td><td class="price-value">64$ / 100 Gram</td></tr>
-                                <tr><td>18 INCH / 45 CM</td><td>65$ / 100 Gram</td><td class="price-value">68$ / 100 Gram</td></tr>
-                                <tr><td>20 INCH / 50 CM</td><td>68$ / 100 Gram</td><td class="price-value">70$ / 100 Gram</td></tr>
-                                <tr><td>22 INCH / 55 CM</td><td>70$ / 100 Gram</td><td class="price-value">72$ / 100 Gram</td></tr>
-                                <tr><td>24 INCH / 60 CM</td><td>72$ / 100 Gram</td><td class="price-value">74$ / 100 Gram</td></tr>
-                                <tr><td>26 INCH / 65 CM</td><td>74$ / 100 Gram</td><td class="price-value">76$ / 100 Gram</td></tr>
-                                <tr><td>28 INCH / 70 CM</td><td>76$ / 100 Gram</td><td class="price-value">78$ / 100 Gram</td></tr>
+                                <tr><td>16" / 40cm</td><td>$62</td><td class="price-value">$64</td></tr>
+                                <tr><td>18" / 45cm</td><td>$65</td><td class="price-value">$68</td></tr>
+                                <tr><td>20" / 50cm</td><td>$68</td><td class="price-value">$70</td></tr>
+                                <tr><td>22" / 55cm</td><td>$70</td><td class="price-value">$72</td></tr>
+                                <tr><td>24" / 60cm</td><td>$72</td><td class="price-value">$74</td></tr>
+                                <tr><td>26" / 65cm</td><td>$74</td><td class="price-value">$76</td></tr>
+                                <tr><td>28" / 70cm</td><td>$76</td><td class="price-value">$78</td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -1143,16 +1151,17 @@
                         </div>
                     </summary>
                     <div class="price-table-wrapper">
+                        <span class="price-note">* All prices are per 100 grams</span>
                         <table class="modern-table">
                             <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
                             <tbody>
-                                <tr><td>16 INCH / 40 CM</td><td>84$ / 100 Gram</td><td class="price-value">86$ / 100 Gram</td></tr>
-                                <tr><td>18 INCH / 45 CM</td><td>94$ / 100 Gram</td><td class="price-value">96$ / 100 Gram</td></tr>
-                                <tr><td>20 INCH / 50 CM</td><td>99$ / 100 Gram</td><td class="price-value">101$ / 100 Gram</td></tr>
-                                <tr><td>22 INCH / 55 CM</td><td>114$ / 100 Gram</td><td class="price-value">116$ / 100 Gram</td></tr>
-                                <tr><td>24 INCH / 60 CM</td><td>119$ / 100 Gram</td><td class="price-value">121$ / 100 Gram</td></tr>
-                                <tr><td>26 INCH / 65 CM</td><td>124$ / 100 Gram</td><td class="price-value">126$ / 100 Gram</td></tr>
-                                <tr><td>28 INCH / 70 CM</td><td>130$ / 100 Gram</td><td class="price-value">132$ / 100 Gram</td></tr>
+                                <tr><td>16" / 40cm</td><td>$84</td><td class="price-value">$86</td></tr>
+                                <tr><td>18" / 45cm</td><td>$94</td><td class="price-value">$96</td></tr>
+                                <tr><td>20" / 50cm</td><td>$99</td><td class="price-value">$101</td></tr>
+                                <tr><td>22" / 55cm</td><td>$114</td><td class="price-value">$116</td></tr>
+                                <tr><td>24" / 60cm</td><td>$119</td><td class="price-value">$121</td></tr>
+                                <tr><td>26" / 65cm</td><td>$124</td><td class="price-value">$126</td></tr>
+                                <tr><td>28" / 70cm</td><td>$130</td><td class="price-value">$132</td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -1172,16 +1181,17 @@
                         </div>
                     </summary>
                     <div class="price-table-wrapper">
+                        <span class="price-note">* All prices are per 100 grams</span>
                         <table class="modern-table">
                             <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
                             <tbody>
-                                <tr><td>16 INCH / 40 CM</td><td>58$ / 100 Gram</td><td class="price-value">60$ / 100 Gram</td></tr>
-                                <tr><td>18 INCH / 45 CM</td><td>63$ / 100 Gram</td><td class="price-value">65$ / 100 Gram</td></tr>
-                                <tr><td>20 INCH / 50 CM</td><td>68$ / 100 Gram</td><td class="price-value">70$ / 100 Gram</td></tr>
-                                <tr><td>22 INCH / 55 CM</td><td>73$ / 100 Gram</td><td class="price-value">75$ / 100 Gram</td></tr>
-                                <tr><td>24 INCH / 60 CM</td><td>76$ / 100 Gram</td><td class="price-value">78$ / 100 Gram</td></tr>
-                                <tr><td>26 INCH / 65 CM</td><td>78$ / 100 Gram</td><td class="price-value">80$ / 100 Gram</td></tr>
-                                <tr><td>28 INCH / 70 CM</td><td>82$ / 100 Gram</td><td class="price-value">84$ / 100 Gram</td></tr>
+                                <tr><td>16" / 40cm</td><td>$58</td><td class="price-value">$60</td></tr>
+                                <tr><td>18" / 45cm</td><td>$63</td><td class="price-value">$65</td></tr>
+                                <tr><td>20" / 50cm</td><td>$68</td><td class="price-value">$70</td></tr>
+                                <tr><td>22" / 55cm</td><td>$73</td><td class="price-value">$75</td></tr>
+                                <tr><td>24" / 60cm</td><td>$76</td><td class="price-value">$78</td></tr>
+                                <tr><td>26" / 65cm</td><td>$78</td><td class="price-value">$80</td></tr>
+                                <tr><td>28" / 70cm</td><td>$82</td><td class="price-value">$84</td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -1196,16 +1206,17 @@
                         </div>
                     </summary>
                     <div class="price-table-wrapper">
+                        <span class="price-note">* All prices are per 100 grams</span>
                         <table class="modern-table">
                             <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
                             <tbody>
-                                <tr><td>16 INCH / 40 CM</td><td>78$ / 100 Gram</td><td class="price-value">80$ / 100 Gram</td></tr>
-                                <tr><td>18 INCH / 45 CM</td><td>86$ / 100 Gram</td><td class="price-value">88$ / 100 Gram</td></tr>
-                                <tr><td>20 INCH / 50 CM</td><td>93$ / 100 Gram</td><td class="price-value">95$ / 100 Gram</td></tr>
-                                <tr><td>22 INCH / 55 CM</td><td>97$ / 100 Gram</td><td class="price-value">99$ / 100 Gram</td></tr>
-                                <tr><td>24 INCH / 60 CM</td><td>100$ / 100 Gram</td><td class="price-value">102$ / 100 Gram</td></tr>
-                                <tr><td>26 INCH / 65 CM</td><td>103$ / 100 Gram</td><td class="price-value">105$ / 100 Gram</td></tr>
-                                <tr><td>28 INCH / 70 CM</td><td>106$ / 100 Gram</td><td class="price-value">108$ / 100 Gram</td></tr>
+                                <tr><td>16" / 40cm</td><td>$78</td><td class="price-value">$80</td></tr>
+                                <tr><td>18" / 45cm</td><td>$86</td><td class="price-value">$88</td></tr>
+                                <tr><td>20" / 50cm</td><td>$93</td><td class="price-value">$95</td></tr>
+                                <tr><td>22" / 55cm</td><td>$97</td><td class="price-value">$99</td></tr>
+                                <tr><td>24" / 60cm</td><td>$100</td><td class="price-value">$102</td></tr>
+                                <tr><td>26" / 65cm</td><td>$103</td><td class="price-value">$105</td></tr>
+                                <tr><td>28" / 70cm</td><td>$106</td><td class="price-value">$108</td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -1225,16 +1236,17 @@
                         </div>
                     </summary>
                     <div class="price-table-wrapper">
+                        <span class="price-note">* All prices are per 100 grams</span>
                         <table class="modern-table">
                             <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
                             <tbody>
-                                <tr><td>16 INCH / 40 CM</td><td>58$ / 100 Gram</td><td class="price-value">60$ / 100 Gram</td></tr>
-                                <tr><td>18 INCH / 45 CM</td><td>63$ / 100 Gram</td><td class="price-value">65$ / 100 Gram</td></tr>
-                                <tr><td>20 INCH / 50 CM</td><td>68$ / 100 Gram</td><td class="price-value">70$ / 100 Gram</td></tr>
-                                <tr><td>22 INCH / 55 CM</td><td>73$ / 100 Gram</td><td class="price-value">75$ / 100 Gram</td></tr>
-                                <tr><td>24 INCH / 60 CM</td><td>76$ / 100 Gram</td><td class="price-value">78$ / 100 Gram</td></tr>
-                                <tr><td>26 INCH / 65 CM</td><td>78$ / 100 Gram</td><td class="price-value">80$ / 100 Gram</td></tr>
-                                <tr><td>28 INCH / 70 CM</td><td>82$ / 100 Gram</td><td class="price-value">84$ / 100 Gram</td></tr>
+                                <tr><td>16" / 40cm</td><td>$58</td><td class="price-value">$60</td></tr>
+                                <tr><td>18" / 45cm</td><td>$63</td><td class="price-value">$65</td></tr>
+                                <tr><td>20" / 50cm</td><td>$68</td><td class="price-value">$70</td></tr>
+                                <tr><td>22" / 55cm</td><td>$73</td><td class="price-value">$75</td></tr>
+                                <tr><td>24" / 60cm</td><td>$76</td><td class="price-value">$78</td></tr>
+                                <tr><td>26" / 65cm</td><td>$78</td><td class="price-value">$80</td></tr>
+                                <tr><td>28" / 70cm</td><td>$82</td><td class="price-value">$84</td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -1249,16 +1261,17 @@
                         </div>
                     </summary>
                     <div class="price-table-wrapper">
+                        <span class="price-note">* All prices are per 100 grams</span>
                         <table class="modern-table">
                             <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
                             <tbody>
-                                <tr><td>16 INCH / 40 CM</td><td>78$ / 100 Gram</td><td class="price-value">80$ / 100 Gram</td></tr>
-                                <tr><td>18 INCH / 45 CM</td><td>86$ / 100 Gram</td><td class="price-value">88$ / 100 Gram</td></tr>
-                                <tr><td>20 INCH / 50 CM</td><td>93$ / 100 Gram</td><td class="price-value">95$ / 100 Gram</td></tr>
-                                <tr><td>22 INCH / 55 CM</td><td>97$ / 100 Gram</td><td class="price-value">99$ / 100 Gram</td></tr>
-                                <tr><td>24 INCH / 60 CM</td><td>100$ / 100 Gram</td><td class="price-value">102$ / 100 Gram</td></tr>
-                                <tr><td>26 INCH / 65 CM</td><td>103$ / 100 Gram</td><td class="price-value">105$ / 100 Gram</td></tr>
-                                <tr><td>28 INCH / 70 CM</td><td>106$ / 100 Gram</td><td class="price-value">108$ / 100 Gram</td></tr>
+                                <tr><td>16" / 40cm</td><td>$78</td><td class="price-value">$80</td></tr>
+                                <tr><td>18" / 45cm</td><td>$86</td><td class="price-value">$88</td></tr>
+                                <tr><td>20" / 50cm</td><td>$93</td><td class="price-value">$95</td></tr>
+                                <tr><td>22" / 55cm</td><td>$97</td><td class="price-value">$99</td></tr>
+                                <tr><td>24" / 60cm</td><td>$100</td><td class="price-value">$102</td></tr>
+                                <tr><td>26" / 65cm</td><td>$103</td><td class="price-value">$105</td></tr>
+                                <tr><td>28" / 70cm</td><td>$106</td><td class="price-value">$108</td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -1278,16 +1291,17 @@
                         </div>
                     </summary>
                     <div class="price-table-wrapper">
+                        <span class="price-note">* All prices are per 100 grams</span>
                         <table class="modern-table">
                             <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
                             <tbody>
-                                <tr><td>16 INCH / 40 CM</td><td>62$ / 100 Gram</td><td class="price-value">64$ / 100 Gram</td></tr>
-                                <tr><td>18 INCH / 45 CM</td><td>65$ / 100 Gram</td><td class="price-value">68$ / 100 Gram</td></tr>
-                                <tr><td>20 INCH / 50 CM</td><td>68$ / 100 Gram</td><td class="price-value">70$ / 100 Gram</td></tr>
-                                <tr><td>22 INCH / 55 CM</td><td>70$ / 100 Gram</td><td class="price-value">72$ / 100 Gram</td></tr>
-                                <tr><td>24 INCH / 60 CM</td><td>72$ / 100 Gram</td><td class="price-value">74$ / 100 Gram</td></tr>
-                                <tr><td>26 INCH / 65 CM</td><td>74$ / 100 Gram</td><td class="price-value">76$ / 100 Gram</td></tr>
-                                <tr><td>28 INCH / 70 CM</td><td>76$ / 100 Gram</td><td class="price-value">78$ / 100 Gram</td></tr>
+                                <tr><td>16" / 40cm</td><td>$62</td><td class="price-value">$64</td></tr>
+                                <tr><td>18" / 45cm</td><td>$65</td><td class="price-value">$68</td></tr>
+                                <tr><td>20" / 50cm</td><td>$68</td><td class="price-value">$70</td></tr>
+                                <tr><td>22" / 55cm</td><td>$70</td><td class="price-value">$72</td></tr>
+                                <tr><td>24" / 60cm</td><td>$72</td><td class="price-value">$74</td></tr>
+                                <tr><td>26" / 65cm</td><td>$74</td><td class="price-value">$76</td></tr>
+                                <tr><td>28" / 70cm</td><td>$76</td><td class="price-value">$78</td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -1302,16 +1316,17 @@
                         </div>
                     </summary>
                     <div class="price-table-wrapper">
+                        <span class="price-note">* All prices are per 100 grams</span>
                         <table class="modern-table">
                             <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
                             <tbody>
-                                <tr><td>16 INCH / 40 CM</td><td>84$ / 100 Gram</td><td class="price-value">86$ / 100 Gram</td></tr>
-                                <tr><td>18 INCH / 45 CM</td><td>94$ / 100 Gram</td><td class="price-value">96$ / 100 Gram</td></tr>
-                                <tr><td>20 INCH / 50 CM</td><td>99$ / 100 Gram</td><td class="price-value">101$ / 100 Gram</td></tr>
-                                <tr><td>22 INCH / 55 CM</td><td>114$ / 100 Gram</td><td class="price-value">116$ / 100 Gram</td></tr>
-                                <tr><td>24 INCH / 60 CM</td><td>119$ / 100 Gram</td><td class="price-value">121$ / 100 Gram</td></tr>
-                                <tr><td>26 INCH / 65 CM</td><td>124$ / 100 Gram</td><td class="price-value">126$ / 100 Gram</td></tr>
-                                <tr><td>28 INCH / 70 CM</td><td>130$ / 100 Gram</td><td class="price-value">132$ / 100 Gram</td></tr>
+                                <tr><td>16" / 40cm</td><td>$84</td><td class="price-value">$86</td></tr>
+                                <tr><td>18" / 45cm</td><td>$94</td><td class="price-value">$96</td></tr>
+                                <tr><td>20" / 50cm</td><td>$99</td><td class="price-value">$101</td></tr>
+                                <tr><td>22" / 55cm</td><td>$114</td><td class="price-value">$116</td></tr>
+                                <tr><td>24" / 60cm</td><td>$119</td><td class="price-value">$121</td></tr>
+                                <tr><td>26" / 65cm</td><td>$124</td><td class="price-value">$126</td></tr>
+                                <tr><td>28" / 70cm</td><td>$130</td><td class="price-value">$132</td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -1466,18 +1481,15 @@
         // 2. Fungsi membaca URL saat web baru saja dimuat
         window.addEventListener('DOMContentLoaded', () => {
             if (window.location.hash) {
-                const targetId = window.location.hash.substring(1); // Menghapus tanda '#'
+                const targetId = window.location.hash.substring(1); 
                 if (targetId.startsWith('price-')) {
                     const targetElement = document.getElementById(targetId);
                     if (targetElement) {
-                        // Membuka lipatan tabel harga
                         targetElement.setAttribute('open', ''); 
                         
-                        // Menambahkan efek highlight
                         targetElement.classList.add('highlight-active');
                         setTimeout(() => { targetElement.classList.remove('highlight-active'); }, 2000);
 
-                        // Scroll otomatis ke posisi tabel dengan delay agar web selesai merender
                         setTimeout(() => {
                             targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
                         }, 600); 
