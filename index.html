@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" translate="no">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EMAHAIRSHOP</title>
+    
+    <!-- === MENCEGAH BROWSER MENERJEMAHKAN OTOMATIS (MENCEGAH TEKS KELUAR/BERANTAKAN) === -->
+    <meta name="google" content="notranslate">
     
     <!-- === SEO META TAGS === -->
     <meta name="description" content="Top Quality Human Hair Extension Supplier & Manufacturer from Indonesia. Worldwide shipping for Hair Bulk, Weft, Tape, Keratin, and Wigs. 100% Human Remy Hair.">
@@ -350,25 +353,69 @@
         .buy-now-btn i { font-size: 1.3rem; }
         .buy-now-btn:hover { background-color: #128C7E; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4); color: var(--white); }
 
-        /* --- PRICE LIST SECTION --- */
+        /* ========================================================================
+           === PRICE LIST SECTION (SEKARANG DESKTOP = HP) DENGAN KOTAK PUTIH ===
+           ======================================================================== */
         .price-section { background-color: #F9F8F6; } 
-        .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 40px; align-items: start; }
-        .price-card { background-color: var(--white); border-radius: 16px; padding: 40px 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); border: 1px solid #eaeaea; transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative; }
-        .price-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.08); }
-        .price-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: linear-gradient(90deg, var(--circle-pink), var(--black)); border-radius: 16px 16px 0 0; }
-        .price-card-title { text-align: center; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px dashed #eaeaea; }
-        .price-card-title h3 { font-family: 'Lato', sans-serif; font-size: 1.6rem; font-weight: 900; color: var(--black); letter-spacing: 2px; }
+        .price-grid { display: grid; grid-template-columns: 1fr; gap: 35px; align-items: start; max-width: 1050px; margin: 0 auto; }
+        
+        .price-card { 
+            padding: 0; 
+            border-radius: 0; 
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr)); 
+            gap: 20px;
+            align-items: start; 
+            background-color: transparent; 
+            box-shadow: none;
+            border: none;
+        }
+        
+        .price-card-title { 
+            grid-column: span 2; 
+            margin-bottom: 5px; 
+            padding-bottom: 8px; 
+            text-align: left; 
+            border-bottom: 2px solid var(--black); 
+        }
+        .price-card-title h3 { font-family: 'Lato', sans-serif; font-size: 1.5rem; font-weight: 900; color: var(--black); letter-spacing: 1.5px; margin: 0;}
 
         /* === KOTAK PRICE LIST PUTIH === */
-        .price-accordion { scroll-margin-top: 100px; margin-bottom: 15px; background-color: var(--white); border: 1px solid #eaeaea; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.02); transition: 0.5s; }
+        .price-accordion { 
+            margin-bottom: 0; 
+            border-radius: 8px; 
+            background-color: var(--white); 
+            border: 1px solid #f0f0f0;  
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);                
+            width: 100%;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+        .price-accordion:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
         .price-accordion.highlight-active { box-shadow: 0 0 20px rgba(216, 84, 107, 0.4); transform: scale(1.02); }
-        .price-accordion:last-child { margin-bottom: 0; }
         
-        .price-summary { background-color: var(--bright-green); color: var(--white); font-size: 0.95rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; padding: 12px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; transition: background-color 0.3s; }
+        .price-summary { 
+            background-color: var(--bright-green); 
+            color: var(--white); 
+            font-size: 0.95rem; 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            padding: 15px; 
+            cursor: pointer; 
+            list-style: none; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 10px;
+            justify-content: center; 
+            align-items: center; 
+            text-align: center;
+            transition: background-color 0.3s; 
+        }
         .price-summary::-webkit-details-marker { display: none; }
         .price-summary:hover { background-color: #0d9668; }
         
-        .summary-actions { display: flex; align-items: center; gap: 8px; }
+        .summary-actions { display: flex; align-items: center; justify-content: center; gap: 8px; }
         
         .view-btn { font-size: 0.75rem; font-weight: 700; background-color: rgba(255, 255, 255, 0.2); padding: 6px 14px; border-radius: 20px; display: flex; align-items: center; gap: 6px; letter-spacing: 0.5px; transition: all 0.3s ease; }
         .view-btn i { transition: transform 0.3s ease; }
@@ -397,15 +444,17 @@
             letter-spacing: 0.5px;
             text-transform: uppercase;
             box-shadow: 0 4px 10px rgba(216, 84, 107, 0.3);
+            text-align: center;
+            line-height: 1.3;
         }
         .price-note i { font-size: 1rem; }
 
-        .price-table-wrapper { background-color: var(--white); animation: fadeInDown 0.3s ease-in-out; padding-bottom: 10px; }
+        .price-table-wrapper { background-color: var(--white); animation: fadeInDown 0.3s ease-in-out; padding-bottom: 10px; overflow-x: auto; }
         .modern-table { width: 100%; border-collapse: collapse; font-family: 'Lato', sans-serif; }
         .modern-table thead { background-color: #f9f9f9; color: var(--black); }
         .modern-table th { padding: 12px 10px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; text-align: center; border-bottom: 2px solid #eaeaea; }
         .modern-table td { padding: 12px 10px; text-align: center; font-size: 0.95rem; font-weight: 700; color: var(--dark-blue); border-bottom: 1px dashed #eaeaea; }
-        .modern-table td:first-child { text-align: left; padding-left: 20px; font-weight: 600; color: var(--gray); font-size: 0.85rem; }
+        .modern-table td:first-child { text-align: left; padding-left: 20px; font-weight: 600; color: var(--gray); font-size: 0.85rem; white-space: nowrap; }
         .modern-table tbody tr:last-child td { border-bottom: none; }
         .modern-table tbody tr:hover { background-color: #fdfdfd; }
         .price-value { color: var(--circle-pink); font-weight: 900; }
@@ -545,40 +594,17 @@
             /* ===================================================================================
                === PERBAIKAN SEJAJAR MINIMALIS: KOTAK MANDIRI PUTIH DI HP ===
                =================================================================================== */
-            .price-grid { grid-template-columns: 1fr; gap: 16px; align-items: start; } 
-            .price-card { 
-                padding: 0 !important; 
-                border-radius: 0; 
-                display: grid;
-                grid-template-columns: repeat(2, minmax(0, 1fr)); 
-                gap: 10px;
-                align-items: start; 
-                background-color: transparent !important; 
-                box-shadow: none !important;
-                border: none !important;
-            }
-            .price-card::before { display: none; } 
+            .price-grid { gap: 20px; } 
+            .price-card { gap: 8px; }
             
-            .price-card-title { grid-column: span 2; margin-bottom: 5px; padding-bottom: 4px; text-align: left; padding-left: 5px; }
-            .price-card-title h3 { font-size: 1.1rem; letter-spacing: 0.5px; margin: 0; color: var(--black); }
+            .price-card-title { margin-bottom: 2px; padding-bottom: 2px; border-bottom: 1px solid var(--black); }
+            .price-card-title h3 { font-size: 1.1rem; letter-spacing: 0.5px; }
             
-            /* === KOTAK PRICE LIST PUTIH === */
-            .price-accordion { 
-                margin-bottom: 0 !important; 
-                border-radius: 8px !important; 
-                background-color: var(--white) !important; 
-                border: 1px solid #f0f0f0 !important;  
-                box-shadow: 0 5px 15px rgba(0,0,0,0.05) !important;                
-                width: 100% !important;
-            }
             .price-summary { 
-                flex-direction: column; 
-                gap: 6px; 
                 padding: 10px 4px !important; 
                 font-size: 0.6rem !important; 
-                text-align: center; 
             }
-            .summary-actions { gap: 4px; justify-content: center; }
+            .summary-actions { gap: 4px; }
             .view-btn { font-size: 0.55rem; padding: 4px 8px; }
             .share-btn { width: 24px; height: 24px; font-size: 0.65rem; }
             
@@ -587,24 +613,19 @@
                 padding: 6px 4px !important; 
                 margin: 8px 6px !important; 
                 gap: 3px; 
-                letter-spacing: 0; 
                 white-space: nowrap !important;
                 overflow: hidden !important;
                 text-overflow: ellipsis !important;
-                line-height: 1.2;
-                text-align: center;
-                justify-content: center;
             }
             .price-note i { font-size: 0.55rem; }
 
-            .price-table-wrapper { overflow-x: auto; } 
             .modern-table th { padding: 6px 2px; font-size: 0.45rem; letter-spacing: 0; }
             .modern-table td { padding: 6px 2px; font-size: 0.55rem; line-height: 1.3; }
-            .modern-table td:first-child { padding-left: 6px; font-size: 0.5rem; }
+            .modern-table td:first-child { padding-left: 6px; font-size: 0.5rem; white-space: normal;}
         }
     </style>
 </head>
-<body>
+<body class="notranslate"> <!-- MENCEGAH TERJEMAHAN SELURUH BODY -->
 
     <nav>
         <a href="#" class="logo">
