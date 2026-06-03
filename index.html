@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emahairshop</title>
+    <title>Emahairshop | Premium Human Hair</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,600&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -403,7 +403,7 @@
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
             gap: 40px; 
-            align-items: start; /* BAGIAN YANG DIPERBAIKI */
+            align-items: start; 
         }
         
         .card {
@@ -482,7 +482,6 @@
             border-radius: 6px;
             padding: 0 15px;
             margin-bottom: 20px; 
-            /* flex-grow: 1; TELAH DIHAPUS DI SINI */
         }
         
         .custom-details { border-bottom: 1px solid #eaeaea; padding: 12px 0; }
@@ -680,7 +679,7 @@
         .lightbox-next { right: 20px; }
 
         /* =======================================================
-           --- MEDIA QUERY RESPONSIVE (MENGUBAH HIGHLIGHTS) --- 
+           --- MEDIA QUERY RESPONSIVE (TAMPILAN KHUSUS HP) --- 
            ======================================================= */
         @media (max-width: 768px) {
             .nav-links { display: none; }
@@ -689,13 +688,11 @@
             
             .product-preview-gallery { grid-template-columns: 1fr; gap: 15px; }
             .preview-left { height: 320px; }
-            /* Tinggi dikunci agar layout tidak bergeser/naik sendiri saat foto berganti acak */
             .preview-right-grid { height: 320px; grid-template-rows: 1fr 1fr; gap: 15px; }
             .preview-right-grid .preview-box { height: 100%; min-height: 0; }
             .preview-right-grid .preview-box img { height: 100%; }
             .top-banners { display: flex; flex-direction: column; gap: 15px; width: 100%; }
             
-            /* GRID 2X2 UNTUK 4 LINGKARAN DI HP */
             .highlights {
                 display: grid;
                 grid-template-columns: 1fr 1fr; 
@@ -721,6 +718,91 @@
             .lightbox-arrow { padding: 10px; font-size: 30px; }
             .lightbox-prev { left: 5px; }
             .lightbox-next { right: 5px; }
+
+            /* ======================================================
+               --- PENGATURAN PRODUK: WAJIB 2 KOLOM DI HP (BARU) ---
+               ====================================================== */
+            .grid { 
+                grid-template-columns: repeat(2, 1fr); 
+                gap: 10px; /* Jarak antar kotak produk dirapatkan */
+            }
+            .card {
+                padding: 10px; /* Jarak dalam kotak produk diperkecil */
+            }
+            .swiper { 
+                height: 160px; /* Gambar dibuat lebih pendek agar muat */
+                margin-bottom: 10px; 
+            }
+            /* Tombol Panah Slider Gambar */
+            .swiper-button-next, .swiper-button-prev {
+                width: 20px !important; 
+                height: 20px !important;
+            }
+            .swiper-button-next:after, .swiper-button-prev:after { 
+                font-size: 10px !important; 
+            }
+            .swiper-pagination-bullet {
+                width: 6px !important;
+                height: 6px !important;
+            }
+            /* Judul Produk */
+            .card h3 {
+                font-size: 0.8rem; 
+                margin-bottom: 8px;
+            }
+            /* Kotak Hijau (Spesifikasi Ringkas) */
+            .specs-container {
+                gap: 4px;
+                margin-top: 10px;
+                margin-bottom: 15px;
+            }
+            .spec-box {
+                padding: 6px 2px;
+                border-radius: 4px;
+            }
+            .spec-box i {
+                font-size: 1rem;
+                margin-bottom: 4px;
+            }
+            .spec-title {
+                font-size: 0.5rem; /* Ukuran sangat kecil agar teks tidak rusak */
+                line-height: 1.1;
+                margin-bottom: 2px;
+            }
+            .spec-value {
+                font-size: 0.6rem;
+            }
+            /* Area Buka/Tutup (Accordion) */
+            .accordion-wrapper {
+                padding: 0 5px;
+                margin-bottom: 15px;
+            }
+            .custom-summary {
+                font-size: 0.55rem;
+                padding: 8px 0;
+                letter-spacing: 0.5px;
+            }
+            .custom-summary::after {
+                font-size: 0.6rem;
+            }
+            .custom-details {
+                padding: 6px 0;
+            }
+            .detail-table {
+                font-size: 0.55rem;
+            }
+            .detail-table th, .detail-table td {
+                padding: 4px 2px;
+            }
+            /* Tombol Buy Now */
+            .buy-now-btn {
+                padding: 10px;
+                font-size: 0.75rem;
+                border-radius: 6px;
+            }
+            .buy-now-btn i {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
