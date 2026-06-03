@@ -309,10 +309,10 @@
         
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; align-items: start; }
         
-        /* === KOTAK PRODUK HITAM === */
-        .card { background: var(--black); padding: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: 0.3s; border-radius: 8px; border: 1px solid #333; position: relative; display: flex; flex-direction: column; color: var(--white); }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.2); }
-        .card h3 { font-size: 1.25rem; letter-spacing: 1px; margin-bottom: 5px; text-align: center; font-weight: 700; font-family: 'Lato', sans-serif; color: var(--white); }
+        /* === KOTAK PRODUK PUTIH (DIKEMBALIKAN KE SEMULA) === */
+        .card { background: var(--white); padding: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; border-radius: 8px; border: 1px solid #f0f0f0; position: relative; display: flex; flex-direction: column; color: var(--black); }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .card h3 { font-size: 1.25rem; letter-spacing: 1px; margin-bottom: 5px; text-align: center; font-weight: 700; font-family: 'Lato', sans-serif; color: var(--black); }
 
         .swiper { width: 100%; height: 320px; margin-bottom: 20px; border-radius: 4px; }
         .swiper-button-next, .swiper-button-prev { color: var(--black) !important; background: rgba(255, 255, 255, 0.8); width: 35px !important; height: 35px !important; border-radius: 50%; }
@@ -326,28 +326,28 @@
         .spec-title { font-size: 0.7rem; font-weight: 400; margin-bottom: 3px; opacity: 0.9; }
         .spec-value { font-size: 0.85rem; font-weight: 700; }
 
-        .accordion-wrapper { margin-top: 15px; background: #1a1a1a; border: 1px solid #333; border-radius: 6px; padding: 0 15px; margin-bottom: 20px; }
-        .custom-details { border-bottom: 1px solid #333; padding: 12px 0; }
+        .accordion-wrapper { margin-top: 15px; background: #fafafa; border: 1px solid #eaeaea; border-radius: 6px; padding: 0 15px; margin-bottom: 20px; }
+        .custom-details { border-bottom: 1px solid #eaeaea; padding: 12px 0; }
         .custom-details:last-child { border-bottom: none; }
-        .custom-summary { font-size: 0.85rem; font-weight: 700; color: var(--white); text-align: left; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; transition: 0.3s; }
+        .custom-summary { font-size: 0.85rem; font-weight: 700; color: var(--black); text-align: left; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; transition: 0.3s; }
         .custom-summary:hover { color: var(--circle-pink); }
         .custom-summary::-webkit-details-marker { display: none; }
-        .custom-summary::after { content: '\f078'; font-family: 'Font Awesome 6 Free'; font-weight: 900; font-size: 0.8rem; transition: transform 0.3s ease; color: #888; }
+        .custom-summary::after { content: '\f078'; font-family: 'Font Awesome 6 Free'; font-weight: 900; font-size: 0.8rem; transition: transform 0.3s ease; color: var(--gray); }
         .custom-details[open] .custom-summary::after { transform: rotate(180deg); color: var(--circle-pink); }
         .details-content { padding-top: 15px; animation: fadeInDown 0.3s ease-in-out; }
         
         @keyframes fadeInDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
         .detail-table { width: 100%; border-collapse: collapse; font-size: 0.75rem; }
-        .detail-table th { text-align: left; padding: 8px 5px; color: var(--white); font-weight: 700; border-bottom: 1px solid #444; }
-        .detail-table td { padding: 8px 5px; border-bottom: 1px dashed #333; color: #ccc; font-weight: 400; }
+        .detail-table th { text-align: left; padding: 8px 5px; color: var(--black); font-weight: 700; border-bottom: 1px solid #ccc; }
+        .detail-table td { padding: 8px 5px; border-bottom: 1px dashed #ddd; color: var(--gray); font-weight: 400; }
         .detail-table tr:last-child td { border-bottom: none; }
         .detail-table th:last-child, .detail-table td:last-child { text-align: right; }
         .check-icon { color: var(--circle-pink); margin-right: 5px; font-size: 0.8rem;}
 
-        .buy-now-btn { display: flex; justify-content: center; align-items: center; gap: 10px; width: 100%; background-color: #25D366; color: var(--white); padding: 14px 20px; text-decoration: none; border-radius: 8px; font-family: 'Lato', sans-serif; font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease; margin-top: auto; }
+        .buy-now-btn { display: flex; justify-content: center; align-items: center; gap: 10px; width: 100%; background-color: var(--black); color: var(--white); padding: 14px 20px; text-decoration: none; border-radius: 8px; font-family: 'Lato', sans-serif; font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease; margin-top: auto; }
         .buy-now-btn i { font-size: 1.3rem; }
-        .buy-now-btn:hover { background-color: #1ebe57; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3); color: var(--white); }
+        .buy-now-btn:hover { background-color: #25D366; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3); color: var(--white); }
 
         /* --- PRICE LIST SECTION --- */
         .price-section { background-color: #F9F8F6; } 
@@ -542,7 +542,7 @@
             .buy-now-btn i { font-size: 0.8rem; }
 
             /* ===================================================================================
-               === PERBAIKAN SEJAJAR MINIMALIS: KOTAK MANDIRI HITAM DI HP ===
+               === PERBAIKAN SEJAJAR MINIMALIS: KOTAK MANDIRI HITAM DI HP (UNTUK PRICE LIST) ===
                =================================================================================== */
             .price-grid { grid-template-columns: 1fr; gap: 16px; align-items: start; } 
             .price-card { 
