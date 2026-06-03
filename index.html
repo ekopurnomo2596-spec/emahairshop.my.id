@@ -676,6 +676,9 @@
            --- MEDIA QUERY RESPONSIVE (TAMPILAN KHUSUS HP) --- 
            ======================================================= */
         @media (max-width: 768px) {
+            nav {
+                justify-content: center; /* Membuat kontainer menu navigasi ke tengah */
+            }
             .nav-links { display: none; }
             .about { padding-top: 100px; gap: 50px; }
             
@@ -705,7 +708,9 @@
                 color: #777777;
             }
             
-            .logo { transform: scale(0.85); transform-origin: left center; }
+            /* Mengubah orientasi scale logo agar memusat (center) */
+            .logo { transform: scale(0.85); transform-origin: center; }
+            
             .back-to-top { bottom: 20px; right: 20px; width: 42px; height: 42px; }
             .lightbox-close { top: 20px; right: 25px; font-size: 38px; }
             .lightbox-arrow { padding: 10px; font-size: 30px; }
@@ -713,7 +718,7 @@
             .lightbox-next { right: 5px; }
 
             /* ======================================================
-               --- PENGATURAN PRODUK: WAJIB 2 KOLOM DI HP (BARU) ---
+               --- PENGATURAN PRODUK: WAJIB 2 KOLOM DI HP ---
                ====================================================== */
             /* Mengurangi padding samping agar kotak produk bisa lebih luas */
             section { padding: 80px 3%; } 
