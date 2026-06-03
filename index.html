@@ -62,7 +62,6 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            width: 250px; /* KUNCI UTAMA: Lebar dikunci agar tidak bergeser saat font loading */
         }
 
         .logo-top {
@@ -677,11 +676,6 @@
            --- MEDIA QUERY RESPONSIVE (TAMPILAN KHUSUS HP) --- 
            ======================================================= */
         @media (max-width: 768px) {
-            nav {
-                justify-content: center; 
-                padding: 15px 0; /* MENGHAPUS PADDING KIRI-KANAN AGAR BERADA TEPAT DI TENGAH LAYAR */
-                width: 100%;
-            }
             .nav-links { display: none; }
             .about { padding-top: 100px; gap: 50px; }
             
@@ -711,10 +705,10 @@
                 color: #777777;
             }
             
+            /* Logo dikembalikan merapat ke kiri */
             .logo { 
                 transform: scale(0.85); 
-                transform-origin: center; 
-                margin: 0 auto; /* PASTIKAN KOTAK DI TENGAH */
+                transform-origin: left center; 
             }
             
             .back-to-top { bottom: 20px; right: 20px; width: 42px; height: 42px; }
