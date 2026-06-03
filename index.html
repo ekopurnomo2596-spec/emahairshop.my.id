@@ -61,6 +61,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            text-decoration: none;
         }
 
         .logo-top {
@@ -132,6 +133,16 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 10px rgba(0,0,0,0.15);
         } 
+
+        /* Tombol Hamburger (Disembunyikan di PC) */
+        .menu-toggle {
+            display: none; 
+            font-size: 1.8rem;
+            color: var(--black);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .menu-toggle:hover { color: var(--circle-pink); }
 
         /* --- ABOUT SECTION --- */
         .about { 
@@ -289,9 +300,9 @@
 
 
         /* =========================================
-           --- PRICE LIST SECTION (NEW) --- 
+           --- PRICE LIST SECTION --- 
            ========================================= */
-        .price-section { background-color: #F9F8F6; } /* Background beda agar memisah dari produk */
+        .price-section { background-color: #F9F8F6; } 
         .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 40px; align-items: start; }
         .price-card { background-color: var(--white); border-radius: 16px; padding: 40px 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); border: 1px solid #eaeaea; transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative; }
         .price-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.08); }
@@ -365,7 +376,44 @@
            --- MEDIA QUERY RESPONSIVE (TAMPILAN KHUSUS HP) --- 
            ======================================================= */
         @media (max-width: 768px) {
-            .nav-links { display: none; }
+            /* PENGATURAN HAMBURGER MENU */
+            .menu-toggle { display: block; }
+            
+            .nav-links { 
+                position: absolute; 
+                top: 100%; /* Turun ke bawah header */
+                left: 0; 
+                width: 100%; 
+                background-color: rgba(255, 255, 255, 0.98); 
+                flex-direction: column; 
+                align-items: center;
+                padding: 0; 
+                box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+                max-height: 0; /* Efek meluncur ke bawah */
+                overflow: hidden;
+                transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
+            }
+            
+            /* Tampilan menu ketika diklik (aktif) */
+            .nav-links.active { 
+                max-height: 400px; 
+                padding: 20px 0; 
+                border-top: 1px solid #f0f0f0;
+            }
+            
+            .nav-links li { margin: 12px 0; width: 100%; text-align: center; }
+            .nav-links a { 
+                font-size: 1rem; 
+                padding: 12px 30px; 
+                display: block; 
+                background-color: transparent; 
+                color: var(--black); 
+            }
+            .nav-links a:hover { background-color: var(--circle-pink); color: var(--white); border-radius: 0;}
+
+            .logo { transform: scale(0.85); transform-origin: left center; }
+            nav { padding: 15px 5%; justify-content: space-between; } /* Memisah logo dan tombol */
+
             .about { padding-top: 100px; gap: 50px; }
             .product-preview-gallery { grid-template-columns: 1fr; gap: 15px; }
             .preview-left { height: 320px; }
@@ -378,7 +426,6 @@
             .highlight-box h4 { font-size: 1rem; font-weight: 800; }
             .highlight-box p { font-size: 0.85rem; color: #777777; }
             
-            .logo { transform: scale(0.85); transform-origin: left center; }
             .back-to-top { bottom: 20px; right: 20px; width: 42px; height: 42px; }
             .lightbox-close { top: 20px; right: 25px; font-size: 38px; }
             .lightbox-arrow { padding: 10px; font-size: 30px; }
@@ -408,7 +455,7 @@
             .buy-now-btn { padding: 8px 5px; font-size: 0.75rem; border-radius: 6px; }
             .buy-now-btn i { font-size: 1rem; }
 
-            /* PENGATURAN PRICE LIST KHUSUS HP (TETAP 1 KOLOM AGAR TABEL MUAT) */
+            /* PENGATURAN PRICE LIST KHUSUS HP */
             .price-grid { grid-template-columns: 1fr; gap: 25px; }
             .price-card { padding: 25px 15px; }
             .price-summary { padding: 10px 15px; font-size: 0.85rem; }
@@ -422,7 +469,7 @@
 <body>
 
     <nav>
-        <div class="logo">
+        <a href="#" class="logo">
             <div class="logo-top">
                 <span class="line-top"></span>
                 <span class="text-ext">EXTENSION</span>
@@ -430,14 +477,19 @@
             <div class="logo-main">EMAHAIRSHOP</div>
             <div class="line-bottom"></div>
             <div class="logo-year">2019</div>
-        </div>
+        </a>
         
         <ul class="nav-links">
             <li><a href="#about">ABOUT</a></li>
             <li><a href="#produk">PRODUK</a></li>
-            <li><a href="#pricelist">PRICE LIST</a></li> <!-- TAMBAHAN MENU PRICE LIST -->
+            <li><a href="#pricelist">PRICE LIST</a></li>
             <li><a href="#kontak">KONTAK</a></li>
         </ul>
+
+        <!-- TOMBOL HAMBURGER MENU -->
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fa-solid fa-bars"></i>
+        </div>
     </nav>
 
     <!-- SECTION 1: ABOUT -->
@@ -506,8 +558,7 @@
         </div>
         
         <div class="grid">
-            <!-- 8 KARTU PRODUK SAMA SEPERTI SEBELUMNYA -->
-            
+            <!-- 8 KARTU PRODUK -->
             <div class="card" data-aos="fade-up">
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
@@ -858,9 +909,7 @@
         </div>
     </section>
 
-    <!-- ============================================ -->
-    <!-- SECTION 3: PRICE LIST (BAGIAN BARU)          -->
-    <!-- ============================================ -->
+    <!-- SECTION 3: PRICE LIST -->
     <section id="pricelist" class="price-section">
         <div class="produk-header" data-aos="fade-down">
             <span class="sub-title">Wholesale Rates</span>
@@ -869,8 +918,7 @@
         </div>
 
         <div class="price-grid">
-            
-            <!-- PRICE: HAIR BULK -->
+            <!-- 8 PRICE CARDS -->
             <div class="price-card" data-aos="fade-up">
                 <div class="price-card-title"><h3>HAIR BULK</h3></div>
                 <details class="price-accordion">
@@ -909,7 +957,6 @@
                 </details>
             </div>
 
-            <!-- PRICE: HAIR WEFT -->
             <div class="price-card" data-aos="fade-up" data-aos-delay="100">
                 <div class="price-card-title"><h3>HAIR WEFT</h3></div>
                 <details class="price-accordion">
@@ -948,7 +995,6 @@
                 </details>
             </div>
 
-            <!-- PRICE: HAIR TAPE -->
             <div class="price-card" data-aos="fade-up" data-aos-delay="200">
                 <div class="price-card-title"><h3>HAIR TAPE</h3></div>
                 <details class="price-accordion">
@@ -987,7 +1033,6 @@
                 </details>
             </div>
 
-            <!-- PRICE: I TIP / KERATIN -->
             <div class="price-card" data-aos="fade-up" data-aos-delay="300">
                 <div class="price-card-title"><h3>I TIP / KERATIN</h3></div>
                 <details class="price-accordion">
@@ -1026,7 +1071,6 @@
                 </details>
             </div>
 
-            <!-- PRICE: NANO RING -->
             <div class="price-card" data-aos="fade-up">
                 <div class="price-card-title"><h3>NANO RING</h3></div>
                 <details class="price-accordion">
@@ -1065,7 +1109,6 @@
                 </details>
             </div>
 
-            <!-- PRICE: GENIUS WEFT -->
             <div class="price-card" data-aos="fade-up" data-aos-delay="100">
                 <div class="price-card-title"><h3>GENIUS WEFT</h3></div>
                 <details class="price-accordion">
@@ -1104,7 +1147,6 @@
                 </details>
             </div>
 
-            <!-- PRICE: HAIR CLIP -->
             <div class="price-card" data-aos="fade-up" data-aos-delay="200">
                 <div class="price-card-title"><h3>HAIR CLIP</h3></div>
                 <details class="price-accordion">
@@ -1143,7 +1185,6 @@
                 </details>
             </div>
 
-            <!-- PRICE: WIGS -->
             <div class="price-card" data-aos="fade-up" data-aos-delay="300">
                 <div class="price-card-title"><h3>WIGS</h3></div>
                 <details class="price-accordion">
@@ -1181,7 +1222,6 @@
                     </div>
                 </details>
             </div>
-
         </div>
     </section>
 
@@ -1230,13 +1270,7 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script>
         // Animasi AOS
-        AOS.init({ 
-            duration: 800,        
-            easing: 'ease-in-out', 
-            once: false, 
-            mirror: true, 
-            offset: 100           
-        });
+        AOS.init({ duration: 800, easing: 'ease-in-out', once: false, mirror: true, offset: 100 });
 
         // Inisialisasi Swiper
         var swiper = new Swiper(".mySwiper", {
@@ -1245,10 +1279,37 @@
             pagination: { el: ".swiper-pagination", clickable: true }
         });
 
-        // Smooth Scroll Menu & Back to Top
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        // ----------------------------------------------------
+        // HAMBURGER MENU & SMOOTH SCROLL LOGIC
+        // ----------------------------------------------------
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinksContainer = document.querySelector('.nav-links');
+        const navIcon = mobileMenu.querySelector('i');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        // Fungsi Buka Tutup Menu saat Ikon Diklik
+        mobileMenu.addEventListener('click', () => {
+            navLinksContainer.classList.toggle('active');
+            if (navLinksContainer.classList.contains('active')) {
+                navIcon.classList.remove('fa-bars');
+                navIcon.classList.add('fa-xmark');
+            } else {
+                navIcon.classList.remove('fa-xmark');
+                navIcon.classList.add('fa-bars');
+            }
+        });
+
+        // Smooth Scroll & Otomatis Tutup Menu saat Link Diklik
+        navLinks.forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
+                
+                // Tutup menu mobile
+                navLinksContainer.classList.remove('active');
+                navIcon.classList.remove('fa-xmark');
+                navIcon.classList.add('fa-bars');
+
+                // Scroll halus ke target
                 const targetID = this.getAttribute('href');
                 if (targetID === '#') {
                     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1258,6 +1319,10 @@
             });
         });
 
+        // ----------------------------------------------------
+        // LOGIKA LAINNYA
+        // ----------------------------------------------------
+        
         // Tombol Kembali ke Atas
         const backToTopBtn = document.getElementById('backToTop');
         window.addEventListener('scroll', () => {
