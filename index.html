@@ -544,21 +544,20 @@
             }
             .buy-now-btn i { font-size: 0.8rem; }
 
-            /* ============================================================
-               === PERBAIKAN PRICE LIST KHUSUS HP (1 KOLOM CARD, DD/SDD SEJAJAR) ===
-               ============================================================ */
-            .price-grid { grid-template-columns: 1fr; gap: 16px; align-items: start; } /* Card Utama Jadi 1 Kolom Penuh */
+            /* ===================================================================================
+               === PERBAIKAN PRICE LIST HP: MENGGUNAKAN minmax(0, 1fr) AGAR KOTAK TETANGGA TIDAK MERUSAK ===
+               =================================================================================== */
+            .price-grid { grid-template-columns: 1fr; gap: 16px; align-items: start; } 
             .price-card { 
                 padding: 15px 10px; 
                 border-radius: 8px; 
                 display: grid; 
-                grid-template-columns: repeat(2, 1fr); /* Membagi isi dalam card menjadi 2 kolom (DD & SDD Sejajar) */
+                grid-template-columns: repeat(2, minmax(0, 1fr)); /* FIX: Mengunci kolom agar tidak meluber saat tabel dibuka */
                 gap: 10px;
                 align-items: start;
             }
             .price-card::before { border-radius: 8px 8px 0 0; height: 4px; }
             
-            /* Judul Produk Membentang 2 Kolom */
             .price-card-title { grid-column: span 2; margin-bottom: 5px; padding-bottom: 8px; }
             .price-card-title h3 { font-size: 1rem; letter-spacing: 0.5px; margin: 0; }
             
@@ -571,27 +570,29 @@
                 text-align: center; 
                 letter-spacing: 0; 
             }
-            .summary-actions { gap: 4px; justify-content: center; }
+            .summary-actions { gap: 6px; justify-content: center; }
             .view-btn { font-size: 0.55rem; padding: 4px 8px; }
             .share-btn { width: 24px; height: 24px; font-size: 0.65rem; }
             
-            /* Box Info Note Merah */
+            /* FIX: Tulisan note dilarang keras menggunakan nowrap agar membungkus rapi di kolom sempit HP */
             .price-note { 
                 font-size: 0.45rem; 
-                padding: 5px 2px; 
-                margin: 5px 2px; 
-                gap: 3px; 
-                white-space: nowrap; 
+                padding: 6px 3px; 
+                margin: 8px 2px; 
+                gap: 4px; 
+                letter-spacing: 0; 
+                white-space: normal; /* Membuat tulisan melipat turun ke bawah dengan rapi */
+                line-height: 1.3;
+                text-align: center;
+                justify-content: center;
             }
-            .price-note i { font-size: 0.55rem; }
+            .price-note i { font-size: 0.6rem; }
 
-            /* Tabel Harga di-scroll otomatis jika menyempit */
-            .price-table-wrapper { overflow-x: auto; }
+            .price-table-wrapper { overflow-x: auto; } /* Mengaktifkan fitur scroll geser khusus tabel jika menyempit */
             .modern-table th { padding: 6px 2px; font-size: 0.45rem; letter-spacing: 0; }
             .modern-table td { padding: 6px 2px; font-size: 0.55rem; line-height: 1.3; }
             .modern-table td:first-child { padding-left: 2px; font-size: 0.5rem; }
 
-            /* Kotak CTA di Hair Clip & Wigs Membentang 2 Kolom */
             .contact-cta { grid-column: span 2; margin-top: 5px; padding: 12px 8px; }
             .contact-cta p { font-size: 0.65rem; margin-bottom: 8px; line-height: 1.3;}
             .contact-cta .btn-whatsapp { font-size: 0.6rem; padding: 8px 5px; width: 100%; box-sizing: border-box; justify-content: center; gap: 5px; }
@@ -1345,10 +1346,10 @@
                             <tbody>
                                 <tr><td>16" / 40cm</td><td>$62</td><td class="price-value">$64</td></tr>
                                 <tr><td>18" / 45cm</td><td>$65</td><td class="price-value">$68</td></tr>
-                                <tr><td>20" / 50cm</td><td>$68</td><td class="price-value">$70</td></tr>
-                                <tr><td>22" / 55cm</td><td>$70</td><td class="price-value">$72</td></tr>
-                                <tr><td>24" / 60cm</td><td>$72</td><td class="price-value">$74</td></tr>
-                                <tr><td>26" / 65cm</td><td>$74</td><td class="price-value">$76</td></tr>
+                                <tr><td>20" / 50cm</td><td>$68</td><td class="price-value">$72</td></tr>
+                                <tr><td>22" / 55cm</td><td>$70</td><td class="price-value">$74</td></tr>
+                                <tr><td>24" / 60cm</td><td>$72</td><td class="price-value">$76</td></tr>
+                                <tr><td>26" / 65cm</td><td>$74</td><td class="price-value">$78</td></tr>
                                 <tr><td>28" / 70cm</td><td>$76</td><td class="price-value">$78</td></tr>
                             </tbody>
                         </table>
