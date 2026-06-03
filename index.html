@@ -333,6 +333,11 @@
         .modern-table tbody tr:hover { background-color: #fdfdfd; }
         .price-value { color: var(--circle-pink); font-weight: 900; }
 
+        /* --- CONTACT CTA --- */
+        .contact-cta { text-align: center; margin-top: 30px; padding: 20px; background-color: #f9f9f9; border-radius: 8px; border: 1px solid #eaeaea;}
+        .contact-cta p { font-size: 0.9rem; color: var(--gray); margin-bottom: 15px; }
+        .contact-cta .btn-whatsapp { display: inline-flex; align-items: center; gap: 8px; background-color: #25D366; color: var(--white); padding: 10px 20px; border-radius: 25px; text-decoration: none; font-weight: 700; font-size: 0.9rem; transition: all 0.3s; }
+        .contact-cta .btn-whatsapp:hover { background-color: #1ebe57; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3); }
 
         /* --- CONTACT SECTION --- */
         .kontak { text-align: center; background-color: var(--black); color: var(--white); }
@@ -454,7 +459,7 @@
             
             .price-accordion { margin-bottom: 8px; border-radius: 6px; }
             .price-summary { 
-                flex-direction: column; /* Teks dan tombol jadi atas-bawah agar muat */
+                flex-direction: column; 
                 gap: 6px; 
                 padding: 8px 4px; 
                 font-size: 0.55rem; 
@@ -467,10 +472,13 @@
                 align-self: center; 
             }
             
-            /* Penyesuaian Font Tabel agar bisa turun baris dengan rapi (Wrap) */
             .modern-table th { padding: 6px 2px; font-size: 0.45rem; letter-spacing: 0; }
             .modern-table td { padding: 6px 2px; font-size: 0.5rem; line-height: 1.3; }
             .modern-table td:first-child { padding-left: 2px; font-size: 0.45rem; }
+
+            .contact-cta { margin-top: 15px; padding: 15px; }
+            .contact-cta p { font-size: 0.7rem; margin-bottom: 10px;}
+            .contact-cta .btn-whatsapp { font-size: 0.7rem; padding: 8px 15px; }
         }
     </style>
 </head>
@@ -927,7 +935,7 @@
         </div>
 
         <div class="price-grid">
-            <!-- 8 PRICE CARDS -->
+            <!-- PRICE CARDS -->
             <div class="price-card" data-aos="fade-up">
                 <div class="price-card-title"><h3>HAIR BULK</h3></div>
                 <details class="price-accordion">
@@ -1156,80 +1164,26 @@
                 </details>
             </div>
 
+            <!-- PRICE: HAIR CLIP (UPDATED) -->
             <div class="price-card" data-aos="fade-up" data-aos-delay="200">
                 <div class="price-card-title"><h3>HAIR CLIP</h3></div>
-                <details class="price-accordion">
-                    <summary class="price-summary"><span>Double Drawn</span><span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span></summary>
-                    <div class="price-table-wrapper">
-                        <table class="modern-table">
-                            <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
-                            <tbody>
-                                <tr><td>16 INCH / 40 CM</td><td>84$ / 100 Gram</td><td class="price-value">86$ / 100 Gram</td></tr>
-                                <tr><td>18 INCH / 45 CM</td><td>94$ / 100 Gram</td><td class="price-value">96$ / 100 Gram</td></tr>
-                                <tr><td>20 INCH / 50 CM</td><td>99$ / 100 Gram</td><td class="price-value">101$ / 100 Gram</td></tr>
-                                <tr><td>22 INCH / 55 CM</td><td>114$ / 100 Gram</td><td class="price-value">116$ / 100 Gram</td></tr>
-                                <tr><td>24 INCH / 60 CM</td><td>119$ / 100 Gram</td><td class="price-value">121$ / 100 Gram</td></tr>
-                                <tr><td>26 INCH / 65 CM</td><td>124$ / 100 Gram</td><td class="price-value">126$ / 100 Gram</td></tr>
-                                <tr><td>28 INCH / 70 CM</td><td>130$ / 100 Gram</td><td class="price-value">132$ / 100 Gram</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </details>
-                <details class="price-accordion">
-                    <summary class="price-summary"><span>Super Double Drawn</span><span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span></summary>
-                    <div class="price-table-wrapper">
-                        <table class="modern-table">
-                            <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
-                            <tbody>
-                                <tr><td>16 INCH / 40 CM</td><td>84$ / 100 Gram</td><td class="price-value">86$ / 100 Gram</td></tr>
-                                <tr><td>18 INCH / 45 CM</td><td>94$ / 100 Gram</td><td class="price-value">96$ / 100 Gram</td></tr>
-                                <tr><td>20 INCH / 50 CM</td><td>99$ / 100 Gram</td><td class="price-value">101$ / 100 Gram</td></tr>
-                                <tr><td>22 INCH / 55 CM</td><td>114$ / 100 Gram</td><td class="price-value">116$ / 100 Gram</td></tr>
-                                <tr><td>24 INCH / 60 CM</td><td>119$ / 100 Gram</td><td class="price-value">121$ / 100 Gram</td></tr>
-                                <tr><td>26 INCH / 65 CM</td><td>124$ / 100 Gram</td><td class="price-value">126$ / 100 Gram</td></tr>
-                                <tr><td>28 INCH / 70 CM</td><td>130$ / 100 Gram</td><td class="price-value">132$ / 100 Gram</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </details>
+                <div class="contact-cta">
+                    <p>Prices are adjusted based on your specific requirements and needs.</p>
+                    <a href="https://wa.me/6285868872566?text=Hello,%20I%20would%20like%20to%20inquire%20about%20the%20price%20for%20HAIR%20CLIP." target="_blank" class="btn-whatsapp">
+                        <i class="fa-brands fa-whatsapp"></i> Contact via WhatsApp
+                    </a>
+                </div>
             </div>
 
+            <!-- PRICE: WIGS (UPDATED) -->
             <div class="price-card" data-aos="fade-up" data-aos-delay="300">
                 <div class="price-card-title"><h3>WIGS</h3></div>
-                <details class="price-accordion">
-                    <summary class="price-summary"><span>Double Drawn</span><span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span></summary>
-                    <div class="price-table-wrapper">
-                        <table class="modern-table">
-                            <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
-                            <tbody>
-                                <tr><td>16 INCH / 40 CM</td><td>84$ / 100 Gram</td><td class="price-value">86$ / 100 Gram</td></tr>
-                                <tr><td>18 INCH / 45 CM</td><td>94$ / 100 Gram</td><td class="price-value">96$ / 100 Gram</td></tr>
-                                <tr><td>20 INCH / 50 CM</td><td>99$ / 100 Gram</td><td class="price-value">101$ / 100 Gram</td></tr>
-                                <tr><td>22 INCH / 55 CM</td><td>114$ / 100 Gram</td><td class="price-value">116$ / 100 Gram</td></tr>
-                                <tr><td>24 INCH / 60 CM</td><td>119$ / 100 Gram</td><td class="price-value">121$ / 100 Gram</td></tr>
-                                <tr><td>26 INCH / 65 CM</td><td>124$ / 100 Gram</td><td class="price-value">126$ / 100 Gram</td></tr>
-                                <tr><td>28 INCH / 70 CM</td><td>130$ / 100 Gram</td><td class="price-value">132$ / 100 Gram</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </details>
-                <details class="price-accordion">
-                    <summary class="price-summary"><span>Super Double Drawn</span><span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span></summary>
-                    <div class="price-table-wrapper">
-                        <table class="modern-table">
-                            <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
-                            <tbody>
-                                <tr><td>16 INCH / 40 CM</td><td>84$ / 100 Gram</td><td class="price-value">86$ / 100 Gram</td></tr>
-                                <tr><td>18 INCH / 45 CM</td><td>94$ / 100 Gram</td><td class="price-value">96$ / 100 Gram</td></tr>
-                                <tr><td>20 INCH / 50 CM</td><td>99$ / 100 Gram</td><td class="price-value">101$ / 100 Gram</td></tr>
-                                <tr><td>22 INCH / 55 CM</td><td>114$ / 100 Gram</td><td class="price-value">116$ / 100 Gram</td></tr>
-                                <tr><td>24 INCH / 60 CM</td><td>119$ / 100 Gram</td><td class="price-value">121$ / 100 Gram</td></tr>
-                                <tr><td>26 INCH / 65 CM</td><td>124$ / 100 Gram</td><td class="price-value">126$ / 100 Gram</td></tr>
-                                <tr><td>28 INCH / 70 CM</td><td>130$ / 100 Gram</td><td class="price-value">132$ / 100 Gram</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </details>
+                <div class="contact-cta">
+                    <p>Prices are adjusted based on your specific requirements and needs.</p>
+                    <a href="https://wa.me/6285868872566?text=Hello,%20I%20would%20like%20to%20inquire%20about%20the%20price%20for%20WIGS." target="_blank" class="btn-whatsapp">
+                        <i class="fa-brands fa-whatsapp"></i> Contact via WhatsApp
+                    </a>
+                </div>
             </div>
 
         </div>
