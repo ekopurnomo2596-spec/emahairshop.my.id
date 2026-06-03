@@ -137,7 +137,7 @@
         /* --- ABOUT SECTION --- */
         .about { 
             text-align: center; 
-            background-color: #F9F8F6; /* Warna background Luxury/Elegan ditambahkan di sini */
+            background-color: #F9F8F6; 
             align-items: center; 
             padding-top: 150px; 
             display: flex;
@@ -170,9 +170,13 @@
             height: 100%;
             object-fit: cover;
             display: block;
-            cursor: zoom-in; 
             transition: opacity 0.6s ease, transform 0.6s ease; 
             will-change: transform, opacity;
+        }
+        
+        /* Hanya produk di swiper yang bisa di-zoom */
+        .swiper-slide img {
+            cursor: zoom-in; 
         }
 
         .preview-overlay {
@@ -1535,17 +1539,15 @@
         let currentGroup = [];
         let currentIndex = 0;
 
-        // Pilih seluruh elemen foto produk yang bisa dizoom
+        // PILIH FOTO PRODUK SAJA UNTUK DIZOOM
         document.addEventListener('click', (e) => {
-            if (e.target.matches('.preview-box img, .swiper-slide img')) {
+            // Hanya aktif jika yang diklik adalah gambar di dalam swiper-slide
+            if (e.target.matches('.swiper-slide img')) {
                 const img = e.target;
                 let groupImages = [];
-                const previewGallery = img.closest('.product-preview-gallery');
                 const swiperWrapper = img.closest('.swiper-wrapper');
 
-                if (previewGallery) {
-                    groupImages = Array.from(previewGallery.querySelectorAll('img'));
-                } else if (swiperWrapper) {
+                if (swiperWrapper) {
                     groupImages = Array.from(swiperWrapper.querySelectorAll('img'));
                 } else {
                     groupImages = [img];
