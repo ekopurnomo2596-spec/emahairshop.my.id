@@ -356,45 +356,62 @@
         .buy-now-btn:hover, .buy-now-btn:active { background-color: var(--black); transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); color: var(--white); }
 
         /* ========================================================================
-           === PRICE LIST SECTION (DESKTOP) 2 KOLOM RAPI ===
+           === PRICE LIST SECTION (DESKTOP: KOTAK KIRI KANAN + DD/SDD KIRI KANAN) ===
            ======================================================================== */
         .price-section { background-color: #F9F8F6; } 
-        .price-grid { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: start; max-width: 900px; margin: 0 auto; }
+        
+        .price-grid { 
+            display: grid; 
+            /* Mengatur Kotak Hair Bulk dan Weft berdampingan (Kiri Kanan) */
+            grid-template-columns: repeat(auto-fit, minmax(480px, 1fr)); 
+            gap: 30px; 
+            align-items: start; 
+            max-width: 1200px; /* Diperlebar agar memuat 4 tabel berjajar */
+            margin: 0 auto; 
+        }
         
         .price-card { 
             background-color: var(--white); 
             border-radius: 16px; 
-            padding: 40px 30px; 
+            padding: 30px 20px; 
             box-shadow: 0 10px 30px rgba(0,0,0,0.04); 
             border: 1px solid #eaeaea; 
             transition: transform 0.3s ease, box-shadow 0.3s ease; 
             position: relative; 
             display: grid;
-            grid-template-columns: 1fr 1fr; /* MENGUBAH JADI 2 KOLOM SAMPINGAN */
-            gap: 20px;
+            /* Mengatur DD dan SDD di dalam kotak juga berdampingan (Kiri Kanan) */
+            grid-template-columns: repeat(2, minmax(0, 1fr)); 
+            gap: 15px;
             align-items: start;
         }
         .price-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.08); }
         .price-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: linear-gradient(90deg, var(--circle-pink), var(--black)); border-radius: 16px 16px 0 0; }
         
+        /* TULISAN JUDUL PRODUK PRICE LIST DI TENGAH */
         .price-card-title { 
             grid-column: span 2; 
             text-align: center; 
-            margin-bottom: 5px; 
+            margin-bottom: 10px; 
             padding-bottom: 15px; 
             border-bottom: 1px dashed #eaeaea; 
         }
-        .price-card-title h3 { font-family: 'Lato', sans-serif; font-size: 1.6rem; font-weight: 900; color: var(--black); letter-spacing: 2px; }
+        .price-card-title h3 { font-family: 'Lato', sans-serif; font-size: 1.6rem; font-weight: 900; color: var(--black); letter-spacing: 2px; margin: 0; }
 
         /* === KOTAK PRICE LIST PUTIH === */
-        .price-accordion { margin-bottom: 0; background-color: var(--white); border: 1px solid #eaeaea; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.02); transition: 0.5s; }
+        .price-accordion { margin-bottom: 0; background-color: var(--white); border: 1px solid #eaeaea; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.02); transition: 0.5s; scroll-margin-top: 100px; width: 100%;}
         .price-accordion.highlight-active { box-shadow: 0 0 20px rgba(216, 84, 107, 0.4); transform: scale(1.02); }
         
-        .price-summary { background-color: var(--bright-green); color: var(--white); font-size: 0.95rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; padding: 12px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; transition: background-color 0.3s; }
+        /* Flex Column agar judul dan tombol sejajar atas-bawah saat ruang sempit di desktop */
+        .price-summary { 
+            background-color: var(--bright-green); color: var(--white); font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; 
+            padding: 15px 10px; cursor: pointer; list-style: none; 
+            display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; gap: 10px;
+            transition: background-color 0.3s; 
+        }
         .price-summary::-webkit-details-marker { display: none; }
         .price-summary:hover { background-color: #0d9668; }
         
-        .summary-actions { display: flex; align-items: center; gap: 8px; }
+        .summary-actions { display: flex; align-items: center; justify-content: center; gap: 8px; }
         
         .view-btn { font-size: 0.75rem; font-weight: 700; background-color: rgba(255, 255, 255, 0.2); padding: 6px 14px; border-radius: 20px; display: flex; align-items: center; gap: 6px; letter-spacing: 0.5px; transition: all 0.3s ease; }
         .view-btn i { transition: transform 0.3s ease; }
@@ -408,31 +425,37 @@
         .price-accordion[open] .view-btn, .price-accordion[open] .share-btn { background-color: var(--white); color: var(--bright-green); }
         .price-accordion[open] .view-btn i { transform: rotate(180deg); }
 
+        /* LOGIKA TEKS OPEN & CLOSE (BERUBAH OTOMATIS) */
+        .view-text::before { content: "Open"; }
+        .price-accordion[open] .view-text::before { content: "Close"; }
+
         .price-note { 
             display: flex; 
             justify-content: center; 
             align-items: center; 
-            gap: 8px;
+            gap: 5px;
             background-color: var(--circle-pink); 
             color: var(--white); 
-            font-size: 0.75rem; 
+            font-size: 0.65rem; 
             font-weight: 800; 
-            padding: 8px 15px; 
-            margin: 15px; 
+            padding: 8px 10px; 
+            margin: 10px; 
             border-radius: 6px; 
             letter-spacing: 0.5px;
             text-transform: uppercase;
             box-shadow: 0 4px 10px rgba(216, 84, 107, 0.3);
             text-align: center;
+            line-height: 1.3;
+            white-space: normal;
         }
-        .price-note i { font-size: 1rem; }
+        .price-note i { font-size: 0.8rem; }
 
-        .price-table-wrapper { background-color: var(--white); animation: fadeInDown 0.3s ease-in-out; padding-bottom: 10px; }
+        .price-table-wrapper { background-color: var(--white); animation: fadeInDown 0.3s ease-in-out; padding-bottom: 10px; overflow-x: auto; }
         .modern-table { width: 100%; border-collapse: collapse; font-family: 'Lato', sans-serif; }
         .modern-table thead { background-color: #f9f9f9; color: var(--black); }
-        .modern-table th { padding: 12px 10px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; text-align: center; border-bottom: 2px solid #eaeaea; }
-        .modern-table td { padding: 12px 10px; text-align: center; font-size: 0.95rem; font-weight: 700; color: var(--dark-blue); border-bottom: 1px dashed #eaeaea; }
-        .modern-table td:first-child { text-align: left; padding-left: 20px; font-weight: 600; color: var(--gray); font-size: 0.85rem; }
+        .modern-table th { padding: 10px 5px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; text-align: center; border-bottom: 2px solid #eaeaea; }
+        .modern-table td { padding: 10px 5px; text-align: center; font-size: 0.85rem; font-weight: 700; color: var(--dark-blue); border-bottom: 1px dashed #eaeaea; }
+        .modern-table td:first-child { text-align: left; padding-left: 10px; font-weight: 600; color: var(--gray); font-size: 0.75rem; white-space: nowrap; }
         .modern-table tbody tr:last-child td { border-bottom: none; }
         .modern-table tbody tr:hover { background-color: #fdfdfd; }
         .price-value { color: var(--circle-pink); font-weight: 900; }
@@ -570,14 +593,16 @@
             .buy-now-btn i { font-size: 0.8rem; }
 
             /* ===================================================================================
-               === PERBAIKAN TAMPILAN HP: PRICE LIST (KOTAK PUTIH KEMBAR) ===
+               === PERBAIKAN TAMPILAN HP: PRICE LIST ===
                =================================================================================== */
+            /* Di HP menjadi 1 kolom penuh ke bawah untuk Kategori Produk (Kiri jadi Atas, Kanan jadi Bawah) */
             .price-grid { gap: 20px; grid-template-columns: 1fr; } 
+            
             .price-card { 
                 padding: 0 !important; 
                 border-radius: 0; 
                 display: grid;
-                grid-template-columns: repeat(2, minmax(0, 1fr)); 
+                grid-template-columns: repeat(2, minmax(0, 1fr)); /* Tombol DD dan SDD bersebelahan (Kiri Kanan) */
                 gap: 10px;
                 align-items: start; 
                 background-color: transparent !important; 
@@ -586,7 +611,15 @@
             }
             .price-card::before { display: none; } 
             
-            .price-card-title { grid-column: span 2; margin-bottom: 2px; padding-bottom: 2px; border-bottom: 1px solid var(--black); text-align: left; padding-left: 5px; }
+            /* TULISAN JUDUL PRODUK PRICE LIST DI TENGAH (HP) */
+            .price-card-title { 
+                grid-column: span 2; 
+                margin-bottom: 2px; 
+                padding-bottom: 5px; 
+                border-bottom: 1px solid var(--black); 
+                text-align: center; 
+                padding-left: 0; 
+            }
             .price-card-title h3 { font-size: 1.1rem; letter-spacing: 0.5px; margin: 0; color: var(--black); }
             
             /* === KOTAK PRICE LIST PUTIH === */
@@ -611,12 +644,12 @@
             
             /* MENGECILKAN TEKS "IMPORTANT" AGAR TIDAK KELUAR / TUMPANG TINDIH */
             .price-note { 
-                font-size: 0.4rem !important; /* Dikecilkan lagi */
-                padding: 6px 4px !important; 
-                margin: 8px 6px !important; 
+                font-size: 0.4rem !important; /* Dikecilkan lagi agar aman */
+                padding: 6px 2px !important; 
+                margin: 6px 4px !important; 
                 gap: 2px; 
                 letter-spacing: 0; 
-                white-space: normal !important; /* Diizinkan menjadi 2 baris jika tidak muat */
+                white-space: normal !important; /* Otomatis turun baris jika tidak muat di HP kecil */
                 line-height: 1.2;
                 text-align: center;
                 justify-content: center;
@@ -1006,7 +1039,7 @@
                         <span>Double Drawn</span>
                         <div class="summary-actions">
                             <span class="share-btn" title="Copy Price Link"><i class="fa-solid fa-share-nodes"></i></span>
-                            <span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span>
+                            <span class="view-btn"><span class="view-text"></span> <i class="fa-solid fa-chevron-down"></i></span>
                         </div>
                     </summary>
                     <div class="price-table-wrapper">
@@ -1031,7 +1064,7 @@
                         <span>Super Double Drawn</span>
                         <div class="summary-actions">
                             <span class="share-btn" title="Copy Price Link"><i class="fa-solid fa-share-nodes"></i></span>
-                            <span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span>
+                            <span class="view-btn"><span class="view-text"></span> <i class="fa-solid fa-chevron-down"></i></span>
                         </div>
                     </summary>
                     <div class="price-table-wrapper">
@@ -1061,7 +1094,7 @@
                         <span>Double Drawn</span>
                         <div class="summary-actions">
                             <span class="share-btn" title="Copy Price Link"><i class="fa-solid fa-share-nodes"></i></span>
-                            <span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span>
+                            <span class="view-btn"><span class="view-text"></span> <i class="fa-solid fa-chevron-down"></i></span>
                         </div>
                     </summary>
                     <div class="price-table-wrapper">
@@ -1086,7 +1119,7 @@
                         <span>Super Double Drawn</span>
                         <div class="summary-actions">
                             <span class="share-btn" title="Copy Price Link"><i class="fa-solid fa-share-nodes"></i></span>
-                            <span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span>
+                            <span class="view-btn"><span class="view-text"></span> <i class="fa-solid fa-chevron-down"></i></span>
                         </div>
                     </summary>
                     <div class="price-table-wrapper">
@@ -1116,7 +1149,7 @@
                         <span>Double Drawn</span>
                         <div class="summary-actions">
                             <span class="share-btn" title="Copy Price Link"><i class="fa-solid fa-share-nodes"></i></span>
-                            <span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span>
+                            <span class="view-btn"><span class="view-text"></span> <i class="fa-solid fa-chevron-down"></i></span>
                         </div>
                     </summary>
                     <div class="price-table-wrapper">
@@ -1141,7 +1174,7 @@
                         <span>Super Double Drawn</span>
                         <div class="summary-actions">
                             <span class="share-btn" title="Copy Price Link"><i class="fa-solid fa-share-nodes"></i></span>
-                            <span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span>
+                            <span class="view-btn"><span class="view-text"></span> <i class="fa-solid fa-chevron-down"></i></span>
                         </div>
                     </summary>
                     <div class="price-table-wrapper">
@@ -1171,7 +1204,7 @@
                         <span>Double Drawn</span>
                         <div class="summary-actions">
                             <span class="share-btn" title="Copy Price Link"><i class="fa-solid fa-share-nodes"></i></span>
-                            <span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span>
+                            <span class="view-btn"><span class="view-text"></span> <i class="fa-solid fa-chevron-down"></i></span>
                         </div>
                     </summary>
                     <div class="price-table-wrapper">
@@ -1196,7 +1229,7 @@
                         <span>Super Double Drawn</span>
                         <div class="summary-actions">
                             <span class="share-btn" title="Copy Price Link"><i class="fa-solid fa-share-nodes"></i></span>
-                            <span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span>
+                            <span class="view-btn"><span class="view-text"></span> <i class="fa-solid fa-chevron-down"></i></span>
                         </div>
                     </summary>
                     <div class="price-table-wrapper">
@@ -1226,7 +1259,7 @@
                         <span>Double Drawn</span>
                         <div class="summary-actions">
                             <span class="share-btn" title="Copy Price Link"><i class="fa-solid fa-share-nodes"></i></span>
-                            <span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span>
+                            <span class="view-btn"><span class="view-text"></span> <i class="fa-solid fa-chevron-down"></i></span>
                         </div>
                     </summary>
                     <div class="price-table-wrapper">
@@ -1251,7 +1284,7 @@
                         <span>Super Double Drawn</span>
                         <div class="summary-actions">
                             <span class="share-btn" title="Copy Price Link"><i class="fa-solid fa-share-nodes"></i></span>
-                            <span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span>
+                            <span class="view-btn"><span class="view-text"></span> <i class="fa-solid fa-chevron-down"></i></span>
                         </div>
                     </summary>
                     <div class="price-table-wrapper">
@@ -1281,7 +1314,7 @@
                         <span>Double Drawn</span>
                         <div class="summary-actions">
                             <span class="share-btn" title="Copy Price Link"><i class="fa-solid fa-share-nodes"></i></span>
-                            <span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span>
+                            <span class="view-btn"><span class="view-text"></span> <i class="fa-solid fa-chevron-down"></i></span>
                         </div>
                     </summary>
                     <div class="price-table-wrapper">
@@ -1306,7 +1339,7 @@
                         <span>Super Double Drawn</span>
                         <div class="summary-actions">
                             <span class="share-btn" title="Copy Price Link"><i class="fa-solid fa-share-nodes"></i></span>
-                            <span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span>
+                            <span class="view-btn"><span class="view-text"></span> <i class="fa-solid fa-chevron-down"></i></span>
                         </div>
                     </summary>
                     <div class="price-table-wrapper">
