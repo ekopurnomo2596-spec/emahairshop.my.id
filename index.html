@@ -312,15 +312,16 @@
 
         .price-accordion { margin-bottom: 15px; background-color: var(--white); border: 1px solid #eaeaea; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
         .price-accordion:last-child { margin-bottom: 0; }
-        .price-summary { background-color: var(--circle-pink); color: var(--white); font-size: 0.95rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; padding: 12px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; transition: background-color 0.3s; }
+        
+        /* Ubah warna kotak accordion menjadi hijau terang untuk keduanya */
+        .price-summary { background-color: var(--bright-green); color: var(--white); font-size: 0.95rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; padding: 12px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; transition: background-color 0.3s; }
         .price-summary::-webkit-details-marker { display: none; }
-        .price-accordion:nth-of-type(2) .price-summary { background-color: var(--black); }
+        .price-summary:hover { background-color: #0d9668; }
         
         .view-btn { font-size: 0.75rem; font-weight: 700; background-color: rgba(255, 255, 255, 0.2); padding: 6px 14px; border-radius: 20px; display: flex; align-items: center; gap: 6px; letter-spacing: 0.5px; transition: all 0.3s ease; }
         .view-btn i { transition: transform 0.3s ease; }
         .price-summary:hover .view-btn { background-color: rgba(255, 255, 255, 0.35); }
-        .price-accordion[open] .view-btn { background-color: var(--white); color: var(--circle-pink); }
-        .price-accordion:nth-of-type(2)[open] .view-btn { background-color: var(--white); color: var(--black); }
+        .price-accordion[open] .view-btn { background-color: var(--white); color: var(--bright-green); }
         .price-accordion[open] .view-btn i { transform: rotate(180deg); }
 
         .price-table-wrapper { background-color: var(--white); animation: fadeInDown 0.3s ease-in-out; }
@@ -616,7 +617,7 @@
                     </details>
                 </div>
                 <a href="https://wa.me/6285868872566?text=Hello,%20I%20want%20to%20buy%20HAIR%20BULK" target="_blank" class="buy-now-btn">
-                    <i class="fa-brands fa-whatsapp"></i> Buy Now
+                    <i class="fa-brands fa-whatsapp"></i> Order Via WhatsApp
                 </a>
             </div>
 
@@ -660,7 +661,7 @@
                     </details>
                 </div>
                 <a href="https://wa.me/6285868872566?text=Hello,%20I%20want%20to%20buy%20HAIR%20WEFT" target="_blank" class="buy-now-btn">
-                    <i class="fa-brands fa-whatsapp"></i> Buy Now
+                    <i class="fa-brands fa-whatsapp"></i> Order Via WhatsApp
                 </a>
             </div>
 
@@ -703,7 +704,7 @@
                     </details>
                 </div>
                 <a href="https://wa.me/6285868872566?text=Hello,%20I%20want%20to%20buy%20HAIR%20TAPE" target="_blank" class="buy-now-btn">
-                    <i class="fa-brands fa-whatsapp"></i> Buy Now
+                    <i class="fa-brands fa-whatsapp"></i> Order Via WhatsApp
                 </a>
             </div>
 
@@ -747,7 +748,7 @@
                     </details>
                 </div>
                 <a href="https://wa.me/6285868872566?text=Hello,%20I%20want%20to%20buy%20I%20TIP%20/%20KERATIN%20HAIR" target="_blank" class="buy-now-btn">
-                    <i class="fa-brands fa-whatsapp"></i> Buy Now
+                    <i class="fa-brands fa-whatsapp"></i> Order Via WhatsApp
                 </a>
             </div>
 
@@ -791,7 +792,7 @@
                     </details>
                 </div>
                 <a href="https://wa.me/6285868872566?text=Hello,%20I%20want%20to%20buy%20NANO%20RING" target="_blank" class="buy-now-btn">
-                    <i class="fa-brands fa-whatsapp"></i> Buy Now
+                    <i class="fa-brands fa-whatsapp"></i> Order Via WhatsApp
                 </a>
             </div>
 
@@ -834,7 +835,7 @@
                     </details>
                 </div>
                 <a href="https://wa.me/6285868872566?text=Hello,%20I%20want%20to%20buy%20GENIUS%20WEFT" target="_blank" class="buy-now-btn">
-                    <i class="fa-brands fa-whatsapp"></i> Buy Now
+                    <i class="fa-brands fa-whatsapp"></i> Order Via WhatsApp
                 </a>
             </div>
 
@@ -877,7 +878,7 @@
                     </details>
                 </div>
                 <a href="https://wa.me/6285868872566?text=Hello,%20I%20want%20to%20buy%20HAIR%20CLIP" target="_blank" class="buy-now-btn">
-                    <i class="fa-brands fa-whatsapp"></i> Buy Now
+                    <i class="fa-brands fa-whatsapp"></i> Order Via WhatsApp
                 </a>
             </div>
 
@@ -920,7 +921,7 @@
                     </details>
                 </div>
                 <a href="https://wa.me/6285868872566?text=Hello,%20I%20want%20to%20buy%20WIGS" target="_blank" class="buy-now-btn">
-                    <i class="fa-brands fa-whatsapp"></i> Buy Now
+                    <i class="fa-brands fa-whatsapp"></i> Order Via WhatsApp
                 </a>
             </div>
         </div>
@@ -1164,7 +1165,7 @@
                 </details>
             </div>
 
-            <!-- PRICE: HAIR CLIP (UPDATED) -->
+            <!-- PRICE: HAIR CLIP -->
             <div class="price-card" data-aos="fade-up" data-aos-delay="200">
                 <div class="price-card-title"><h3>HAIR CLIP</h3></div>
                 <div class="contact-cta">
@@ -1175,7 +1176,7 @@
                 </div>
             </div>
 
-            <!-- PRICE: WIGS (UPDATED) -->
+            <!-- PRICE: WIGS -->
             <div class="price-card" data-aos="fade-up" data-aos-delay="300">
                 <div class="price-card-title"><h3>WIGS</h3></div>
                 <div class="contact-cta">
