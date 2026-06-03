@@ -54,7 +54,7 @@
             z-index: 1000; border-bottom: 1px solid #f0f0f0;
         }
 
-        /* --- DESAIN ULANG LOGO (Diperkecil Seukuran Menu) --- */
+        /* --- DESAIN ULANG LOGO --- */
         .logo { 
             background-color: transparent; 
             padding: 0;
@@ -68,11 +68,11 @@
             display: flex;
             align-items: center;
             width: 100%;
-            margin-bottom: -3px; /* Jarak sangat rapat */
+            margin-bottom: -3px; 
         }
 
         .line-top {
-            height: 2px; /* Garis lebih tipis */
+            height: 2px; 
             background-color: var(--black); 
             flex-grow: 1;
             margin-right: 6px;
@@ -82,7 +82,7 @@
             color: var(--black); 
             font-family: 'Lato', sans-serif;
             font-weight: 900;
-            font-size: 0.45rem; /* Diperkecil */
+            font-size: 0.45rem; 
             letter-spacing: 2px;
             text-transform: uppercase;
         }
@@ -91,7 +91,7 @@
             color: var(--black); 
             font-family: 'Arial Black', 'Lato', sans-serif; 
             font-weight: 900;
-            font-size: 1.2rem; /* Diperkecil agar proporsional dengan menu */
+            font-size: 1.2rem; 
             letter-spacing: 0px;
             line-height: 1.1;
             text-transform: uppercase;
@@ -99,7 +99,7 @@
 
         .line-bottom {
             width: 95%; 
-            height: 2px; /* Garis lebih tipis */
+            height: 2px; 
             background-color: var(--black); 
             margin: 0px auto 2px auto;
         }
@@ -108,7 +108,7 @@
             color: var(--gold); 
             font-family: 'Lato', sans-serif;
             font-weight: 900;
-            font-size: 0.6rem; /* Diperkecil */
+            font-size: 0.6rem; 
             letter-spacing: 1px;
         }
 
@@ -120,7 +120,7 @@
             text-decoration: none; 
             color: var(--white); 
             background-color: var(--black);
-            padding: 8px 22px; /* Sedikit dirampingkan */
+            padding: 8px 22px; 
             border-radius: 25px; 
             font-size: 0.8rem; 
             letter-spacing: 1px; 
@@ -153,10 +153,9 @@
             width: 100%;
             max-width: 1100px;
             margin: 0 auto;
-            overflow-anchor: none; /* Cegah halaman naik/bergeser sendiri saat foto berganti */
+            overflow-anchor: none; 
         }
 
-        /* Box Wrapper Umum untuk Efek Overlay */
         .preview-box {
             position: relative;
             width: 100%;
@@ -172,11 +171,10 @@
             object-fit: cover;
             display: block;
             cursor: zoom-in; 
-            transition: opacity 0.6s ease, transform 0.6s ease; /* ANIMASI SLIDE SAAT RANDOM ROTATE ACAK */
+            transition: opacity 0.6s ease, transform 0.6s ease; 
             will-change: transform, opacity;
         }
 
-        /* Lapisan Gradasi Gelap di Bawah Foto */
         .preview-overlay {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -194,7 +192,6 @@
             pointer-events: auto;
         }
 
-        /* Pengaturan Sisi Kiri */
         .preview-left {
             height: 480px;
         }
@@ -218,7 +215,6 @@
             margin-bottom: 20px;
         }
 
-        /* Komponen Badge Label */
         .preview-badge {
             font-size: 0.7rem;
             font-weight: 900;
@@ -230,7 +226,6 @@
         }
         .badge-pink { background-color: var(--circle-pink); color: var(--white); }
 
-        /* Tombol View Products */
         .view-products-btn {
             background-color: var(--circle-pink);
             color: var(--white);
@@ -247,7 +242,6 @@
             transform: translateY(-2px);
         }
 
-        /* Pengaturan Sisi Kanan (Sejajar Presisi) */
         .preview-right-grid {
             display: grid;
             grid-template-rows: 1fr 1fr;
@@ -683,7 +677,6 @@
            ======================================================= */
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            section { padding: 80px 5%; }
             .about { padding-top: 100px; gap: 50px; }
             
             .product-preview-gallery { grid-template-columns: 1fr; gap: 15px; }
@@ -722,15 +715,23 @@
             /* ======================================================
                --- PENGATURAN PRODUK: WAJIB 2 KOLOM DI HP (BARU) ---
                ====================================================== */
+            /* Mengurangi padding samping agar kotak produk bisa lebih luas */
+            section { padding: 80px 3%; } 
+            
             .grid { 
                 grid-template-columns: repeat(2, 1fr); 
-                gap: 10px; /* Jarak antar kotak produk dirapatkan */
+                gap: 8px; /* Jarak antar kotak produk dirapatkan */
+                align-items: start;
             }
+            
             .card {
-                padding: 10px; /* Jarak dalam kotak produk diperkecil */
+                padding: 8px; /* Jarak dalam kotak produk diperkecil */
+                min-width: 0; /* KUNCI UTAMA: Memaksa Grid agar memperbolehkan isi kotak mengecil */
+                overflow: hidden; /* Mencegah isi meluber ke luar kotak */
             }
+            
             .swiper { 
-                height: 160px; /* Gambar dibuat lebih pendek agar muat */
+                height: 150px; 
                 margin-bottom: 10px; 
             }
             /* Tombol Panah Slider Gambar */
@@ -742,45 +743,53 @@
                 font-size: 10px !important; 
             }
             .swiper-pagination-bullet {
-                width: 6px !important;
-                height: 6px !important;
+                width: 5px !important;
+                height: 5px !important;
             }
+            
             /* Judul Produk */
             .card h3 {
-                font-size: 0.8rem; 
+                font-size: 0.75rem; 
                 margin-bottom: 8px;
+                line-height: 1.3;
             }
+            
             /* Kotak Hijau (Spesifikasi Ringkas) */
             .specs-container {
-                gap: 4px;
-                margin-top: 10px;
-                margin-bottom: 15px;
+                gap: 3px;
+                margin-top: 8px;
+                margin-bottom: 12px;
             }
             .spec-box {
                 padding: 6px 2px;
                 border-radius: 4px;
+                min-width: 0; /* Mengunci agar kotak tidak melebar */
+                word-wrap: break-word; /* Mengizinkan teks turun ke bawah */
             }
             .spec-box i {
-                font-size: 1rem;
-                margin-bottom: 4px;
+                font-size: 0.9rem;
+                margin-bottom: 3px;
             }
             .spec-title {
-                font-size: 0.5rem; /* Ukuran sangat kecil agar teks tidak rusak */
+                font-size: 0.45rem; /* Ukuran sangat kecil agar teks tidak memecah baris */
                 line-height: 1.1;
                 margin-bottom: 2px;
+                display: block;
             }
             .spec-value {
-                font-size: 0.6rem;
+                font-size: 0.55rem;
+                display: block;
             }
+            
             /* Area Buka/Tutup (Accordion) */
             .accordion-wrapper {
-                padding: 0 5px;
-                margin-bottom: 15px;
+                padding: 0 6px;
+                margin-bottom: 12px;
             }
             .custom-summary {
                 font-size: 0.55rem;
                 padding: 8px 0;
-                letter-spacing: 0.5px;
+                letter-spacing: 0; /* Menghapus jarak huruf agar muat */
             }
             .custom-summary::after {
                 font-size: 0.6rem;
@@ -789,14 +798,15 @@
                 padding: 6px 0;
             }
             .detail-table {
-                font-size: 0.55rem;
+                font-size: 0.5rem;
             }
             .detail-table th, .detail-table td {
-                padding: 4px 2px;
+                padding: 3px 2px;
             }
+            
             /* Tombol Buy Now */
             .buy-now-btn {
-                padding: 10px;
+                padding: 8px 5px;
                 font-size: 0.75rem;
                 border-radius: 6px;
             }
