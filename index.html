@@ -13,7 +13,6 @@
     <!-- === OPEN GRAPH (OG) / WHATSAPP / FACEBOOK PREVIEW TAGS === -->
     <meta property="og:title" content="Emahairshop | Premium Human Hair Extensions">
     <meta property="og:description" content="Wholesale Supplier & Manufacturer of 100% Human Hair Extensions from Indonesia. Exporting to 15+ Countries Worldwide.">
-    <!-- Gambar ini akan muncul saat link dibagikan di WA. Pastikan link gambarnya benar -->
     <meta property="og:image" content="https://www.emahairshop.my.id/hairbulk2.webp">
     <meta property="og:url" content="https://www.emahairshop.my.id/">
     <meta property="og:type" content="website">
@@ -51,6 +50,7 @@
             line-height: 1.8;
             font-weight: 300;
             overflow-x: hidden;
+            scroll-behavior: smooth; /* Penting untuk animasi deep linking */
         }
 
         h1, h2, h3 {
@@ -162,7 +162,7 @@
         /* --- ABOUT SECTION DENGAN BACKGROUND HIJAU ZAMRUD --- */
         .about { 
             text-align: center; 
-            background-color: #152219; /* Hijau Zamrud Gelap Premium */
+            background-color: #152219; 
             align-items: center; 
             padding-top: 150px; 
             display: flex;
@@ -345,17 +345,30 @@
         .price-card-title { text-align: center; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px dashed #eaeaea; }
         .price-card-title h3 { font-family: 'Lato', sans-serif; font-size: 1.6rem; font-weight: 900; color: var(--black); letter-spacing: 2px; }
 
-        .price-accordion { margin-bottom: 15px; background-color: var(--white); border: 1px solid #eaeaea; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
+        /* Highlight untuk lipatan harga yang sedang aktif dipanggil via URL */
+        .price-accordion { scroll-margin-top: 100px; margin-bottom: 15px; background-color: var(--white); border: 1px solid #eaeaea; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.02); transition: 0.5s; }
+        .price-accordion.highlight-active { box-shadow: 0 0 20px rgba(216, 84, 107, 0.4); transform: scale(1.02); }
         .price-accordion:last-child { margin-bottom: 0; }
         
         .price-summary { background-color: var(--bright-green); color: var(--white); font-size: 0.95rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; padding: 12px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; transition: background-color 0.3s; }
         .price-summary::-webkit-details-marker { display: none; }
         .price-summary:hover { background-color: #0d9668; }
         
+        /* Tombol Aksi di Kanan Tabel Harga */
+        .summary-actions { display: flex; align-items: center; gap: 8px; }
+        
         .view-btn { font-size: 0.75rem; font-weight: 700; background-color: rgba(255, 255, 255, 0.2); padding: 6px 14px; border-radius: 20px; display: flex; align-items: center; gap: 6px; letter-spacing: 0.5px; transition: all 0.3s ease; }
         .view-btn i { transition: transform 0.3s ease; }
         .price-summary:hover .view-btn { background-color: rgba(255, 255, 255, 0.35); }
-        .price-accordion[open] .view-btn { background-color: var(--white); color: var(--bright-green); }
+        
+        /* Gaya Tombol Share */
+        .share-btn { font-size: 0.85rem; background-color: rgba(255, 255, 255, 0.2); width: 30px; height: 30px; border-radius: 50%; display: flex; justify-content: center; align-items: center; transition: all 0.3s ease; }
+        .price-summary:hover .share-btn { background-color: rgba(255, 255, 255, 0.35); }
+        .share-btn:hover { background-color: var(--circle-pink) !important; color: var(--white) !important; transform: scale(1.1); }
+        .share-btn:active { transform: scale(0.9); }
+
+        /* Efek Saat Accordion Terbuka */
+        .price-accordion[open] .view-btn, .price-accordion[open] .share-btn { background-color: var(--white); color: var(--bright-green); }
         .price-accordion[open] .view-btn i { transform: rotate(180deg); }
 
         .price-table-wrapper { background-color: var(--white); animation: fadeInDown 0.3s ease-in-out; }
@@ -520,11 +533,9 @@
                 text-align: center; 
                 letter-spacing: 0; 
             }
-            .view-btn { 
-                font-size: 0.5rem; 
-                padding: 4px 10px; 
-                align-self: center; 
-            }
+            .summary-actions { gap: 6px; }
+            .view-btn { font-size: 0.5rem; padding: 4px 10px; }
+            .share-btn { width: 22px; height: 22px; font-size: 0.6rem; }
             
             .modern-table th { padding: 6px 2px; font-size: 0.45rem; letter-spacing: 0; }
             .modern-table td { padding: 6px 2px; font-size: 0.5rem; line-height: 1.3; }
@@ -568,7 +579,6 @@
     <section id="about" class="about">
         <div class="product-preview-gallery">
             <div class="preview-box preview-left" data-aos="fade-right">
-                <!-- Gambar hero tidak memakai lazy load agar langsung muncul -->
                 <img src="hairbulk2.webp" alt="Premium Hair Extensions Showcase Emahairshop">
                 <div class="preview-overlay">
                     <h2>Premium Hair Extensions</h2>
@@ -582,7 +592,6 @@
             </div>
         </div>
 
-        <!-- DUA KOTAK BANNER -->
         <div class="top-banners">
             <div class="banner-box" data-aos="fade-up" data-aos-delay="100">
                 <i class="fa-solid fa-globe"></i>
@@ -600,7 +609,6 @@
             </div>
         </div>
 
-        <!-- 4 HIGHLIGHTS BOX -->
         <div id="highlights" class="highlights">
             <div class="highlight-box" data-aos="zoom-in" data-aos-delay="0">
                 <div class="icon-wrapper"><i class="fa-solid fa-globe"></i></div>
@@ -633,7 +641,6 @@
         </div>
         
         <div class="grid">
-            <!-- 8 KARTU PRODUK DENGAN LAZY LOADING DAN ALT TEXT SEO -->
             <div class="card" data-aos="fade-up">
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
@@ -993,11 +1000,18 @@
         </div>
 
         <div class="price-grid">
-            <!-- PRICE CARDS -->
+            <!-- PRICE: HAIR BULK -->
             <div class="price-card" data-aos="fade-up">
                 <div class="price-card-title"><h3>HAIR BULK</h3></div>
-                <details class="price-accordion">
-                    <summary class="price-summary"><span>Double Drawn</span><span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span></summary>
+                
+                <details class="price-accordion" id="price-hairbulk-dd">
+                    <summary class="price-summary">
+                        <span>Double Drawn</span>
+                        <div class="summary-actions">
+                            <span class="share-btn" title="Copy Price Link"><i class="fa-solid fa-share-nodes"></i></span>
+                            <span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span>
+                        </div>
+                    </summary>
                     <div class="price-table-wrapper">
                         <table class="modern-table">
                             <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
@@ -1013,8 +1027,15 @@
                         </table>
                     </div>
                 </details>
-                <details class="price-accordion">
-                    <summary class="price-summary"><span>Super Double Drawn</span><span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span></summary>
+
+                <details class="price-accordion" id="price-hairbulk-sdd">
+                    <summary class="price-summary">
+                        <span>Super Double Drawn</span>
+                        <div class="summary-actions">
+                            <span class="share-btn" title="Copy Price Link"><i class="fa-solid fa-share-nodes"></i></span>
+                            <span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span>
+                        </div>
+                    </summary>
                     <div class="price-table-wrapper">
                         <table class="modern-table">
                             <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
@@ -1032,10 +1053,18 @@
                 </details>
             </div>
 
+            <!-- PRICE: HAIR WEFT -->
             <div class="price-card" data-aos="fade-up" data-aos-delay="100">
                 <div class="price-card-title"><h3>HAIR WEFT</h3></div>
-                <details class="price-accordion">
-                    <summary class="price-summary"><span>Double Drawn</span><span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span></summary>
+                
+                <details class="price-accordion" id="price-hairweft-dd">
+                    <summary class="price-summary">
+                        <span>Double Drawn</span>
+                        <div class="summary-actions">
+                            <span class="share-btn" title="Copy Price Link"><i class="fa-solid fa-share-nodes"></i></span>
+                            <span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span>
+                        </div>
+                    </summary>
                     <div class="price-table-wrapper">
                         <table class="modern-table">
                             <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
@@ -1051,8 +1080,15 @@
                         </table>
                     </div>
                 </details>
-                <details class="price-accordion">
-                    <summary class="price-summary"><span>Super Double Drawn</span><span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span></summary>
+
+                <details class="price-accordion" id="price-hairweft-sdd">
+                    <summary class="price-summary">
+                        <span>Super Double Drawn</span>
+                        <div class="summary-actions">
+                            <span class="share-btn" title="Copy Price Link"><i class="fa-solid fa-share-nodes"></i></span>
+                            <span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span>
+                        </div>
+                    </summary>
                     <div class="price-table-wrapper">
                         <table class="modern-table">
                             <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
@@ -1070,10 +1106,18 @@
                 </details>
             </div>
 
+            <!-- PRICE: HAIR TAPE -->
             <div class="price-card" data-aos="fade-up" data-aos-delay="200">
                 <div class="price-card-title"><h3>HAIR TAPE</h3></div>
-                <details class="price-accordion">
-                    <summary class="price-summary"><span>Double Drawn</span><span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span></summary>
+                
+                <details class="price-accordion" id="price-hairtape-dd">
+                    <summary class="price-summary">
+                        <span>Double Drawn</span>
+                        <div class="summary-actions">
+                            <span class="share-btn" title="Copy Price Link"><i class="fa-solid fa-share-nodes"></i></span>
+                            <span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span>
+                        </div>
+                    </summary>
                     <div class="price-table-wrapper">
                         <table class="modern-table">
                             <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
@@ -1089,8 +1133,15 @@
                         </table>
                     </div>
                 </details>
-                <details class="price-accordion">
-                    <summary class="price-summary"><span>Super Double Drawn</span><span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span></summary>
+
+                <details class="price-accordion" id="price-hairtape-sdd">
+                    <summary class="price-summary">
+                        <span>Super Double Drawn</span>
+                        <div class="summary-actions">
+                            <span class="share-btn" title="Copy Price Link"><i class="fa-solid fa-share-nodes"></i></span>
+                            <span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span>
+                        </div>
+                    </summary>
                     <div class="price-table-wrapper">
                         <table class="modern-table">
                             <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
@@ -1108,10 +1159,18 @@
                 </details>
             </div>
 
+            <!-- PRICE: I TIP / KERATIN -->
             <div class="price-card" data-aos="fade-up" data-aos-delay="300">
                 <div class="price-card-title"><h3>I TIP / KERATIN</h3></div>
-                <details class="price-accordion">
-                    <summary class="price-summary"><span>Double Drawn</span><span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span></summary>
+                
+                <details class="price-accordion" id="price-itip-dd">
+                    <summary class="price-summary">
+                        <span>Double Drawn</span>
+                        <div class="summary-actions">
+                            <span class="share-btn" title="Copy Price Link"><i class="fa-solid fa-share-nodes"></i></span>
+                            <span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span>
+                        </div>
+                    </summary>
                     <div class="price-table-wrapper">
                         <table class="modern-table">
                             <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
@@ -1127,8 +1186,15 @@
                         </table>
                     </div>
                 </details>
-                <details class="price-accordion">
-                    <summary class="price-summary"><span>Super Double Drawn</span><span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span></summary>
+
+                <details class="price-accordion" id="price-itip-sdd">
+                    <summary class="price-summary">
+                        <span>Super Double Drawn</span>
+                        <div class="summary-actions">
+                            <span class="share-btn" title="Copy Price Link"><i class="fa-solid fa-share-nodes"></i></span>
+                            <span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span>
+                        </div>
+                    </summary>
                     <div class="price-table-wrapper">
                         <table class="modern-table">
                             <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
@@ -1146,10 +1212,18 @@
                 </details>
             </div>
 
+            <!-- PRICE: NANO RING -->
             <div class="price-card" data-aos="fade-up">
                 <div class="price-card-title"><h3>NANO RING</h3></div>
-                <details class="price-accordion">
-                    <summary class="price-summary"><span>Double Drawn</span><span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span></summary>
+                
+                <details class="price-accordion" id="price-nanoring-dd">
+                    <summary class="price-summary">
+                        <span>Double Drawn</span>
+                        <div class="summary-actions">
+                            <span class="share-btn" title="Copy Price Link"><i class="fa-solid fa-share-nodes"></i></span>
+                            <span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span>
+                        </div>
+                    </summary>
                     <div class="price-table-wrapper">
                         <table class="modern-table">
                             <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
@@ -1165,8 +1239,15 @@
                         </table>
                     </div>
                 </details>
-                <details class="price-accordion">
-                    <summary class="price-summary"><span>Super Double Drawn</span><span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span></summary>
+
+                <details class="price-accordion" id="price-nanoring-sdd">
+                    <summary class="price-summary">
+                        <span>Super Double Drawn</span>
+                        <div class="summary-actions">
+                            <span class="share-btn" title="Copy Price Link"><i class="fa-solid fa-share-nodes"></i></span>
+                            <span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span>
+                        </div>
+                    </summary>
                     <div class="price-table-wrapper">
                         <table class="modern-table">
                             <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
@@ -1184,10 +1265,18 @@
                 </details>
             </div>
 
+            <!-- PRICE: GENIUS WEFT -->
             <div class="price-card" data-aos="fade-up" data-aos-delay="100">
                 <div class="price-card-title"><h3>GENIUS WEFT</h3></div>
-                <details class="price-accordion">
-                    <summary class="price-summary"><span>Double Drawn</span><span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span></summary>
+                
+                <details class="price-accordion" id="price-geniusweft-dd">
+                    <summary class="price-summary">
+                        <span>Double Drawn</span>
+                        <div class="summary-actions">
+                            <span class="share-btn" title="Copy Price Link"><i class="fa-solid fa-share-nodes"></i></span>
+                            <span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span>
+                        </div>
+                    </summary>
                     <div class="price-table-wrapper">
                         <table class="modern-table">
                             <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
@@ -1203,8 +1292,15 @@
                         </table>
                     </div>
                 </details>
-                <details class="price-accordion">
-                    <summary class="price-summary"><span>Super Double Drawn</span><span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span></summary>
+
+                <details class="price-accordion" id="price-geniusweft-sdd">
+                    <summary class="price-summary">
+                        <span>Super Double Drawn</span>
+                        <div class="summary-actions">
+                            <span class="share-btn" title="Copy Price Link"><i class="fa-solid fa-share-nodes"></i></span>
+                            <span class="view-btn">View <i class="fa-solid fa-chevron-down"></i></span>
+                        </div>
+                    </summary>
                     <div class="price-table-wrapper">
                         <table class="modern-table">
                             <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
@@ -1309,7 +1405,6 @@
         const navIcon = mobileMenu.querySelector('i');
         const navLinks = document.querySelectorAll('.nav-links a');
 
-        // Fungsi Buka Tutup Menu saat Ikon Diklik
         mobileMenu.addEventListener('click', () => {
             navLinksContainer.classList.toggle('active');
             if (navLinksContainer.classList.contains('active')) {
@@ -1321,17 +1416,13 @@
             }
         });
 
-        // Smooth Scroll & Otomatis Tutup Menu saat Link Diklik
         navLinks.forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                
-                // Tutup menu mobile
                 navLinksContainer.classList.remove('active');
                 navIcon.classList.remove('fa-xmark');
                 navIcon.classList.add('fa-bars');
 
-                // Scroll halus ke target
                 const targetID = this.getAttribute('href');
                 if (targetID === '#') {
                     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1342,17 +1433,68 @@
         });
 
         // ----------------------------------------------------
-        // LOGIKA LAINNYA
+        // LOGIKA DEEP LINKING (Buka Tabel Harga via URL)
         // ----------------------------------------------------
         
-        // Tombol Kembali ke Atas
+        // 1. Fungsi saat tombol share diklik
+        document.querySelectorAll('.share-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation(); // Mencegah tabel terbuka/tertutup saat mengklik icon share
+                
+                const accordion = this.closest('details');
+                const targetId = accordion.id;
+                const shareUrl = window.location.origin + window.location.pathname + '#' + targetId;
+
+                // Salin ke clipboard
+                navigator.clipboard.writeText(shareUrl).then(() => {
+                    // Animasi ikon berubah menjadi centang
+                    const icon = this.querySelector('i');
+                    icon.classList.remove('fa-share-nodes');
+                    icon.classList.add('fa-check');
+                    
+                    setTimeout(() => {
+                        icon.classList.remove('fa-check');
+                        icon.classList.add('fa-share-nodes');
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Gagal menyalin link: ', err);
+                });
+            });
+        });
+
+        // 2. Fungsi membaca URL saat web baru saja dimuat
+        window.addEventListener('DOMContentLoaded', () => {
+            if (window.location.hash) {
+                const targetId = window.location.hash.substring(1); // Menghapus tanda '#'
+                if (targetId.startsWith('price-')) {
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        // Membuka lipatan tabel harga
+                        targetElement.setAttribute('open', ''); 
+                        
+                        // Menambahkan efek highlight
+                        targetElement.classList.add('highlight-active');
+                        setTimeout(() => { targetElement.classList.remove('highlight-active'); }, 2000);
+
+                        // Scroll otomatis ke posisi tabel dengan delay agar web selesai merender
+                        setTimeout(() => {
+                            targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }, 600); 
+                    }
+                }
+            }
+        });
+
+        // ----------------------------------------------------
+        // LOGIKA LAINNYA
+        // ----------------------------------------------------
         const backToTopBtn = document.getElementById('backToTop');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 400) { backToTopBtn.classList.add('show'); } 
             else { backToTopBtn.classList.remove('show'); }
         });
 
-        // Slideshow Acak di Preview Gallery
         const previewImagesPool = [
             'clip.jpg', 'clip2.webp', 'genius.jpg', 'genius2.webp', 
             'hair-flat.jpg', 'hair-i-tip.avif', 'hair-tape1.jpg', 'hair-tape2.jpg', 
@@ -1381,7 +1523,6 @@
             });
         }, 10000); 
 
-        // Lightbox Zoom Gambar
         const lightbox = document.getElementById('imageLightbox');
         const lightboxImg = document.getElementById('lightboxImg');
         const closeBtn = document.querySelector('.lightbox-close');
