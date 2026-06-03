@@ -309,7 +309,7 @@
         
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; align-items: start; }
         
-        /* === KOTAK PRODUK PUTIH (DIKEMBALIKAN KE SEMULA) === */
+        /* === KOTAK PRODUK PUTIH === */
         .card { background: var(--white); padding: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; border-radius: 8px; border: 1px solid #f0f0f0; position: relative; display: flex; flex-direction: column; color: var(--black); }
         .card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
         .card h3 { font-size: 1.25rem; letter-spacing: 1px; margin-bottom: 5px; text-align: center; font-weight: 700; font-family: 'Lato', sans-serif; color: var(--black); }
@@ -345,9 +345,10 @@
         .detail-table th:last-child, .detail-table td:last-child { text-align: right; }
         .check-icon { color: var(--circle-pink); margin-right: 5px; font-size: 0.8rem;}
 
-        .buy-now-btn { display: flex; justify-content: center; align-items: center; gap: 10px; width: 100%; background-color: var(--black); color: var(--white); padding: 14px 20px; text-decoration: none; border-radius: 8px; font-family: 'Lato', sans-serif; font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease; margin-top: auto; }
+        /* === TOMBOL WHATSAPP (HIJAU WHATSAPP) === */
+        .buy-now-btn { display: flex; justify-content: center; align-items: center; gap: 10px; width: 100%; background-color: #25D366; color: var(--white); padding: 14px 20px; text-decoration: none; border-radius: 8px; font-family: 'Lato', sans-serif; font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease; margin-top: auto; }
         .buy-now-btn i { font-size: 1.3rem; }
-        .buy-now-btn:hover { background-color: #25D366; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3); color: var(--white); }
+        .buy-now-btn:hover { background-color: #128C7E; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4); color: var(--white); }
 
         /* --- PRICE LIST SECTION --- */
         .price-section { background-color: #F9F8F6; } 
@@ -358,8 +359,8 @@
         .price-card-title { text-align: center; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px dashed #eaeaea; }
         .price-card-title h3 { font-family: 'Lato', sans-serif; font-size: 1.6rem; font-weight: 900; color: var(--black); letter-spacing: 2px; }
 
-        /* === KOTAK PRICE LIST HITAM === */
-        .price-accordion { scroll-margin-top: 100px; margin-bottom: 15px; background-color: var(--black); border: 1px solid #333; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: 0.5s; }
+        /* === KOTAK PRICE LIST PUTIH === */
+        .price-accordion { scroll-margin-top: 100px; margin-bottom: 15px; background-color: var(--white); border: 1px solid #eaeaea; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.02); transition: 0.5s; }
         .price-accordion.highlight-active { box-shadow: 0 0 20px rgba(216, 84, 107, 0.4); transform: scale(1.02); }
         .price-accordion:last-child { margin-bottom: 0; }
         
@@ -399,14 +400,14 @@
         }
         .price-note i { font-size: 1rem; }
 
-        .price-table-wrapper { background-color: var(--black); animation: fadeInDown 0.3s ease-in-out; padding-bottom: 10px; }
+        .price-table-wrapper { background-color: var(--white); animation: fadeInDown 0.3s ease-in-out; padding-bottom: 10px; }
         .modern-table { width: 100%; border-collapse: collapse; font-family: 'Lato', sans-serif; }
-        .modern-table thead { background-color: #1a1a1a; color: var(--white); }
-        .modern-table th { padding: 12px 10px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; text-align: center; border-bottom: 2px solid #333; }
-        .modern-table td { padding: 12px 10px; text-align: center; font-size: 0.95rem; font-weight: 700; color: var(--white); border-bottom: 1px dashed #333; }
-        .modern-table td:first-child { text-align: left; padding-left: 20px; font-weight: 600; color: #ccc; font-size: 0.85rem; }
+        .modern-table thead { background-color: #f9f9f9; color: var(--black); }
+        .modern-table th { padding: 12px 10px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; text-align: center; border-bottom: 2px solid #eaeaea; }
+        .modern-table td { padding: 12px 10px; text-align: center; font-size: 0.95rem; font-weight: 700; color: var(--dark-blue); border-bottom: 1px dashed #eaeaea; }
+        .modern-table td:first-child { text-align: left; padding-left: 20px; font-weight: 600; color: var(--gray); font-size: 0.85rem; }
         .modern-table tbody tr:last-child td { border-bottom: none; }
-        .modern-table tbody tr:hover { background-color: #111; }
+        .modern-table tbody tr:hover { background-color: #fdfdfd; }
         .price-value { color: var(--circle-pink); font-weight: 900; }
 
         /* --- CONTACT SECTION --- */
@@ -542,7 +543,7 @@
             .buy-now-btn i { font-size: 0.8rem; }
 
             /* ===================================================================================
-               === PERBAIKAN SEJAJAR MINIMALIS: KOTAK MANDIRI HITAM DI HP (UNTUK PRICE LIST) ===
+               === PERBAIKAN SEJAJAR MINIMALIS: KOTAK MANDIRI PUTIH DI HP ===
                =================================================================================== */
             .price-grid { grid-template-columns: 1fr; gap: 16px; align-items: start; } 
             .price-card { 
@@ -561,12 +562,13 @@
             .price-card-title { grid-column: span 2; margin-bottom: 5px; padding-bottom: 4px; text-align: left; padding-left: 5px; }
             .price-card-title h3 { font-size: 1.1rem; letter-spacing: 0.5px; margin: 0; color: var(--black); }
             
+            /* === KOTAK PRICE LIST PUTIH === */
             .price-accordion { 
                 margin-bottom: 0 !important; 
                 border-radius: 8px !important; 
-                background-color: var(--black) !important; 
-                border: 1px solid #333 !important;  
-                box-shadow: 0 5px 15px rgba(0,0,0,0.15) !important;                
+                background-color: var(--white) !important; 
+                border: 1px solid #f0f0f0 !important;  
+                box-shadow: 0 5px 15px rgba(0,0,0,0.05) !important;                
                 width: 100% !important;
             }
             .price-summary { 
