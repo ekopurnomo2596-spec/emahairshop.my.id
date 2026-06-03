@@ -367,7 +367,7 @@
         .price-accordion[open] .view-btn, .price-accordion[open] .share-btn { background-color: var(--white); color: var(--bright-green); }
         .price-accordion[open] .view-btn i { transform: rotate(180deg); }
 
-        /* PERUBAHAN: Catatan Harga Diubah Menjadi Kotak Peringatan Estetik (Merah/Pink) */
+        /* Kotak Peringatan Estetik PC */
         .price-note { 
             display: flex; 
             justify-content: center; 
@@ -552,9 +552,16 @@
             .view-btn { font-size: 0.5rem; padding: 4px 10px; }
             .share-btn { width: 22px; height: 22px; font-size: 0.6rem; }
             
-            /* Penyesuaian note di HP agar tetap proporsional */
-            .price-note { font-size: 0.6rem; padding: 8px; margin: 10px 8px; gap: 5px; }
-            .price-note i { font-size: 0.8rem; }
+            /* PERUBAHAN: Penyesuaian note di HP agar dipaksa tetap 1 baris */
+            .price-note { 
+                font-size: 0.5rem; 
+                padding: 6px 4px; 
+                margin: 10px 4px; 
+                gap: 4px; 
+                letter-spacing: 0; 
+                white-space: nowrap; /* Wajib Satu Baris */
+            }
+            .price-note i { font-size: 0.65rem; }
 
             .modern-table th { padding: 6px 2px; font-size: 0.45rem; letter-spacing: 0; }
             .modern-table td { padding: 6px 2px; font-size: 0.55rem; line-height: 1.3; }
