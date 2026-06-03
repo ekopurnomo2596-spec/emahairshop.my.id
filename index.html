@@ -345,7 +345,6 @@
         .price-card-title { text-align: center; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px dashed #eaeaea; }
         .price-card-title h3 { font-family: 'Lato', sans-serif; font-size: 1.6rem; font-weight: 900; color: var(--black); letter-spacing: 2px; }
 
-        /* Highlight untuk lipatan harga yang sedang aktif dipanggil via URL */
         .price-accordion { scroll-margin-top: 100px; margin-bottom: 15px; background-color: var(--white); border: 1px solid #eaeaea; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.02); transition: 0.5s; }
         .price-accordion.highlight-active { box-shadow: 0 0 20px rgba(216, 84, 107, 0.4); transform: scale(1.02); }
         .price-accordion:last-child { margin-bottom: 0; }
@@ -354,25 +353,38 @@
         .price-summary::-webkit-details-marker { display: none; }
         .price-summary:hover { background-color: #0d9668; }
         
-        /* Tombol Aksi di Kanan Tabel Harga */
         .summary-actions { display: flex; align-items: center; gap: 8px; }
         
         .view-btn { font-size: 0.75rem; font-weight: 700; background-color: rgba(255, 255, 255, 0.2); padding: 6px 14px; border-radius: 20px; display: flex; align-items: center; gap: 6px; letter-spacing: 0.5px; transition: all 0.3s ease; }
         .view-btn i { transition: transform 0.3s ease; }
         .price-summary:hover .view-btn { background-color: rgba(255, 255, 255, 0.35); }
         
-        /* Gaya Tombol Share */
         .share-btn { font-size: 0.85rem; background-color: rgba(255, 255, 255, 0.2); width: 30px; height: 30px; border-radius: 50%; display: flex; justify-content: center; align-items: center; transition: all 0.3s ease; }
         .price-summary:hover .share-btn { background-color: rgba(255, 255, 255, 0.35); }
         .share-btn:hover { background-color: var(--circle-pink) !important; color: var(--white) !important; transform: scale(1.1); }
         .share-btn:active { transform: scale(0.9); }
 
-        /* Efek Saat Accordion Terbuka */
         .price-accordion[open] .view-btn, .price-accordion[open] .share-btn { background-color: var(--white); color: var(--bright-green); }
         .price-accordion[open] .view-btn i { transform: rotate(180deg); }
 
-        /* Catatan Harga Minimalis */
-        .price-note { display: block; text-align: right; font-size: 0.65rem; color: var(--gray); font-style: italic; padding: 10px 15px 5px 0; }
+        /* PERUBAHAN: Catatan Harga Diubah Menjadi Kotak Peringatan Estetik (Merah/Pink) */
+        .price-note { 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            gap: 8px;
+            background-color: var(--circle-pink); 
+            color: var(--white); 
+            font-size: 0.75rem; 
+            font-weight: 800; 
+            padding: 8px 15px; 
+            margin: 15px; 
+            border-radius: 6px; 
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(216, 84, 107, 0.3);
+        }
+        .price-note i { font-size: 1rem; }
 
         .price-table-wrapper { background-color: var(--white); animation: fadeInDown 0.3s ease-in-out; padding-bottom: 10px; }
         .modern-table { width: 100%; border-collapse: collapse; font-family: 'Lato', sans-serif; }
@@ -540,8 +552,12 @@
             .view-btn { font-size: 0.5rem; padding: 4px 10px; }
             .share-btn { width: 22px; height: 22px; font-size: 0.6rem; }
             
+            /* Penyesuaian note di HP agar tetap proporsional */
+            .price-note { font-size: 0.6rem; padding: 8px; margin: 10px 8px; gap: 5px; }
+            .price-note i { font-size: 0.8rem; }
+
             .modern-table th { padding: 6px 2px; font-size: 0.45rem; letter-spacing: 0; }
-            .modern-table td { padding: 6px 2px; font-size: 0.55rem; line-height: 1.3; } /* Font sedikit dibesarkan dari sblmnya */
+            .modern-table td { padding: 6px 2px; font-size: 0.55rem; line-height: 1.3; }
             .modern-table td:first-child { padding-left: 2px; font-size: 0.5rem; }
 
             .contact-cta { margin-top: 15px; padding: 12px 8px; }
@@ -1016,7 +1032,7 @@
                         </div>
                     </summary>
                     <div class="price-table-wrapper">
-                        <span class="price-note">* All prices are per 100 grams</span>
+                        <div class="price-note"><i class="fa-solid fa-circle-exclamation"></i> IMPORTANT: All prices are per 100 grams</div>
                         <table class="modern-table">
                             <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
                             <tbody>
@@ -1041,7 +1057,7 @@
                         </div>
                     </summary>
                     <div class="price-table-wrapper">
-                        <span class="price-note">* All prices are per 100 grams</span>
+                        <div class="price-note"><i class="fa-solid fa-circle-exclamation"></i> IMPORTANT: All prices are per 100 grams</div>
                         <table class="modern-table">
                             <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
                             <tbody>
@@ -1071,7 +1087,7 @@
                         </div>
                     </summary>
                     <div class="price-table-wrapper">
-                        <span class="price-note">* All prices are per 100 grams</span>
+                        <div class="price-note"><i class="fa-solid fa-circle-exclamation"></i> IMPORTANT: All prices are per 100 grams</div>
                         <table class="modern-table">
                             <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
                             <tbody>
@@ -1096,7 +1112,7 @@
                         </div>
                     </summary>
                     <div class="price-table-wrapper">
-                        <span class="price-note">* All prices are per 100 grams</span>
+                        <div class="price-note"><i class="fa-solid fa-circle-exclamation"></i> IMPORTANT: All prices are per 100 grams</div>
                         <table class="modern-table">
                             <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
                             <tbody>
@@ -1126,7 +1142,7 @@
                         </div>
                     </summary>
                     <div class="price-table-wrapper">
-                        <span class="price-note">* All prices are per 100 grams</span>
+                        <div class="price-note"><i class="fa-solid fa-circle-exclamation"></i> IMPORTANT: All prices are per 100 grams</div>
                         <table class="modern-table">
                             <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
                             <tbody>
@@ -1151,7 +1167,7 @@
                         </div>
                     </summary>
                     <div class="price-table-wrapper">
-                        <span class="price-note">* All prices are per 100 grams</span>
+                        <div class="price-note"><i class="fa-solid fa-circle-exclamation"></i> IMPORTANT: All prices are per 100 grams</div>
                         <table class="modern-table">
                             <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
                             <tbody>
@@ -1181,7 +1197,7 @@
                         </div>
                     </summary>
                     <div class="price-table-wrapper">
-                        <span class="price-note">* All prices are per 100 grams</span>
+                        <div class="price-note"><i class="fa-solid fa-circle-exclamation"></i> IMPORTANT: All prices are per 100 grams</div>
                         <table class="modern-table">
                             <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
                             <tbody>
@@ -1206,7 +1222,7 @@
                         </div>
                     </summary>
                     <div class="price-table-wrapper">
-                        <span class="price-note">* All prices are per 100 grams</span>
+                        <div class="price-note"><i class="fa-solid fa-circle-exclamation"></i> IMPORTANT: All prices are per 100 grams</div>
                         <table class="modern-table">
                             <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
                             <tbody>
@@ -1236,7 +1252,7 @@
                         </div>
                     </summary>
                     <div class="price-table-wrapper">
-                        <span class="price-note">* All prices are per 100 grams</span>
+                        <div class="price-note"><i class="fa-solid fa-circle-exclamation"></i> IMPORTANT: All prices are per 100 grams</div>
                         <table class="modern-table">
                             <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
                             <tbody>
@@ -1261,7 +1277,7 @@
                         </div>
                     </summary>
                     <div class="price-table-wrapper">
-                        <span class="price-note">* All prices are per 100 grams</span>
+                        <div class="price-note"><i class="fa-solid fa-circle-exclamation"></i> IMPORTANT: All prices are per 100 grams</div>
                         <table class="modern-table">
                             <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
                             <tbody>
@@ -1291,7 +1307,7 @@
                         </div>
                     </summary>
                     <div class="price-table-wrapper">
-                        <span class="price-note">* All prices are per 100 grams</span>
+                        <div class="price-note"><i class="fa-solid fa-circle-exclamation"></i> IMPORTANT: All prices are per 100 grams</div>
                         <table class="modern-table">
                             <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
                             <tbody>
@@ -1316,7 +1332,7 @@
                         </div>
                     </summary>
                     <div class="price-table-wrapper">
-                        <span class="price-note">* All prices are per 100 grams</span>
+                        <div class="price-note"><i class="fa-solid fa-circle-exclamation"></i> IMPORTANT: All prices are per 100 grams</div>
                         <table class="modern-table">
                             <thead><tr><th>Length</th><th>Natural</th><th>Color</th></tr></thead>
                             <tbody>
@@ -1451,19 +1467,16 @@
         // LOGIKA DEEP LINKING (Buka Tabel Harga via URL)
         // ----------------------------------------------------
         
-        // 1. Fungsi saat tombol share diklik
         document.querySelectorAll('.share-btn').forEach(btn => {
             btn.addEventListener('click', function(e) {
                 e.preventDefault();
-                e.stopPropagation(); // Mencegah tabel terbuka/tertutup saat mengklik icon share
+                e.stopPropagation(); 
                 
                 const accordion = this.closest('details');
                 const targetId = accordion.id;
                 const shareUrl = window.location.origin + window.location.pathname + '#' + targetId;
 
-                // Salin ke clipboard
                 navigator.clipboard.writeText(shareUrl).then(() => {
-                    // Animasi ikon berubah menjadi centang
                     const icon = this.querySelector('i');
                     icon.classList.remove('fa-share-nodes');
                     icon.classList.add('fa-check');
@@ -1478,7 +1491,6 @@
             });
         });
 
-        // 2. Fungsi membaca URL saat web baru saja dimuat
         window.addEventListener('DOMContentLoaded', () => {
             if (window.location.hash) {
                 const targetId = window.location.hash.substring(1); 
