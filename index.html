@@ -232,17 +232,36 @@
 
         .preview-right-grid { display: grid; grid-template-rows: 1fr 1fr; gap: 20px; height: 480px; }
 
-        /* --- DUA KOTAK BANNER --- */
+        /* --- DUA KOTAK BANNER (HIJAU TERANG & MINIMALIS) --- */
         .top-banners { display: flex; justify-content: center; gap: 25px; width: 100%; max-width: 1100px; flex-wrap: wrap; }
-        .banner-box { display: flex; align-items: center; padding: 25px 30px; border-radius: 12px; flex: 1; min-width: 300px; text-align: left; gap: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: transform 0.3s; }
-        .banner-box:hover { transform: translateY(-4px); }
-        .banner-box i { font-size: 2.8rem; }
-        .banner-box h4 { font-family: 'Lato', sans-serif; font-weight: 700; font-size: 1.05rem; margin-bottom: 2px; color: var(--white); letter-spacing: 0.5px; text-transform: uppercase; }
-        .banner-box p { font-family: 'Lato', sans-serif; font-size: 0.85rem; color: rgba(255, 255, 255, 0.85); margin: 0; line-height: 1.4; }
-        .box-dark { background-color: var(--black); }
-        .box-dark i { color: var(--circle-pink); } 
-        .box-pink { background-color: var(--circle-pink); }
-        .box-pink i { color: var(--white); } 
+        .banner-box { 
+            display: flex; 
+            flex-direction: row; 
+            align-items: center; 
+            padding: 25px 30px; 
+            border-radius: 12px; 
+            flex: 1; 
+            min-width: 300px; 
+            background-color: var(--bright-green); 
+            color: var(--white);
+            box-shadow: 0 5px 15px rgba(16, 185, 129, 0.15); 
+            transition: transform 0.3s, box-shadow 0.3s; 
+        }
+        .banner-box:hover { 
+            transform: translateY(-4px); 
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3); 
+        }
+        .banner-box i { 
+            font-size: 2.8rem; 
+            color: var(--white); 
+        }
+        .banner-content {
+            flex: 1; /* Teks mengambil semua sisa ruang */
+            text-align: center; /* Membuat teks di tengah */
+            padding-right: 2.8rem; /* Trik visual: mengimbangi ukuran ikon agar teks benar-benar di tengah kotak */
+        }
+        .banner-box h4 { font-family: 'Lato', sans-serif; font-weight: 700; font-size: 1.05rem; margin-bottom: 5px; color: var(--white); letter-spacing: 0.5px; text-transform: uppercase; }
+        .banner-box p { font-family: 'Lato', sans-serif; font-size: 0.85rem; color: rgba(255, 255, 255, 0.9); margin: 0; line-height: 1.4; }
 
         /* --- 4 HIGHLIGHTS BOX --- */
         .highlights { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; width: 100%; max-width: 1100px; }
@@ -316,6 +335,7 @@
         .price-accordion { margin-bottom: 15px; background-color: var(--white); border: 1px solid #eaeaea; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
         .price-accordion:last-child { margin-bottom: 0; }
         
+        /* Warna kotak accordion menjadi hijau terang */
         .price-summary { background-color: var(--bright-green); color: var(--white); font-size: 0.95rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; padding: 12px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; transition: background-color 0.3s; }
         .price-summary::-webkit-details-marker { display: none; }
         .price-summary:hover { background-color: #0d9668; }
@@ -417,6 +437,14 @@
             .preview-right-grid .preview-box { height: 100%; min-height: 0; }
             .preview-right-grid .preview-box img { height: 100%; }
             .top-banners { display: flex; flex-direction: column; gap: 15px; width: 100%; }
+            
+            /* Penyesuaian Banner Box di HP agar tetap minimalis */
+            .banner-box { padding: 20px 15px; }
+            .banner-box i { font-size: 2.2rem; }
+            .banner-content { padding-right: 2.2rem; } /* Menyeimbangkan ukuran ikon */
+            .banner-box h4 { font-size: 0.95rem; }
+            .banner-box p { font-size: 0.8rem; }
+
             .highlights { display: grid; grid-template-columns: 1fr 1fr; gap: 40px 20px; width: 100%; }
             .highlight-box { min-width: unset; flex: unset; }
             .highlight-box h4 { font-size: 1rem; font-weight: 800; }
@@ -542,17 +570,18 @@
             </div>
         </div>
 
+        <!-- DUA KOTAK BANNER (HIJAU TERANG & MINIMALIS) -->
         <div class="top-banners">
-            <div class="banner-box box-dark" data-aos="fade-up" data-aos-delay="100">
+            <div class="banner-box" data-aos="fade-up" data-aos-delay="100">
                 <i class="fa-solid fa-globe"></i>
-                <div>
+                <div class="banner-content">
                     <h4>SHIPPING WORLDWIDE</h4>
                     <p>Export to 15+ countries around the world</p>
                 </div>
             </div>
-            <div class="banner-box box-pink" data-aos="fade-up" data-aos-delay="200">
+            <div class="banner-box" data-aos="fade-up" data-aos-delay="200">
                 <i class="fa-solid fa-award"></i>
-                <div>
+                <div class="banner-content">
                     <h4>TOP SUPPLIER INDONESIA</h4>
                     <p>8+ years experience in hair extension industry</p>
                 </div>
@@ -614,7 +643,7 @@
                             <table class="detail-table">
                                 <tr><th>Information</th><th>Description</th></tr>
                                 <tr><td>Hair Type</td><td>100% Human Remy Hair</td></tr>
-                                <tr><td>Hair Quality</td><td>Double Drawn / Super Double Drawn</td></tr>
+                                <tr><td>Hair Quality</td><td>Double / Super Double</td></tr>
                                 <tr><td>Length</td><td>11"–28"</td></tr>
                             </table>
                         </div>
@@ -658,7 +687,7 @@
                             <table class="detail-table">
                                 <tr><th>Information</th><th>Description</th></tr>
                                 <tr><td>Hair Type</td><td>100% Human Remy Hair</td></tr>
-                                <tr><td>Hair Quality</td><td>Double Drawn / Super Double Drawn</td></tr>
+                                <tr><td>Hair Quality</td><td>Double / Super Double</td></tr>
                                 <tr><td>Length</td><td>11"–28"</td></tr>
                             </table>
                         </div>
@@ -701,7 +730,7 @@
                             <table class="detail-table">
                                 <tr><th>Information</th><th>Description</th></tr>
                                 <tr><td>Hair Type</td><td>100% Human Remy Hair</td></tr>
-                                <tr><td>Hair Quality</td><td>Double Drawn / Super Double Drawn</td></tr>
+                                <tr><td>Hair Quality</td><td>Double / Super Double</td></tr>
                                 <tr><td>Length</td><td>11"–28"</td></tr>
                             </table>
                         </div>
@@ -745,7 +774,7 @@
                             <table class="detail-table">
                                 <tr><th>Information</th><th>Description</th></tr>
                                 <tr><td>Hair Type</td><td>100% Human Remy Hair</td></tr>
-                                <tr><td>Hair Quality</td><td>Double Drawn / Super Double Drawn</td></tr>
+                                <tr><td>Hair Quality</td><td>Double / Super Double</td></tr>
                                 <tr><td>Length</td><td>11"–28"</td></tr>
                             </table>
                         </div>
@@ -789,7 +818,7 @@
                             <table class="detail-table">
                                 <tr><th>Information</th><th>Description</th></tr>
                                 <tr><td>Hair Type</td><td>100% Human Remy Hair</td></tr>
-                                <tr><td>Hair Quality</td><td>Double Drawn / Super Double Drawn</td></tr>
+                                <tr><td>Hair Quality</td><td>Double / Super Double</td></tr>
                                 <tr><td>Length</td><td>11"–28"</td></tr>
                             </table>
                         </div>
@@ -832,7 +861,7 @@
                             <table class="detail-table">
                                 <tr><th>Information</th><th>Description</th></tr>
                                 <tr><td>Hair Type</td><td>100% Human Remy Hair</td></tr>
-                                <tr><td>Hair Quality</td><td>Double Drawn / Super Double Drawn</td></tr>
+                                <tr><td>Hair Quality</td><td>Double / Super Double</td></tr>
                                 <tr><td>Length</td><td>11"–28"</td></tr>
                             </table>
                         </div>
@@ -875,7 +904,7 @@
                             <table class="detail-table">
                                 <tr><th>Information</th><th>Description</th></tr>
                                 <tr><td>Hair Type</td><td>100% Human Remy Hair</td></tr>
-                                <tr><td>Hair Quality</td><td>Double Drawn / Super Double Drawn</td></tr>
+                                <tr><td>Hair Quality</td><td>Double / Super Double</td></tr>
                                 <tr><td>Length</td><td>11"–28"</td></tr>
                             </table>
                         </div>
@@ -918,7 +947,7 @@
                             <table class="detail-table">
                                 <tr><th>Information</th><th>Description</th></tr>
                                 <tr><td>Hair Type</td><td>100% Human Remy Hair</td></tr>
-                                <tr><td>Hair Quality</td><td>Double Drawn / Super Double Drawn</td></tr>
+                                <tr><td>Hair Quality</td><td>Double / Super Double</td></tr>
                                 <tr><td>Length</td><td>11"–28"</td></tr>
                             </table>
                         </div>
