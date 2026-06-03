@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EMAHAIRSHOP</title>
+    <title>Emahairshop | Premium Human Hair Extensions</title>
     
     <!-- === SEO META TAGS === -->
     <meta name="description" content="Top Quality Human Hair Extension Supplier & Manufacturer from Indonesia. Worldwide shipping for Hair Bulk, Weft, Tape, Keratin, and Wigs. 100% Human Remy Hair.">
@@ -16,6 +16,19 @@
     <meta property="og:image" content="https://www.emahairshop.my.id/hairbulk2.webp">
     <meta property="og:url" content="https://www.emahairshop.my.id/">
     <meta property="og:type" content="website">
+
+    <!-- ====================================================================
+         === GOOGLE ANALYTICS (PELACAK PENGUNJUNG, FB/IG, & ASAL NEGARA) ===
+         ==================================================================== -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-W5HY2PJ62X"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-W5HY2PJ62X');
+    </script>
     
     <!-- Favicon SVG Kustom -->
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='white'/%3E%3Cline x1='15' y1='62' x2='45' y2='62' stroke='%23111' stroke-width='4'/%3E%3Ctext x='115' y='68' font-family='sans-serif' font-weight='900' font-size='16' text-anchor='middle' letter-spacing='1' fill='%23111'%3EEXTENSION%3C/text%3E%3Ctext x='100' y='110' font-family='sans-serif' font-weight='900' font-size='24' text-anchor='middle' fill='%23111'%3EEMAHAIRSHOP%3C/text%3E%3Cline x1='15' y1='130' x2='185' y2='130' stroke='%23111' stroke-width='4'/%3E%3Ctext x='100' y='165' font-family='sans-serif' font-weight='900' font-size='20' text-anchor='middle' fill='%23D4AF37'%3E2019%3C/text%3E%3C/svg%3E" type="image/svg+xml">
@@ -367,7 +380,6 @@
         .price-accordion[open] .view-btn, .price-accordion[open] .share-btn { background-color: var(--white); color: var(--bright-green); }
         .price-accordion[open] .view-btn i { transform: rotate(180deg); }
 
-        /* Kotak Peringatan Estetik PC */
         .price-note { 
             display: flex; 
             justify-content: center; 
@@ -552,14 +564,13 @@
             .view-btn { font-size: 0.5rem; padding: 4px 10px; }
             .share-btn { width: 22px; height: 22px; font-size: 0.6rem; }
             
-            /* PERUBAHAN: Penyesuaian note di HP agar dipaksa tetap 1 baris */
             .price-note { 
                 font-size: 0.5rem; 
                 padding: 6px 4px; 
                 margin: 10px 4px; 
                 gap: 4px; 
                 letter-spacing: 0; 
-                white-space: nowrap; /* Wajib Satu Baris */
+                white-space: nowrap; 
             }
             .price-note i { font-size: 0.65rem; }
 
@@ -1425,19 +1436,14 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script>
-        // Animasi AOS
         AOS.init({ duration: 800, easing: 'ease-in-out', once: false, mirror: true, offset: 100 });
 
-        // Inisialisasi Swiper
         var swiper = new Swiper(".mySwiper", {
             loop: true, 
             navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
             pagination: { el: ".swiper-pagination", clickable: true }
         });
 
-        // ----------------------------------------------------
-        // HAMBURGER MENU & SMOOTH SCROLL LOGIC
-        // ----------------------------------------------------
         const mobileMenu = document.getElementById('mobile-menu');
         const navLinksContainer = document.querySelector('.nav-links');
         const navIcon = mobileMenu.querySelector('i');
@@ -1470,10 +1476,6 @@
             });
         });
 
-        // ----------------------------------------------------
-        // LOGIKA DEEP LINKING (Buka Tabel Harga via URL)
-        // ----------------------------------------------------
-        
         document.querySelectorAll('.share-btn').forEach(btn => {
             btn.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -1517,9 +1519,6 @@
             }
         });
 
-        // ----------------------------------------------------
-        // LOGIKA LAINNYA
-        // ----------------------------------------------------
         const backToTopBtn = document.getElementById('backToTop');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 400) { backToTopBtn.classList.add('show'); } 
