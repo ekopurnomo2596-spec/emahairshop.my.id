@@ -5,24 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EMAHAIRSHOP</title>
     
-    <!-- === MENCEGAH BROWSER MENERJEMAHKAN OTOMATIS (MENCEGAH TEKS KELUAR/BERANTAKAN) === -->
     <meta name="google" content="notranslate">
     
-    <!-- === SEO META TAGS === -->
     <meta name="description" content="Top Quality Human Hair Extension Supplier & Manufacturer from Indonesia. Worldwide shipping for Hair Bulk, Weft, Tape, Keratin, and Wigs. 100% Human Remy Hair.">
     <meta name="keywords" content="Supplier Human Hair Indonesia, Hair Extension, Human Hair, Hair Bulk, Hair Weft, Hair Tape, Keratin Hair, Nano Ring, Genius Weft, Wholesale Hair Supplier, Emahairshop, Indonesia">
     <meta name="author" content="Emahairshop">
 
-    <!-- === OPEN GRAPH (OG) / WHATSAPP / FACEBOOK PREVIEW TAGS === -->
     <meta property="og:title" content="Emahairshop | Supplier Hair Indonesia">
     <meta property="og:description" content="Wholesale Supplier & Manufacturer of 100% Human Hair Extensions from Indonesia. Exporting to 15+ Countries Worldwide.">
     <meta property="og:url" content="https://www.emahairshop.my.id/">
     <meta property="og:type" content="website">
 
-    <!-- ====================================================================
-         === GOOGLE ANALYTICS (PELACAK PENGUNJUNG, FB/IG, & ASAL NEGARA) ===
-         ==================================================================== -->
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-W5HY2PJ62X"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -32,7 +25,6 @@
       gtag('config', 'G-W5HY2PJ62X');
     </script>
     
-    <!-- Favicon SVG Kustom -->
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='white'/%3E%3Cline x1='15' y1='62' x2='45' y2='62' stroke='%23111' stroke-width='4'/%3E%3Ctext x='115' y='68' font-family='sans-serif' font-weight='900' font-size='16' text-anchor='middle' letter-spacing='1' fill='%23111'%3EEXTENSION%3C/text%3E%3Ctext x='100' y='110' font-family='sans-serif' font-weight='900' font-size='24' text-anchor='middle' fill='%23111'%3EEMAHAIRSHOP%3C/text%3E%3Cline x1='15' y1='130' x2='185' y2='130' stroke='%23111' stroke-width='4'/%3E%3Ctext x='100' y='165' font-family='sans-serif' font-weight='900' font-size='20' text-anchor='middle' fill='%23D4AF37'%3E2019%3C/text%3E%3C/svg%3E" type="image/svg+xml">
     
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,600&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
@@ -58,6 +50,11 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px; /* Jarak aman scroll desktop */
+        }
+
         body {
             font-family: 'Lato', sans-serif;
             background-color: var(--white);
@@ -65,7 +62,6 @@
             line-height: 1.8;
             font-weight: 300;
             overflow-x: hidden;
-            scroll-behavior: smooth;
         }
 
         h1, h2, h3 {
@@ -173,6 +169,9 @@
             transition: 0.3s;
         }
         .menu-toggle:hover { color: var(--circle-pink); }
+        
+        /* Tombol Menu Khusus HP disembunyikan di PC */
+        .mobile-quick-nav { display: none; }
 
         /* --- ABOUT SECTION --- */
         .about { 
@@ -519,34 +518,50 @@
            --- MEDIA QUERY RESPONSIVE (TAMPILAN KHUSUS HP) --- 
            ======================================================= */
         @media (max-width: 768px) {
-            .menu-toggle { display: block; }
+            html { scroll-padding-top: 135px; } /* Mencegah judul tertutup header baru yang membesar */
+
+            /* Mengubah struktur Navbar HP menjadi 2 baris (Logo atas, 3 Tombol Bawah) */
+            nav { flex-direction: column; padding: 12px 5%; gap: 15px; }
+            .logo { transform: scale(0.9); transform-origin: center; margin: 0 auto; }
             
-            .nav-links { 
-                position: absolute; 
-                top: 100%; 
-                left: 0; 
+            /* MENGHILANGKAN GARIS TIGA DAN MENU DROPDOWN */
+            .menu-toggle { display: none !important; }
+            .nav-links { display: none !important; }
+            
+            /* MENAMPILKAN TOMBOL PINTASAN KHUSUS HP */
+            .mobile-quick-nav { 
+                display: flex; 
                 width: 100%; 
-                background-color: rgba(255, 255, 255, 0.98); 
-                flex-direction: column; 
-                align-items: center;
-                padding: 0; 
-                box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-                max-height: 0; 
-                overflow: hidden;
-                transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
+                justify-content: space-between; 
+                gap: 8px; 
             }
+            .mobile-quick-nav a { 
+                flex: 1; 
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                background-color: var(--black); 
+                color: var(--white); 
+                padding: 8px 2px; 
+                border-radius: 8px; 
+                font-size: 0.65rem; 
+                font-weight: 800; 
+                text-decoration: none; 
+                letter-spacing: 0.5px;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            }
+            .mobile-quick-nav a i { font-size: 1.1rem; margin-bottom: 4px; color: var(--bright-green); }
+            .mobile-quick-nav a:active { background-color: var(--bright-green); transform: translateY(2px);}
+            .mobile-quick-nav a:active i { color: var(--white); }
+
+            /* MENGHILANGKAN BAGIAN HIGHLIGHTS DI HP AGAR LEBIH CEPAT KE PRODUK */
+            .highlights { display: none !important; }
             
-            .nav-links.active { max-height: 400px; padding: 20px 0; border-top: 1px solid #f0f0f0; }
-            .nav-links li { margin: 12px 0; width: 100%; text-align: center; }
-            .nav-links a { font-size: 1rem; padding: 12px 30px; display: block; background-color: transparent; color: var(--black); }
-            .nav-links a:hover { background-color: var(--circle-pink); color: var(--white); border-radius: 0;}
+            /* Menyesuaikan ruang kosong paling atas karena nav lebih tinggi */
+            .about { padding-top: 140px; gap: 50px; } 
 
-            .logo { transform: scale(0.85); transform-origin: left center; }
-            nav { padding: 15px 5%; justify-content: space-between; }
-
-            .about { padding-top: 100px; gap: 50px; }
             .product-preview-gallery { grid-template-columns: 1fr; gap: 15px; }
-            
             .preview-box { padding: 10px; border-radius: 8px; }
             .preview-overlay { top: 10px; left: 10px; width: calc(100% - 20px); height: calc(100% - 20px); }
             
@@ -565,9 +580,6 @@
             .banner-box h4 { font-size: 0.85rem; margin-bottom: 3px; letter-spacing: 0; }
             .banner-box p { font-size: 0.75rem; line-height: 1.3; }
 
-            /* MENGHILANGKAN BAGIAN HIGHLIGHTS DI HP AGAR LEBIH CEPAT KE PRODUK */
-            .highlights { display: none !important; }
-            
             .back-to-top { bottom: 20px; right: 20px; width: 42px; height: 42px; }
             .lightbox-close { top: 20px; right: 25px; font-size: 38px; }
             .lightbox-arrow { padding: 10px; font-size: 30px; }
@@ -753,12 +765,17 @@
             <li><a href="#contact">CONTACT</a></li>
         </ul>
 
+        <div class="mobile-quick-nav">
+            <a href="#products"><i class="fa-solid fa-box"></i> PRODUK</a>
+            <a href="#pricelist"><i class="fa-solid fa-tags"></i> HARGA</a>
+            <a href="#quote"><i class="fa-solid fa-calculator"></i> KALKULATOR</a>
+        </div>
+
         <div class="menu-toggle" id="mobile-menu">
             <i class="fa-solid fa-bars"></i>
         </div>
     </nav>
 
-    <!-- SECTION 1: ABOUT -->
     <section id="about" class="about">
         <div class="product-preview-gallery">
             <div class="preview-box preview-left" data-aos="fade-right">
@@ -816,7 +833,6 @@
         </div>
     </section>
 
-    <!-- SECTION 2: PRODUK -->
     <section id="products" class="produk">
         <div class="produk-header" data-aos="fade-up">
             <span class="sub-title">Our Products</span>
@@ -1088,7 +1104,6 @@
         </div>
     </section>
 
-    <!-- SECTION 3: PRICE LIST -->
     <section id="pricelist" class="price-section">
         <div class="produk-header" data-aos="fade-down">
             <span class="sub-title">Wholesale Rates</span>
@@ -1097,11 +1112,9 @@
         </div>
 
         <div class="price-grid">
-            <!-- PRICE: HAIR BULK -->
             <div class="price-card" data-aos="fade-up">
                 <div class="price-card-title"><h3>HAIR BULK</h3></div>
                 
-                <!-- Kotak Akordion untuk DOUBLE DRAWN -->
                 <details class="price-accordion" id="price-hairbulk-dd">
                     <summary class="price-summary">
                         <span>Double Drawn</span>
@@ -1127,7 +1140,6 @@
                     </div>
                 </details>
 
-                <!-- Kotak Akordion untuk SUPER DOUBLE DRAWN -->
                 <details class="price-accordion" id="price-hairbulk-sdd">
                     <summary class="price-summary">
                         <span>Super Double Drawn</span>
@@ -1154,11 +1166,9 @@
                 </details>
             </div>
 
-            <!-- PRICE: HAIR WEFT -->
             <div class="price-card" data-aos="fade-up" data-aos-delay="100">
                 <div class="price-card-title"><h3>HAIR WEFT</h3></div>
                 
-                <!-- Kotak Akordion untuk DOUBLE DRAWN -->
                 <details class="price-accordion" id="price-hairweft-dd">
                     <summary class="price-summary">
                         <span>Double Drawn</span>
@@ -1184,7 +1194,6 @@
                     </div>
                 </details>
 
-                <!-- Kotak Akordion untuk SUPER DOUBLE DRAWN -->
                 <details class="price-accordion" id="price-hairweft-sdd">
                     <summary class="price-summary">
                         <span>Super Double Drawn</span>
@@ -1211,7 +1220,6 @@
                 </details>
             </div>
 
-            <!-- PRICE: HAIR TAPE -->
             <div class="price-card" data-aos="fade-up" data-aos-delay="200">
                 <div class="price-card-title"><h3>HAIR TAPE</h3></div>
                 
@@ -1266,7 +1274,6 @@
                 </details>
             </div>
 
-            <!-- PRICE: I TIP / KERATIN -->
             <div class="price-card" data-aos="fade-up" data-aos-delay="300">
                 <div class="price-card-title"><h3>I TIP / KERATIN</h3></div>
                 
@@ -1321,7 +1328,6 @@
                 </details>
             </div>
 
-            <!-- PRICE: NANO RING -->
             <div class="price-card" data-aos="fade-up">
                 <div class="price-card-title"><h3>NANO RING</h3></div>
                 
@@ -1376,7 +1382,6 @@
                 </details>
             </div>
 
-            <!-- PRICE: GENIUS WEFT -->
             <div class="price-card" data-aos="fade-up" data-aos-delay="100">
                 <div class="price-card-title"><h3>GENIUS WEFT</h3></div>
                 
@@ -1434,9 +1439,6 @@
         </div>
     </section>
 
-    <!-- ==========================================================
-         === SECTION BARU: KALKULATOR PESANAN (QUOTE) ===
-         ========================================================== -->
     <section id="quote" class="calculator-section">
         <div class="calc-container" data-aos="fade-up">
             <div class="calc-header">
@@ -1490,7 +1492,6 @@
         </div>
     </section>
 
-    <!-- SECTION 4: KONTAK -->
     <section id="contact" class="kontak">
         <div data-aos="fade-up">
             <h2>Get In Touch</h2>
@@ -1518,9 +1519,6 @@
         </div>
     </section>
 
-    <!-- ==========================================================
-         === HTML PROACTIVE WHATSAPP POP-UP ===
-         ========================================================== -->
     <div class="wa-popup-container">
         <div class="wa-bubble" id="waBubble">
             <span class="wa-close" onclick="closeWaBubble()" title="Close">&times;</span>
@@ -1534,7 +1532,6 @@
         </div>
     </div>
 
-    <!-- ELEMEN MELAYANG: KEMBALI KE ATAS & LIGHTBOX -->
     <a href="#" id="backToTop" class="back-to-top">
         <i class="fa-solid fa-arrow-up"></i>
     </a>
@@ -1546,7 +1543,6 @@
         <span class="lightbox-arrow lightbox-next">&#10095;</span>
     </div>
 
-    <!-- SCRIPT BAWAAN -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script>
@@ -1558,29 +1554,14 @@
             pagination: { el: ".swiper-pagination", clickable: true }
         });
 
-        const mobileMenu = document.getElementById('mobile-menu');
-        const navLinksContainer = document.querySelector('.nav-links');
-        const navIcon = mobileMenu.querySelector('i');
-        const navLinks = document.querySelectorAll('.nav-links a');
+        // Hapus sebagian script lama untuk Menu Toggle karena kita sudah pakai tombol langsung di HP
+        // agar menghindari error JS jika tombolnya tidak ditemukan.
 
-        mobileMenu.addEventListener('click', () => {
-            navLinksContainer.classList.toggle('active');
-            if (navLinksContainer.classList.contains('active')) {
-                navIcon.classList.remove('fa-bars');
-                navIcon.classList.add('fa-xmark');
-            } else {
-                navIcon.classList.remove('fa-xmark');
-                navIcon.classList.add('fa-bars');
-            }
-        });
-
-        navLinks.forEach(anchor => {
+        // Mendaftarkan tombol pintasan HP untuk scroll mulus
+        const allNavLinks = document.querySelectorAll('.nav-links a, .mobile-quick-nav a');
+        allNavLinks.forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                navLinksContainer.classList.remove('active');
-                navIcon.classList.remove('fa-xmark');
-                navIcon.classList.add('fa-bars');
-
                 const targetID = this.getAttribute('href');
                 if (targetID === '#') {
                     window.scrollTo({ top: 0, behavior: 'smooth' });
