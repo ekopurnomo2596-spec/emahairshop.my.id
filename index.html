@@ -103,6 +103,15 @@
             opacity: 1;
         }
 
+        .logo.hide-logo {
+            max-height: 0;
+            opacity: 0;
+            margin: 0 !important;
+            padding: 0 !important;
+            transform: scale(0.5);
+            border: none;
+        }
+
         .logo-top {
             display: flex;
             align-items: center;
@@ -353,8 +362,6 @@
         /* === TOMBOL ORDER FORM PADA PRODUK === */
         .buy-now-btn { display: flex; justify-content: center; align-items: center; gap: 10px; width: 100%; background-color: var(--black); color: var(--white); padding: 14px 20px; text-decoration: none; border-radius: 8px; font-family: 'Lato', sans-serif; font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease; margin-top: auto; cursor: pointer; border: none; }
         .buy-now-btn i { font-size: 1.3rem; }
-        
-        /* EFEK JIKA DIKLIK / HOVER JADI HIJAU */
         .buy-now-btn:hover, .buy-now-btn:active { background-color: #25D366; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); color: var(--white); }
 
         /* ========================================================================
@@ -458,7 +465,7 @@
         .back-to-top.show { opacity: 1; visibility: visible; }
         .back-to-top:hover { background-color: var(--black); transform: translateY(-4px); color: var(--white); }
 
-        /* --- LIGHTBOX --- */
+        /* --- LIGHTBOX (IMAGE ZOOM) --- */
         .lightbox { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease-in-out; }
         .lightbox.show { display: flex; opacity: 1; }
         .lightbox-content { max-width: 90%; max-height: 85%; border-radius: 8px; transform: scale(0.7); transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
@@ -499,7 +506,7 @@
             .quick-nav a { 
                 flex: 1; 
                 display: flex;
-                flex-direction: row; /* Membuat ikon dan teks jadi 1 baris */
+                flex-direction: row; 
                 align-items: center;
                 justify-content: center;
                 background-color: var(--black); 
@@ -512,7 +519,7 @@
                 letter-spacing: 0.5px;
                 box-shadow: 0 4px 10px rgba(0,0,0,0.1);
                 gap: 5px;
-                white-space: nowrap; /* Teks tidak akan turun ke bawah */
+                white-space: nowrap; 
             }
             .quick-nav a i { font-size: 0.8rem; margin-bottom: 0; color: var(--bright-green); }
             .quick-nav a:active { background-color: var(--bright-green); transform: translateY(2px);}
@@ -573,22 +580,8 @@
             }
             .buy-now-btn i { font-size: 0.8rem; }
 
-            /* ===================================================================================
-               === PERBAIKAN TAMPILAN HP: PRICE LIST ===
-               =================================================================================== */
             .price-grid { gap: 20px; grid-template-columns: 1fr; } 
-            
-            .price-card { 
-                padding: 0 !important; 
-                border-radius: 0; 
-                display: grid;
-                grid-template-columns: repeat(2, minmax(0, 1fr)); 
-                gap: 10px;
-                align-items: start; 
-                background-color: transparent !important; 
-                box-shadow: none !important;
-                border: none !important;
-            }
+            .price-card { padding: 0 !important; border-radius: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; align-items: start; background-color: transparent !important; box-shadow: none !important; border: none !important; }
             .price-card::before { display: none; } 
             
             .price-card-title { grid-column: span 2; margin-bottom: 2px; padding-bottom: 5px; border-bottom: 2px solid var(--black); text-align: center; padding-left: 0; }
@@ -607,25 +600,20 @@
             .modern-table td { padding: 6px 2px; font-size: 0.55rem; line-height: 1.3; }
             .modern-table td:first-child { padding-left: 6px; font-size: 0.5rem; white-space: normal;}
             
-            /* ===================================================================================
-               === PERBAIKAN TAMPILAN POPUP & KALKULATOR DI HP ===
-               =================================================================================== */
+            /* KALKULATOR HP */
             .calculator-section { padding: 60px 3%; overflow: hidden; } 
             .calc-container { padding: 20px 15px; width: 100%; box-sizing: border-box; } 
-            
             .calc-form { grid-template-columns: 1fr; gap: 15px; width: 100%; box-sizing: border-box;} 
             .calc-full { grid-column: span 1; } 
-            
             .calc-group label { font-size: 0.75rem; }
             .calc-group select, .calc-group input { padding: 10px 10px; font-size: 0.8rem; width: 100%; box-sizing: border-box; }
-            
             .calc-header h3 { font-size: 1.3rem; } 
             .calc-header p { font-size: 0.8rem; }
             
-            /* TOMBOL CHECKOUT & ADD ITEM JADI 1 BARIS MUTLAK & UKURANNYA SAMA DI HP */
+            /* TOMBOL CHECKOUT & ADD ITEM JADI 1 BARIS MUTLAK DI HP */
             .add-item-btn, .calc-btn { 
-                font-size: 0.7rem !important; 
-                padding: 12px 5px !important; 
+                font-size: 0.65rem !important; 
+                padding: 10px 5px !important; 
                 white-space: nowrap !important; 
                 line-height: 1 !important; 
                 width: 100%; 
@@ -645,7 +633,6 @@
         .calc-header h3 { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 1.8rem; color: var(--dark-blue); margin-bottom: 5px; }
         .calc-header p { font-size: 0.95rem; color: var(--gray); margin-bottom: 0; }
         
-        /* Set form 1 kolom (atas ke bawah) rapi untuk Desktop & HP */
         .calc-form { display: grid; grid-template-columns: 1fr; gap: 20px; width: 100%; box-sizing: border-box;}
         .calc-group { display: flex; flex-direction: column; gap: 8px; width: 100%; box-sizing: border-box;}
         .calc-group label { font-size: 0.85rem; font-weight: 700; color: var(--black); }
@@ -667,9 +654,26 @@
         .remove-item-btn { background: none; border: none; color: var(--bright-red); font-size: 1.2rem; cursor: pointer; padding: 5px; transition: 0.3s;}
         .remove-item-btn:hover { transform: scale(1.2); }
 
-        /* Tombol Kirim Akhir WA (Diubah menjadi Hijau WA) */
+        /* Tombol Kirim Akhir WA */
         .calc-btn { background-color: #25D366; color: var(--white); padding: 12px; border: none; border-radius: 8px; font-size: 0.85rem; font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: 5px; width: 100%; box-sizing: border-box; text-transform: uppercase; letter-spacing: 1px; display: flex; justify-content: center; align-items: center; gap: 8px; }
         .calc-btn:hover { background-color: #1ebe56; box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3); transform: translateY(-3px); }
+
+        /* ==========================================================
+           === CSS CHECKOUT MODAL (POP-UP KONFIRMASI PESANAN) ===
+           ========================================================== */
+        .checkout-modal-content { background:#fff; width:90%; max-width:450px; padding:25px; border-radius:12px; color:var(--black); transform: scale(1); border-top: 5px solid #25D366; text-align: left; }
+        .checkout-modal-header { border-bottom: 1px solid #eaeaea; padding-bottom: 10px; margin-bottom: 15px; }
+        .checkout-modal-header h3 { font-family: 'Lato', sans-serif; font-size: 1.3rem; font-weight: 900; color: var(--black); text-transform: none; margin: 0; }
+        .checkout-modal-body { font-size: 0.85rem; line-height: 1.5; margin-bottom: 20px; max-height: 55vh; overflow-y: auto; padding-right: 5px; }
+        .modal-item-row { display: flex; justify-content: space-between; border-bottom: 1px dashed #eaeaea; padding: 6px 0; }
+        .modal-item-title { font-weight: 700; color: var(--dark-blue); font-size: 0.9rem; margin-top: 10px; }
+        .modal-summary-row { display: flex; justify-content: space-between; padding: 4px 0; font-size: 0.9rem; }
+        .modal-total-row { display: flex; justify-content: space-between; padding: 10px 0; font-size: 1.1rem; font-weight: 900; border-top: 2px solid #eaeaea; margin-top: 10px; color: var(--black); }
+        .checkout-modal-footer { display: flex; gap: 10px; }
+        .btn-cancel { flex: 1; padding: 12px; border: 1px solid #ccc; background: #fafafa; color: var(--gray); border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.3s; font-family: 'Lato', sans-serif;}
+        .btn-cancel:hover { background: #eaeaea; color: var(--black); }
+        .btn-confirm { flex: 1; padding: 12px; border: none; background: #25D366; color: #fff; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.3s; font-family: 'Lato', sans-serif; display: flex; justify-content: center; align-items: center; gap: 8px;}
+        .btn-confirm:hover { background: #1ebe56; }
     </style>
 </head>
 <body class="notranslate">
@@ -1444,7 +1448,7 @@
             </div>
 
             <div class="calc-full">
-                <button type="button" class="calc-btn" onclick="sendQuoteWA(event)">
+                <button type="button" class="calc-btn" onclick="prepareCheckout()">
                     <i class="fa-brands fa-whatsapp"></i> Checkout To WhatsApp
                 </button>
             </div>
@@ -1484,11 +1488,28 @@
         <i class="fa-solid fa-arrow-up"></i>
     </a>
 
+    <!-- CHECKOUT MODAL (POP UP KONFIRMASI) -->
+    <div id="checkoutModal" class="lightbox">
+        <div class="lightbox-content checkout-modal-content">
+            <div class="checkout-modal-header">
+                <h3>Order Confirmation</h3>
+            </div>
+            <div class="checkout-modal-body" id="checkoutModalBody">
+                <!-- Rincian pesanan akan diisi oleh JavaScript -->
+            </div>
+            <div class="checkout-modal-footer">
+                <button onclick="closeCheckoutModal()" class="btn-cancel">Cancel</button>
+                <button onclick="proceedToWhatsApp()" class="btn-confirm"><i class="fa-brands fa-whatsapp"></i> Send Order</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- IMAGE LIGHTBOX -->
     <div id="imageLightbox" class="lightbox">
-        <span class="lightbox-close">&times;</span>
-        <span class="lightbox-arrow lightbox-prev">&#10094;</span>
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <span class="lightbox-arrow lightbox-prev" onclick="showImage(currentIndex - 1); event.stopPropagation();">&#10094;</span>
         <img class="lightbox-content" id="lightboxImg" alt="Zoomed Product Preview">
-        <span class="lightbox-arrow lightbox-next">&#10095;</span>
+        <span class="lightbox-arrow lightbox-next" onclick="showImage(currentIndex + 1); event.stopPropagation();">&#10095;</span>
     </div>
 
     <!-- SCRIPT BAWAAN -->
@@ -1543,18 +1564,16 @@
             });
         });
 
-        // Script Menyembunyikan Logo Setelah 2 Detik KHUSUS DI HP
+        // Script Animasi Logo Menghilang (KHUSUS HP)
         window.addEventListener('load', () => {
             setTimeout(() => { 
                 const mainLogo = document.getElementById('mainLogo');
-                // Mengecek apakah dibuka dari layar HP
                 if(mainLogo && window.innerWidth <= 768) {
                     mainLogo.classList.add('hide-logo');
                 }
             }, 2000); 
         });
 
-        // Script Memunculkan/Menyembunyikan Logo saat Scroll KHUSUS DI HP
         let lastScrollTop = 0;
         window.addEventListener('scroll', () => {
             if (window.innerWidth <= 768) {
@@ -1563,11 +1582,9 @@
                 
                 if (mainLogo) {
                     if (scrollTop > lastScrollTop && scrollTop > 50) {
-                        // Scroll Ke Bawah -> Sembunyikan Logo
-                        mainLogo.classList.add('hide-logo');
+                        mainLogo.classList.add('hide-logo'); // Scroll Bawah -> Sembunyikan
                     } else if (scrollTop < lastScrollTop) {
-                        // Scroll Ke Atas -> Tampilkan Logo Kembali
-                        mainLogo.classList.remove('hide-logo');
+                        mainLogo.classList.remove('hide-logo'); // Scroll Atas -> Tampilkan Kembali
                     }
                 }
                 lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; 
@@ -1629,9 +1646,6 @@
 
         const lightbox = document.getElementById('imageLightbox');
         const lightboxImg = document.getElementById('lightboxImg');
-        const closeBtn = document.querySelector('.lightbox-close');
-        const prevBtn = document.querySelector('.lightbox-prev');
-        const nextBtn = document.querySelector('.lightbox-next');
         let currentGroup = [];
         let currentIndex = 0;
 
@@ -1658,22 +1672,15 @@
             if (index >= currentGroup.length) index = 0;
             currentIndex = index;
             lightboxImg.src = currentGroup[currentIndex];
-
-            if (currentGroup.length <= 1) { prevBtn.style.display = 'none'; nextBtn.style.display = 'none'; } 
-            else { prevBtn.style.display = 'block'; nextBtn.style.display = 'block'; }
         }
-
-        prevBtn.addEventListener('click', (e) => { e.stopPropagation(); showImage(currentIndex - 1); });
-        nextBtn.addEventListener('click', (e) => { e.stopPropagation(); showImage(currentIndex + 1); });
 
         function closeLightbox() {
             lightbox.classList.remove('show');
             document.body.style.overflow = '';
         }
 
-        closeBtn.addEventListener('click', closeLightbox);
         lightbox.addEventListener('click', (e) => {
-            if (e.target !== lightboxImg && e.target !== prevBtn && e.target !== nextBtn) { closeLightbox(); }
+            if (e.target === lightbox) { closeLightbox(); }
         });
 
         let touchStartX = 0;
@@ -1685,12 +1692,10 @@
             if (touchEndX > touchStartX + 50) { showImage(currentIndex - 1); }
         }, { passive: true });
 
-
         // ===================================================================
         // === FUNGSI KALKULATOR PESANAN DINAMIS & SISTEM HARGA (VOUCHER) ===
         // ===================================================================
         
-        // 1. Data Base Harga Akurat Emahairshop (per 100 gram dalam USD)
         const pricingDB = {
             "Hair Bulk": {
                 "Double Drawn": { "16 inches": {nat:50,col:53}, "18 inches": {nat:55,col:58}, "20 inches": {nat:60,col:63}, "22 inches": {nat:64,col:66}, "24 inches": {nat:68,col:70}, "26 inches": {nat:70,col:72}, "28 inches": {nat:74,col:76} },
@@ -1719,8 +1724,8 @@
         };
 
         let quoteItems = []; 
+        let finalWhatsAppMessage = ""; // Menyimpan pesan yang sudah siap dikirim
         
-        // Memunculkan text input jika memilih warna Custom
         function toggleColorInput() {
             const val = document.getElementById('calcColorType').value;
             const group = document.getElementById('specificColorGroup');
@@ -1749,8 +1754,8 @@
                     alert("Please type the specific color you want (e.g., 4, 613, Piano).");
                     return;
                 }
-                // Jika warna belum menggunakan hashtag, tambahkan otomatis
-                if (!specificColor.startsWith('#')) {
+                // Jika warna adalah angka (misal "4" atau "613") dan belum ada hastag, tambahkan otomatis
+                if (!specificColor.startsWith('#') && !isNaN(specificColor)) {
                     specificColor = '#' + specificColor;
                 }
             }
@@ -1806,9 +1811,18 @@
             });
         }
 
-        function sendQuoteWA(event) {
-            event.preventDefault(); 
-            
+        function closeCheckoutModal() {
+            document.getElementById('checkoutModal').classList.remove('show');
+            document.body.style.overflow = '';
+        }
+
+        function proceedToWhatsApp() {
+            const encodedMessage = encodeURIComponent(finalWhatsAppMessage);
+            window.open("https://api.whatsapp.com/send/?phone=6285868872566&text=" + encodedMessage, '_blank');
+            closeCheckoutModal();
+        }
+
+        function prepareCheckout() {
             if (quoteItems.length === 0) {
                 alert("Your product list is empty. Please add at least one product using the '+ Add Product To List' button first.");
                 return;
@@ -1817,7 +1831,7 @@
             let totalWeight = 0;
             let totalPrice = 0;
             
-            // Pengelompokan berdasarkan kualitas agar rapi di WA seperti katalog
+            // Pengelompokan berdasarkan kualitas
             let groupedItems = {};
             
             quoteItems.forEach(item => {
@@ -1830,12 +1844,49 @@
                 groupedItems[item.quality].push(item);
             });
 
-            // Menyusun format WhatsApp Langsung Ke Intinya
-            let message = "";
-            
+            // Hitung Biaya Pengiriman (Setiap kelipatan 1 KG = $60)
+            let shippingFee = Math.ceil(totalWeight / 1000) * 60;
+
+            // ==========================================
+            // 1. MENYUSUN TAMPILAN DI MODAL POP-UP
+            // ==========================================
+            let modalHTML = ``;
             for (const [quality, items] of Object.entries(groupedItems)) {
-                // Kualitas dicetak tebal
-                message += `*${quality.toUpperCase()}*\n`;
+                modalHTML += `<div class="modal-item-title">${quality.toUpperCase()}</div>`;
+                items.forEach(item => {
+                    let lenStr = item.length.replace(" inches", '"');
+                    modalHTML += `
+                        <div class="modal-item-row">
+                            <span>${item.type} (${lenStr}, ${item.weight}g, ${item.displayColor})</span>
+                            <strong>$${item.price.toFixed(0)}</strong>
+                        </div>
+                    `;
+                });
+            }
+
+            modalHTML += `<div style="margin-top:15px;"></div>`;
+            modalHTML += `<div class="modal-summary-row"><span>Subtotal:</span><strong>$${totalPrice.toFixed(0)}</strong></div>`;
+            modalHTML += `<div class="modal-summary-row"><span>Shipping (${totalWeight}g):</span><strong>$${shippingFee}</strong></div>`;
+
+            let finalTotal = totalPrice + shippingFee;
+            if (totalWeight >= 1000) {
+                finalTotal -= 50;
+                modalHTML += `<div class="modal-summary-row" style="color:var(--circle-pink);"><span>Voucher 1KG:</span><strong>-$50</strong></div>`;
+            }
+
+            modalHTML += `<div class="modal-total-row"><span>Total Payment:</span><span style="color:#25D366;">$${finalTotal.toFixed(0)}</span></div>`;
+            
+            // Masukkan ke modal dan tampilkan
+            document.getElementById('checkoutModalBody').innerHTML = modalHTML;
+            document.getElementById('checkoutModal').classList.add('show');
+            document.body.style.overflow = 'hidden';
+
+            // ==========================================
+            // 2. MENYUSUN PESAN WHATSAPP YANG RAPI
+            // ==========================================
+            let message = "";
+            for (const [quality, items] of Object.entries(groupedItems)) {
+                message += `*${quality.toUpperCase()}*\n`; // Super Double Drawn / Double Drawn
                 
                 items.forEach(item => {
                     let lenStr = item.length.replace(" inches", '"');
@@ -1847,22 +1898,22 @@
             
             message += `*📋 SUMMARY*\n`;
             message += `Total Weight: ${totalWeight} Grams\n`;
+            message += `Subtotal: $${totalPrice.toFixed(0)}\n`;
+            message += `Shipping Fee: $${shippingFee}\n`;
 
             if (totalWeight >= 1000) {
-                let finalPrice = totalPrice - 50;
-                message += `Subtotal: $${totalPrice.toFixed(0)}\n`;
                 message += `🎁 *VOUCHER CLAIMED: -$50*\n`;
                 message += `(_"I want to claim the $50 voucher!"_)\n`;
-                message += `*Total Amount: $${finalPrice.toFixed(0)}*\n\n`;
+                message += `*Total Amount: $${finalTotal.toFixed(0)}*\n\n`;
             } else {
-                message += `*Total Amount: $${totalPrice.toFixed(0)}*\n\n`;
+                message += `*Total Amount: $${finalTotal.toFixed(0)}*\n\n`;
                 message += `_(Add ${1000 - totalWeight}g more to claim a $50 voucher!)_\n\n`;
             }
             
-            message += "Please confirm my order and shipping fee.";
-                            
-            const encodedMessage = encodeURIComponent(message);
-            window.open("https://api.whatsapp.com/send/?phone=6285868872566&text=" + encodedMessage, '_blank');
+            message += "Please confirm my order.";
+            
+            // Simpan ke variabel global untuk dikirim saat tombol confirm diklik
+            finalWhatsAppMessage = message;
         }
     </script>
 </body>
