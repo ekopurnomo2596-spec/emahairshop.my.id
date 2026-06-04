@@ -100,11 +100,10 @@
             text-decoration: none;
             transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
             max-height: 150px;
-            overflow: hidden;
             opacity: 1;
         }
 
-        /* Class untuk animasi menyembunyikan logo */
+        /* Class untuk animasi menyembunyikan logo setelah 2 detik */
         .logo.hide-logo {
             max-height: 0;
             opacity: 0;
@@ -370,7 +369,7 @@
         .detail-table th:last-child, .detail-table td:last-child { text-align: right; }
         .check-icon { color: var(--circle-pink); margin-right: 5px; font-size: 0.8rem;}
 
-        /* === TOMBOL WHATSAPP PADA PRODUK === */
+        /* === TOMBOL ORDER FORM PADA PRODUK === */
         .buy-now-btn { display: flex; justify-content: center; align-items: center; gap: 10px; width: 100%; background-color: var(--black); color: var(--white); padding: 14px 20px; text-decoration: none; border-radius: 8px; font-family: 'Lato', sans-serif; font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease; margin-top: auto; cursor: pointer; border: none; }
         .buy-now-btn i { font-size: 1.3rem; }
         
@@ -384,11 +383,10 @@
         
         .price-grid { 
             display: grid; 
-            /* Mengatur Kotak Hair Bulk dan Weft berdampingan (Kiri Kanan) */
             grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); 
             gap: 30px; 
             align-items: start; 
-            max-width: 1250px; /* Diperlebar agar muat bersisian */
+            max-width: 1250px; 
             margin: 0 auto; 
         }
         
@@ -401,16 +399,14 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease; 
             position: relative; 
             display: grid;
-            /* MENGATUR TOMBOL DD & SDD BERDAMPINGAN KIRI-KANAN DI DALAM KOTAK BESAR */
             grid-template-columns: repeat(2, minmax(0, 1fr)); 
             gap: 15px;
-            /* SANGAT PENTING: Membuat kotak mandiri, sebelahnya tidak ikut memanjang */
             align-items: start; 
         }
         .price-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.08); }
         .price-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: linear-gradient(90deg, var(--circle-pink), var(--black)); border-radius: 16px 16px 0 0; }
         
-        /* TULISAN JUDUL PRODUK PRICE LIST DI TENGAH (HAIR BULK, HAIR WEFT, dll) */
+        /* TULISAN JUDUL PRODUK PRICE LIST DI TENGAH */
         .price-card-title { 
             grid-column: span 2; 
             text-align: center; 
@@ -455,11 +451,11 @@
         .price-accordion[open] .view-btn, .price-accordion[open] .share-btn { background-color: var(--white); color: var(--bright-green); }
         .price-accordion[open] .view-btn i { transform: rotate(180deg); }
 
-        /* LOGIKA TEKS OPEN & CLOSE (BERUBAH OTOMATIS) */
+        /* LOGIKA TEKS OPEN & CLOSE */
         .view-text::before { content: "Open"; }
         .price-accordion[open] .view-text::before { content: "Close"; }
 
-        /* TULISAN IMPORTANT (PC WAJIB 1 BARIS TIDAK TERPOTONG) */
+        /* TULISAN IMPORTANT */
         .price-note { 
             display: flex; 
             justify-content: center; 
@@ -470,13 +466,13 @@
             font-size: 0.65rem; 
             font-weight: 800; 
             padding: 8px 5px; 
-            margin: 10px 0; /* Di PC sejajar dengan lebar tabel */
+            margin: 10px 0; 
             border-radius: 6px; 
             letter-spacing: 0.5px;
             text-transform: uppercase;
             box-shadow: 0 4px 10px rgba(216, 84, 107, 0.3);
             text-align: center;
-            white-space: nowrap !important; /* MENGUNCI MENJADI 1 BARIS MUTLAK DI PC */
+            white-space: nowrap !important; 
         }
         .price-note i { font-size: 0.8rem; }
 
@@ -545,6 +541,8 @@
 
             /* MENGEMBALIKAN LOGO KE TENGAH SESUAI PERMINTAAN AWAL (TERPUSAT) */
             nav { flex-direction: column; padding: 12px 5%; gap: 15px; height: auto; align-items: center;}
+            
+            /* Logo di HP dikembalikan ukurannya dan diset max-content agar garis tidak melar */
             .logo { transform: scale(0.9); transform-origin: center; margin: 0 auto; width: max-content; display: flex; justify-content: center; }
             
             /* MENGHILANGKAN GARIS TIGA DAN MENU DROPDOWN */
@@ -561,20 +559,20 @@
             .mobile-quick-nav a { 
                 flex: 1; 
                 display: flex;
-                flex-direction: row; 
+                flex-direction: row; /* Membuat ikon dan teks jadi 1 baris */
                 align-items: center;
                 justify-content: center;
                 background-color: var(--black); 
                 color: var(--white); 
                 padding: 8px 5px; 
                 border-radius: 6px; 
-                font-size: 0.65rem; 
+                font-size: 0.65rem; /* Font diperkecil lagi */
                 font-weight: 800; 
                 text-decoration: none; 
                 letter-spacing: 0.5px;
                 box-shadow: 0 4px 10px rgba(0,0,0,0.1);
                 gap: 5px;
-                white-space: nowrap; 
+                white-space: nowrap; /* Teks tidak akan turun ke bawah */
             }
             .mobile-quick-nav a i { font-size: 0.8rem; margin-bottom: 0; color: var(--bright-green); }
             .mobile-quick-nav a:active { background-color: var(--bright-green); transform: translateY(2px);}
@@ -712,10 +710,12 @@
             /* ===================================================================================
                === PERBAIKAN TAMPILAN POPUP & KALKULATOR DI HP ===
                =================================================================================== */
+            
             /* Memastikan bagian kalkulator tidak melebar keluar layar HP */
             .calculator-section { padding: 60px 3%; overflow: hidden; } 
             .calc-container { padding: 20px 15px; width: 100%; box-sizing: border-box; } 
             
+            /* Memastikan form jadi 1 kolom (atas-bawah) rapi di HP */
             .calc-form { grid-template-columns: 1fr; gap: 15px; width: 100%; box-sizing: border-box;} 
             .calc-full { grid-column: span 1; } 
             
@@ -725,11 +725,11 @@
             .calc-header h3 { font-size: 1.3rem; } 
             .calc-header p { font-size: 0.8rem; }
             
-            /* MEMAKSA TOMBOL CHECKOUT JADI 1 BARIS DI HP */
+            /* MEMAKSA TOMBOL CHECKOUT JADI 1 BARIS DI HP DAN DIKECILKAN */
             .calc-btn { 
-                font-size: 0.8rem; 
+                font-size: 0.7rem; /* Font diperkecil */
                 padding: 12px 5px; 
-                white-space: nowrap; 
+                white-space: nowrap; /* Dipaksa jadi 1 baris */
                 line-height: 1.3; 
                 width: 100%; 
                 box-sizing: border-box; 
@@ -1491,7 +1491,7 @@
     <section id="quote" class="calculator-section">
         <div class="calc-container" data-aos="fade-up">
             <div class="calc-header">
-                <h3>Request a Custom Quote</h3>
+                <h3>Order Form / Custom Quote</h3>
                 <p>Add multiple products to your list and we'll calculate your wholesale discount!</p>
             </div>
             
@@ -1508,6 +1508,7 @@
                         <option value="Genius Weft">Genius Weft</option>
                     </select>
                 </div>
+                
                 <div class="calc-group">
                     <label for="calcQuality">Quality</label>
                     <select id="calcQuality">
@@ -1516,6 +1517,7 @@
                         <option value="Super Double Drawn">Super Double Drawn</option>
                     </select>
                 </div>
+                
                 <div class="calc-group">
                     <label for="calcLength">Length (Inches)</label>
                     <select id="calcLength">
@@ -1529,9 +1531,24 @@
                         <option value="28 inches">28"</option>
                     </select>
                 </div>
+                
                 <div class="calc-group">
                     <label for="calcWeight">Quantity Needed (Grams)</label>
                     <input type="number" id="calcWeight" placeholder="e.g. 500" min="100" step="100">
+                </div>
+
+                <div class="calc-group">
+                    <label for="calcColorType">Color Selection</label>
+                    <select id="calcColorType" onchange="toggleColorInput()">
+                        <option value="">-- Choose Color Category --</option>
+                        <option value="Natural">Natural Color (Black/Brown)</option>
+                        <option value="Color">Custom Color (Blonde, Ash, etc.)</option>
+                    </select>
+                </div>
+
+                <div class="calc-group" id="specificColorGroup" style="display: none;">
+                    <label for="calcSpecificColor">Type Specific Color</label>
+                    <input type="text" id="calcSpecificColor" placeholder="e.g. #4, #613, Piano">
                 </div>
                 
                 <div class="calc-full">
@@ -1606,7 +1623,7 @@
             pagination: { el: ".swiper-pagination", clickable: true }
         });
 
-        // Mendaftarkan tombol pintasan HP & Beli untuk scroll mulus
+        // Mendaftarkan tombol pintasan untuk scroll mulus
         const allNavLinks = document.querySelectorAll('.nav-links a, .mobile-quick-nav a, .buy-now-btn');
         allNavLinks.forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1646,7 +1663,7 @@
             });
         });
 
-        // Script Menyembunyikan Logo Setelah 2 Detik
+        // Script Menyembunyikan Logo Setelah 2 Detik agar lebih bersih di HP
         window.addEventListener('load', () => {
             setTimeout(() => { 
                 const mainLogo = document.getElementById('mainLogo');
@@ -1767,66 +1784,86 @@
             if (touchEndX > touchStartX + 50) { showImage(currentIndex - 1); }
         }, { passive: true });
 
+
         // ===================================================================
         // === FUNGSI KALKULATOR PESANAN DINAMIS & SISTEM HARGA (VOUCHER) ===
         // ===================================================================
         
-        // 1. Data Base Harga Emahairshop (per 100 gram dalam USD)
+        // 1. Data Base Harga Akurat Emahairshop (per 100 gram dalam USD)
         const pricingDB = {
             "Hair Bulk": {
-                "Double Drawn": { "16 inches": 50, "18 inches": 55, "20 inches": 60, "22 inches": 64, "24 inches": 68, "26 inches": 70, "28 inches": 74 },
-                "Super Double Drawn": { "16 inches": 69, "18 inches": 79, "20 inches": 84, "22 inches": 88, "24 inches": 94, "26 inches": 99, "28 inches": 102 }
+                "Double Drawn": { "16 inches": {nat:50,col:53}, "18 inches": {nat:55,col:58}, "20 inches": {nat:60,col:63}, "22 inches": {nat:64,col:66}, "24 inches": {nat:68,col:70}, "26 inches": {nat:70,col:72}, "28 inches": {nat:74,col:76} },
+                "Super Double Drawn": { "16 inches": {nat:69,col:71}, "18 inches": {nat:79,col:81}, "20 inches": {nat:84,col:86}, "22 inches": {nat:88,col:90}, "24 inches": {nat:94,col:96}, "26 inches": {nat:99,col:102}, "28 inches": {nat:102,col:105} }
             },
             "Hair Weft": {
-                "Double Drawn": { "16 inches": 52, "18 inches": 57, "20 inches": 62, "22 inches": 66, "24 inches": 70, "26 inches": 72, "28 inches": 76 },
-                "Super Double Drawn": { "16 inches": 71, "18 inches": 81, "20 inches": 86, "22 inches": 90, "24 inches": 96, "26 inches": 101, "28 inches": 103 }
+                "Double Drawn": { "16 inches": {nat:52,col:54}, "18 inches": {nat:57,col:59}, "20 inches": {nat:62,col:64}, "22 inches": {nat:66,col:68}, "24 inches": {nat:70,col:72}, "26 inches": {nat:72,col:74}, "28 inches": {nat:76,col:78} },
+                "Super Double Drawn": { "16 inches": {nat:71,col:73}, "18 inches": {nat:81,col:83}, "20 inches": {nat:86,col:88}, "22 inches": {nat:90,col:92}, "24 inches": {nat:96,col:98}, "26 inches": {nat:101,col:103}, "28 inches": {nat:103,col:105} }
             },
             "Hair Tape": {
-                "Double Drawn": { "16 inches": 62, "18 inches": 65, "20 inches": 68, "22 inches": 70, "24 inches": 72, "26 inches": 74, "28 inches": 76 },
-                "Super Double Drawn": { "16 inches": 84, "18 inches": 94, "20 inches": 99, "22 inches": 114, "24 inches": 119, "26 inches": 124, "28 inches": 130 }
+                "Double Drawn": { "16 inches": {nat:62,col:64}, "18 inches": {nat:65,col:70}, "20 inches": {nat:68,col:72}, "22 inches": {nat:70,col:74}, "24 inches": {nat:72,col:76}, "26 inches": {nat:74,col:78}, "28 inches": {nat:76,col:78} },
+                "Super Double Drawn": { "16 inches": {nat:84,col:86}, "18 inches": {nat:94,col:96}, "20 inches": {nat:99,col:101}, "22 inches": {nat:114,col:116}, "24 inches": {nat:119,col:121}, "26 inches": {nat:124,col:126}, "28 inches": {nat:130,col:132} }
             },
             "I Tip / Keratin": {
-                "Double Drawn": { "16 inches": 58, "18 inches": 63, "20 inches": 68, "22 inches": 73, "24 inches": 76, "26 inches": 78, "28 inches": 82 },
-                "Super Double Drawn": { "16 inches": 78, "18 inches": 86, "20 inches": 93, "22 inches": 97, "24 inches": 100, "26 inches": 103, "28 inches": 106 }
+                "Double Drawn": { "16 inches": {nat:58,col:60}, "18 inches": {nat:63,col:65}, "20 inches": {nat:68,col:70}, "22 inches": {nat:73,col:75}, "24 inches": {nat:76,col:78}, "26 inches": {nat:78,col:80}, "28 inches": {nat:82,col:84} },
+                "Super Double Drawn": { "16 inches": {nat:78,col:80}, "18 inches": {nat:86,col:88}, "20 inches": {nat:93,col:95}, "22 inches": {nat:97,col:99}, "24 inches": {nat:100,col:102}, "26 inches": {nat:103,col:105}, "28 inches": {nat:106,col:108} }
             },
             "Nano Ring": {
-                "Double Drawn": { "16 inches": 58, "18 inches": 63, "20 inches": 68, "22 inches": 73, "24 inches": 76, "26 inches": 78, "28 inches": 82 },
-                "Super Double Drawn": { "16 inches": 78, "18 inches": 86, "20 inches": 93, "22 inches": 97, "24 inches": 100, "26 inches": 103, "28 inches": 106 }
+                "Double Drawn": { "16 inches": {nat:58,col:60}, "18 inches": {nat:63,col:65}, "20 inches": {nat:68,col:70}, "22 inches": {nat:73,col:75}, "24 inches": {nat:76,col:78}, "26 inches": {nat:78,col:80}, "28 inches": {nat:82,col:84} },
+                "Super Double Drawn": { "16 inches": {nat:78,col:80}, "18 inches": {nat:86,col:88}, "20 inches": {nat:93,col:95}, "22 inches": {nat:97,col:99}, "24 inches": {nat:100,col:102}, "26 inches": {nat:103,col:105}, "28 inches": {nat:106,col:108} }
             },
             "Genius Weft": {
-                "Double Drawn": { "16 inches": 62, "18 inches": 65, "20 inches": 68, "22 inches": 70, "24 inches": 72, "26 inches": 74, "28 inches": 76 },
-                "Super Double Drawn": { "16 inches": 84, "18 inches": 94, "20 inches": 99, "22 inches": 114, "24 inches": 119, "26 inches": 124, "28 inches": 130 }
+                "Double Drawn": { "16 inches": {nat:62,col:64}, "18 inches": {nat:65,col:70}, "20 inches": {nat:68,col:72}, "22 inches": {nat:70,col:74}, "24 inches": {nat:72,col:76}, "26 inches": {nat:74,col:78}, "28 inches": {nat:76,col:78} },
+                "Super Double Drawn": { "16 inches": {nat:84,col:86}, "18 inches": {nat:94,col:96}, "20 inches": {nat:99,col:101}, "22 inches": {nat:114,col:116}, "24 inches": {nat:119,col:121}, "26 inches": {nat:124,col:126}, "28 inches": {nat:130,col:132} }
             }
         };
 
         let quoteItems = []; 
+        
+        // Memunculkan text input jika memilih warna Custom
+        function toggleColorInput() {
+            const val = document.getElementById('calcColorType').value;
+            const group = document.getElementById('specificColorGroup');
+            if(val === 'Color') {
+                group.style.display = 'flex';
+            } else {
+                group.style.display = 'none';
+            }
+        }
 
         function addQuoteItem() {
             const type = document.getElementById('calcType').value;
             const quality = document.getElementById('calcQuality').value;
             const length = document.getElementById('calcLength').value;
             const weight = parseFloat(document.getElementById('calcWeight').value);
+            const colorType = document.getElementById('calcColorType').value;
+            let specificColor = document.getElementById('calcSpecificColor').value;
 
-            if (!type || !quality || !length || !weight) {
-                alert("Please fill out all product details (Type, Quality, Length, and Weight) before adding to the list.");
+            if (!type || !quality || !length || !weight || !colorType) {
+                alert("Please fill out all required fields.");
+                return;
+            }
+            
+            if (colorType === 'Color' && !specificColor) {
+                alert("Please type the specific color you want (e.g., #4, Blonde).");
                 return;
             }
 
-            const pricePer100g = pricingDB[type][quality][length];
+            const priceType = colorType === 'Natural' ? 'nat' : 'col';
+            const pricePer100g = pricingDB[type][quality][length][priceType];
             const itemPrice = (weight / 100) * pricePer100g;
 
-            quoteItems.push({ 
-                type: type, 
-                quality: quality, 
-                length: length, 
-                weight: weight,
-                price: itemPrice
-            });
+            const displayColor = colorType === 'Natural' ? 'Natural' : specificColor;
+
+            quoteItems.push({ type, quality, length, weight, colorType, displayColor, price: itemPrice });
             
+            // Mengosongkan form
             document.getElementById('calcType').value = "";
             document.getElementById('calcQuality').value = "";
             document.getElementById('calcLength').value = "";
             document.getElementById('calcWeight').value = "";
+            document.getElementById('calcColorType').value = "";
+            document.getElementById('calcSpecificColor').value = "";
+            document.getElementById('specificColorGroup').style.display = "none";
             
             renderQuoteItems();
         }
@@ -1845,11 +1882,14 @@
             quoteItems.forEach((item, index) => {
                 const itemDiv = document.createElement('div');
                 itemDiv.className = 'quote-item';
+                
+                let lenStr = item.length.replace(" inches", '"');
+                
                 itemDiv.innerHTML = `
                     <div class="quote-item-details">
-                        <strong>${index + 1}. ${item.type} - ${item.quality}</strong>
-                        <span>${item.length} | ${item.weight} Grams</span>
-                        <span class="quote-item-price">$${item.price.toFixed(2)}</span>
+                        <strong>${index + 1}. ${item.quality} - ${item.type}</strong>
+                        <span>${lenStr} | ${item.weight}g | ${item.displayColor}</span>
+                        <span class="quote-item-price">$${item.price.toFixed(0)}</span>
                     </div>
                     <button type="button" class="remove-item-btn" onclick="removeQuoteItem(${index})" title="Remove item">
                         <i class="fa-solid fa-xmark"></i>
@@ -1869,37 +1909,50 @@
 
             let totalWeight = 0;
             let totalPrice = 0;
+            
+            // Pengelompokan berdasarkan kualitas agar rapi di WA
+            let groupedItems = {};
+            
             quoteItems.forEach(item => {
                 totalWeight += item.weight;
                 totalPrice += item.price;
+                
+                if (!groupedItems[item.quality]) {
+                    groupedItems[item.quality] = [];
+                }
+                groupedItems[item.quality].push(item);
             });
 
-            // Format Pesan Langsung Tanpa Basa-Basi
+            // Menyusun format WhatsApp Langsung Ke Intinya
             let message = "";
             
-            quoteItems.forEach((item, index) => {
-                // Kualitas dibuat tebal / bold menggunakan asterisk (*)
-                message += `*Item ${index + 1}:* ${item.type} - *${item.quality}*\n`;
-                message += `📏 Length: ${item.length}\n`;
-                message += `⚖️ Weight: ${item.weight} Grams\n`;
-                message += `💵 Est. Price: $${item.price.toFixed(2)}\n\n`;
-            });
+            for (const [quality, items] of Object.entries(groupedItems)) {
+                // Kualitas dicetak tebal
+                message += `*${quality.toUpperCase()}*\n`;
+                
+                items.forEach(item => {
+                    let lenStr = item.length.replace(" inches", '"');
+                    message += `${item.type}\n`;
+                    message += `${lenStr} ${item.weight}g ${item.displayColor} $${item.price.toFixed(0)}\n`;
+                });
+                message += `\n`;
+            }
             
-            message += `*📋 ORDER SUMMARY*\n`;
+            message += `*📋 SUMMARY*\n`;
             message += `Total Weight: ${totalWeight} Grams\n`;
 
             if (totalWeight >= 1000) {
                 let finalPrice = totalPrice - 50;
-                message += `Subtotal: $${totalPrice.toFixed(2)}\n`;
+                message += `Subtotal: $${totalPrice.toFixed(0)}\n`;
                 message += `🎁 *VOUCHER CLAIMED: -$50*\n`;
                 message += `(_"I want to claim the $50 voucher!"_)\n`;
-                message += `*Total Amount: $${finalPrice.toFixed(2)}*\n\n`;
+                message += `*Total Amount: $${finalPrice.toFixed(0)}*\n\n`;
             } else {
-                message += `*Total Amount: $${totalPrice.toFixed(2)}*\n\n`;
+                message += `*Total Amount: $${totalPrice.toFixed(0)}*\n\n`;
                 message += `_(Add ${1000 - totalWeight}g more to claim a $50 voucher!)_\n\n`;
             }
             
-            message += "Please confirm my order and calculate the shipping fee!";
+            message += "Please confirm my order and shipping fee.";
                             
             const encodedMessage = encodeURIComponent(message);
             window.open("https://api.whatsapp.com/send/?phone=6285868872566&text=" + encodedMessage, '_blank');
