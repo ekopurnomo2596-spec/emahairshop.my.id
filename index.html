@@ -678,6 +678,22 @@
             .modern-table th { padding: 6px 2px; font-size: 0.45rem; letter-spacing: 0; }
             .modern-table td { padding: 6px 2px; font-size: 0.55rem; line-height: 1.3; }
             .modern-table td:first-child { padding-left: 6px; font-size: 0.5rem; white-space: normal;}
+            
+            /* ===================================================================================
+               === MERAPIKAN TAMPILAN POPUP & KALKULATOR DI HP (SESUAI REQUEST) ===
+               =================================================================================== */
+            .wa-popup-container { bottom: 20px; left: 20px; } 
+            .wa-bubble { max-width: 220px; } 
+            .wa-floating-btn { width: 50px; height: 50px; font-size: 1.8rem; }
+            
+            .calc-container { padding: 20px 15px; } 
+            /* Kalkulator HP 2 kolom (sama seperti desktop) */
+            .calc-form { grid-template-columns: 1fr 1fr; gap: 10px; } 
+            .calc-full { grid-column: span 2; } 
+            .calc-group label { font-size: 0.75rem; }
+            .calc-group select, .calc-group input { padding: 8px 10px; font-size: 0.8rem; }
+            .calc-header h3 { font-size: 1.4rem; } 
+            .calc-btn { font-size: 0.85rem; padding: 12px; white-space: nowrap; }
         }
 
         /* ==========================================================
@@ -712,18 +728,6 @@
         .calc-full { grid-column: span 2; }
         .calc-btn { background-color: var(--circle-pink); color: var(--white); padding: 15px; border: none; border-radius: 8px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: 10px; width: 100%; text-transform: uppercase; letter-spacing: 1px; display: flex; justify-content: center; align-items: center; gap: 10px; }
         .calc-btn:hover { background-color: var(--black); transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
-        
-        /* RESPONSIVE UNTUK KEDUANYA DI HP */
-        @media (max-width: 768px) { 
-            .wa-popup-container { bottom: 20px; left: 20px; } 
-            .wa-bubble { max-width: 220px; } 
-            .wa-floating-btn { width: 50px; height: 50px; font-size: 1.8rem; }
-            .calc-container { padding: 25px 15px; } 
-            .calc-form { grid-template-columns: 1fr; } 
-            .calc-full { grid-column: span 1; } 
-            .calc-header h3 { font-size: 1.4rem; } 
-            .calc-btn { font-size: 0.8rem; padding: 12px; line-height: 1.2; text-align: center;}
-        }
     </style>
 </head>
 <body class="notranslate">
@@ -1130,7 +1134,7 @@
                 </div>
                 <div class="calc-group calc-full">
                     <button type="submit" class="calc-btn">
-                        <i class="fa-brands fa-whatsapp"></i> Click Here To Send To WhatsApp
+                        <i class="fa-brands fa-whatsapp"></i> Send To WhatsApp
                     </button>
                 </div>
             </form>
@@ -1517,8 +1521,8 @@
     <div class="wa-popup-container">
         <div class="wa-bubble" id="waBubble">
             <span class="wa-close" onclick="closeWaBubble()" title="Close">&times;</span>
-            <p><strong>Hi! 👋</strong><br>Looking for the best Indonesian Remy Hair? Let me know if you need a custom price list!</p>
-            <button class="wa-btn-chat" onclick="openWaChat('Hello Emahairshop! I am interested in your Price List.')">
+            <p><strong>Hi! 👋</strong><br>Looking for the best Indonesian Remy Hair? Let me know if you need to consult or place a wholesale order!</p>
+            <button class="wa-btn-chat" onclick="openWaChat('Hello Emahairshop! I would like to consult about your hair extensions.')">
                 Yes, I want to know more!
             </button>
         </div>
