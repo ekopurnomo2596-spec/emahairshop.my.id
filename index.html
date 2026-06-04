@@ -5,17 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EMAHAIRSHOP</title>
     
+    <!-- === MENCEGAH BROWSER MENERJEMAHKAN OTOMATIS (MENCEGAH TEKS KELUAR/BERANTAKAN) === -->
     <meta name="google" content="notranslate">
     
+    <!-- === SEO META TAGS === -->
     <meta name="description" content="Top Quality Human Hair Extension Supplier & Manufacturer from Indonesia. Worldwide shipping for Hair Bulk, Weft, Tape, Keratin, and Wigs. 100% Human Remy Hair.">
     <meta name="keywords" content="Supplier Human Hair Indonesia, Hair Extension, Human Hair, Hair Bulk, Hair Weft, Hair Tape, Keratin Hair, Nano Ring, Genius Weft, Wholesale Hair Supplier, Emahairshop, Indonesia">
     <meta name="author" content="Emahairshop">
 
+    <!-- === OPEN GRAPH (OG) / WHATSAPP / FACEBOOK PREVIEW TAGS === -->
     <meta property="og:title" content="Emahairshop | Supplier Hair Indonesia">
     <meta property="og:description" content="Wholesale Supplier & Manufacturer of 100% Human Hair Extensions from Indonesia. Exporting to 15+ Countries Worldwide.">
     <meta property="og:url" content="https://www.emahairshop.my.id/">
     <meta property="og:type" content="website">
 
+    <!-- ====================================================================
+         === GOOGLE ANALYTICS (PELACAK PENGUNJUNG, FB/IG, & ASAL NEGARA) ===
+         ==================================================================== -->
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-W5HY2PJ62X"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -25,6 +32,7 @@
       gtag('config', 'G-W5HY2PJ62X');
     </script>
     
+    <!-- Favicon SVG Kustom -->
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='white'/%3E%3Cline x1='15' y1='62' x2='45' y2='62' stroke='%23111' stroke-width='4'/%3E%3Ctext x='115' y='68' font-family='sans-serif' font-weight='900' font-size='16' text-anchor='middle' letter-spacing='1' fill='%23111'%3EEXTENSION%3C/text%3E%3Ctext x='100' y='110' font-family='sans-serif' font-weight='900' font-size='24' text-anchor='middle' fill='%23111'%3EEMAHAIRSHOP%3C/text%3E%3Cline x1='15' y1='130' x2='185' y2='130' stroke='%23111' stroke-width='4'/%3E%3Ctext x='100' y='165' font-family='sans-serif' font-weight='900' font-size='20' text-anchor='middle' fill='%23D4AF37'%3E2019%3C/text%3E%3C/svg%3E" type="image/svg+xml">
     
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,600&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
@@ -52,7 +60,7 @@
 
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 90px; /* Jarak aman scroll desktop */
+            scroll-padding-top: 90px; 
         }
 
         body {
@@ -518,22 +526,23 @@
            --- MEDIA QUERY RESPONSIVE (TAMPILAN KHUSUS HP) --- 
            ======================================================= */
         @media (max-width: 768px) {
-            html { scroll-padding-top: 135px; } /* Mencegah judul tertutup header baru yang membesar */
+            html { scroll-padding-top: 85px; } /* Jarak aman agar bagian atas produk tidak tertutup header saat discroll */
 
-            /* Mengubah struktur Navbar HP menjadi 2 baris (Logo atas, 3 Tombol Bawah) */
-            nav { flex-direction: column; padding: 12px 5%; gap: 15px; }
-            .logo { transform: scale(0.9); transform-origin: center; margin: 0 auto; }
+            /* Mengubah struktur Navbar HP menjadi 1 baris menyamping */
+            nav { flex-direction: row; padding: 10px 3%; height: 65px; justify-content: space-between; align-items: center; gap: 5px; }
+            .logo { transform: scale(0.55); transform-origin: left center; margin: 0; width: auto; flex-shrink: 0; }
             
             /* MENGHILANGKAN GARIS TIGA DAN MENU DROPDOWN */
             .menu-toggle { display: none !important; }
             .nav-links { display: none !important; }
             
-            /* MENAMPILKAN TOMBOL PINTASAN KHUSUS HP */
+            /* MENAMPILKAN TOMBOL PINTASAN KHUSUS HP (SEJAJAR DENGAN LOGO) */
             .mobile-quick-nav { 
                 display: flex; 
-                width: 100%; 
-                justify-content: space-between; 
-                gap: 8px; 
+                width: auto; 
+                justify-content: flex-end; 
+                gap: 5px; 
+                flex-grow: 1; 
             }
             .mobile-quick-nav a { 
                 flex: 1; 
@@ -543,23 +552,23 @@
                 justify-content: center;
                 background-color: var(--black); 
                 color: var(--white); 
-                padding: 8px 2px; 
-                border-radius: 8px; 
-                font-size: 0.65rem; 
+                padding: 6px 2px; 
+                border-radius: 6px; 
+                font-size: 0.55rem; 
                 font-weight: 800; 
                 text-decoration: none; 
                 letter-spacing: 0.5px;
                 box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                max-width: 70px;
             }
-            .mobile-quick-nav a i { font-size: 1.1rem; margin-bottom: 4px; color: var(--bright-green); }
+            .mobile-quick-nav a i { font-size: 0.9rem; margin-bottom: 2px; color: var(--bright-green); }
             .mobile-quick-nav a:active { background-color: var(--bright-green); transform: translateY(2px);}
             .mobile-quick-nav a:active i { color: var(--white); }
 
             /* MENGHILANGKAN BAGIAN HIGHLIGHTS DI HP AGAR LEBIH CEPAT KE PRODUK */
             .highlights { display: none !important; }
             
-            /* Menyesuaikan ruang kosong paling atas karena nav lebih tinggi */
-            .about { padding-top: 140px; gap: 50px; } 
+            .about { padding-top: 110px; gap: 50px; } 
 
             .product-preview-gallery { grid-template-columns: 1fr; gap: 15px; }
             .preview-box { padding: 10px; border-radius: 8px; }
@@ -725,7 +734,7 @@
         .wa-floating-btn:hover { transform: scale(1.1); }
         
         /* ==========================================================
-           === FITUR 2: KALKULATOR PESANAN (QUOTE FORM) ===
+           === FITUR 2: KALKULATOR PESANAN DINAMIS (MULTI-ITEM) ===
            ========================================================== */
         .calculator-section { background-color: var(--white); padding: 80px 10%; border-top: 1px dashed #eaeaea; }
         .calc-container { max-width: 600px; margin: 0 auto; background: #F9F8F6; padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eaeaea; position: relative; box-sizing: border-box; width: 100%;}
@@ -741,7 +750,22 @@
         .calc-group select, .calc-group input { width: 100%; box-sizing: border-box; padding: 12px 15px; border: 1px solid #ccc; border-radius: 8px; font-family: 'Lato', sans-serif; font-size: 0.9rem; outline: none; transition: 0.3s; background: var(--white); }
         .calc-group select:focus, .calc-group input:focus { border-color: var(--bright-green); box-shadow: 0 0 5px rgba(16, 185, 129, 0.3); }
         .calc-full { grid-column: span 1; width: 100%; }
-        .calc-btn { background-color: var(--circle-pink); color: var(--white); padding: 15px; border: none; border-radius: 8px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: 10px; width: 100%; box-sizing: border-box; text-transform: uppercase; letter-spacing: 1px; display: flex; justify-content: center; align-items: center; gap: 10px; }
+        
+        /* Tombol Tambah Produk */
+        .add-item-btn { background-color: var(--dark-blue); color: var(--white); padding: 12px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; width: 100%; display: flex; justify-content: center; align-items: center; gap: 8px; text-transform: uppercase; font-size: 0.85rem;}
+        .add-item-btn:hover { background-color: var(--black); }
+        
+        /* Daftar Item Belanjaan */
+        .quote-item-list { display: flex; flex-direction: column; gap: 10px; margin-top: 5px; margin-bottom: 10px; }
+        .quote-item { background: #fff; border: 1px solid #ddd; padding: 12px 15px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; border-left: 4px solid var(--bright-green); box-shadow: 0 4px 6px rgba(0,0,0,0.02);}
+        .quote-item-details { display: flex; flex-direction: column; line-height: 1.3;}
+        .quote-item-details strong { font-size: 0.9rem; color: var(--black); }
+        .quote-item-details span { font-size: 0.8rem; color: var(--gray); }
+        .remove-item-btn { background: none; border: none; color: var(--bright-red); font-size: 1.2rem; cursor: pointer; padding: 5px; transition: 0.3s;}
+        .remove-item-btn:hover { transform: scale(1.2); }
+
+        /* Tombol Kirim Akhir WA */
+        .calc-btn { background-color: var(--circle-pink); color: var(--white); padding: 15px; border: none; border-radius: 8px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: 5px; width: 100%; box-sizing: border-box; text-transform: uppercase; letter-spacing: 1px; display: flex; justify-content: center; align-items: center; gap: 10px; }
         .calc-btn:hover { background-color: var(--black); transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
     </style>
 </head>
@@ -758,6 +782,7 @@
             <div class="logo-year">2019</div>
         </a>
         
+        <!-- MENU KHUSUS PC (DESKTOP) -->
         <ul class="nav-links">
             <li><a href="#about">ABOUT</a></li>
             <li><a href="#products">PRODUCTS</a></li>
@@ -765,10 +790,11 @@
             <li><a href="#contact">CONTACT</a></li>
         </ul>
 
+        <!-- TOMBOL PINTASAN KHUSUS HP (MOBILE) -->
         <div class="mobile-quick-nav">
             <a href="#products"><i class="fa-solid fa-box"></i> PRODUK</a>
             <a href="#pricelist"><i class="fa-solid fa-tags"></i> HARGA</a>
-            <a href="#quote"><i class="fa-solid fa-calculator"></i> KALKULATOR</a>
+            <a href="#quote"><i class="fa-solid fa-calculator"></i> ORDER</a>
         </div>
 
         <div class="menu-toggle" id="mobile-menu">
@@ -776,6 +802,7 @@
         </div>
     </nav>
 
+    <!-- SECTION 1: ABOUT -->
     <section id="about" class="about">
         <div class="product-preview-gallery">
             <div class="preview-box preview-left" data-aos="fade-right">
@@ -833,6 +860,7 @@
         </div>
     </section>
 
+    <!-- SECTION 2: PRODUK -->
     <section id="products" class="produk">
         <div class="produk-header" data-aos="fade-up">
             <span class="sub-title">Our Products</span>
@@ -1104,6 +1132,7 @@
         </div>
     </section>
 
+    <!-- SECTION 3: PRICE LIST -->
     <section id="pricelist" class="price-section">
         <div class="produk-header" data-aos="fade-down">
             <span class="sub-title">Wholesale Rates</span>
@@ -1112,9 +1141,11 @@
         </div>
 
         <div class="price-grid">
+            <!-- PRICE: HAIR BULK -->
             <div class="price-card" data-aos="fade-up">
                 <div class="price-card-title"><h3>HAIR BULK</h3></div>
                 
+                <!-- Kotak Akordion untuk DOUBLE DRAWN -->
                 <details class="price-accordion" id="price-hairbulk-dd">
                     <summary class="price-summary">
                         <span>Double Drawn</span>
@@ -1140,6 +1171,7 @@
                     </div>
                 </details>
 
+                <!-- Kotak Akordion untuk SUPER DOUBLE DRAWN -->
                 <details class="price-accordion" id="price-hairbulk-sdd">
                     <summary class="price-summary">
                         <span>Super Double Drawn</span>
@@ -1166,9 +1198,11 @@
                 </details>
             </div>
 
+            <!-- PRICE: HAIR WEFT -->
             <div class="price-card" data-aos="fade-up" data-aos-delay="100">
                 <div class="price-card-title"><h3>HAIR WEFT</h3></div>
                 
+                <!-- Kotak Akordion untuk DOUBLE DRAWN -->
                 <details class="price-accordion" id="price-hairweft-dd">
                     <summary class="price-summary">
                         <span>Double Drawn</span>
@@ -1194,6 +1228,7 @@
                     </div>
                 </details>
 
+                <!-- Kotak Akordion untuk SUPER DOUBLE DRAWN -->
                 <details class="price-accordion" id="price-hairweft-sdd">
                     <summary class="price-summary">
                         <span>Super Double Drawn</span>
@@ -1220,6 +1255,7 @@
                 </details>
             </div>
 
+            <!-- PRICE: HAIR TAPE -->
             <div class="price-card" data-aos="fade-up" data-aos-delay="200">
                 <div class="price-card-title"><h3>HAIR TAPE</h3></div>
                 
@@ -1274,6 +1310,7 @@
                 </details>
             </div>
 
+            <!-- PRICE: I TIP / KERATIN -->
             <div class="price-card" data-aos="fade-up" data-aos-delay="300">
                 <div class="price-card-title"><h3>I TIP / KERATIN</h3></div>
                 
@@ -1328,6 +1365,7 @@
                 </details>
             </div>
 
+            <!-- PRICE: NANO RING -->
             <div class="price-card" data-aos="fade-up">
                 <div class="price-card-title"><h3>NANO RING</h3></div>
                 
@@ -1382,6 +1420,7 @@
                 </details>
             </div>
 
+            <!-- PRICE: GENIUS WEFT -->
             <div class="price-card" data-aos="fade-up" data-aos-delay="100">
                 <div class="price-card-title"><h3>GENIUS WEFT</h3></div>
                 
@@ -1439,16 +1478,20 @@
         </div>
     </section>
 
+    <!-- ==========================================================
+         === SECTION BARU: KALKULATOR PESANAN DINAMIS (MULTI-ITEM) ===
+         ========================================================== -->
     <section id="quote" class="calculator-section">
         <div class="calc-container" data-aos="fade-up">
             <div class="calc-header">
                 <h3>Request a Custom Quote</h3>
-                <p>Not ready to buy immediately? Fill out this form and we'll calculate the wholesale discount for you!</p>
+                <p>Add multiple products to your list and we'll calculate your wholesale discount!</p>
             </div>
-            <form id="quoteForm" class="calc-form" onsubmit="sendQuoteWA(event)">
+            
+            <div class="calc-form">
                 <div class="calc-group">
                     <label for="calcType">Hair Type</label>
-                    <select id="calcType" required>
+                    <select id="calcType">
                         <option value="">-- Choose Hair Type --</option>
                         <option value="Hair Bulk">Hair Bulk</option>
                         <option value="Hair Weft">Hair Weft</option>
@@ -1460,7 +1503,7 @@
                 </div>
                 <div class="calc-group">
                     <label for="calcQuality">Quality</label>
-                    <select id="calcQuality" required>
+                    <select id="calcQuality">
                         <option value="">-- Choose Quality --</option>
                         <option value="Double Drawn">Double Drawn</option>
                         <option value="Super Double Drawn">Super Double Drawn</option>
@@ -1468,7 +1511,7 @@
                 </div>
                 <div class="calc-group">
                     <label for="calcLength">Length (Inches)</label>
-                    <select id="calcLength" required>
+                    <select id="calcLength">
                         <option value="">-- Choose Length --</option>
                         <option value="16 inches">16"</option>
                         <option value="18 inches">18"</option>
@@ -1481,17 +1524,30 @@
                 </div>
                 <div class="calc-group">
                     <label for="calcWeight">Quantity Needed (Grams)</label>
-                    <input type="number" id="calcWeight" placeholder="e.g. 500" min="100" required>
+                    <input type="number" id="calcWeight" placeholder="e.g. 500" min="100">
                 </div>
-                <div class="calc-group calc-full">
-                    <button type="submit" class="calc-btn">
-                        <i class="fa-brands fa-whatsapp"></i> Send To WhatsApp
+                
+                <div class="calc-full">
+                    <button type="button" class="add-item-btn" onclick="addQuoteItem()">
+                        <i class="fa-solid fa-plus"></i> Add Product To List
                     </button>
                 </div>
-            </form>
+            </div>
+
+            <!-- Area untuk menampilkan barang yang sudah ditambahkan -->
+            <div id="quoteItemList" class="quote-item-list calc-full">
+                <!-- Data akan muncul di sini via JavaScript -->
+            </div>
+
+            <div class="calc-full">
+                <button type="button" class="calc-btn" onclick="sendQuoteWA(event)">
+                    <i class="fa-brands fa-whatsapp"></i> Send All To WhatsApp
+                </button>
+            </div>
         </div>
     </section>
 
+    <!-- SECTION 4: KONTAK -->
     <section id="contact" class="kontak">
         <div data-aos="fade-up">
             <h2>Get In Touch</h2>
@@ -1519,6 +1575,9 @@
         </div>
     </section>
 
+    <!-- ==========================================================
+         === HTML PROACTIVE WHATSAPP POP-UP ===
+         ========================================================== -->
     <div class="wa-popup-container">
         <div class="wa-bubble" id="waBubble">
             <span class="wa-close" onclick="closeWaBubble()" title="Close">&times;</span>
@@ -1532,6 +1591,7 @@
         </div>
     </div>
 
+    <!-- ELEMEN MELAYANG: KEMBALI KE ATAS & LIGHTBOX -->
     <a href="#" id="backToTop" class="back-to-top">
         <i class="fa-solid fa-arrow-up"></i>
     </a>
@@ -1543,6 +1603,7 @@
         <span class="lightbox-arrow lightbox-next">&#10095;</span>
     </div>
 
+    <!-- SCRIPT BAWAAN -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script>
@@ -1553,9 +1614,6 @@
             navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
             pagination: { el: ".swiper-pagination", clickable: true }
         });
-
-        // Hapus sebagian script lama untuk Menu Toggle karena kita sudah pakai tombol langsung di HP
-        // agar menghindari error JS jika tombolnya tidak ditemukan.
 
         // Mendaftarkan tombol pintasan HP untuk scroll mulus
         const allNavLinks = document.querySelectorAll('.nav-links a, .mobile-quick-nav a');
@@ -1707,26 +1765,16 @@
         }, { passive: true });
 
         // ===================================================================
-        // === FUNGSI WHATSAPP OTOMATIS DENGAN KODE VOUCHER & FORMAT BARU  ===
+        // === FUNGSI WHATSAPP OTOMATIS DENGAN KODE VOUCHER ===
         // ===================================================================
         function sendWhatsAppOrder(productName) {
-            // 1. Buat angka acak 4-5 digit
             const randomNum = Math.floor(Math.random() * (99999 - 1000 + 1)) + 1000;
             const voucherCode = "EMA" + randomNum;
-            
-            // 2. Susun pesan dengan ganti baris (\n) dan $ di depan angka
             const messageText = "Hello, I want to buy " + productName + "\n" +
                                 "Voucher discount $50\n" +
                                 "Code: " + voucherCode;
-                                
-            // 3. Konversi format pesan agar bisa dibaca URL (otomatis mengubah \n menjadi enter dan mengatur spasi)
             const encodedMessage = encodeURIComponent(messageText);
-            
-            // 4. Buat URL final
-            const url = "https://api.whatsapp.com/send/?phone=6285868872566&text=" + encodedMessage;
-            
-            // 5. Buka tab baru menuju WhatsApp
-            window.open(url, '_blank');
+            window.open("https://api.whatsapp.com/send/?phone=6285868872566&text=" + encodedMessage, '_blank');
         }
 
         // ===================================================================
@@ -1735,42 +1783,97 @@
         function toggleWaBubble() {
             document.getElementById('waBubble').classList.toggle('show');
         }
-        
         function closeWaBubble() {
             document.getElementById('waBubble').classList.remove('show');
         }
-        
         function openWaChat(message) {
             const encodedMsg = encodeURIComponent(message);
             window.open("https://api.whatsapp.com/send/?phone=6285868872566&text=" + encodedMsg, '_blank');
         }
-
-        // Munculkan pop-up otomatis setelah pengunjung berada di web selama 6 detik
         window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.getElementById('waBubble').classList.add('show');
-            }, 6000); 
+            setTimeout(() => { document.getElementById('waBubble').classList.add('show'); }, 6000); 
         });
 
         // ===================================================================
-        // === FUNGSI KALKULATOR PESANAN (KIRIM KE WA) ===
+        // === FUNGSI KALKULATOR PESANAN DINAMIS (MULTI-ITEM) ===
         // ===================================================================
-        function sendQuoteWA(event) {
-            event.preventDefault(); // Mencegah halaman reload saat form disubmit
-            
-            // Mengambil data dari form
+        let quoteItems = []; // Array untuk menyimpan keranjang belanjaan
+
+        function addQuoteItem() {
             const type = document.getElementById('calcType').value;
             const quality = document.getElementById('calcQuality').value;
             const length = document.getElementById('calcLength').value;
             const weight = document.getElementById('calcWeight').value;
 
-            // Menyusun pesan rapi untuk dikirim
-            const message = "Hi Emahairshop! I would like to request a wholesale quote:\n\n" +
-                            "📦 *Product:* " + type + "\n" +
-                            "✨ *Quality:* " + quality + "\n" +
-                            "📏 *Length:* " + length + "\n" +
-                            "⚖️ *Weight:* " + weight + " Grams\n\n" +
-                            "Could you please calculate the best discounted price for me?";
+            // Validasi: pastikan semua kolom diisi sebelum ditambah
+            if (!type || !quality || !length || !weight) {
+                alert("Please fill out all product details (Type, Quality, Length, and Weight) before adding to the list.");
+                return;
+            }
+
+            // Tambahkan ke Array
+            quoteItems.push({ type, quality, length, weight });
+            
+            // Kosongkan form kembali agar siap diisi barang baru
+            document.getElementById('calcType').value = "";
+            document.getElementById('calcQuality').value = "";
+            document.getElementById('calcLength').value = "";
+            document.getElementById('calcWeight').value = "";
+            
+            // Tampilkan list di layar
+            renderQuoteItems();
+        }
+
+        function removeQuoteItem(index) {
+            quoteItems.splice(index, 1); // Hapus item dari array berdasarkan index
+            renderQuoteItems(); // Tampilkan ulang list
+        }
+
+        function renderQuoteItems() {
+            const listDiv = document.getElementById('quoteItemList');
+            listDiv.innerHTML = ""; // Bersihkan div
+            
+            if (quoteItems.length === 0) {
+                return; // Jika kosong, biarkan div bersih
+            }
+
+            // Loop untuk setiap barang yang ada di keranjang
+            quoteItems.forEach((item, index) => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'quote-item';
+                itemDiv.innerHTML = `
+                    <div class="quote-item-details">
+                        <strong>${item.type} - ${item.quality}</strong>
+                        <span>${item.length} | ${item.weight} Grams</span>
+                    </div>
+                    <button type="button" class="remove-item-btn" onclick="removeQuoteItem(${index})" title="Remove item">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                `;
+                listDiv.appendChild(itemDiv);
+            });
+        }
+
+        function sendQuoteWA(event) {
+            event.preventDefault(); // Mencegah reload halaman
+            
+            if (quoteItems.length === 0) {
+                alert("Your product list is empty. Please add at least one product using the '+ Add Product' button first.");
+                return;
+            }
+
+            // Menyusun format pesan WhatsApp
+            let message = "Hi Emahairshop! I would like to request a wholesale quote for the following items:\n\n";
+            
+            quoteItems.forEach((item, index) => {
+                message += `*Item ${index + 1}:*\n`;
+                message += `📦 Product: ${item.type}\n`;
+                message += `✨ Quality: ${item.quality}\n`;
+                message += `📏 Length: ${item.length}\n`;
+                message += `⚖️ Weight: ${item.weight} Grams\n\n`;
+            });
+            
+            message += "Could you please calculate the total and the best discounted price for me?";
                             
             const encodedMessage = encodeURIComponent(message);
             window.open("https://api.whatsapp.com/send/?phone=6285868872566&text=" + encodedMessage, '_blank');
