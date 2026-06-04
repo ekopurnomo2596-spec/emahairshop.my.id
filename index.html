@@ -80,7 +80,7 @@
 
         section { padding: 100px 10%; display: flex; flex-direction: column; justify-content: center; }
 
-        /* --- 2. NAVIGASI --- */
+        /* --- 2. NAVIGASI BARU (DESKTOP & MOBILE SERAGAM) --- */
         nav {
             position: fixed;
             top: 0; width: 100%; padding: 15px 10%;
@@ -98,19 +98,7 @@
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            max-height: 150px;
-            opacity: 1;
-        }
-
-        /* Class untuk animasi menyembunyikan logo setelah 2 detik */
-        .logo.hide-logo {
-            max-height: 0;
-            opacity: 0;
-            margin: 0 !important;
-            padding: 0 !important;
-            transform: scale(0.5);
-            border: none;
+            transition: all 0.3s ease;
         }
 
         .logo-top {
@@ -161,39 +149,30 @@
             letter-spacing: 1px;
         }
 
-        /* --- MENU NAVIGASI --- */
-        .nav-links { display: flex; list-style: none; align-items: center; }
-        .nav-links li { margin-left: 15px; }
-        
-        .nav-links a { 
-            text-decoration: none; 
-            color: var(--white); 
-            background-color: var(--black);
-            padding: 8px 22px; 
-            border-radius: 25px; 
-            font-size: 0.8rem; 
-            letter-spacing: 1px; 
-            transition: 0.3s; 
-            font-weight: 700;
-            display: inline-block;
+        /* QUICK NAV (MENGGANTIKAN MENU TEKS LAMA) */
+        .quick-nav { 
+            display: flex; 
+            gap: 15px; 
         }
-        .nav-links a:hover { 
-            background-color: var(--circle-pink); 
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-        } 
-
-        .menu-toggle {
-            display: none; 
-            font-size: 1.8rem;
-            color: var(--black);
-            cursor: pointer;
+        .quick-nav a { 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--black); 
+            color: var(--white); 
+            padding: 10px 20px; 
+            border-radius: 8px; 
+            font-size: 0.8rem; 
+            font-weight: 800; 
+            text-decoration: none; 
+            letter-spacing: 1px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            gap: 8px;
             transition: 0.3s;
         }
-        .menu-toggle:hover { color: var(--circle-pink); }
-        
-        /* Tombol Menu Khusus HP disembunyikan di PC */
-        .mobile-quick-nav { display: none; }
+        .quick-nav a i { font-size: 1rem; color: var(--bright-green); transition: 0.3s;}
+        .quick-nav a:hover { background-color: var(--circle-pink); transform: translateY(-3px);}
+        .quick-nav a:hover i { color: var(--white); }
 
         /* --- ABOUT SECTION --- */
         .about { 
@@ -372,8 +351,6 @@
         /* === TOMBOL ORDER FORM PADA PRODUK === */
         .buy-now-btn { display: flex; justify-content: center; align-items: center; gap: 10px; width: 100%; background-color: var(--black); color: var(--white); padding: 14px 20px; text-decoration: none; border-radius: 8px; font-family: 'Lato', sans-serif; font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease; margin-top: auto; cursor: pointer; border: none; }
         .buy-now-btn i { font-size: 1.3rem; }
-        
-        /* EFEK JIKA DIKLIK / HOVER JADI HIJAU */
         .buy-now-btn:hover, .buy-now-btn:active { background-color: #25D366; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); color: var(--white); }
 
         /* ========================================================================
@@ -406,7 +383,6 @@
         .price-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.08); }
         .price-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: linear-gradient(90deg, var(--circle-pink), var(--black)); border-radius: 16px 16px 0 0; }
         
-        /* TULISAN JUDUL PRODUK PRICE LIST DI TENGAH */
         .price-card-title { 
             grid-column: span 2; 
             text-align: center; 
@@ -416,24 +392,9 @@
         }
         .price-card-title h3 { font-family: 'Lato', sans-serif; font-size: 1.6rem; font-weight: 900; color: var(--black); letter-spacing: 2px; margin: 0; }
 
-        /* === KOTAK PRICE LIST (TOMBOL DAN TABEL) === */
-        .price-accordion { 
-            margin-bottom: 0; 
-            background-color: transparent; 
-            border: none; 
-            box-shadow: none; 
-            width: 100%; 
-            scroll-margin-top: 100px;
-        }
+        .price-accordion { margin-bottom: 0; background-color: transparent; border: none; box-shadow: none; width: 100%; scroll-margin-top: 100px; }
         
-        /* Tombol Hijau Kategori */
-        .price-summary { 
-            background-color: var(--bright-green); color: var(--white); font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; 
-            padding: 15px 10px; cursor: pointer; list-style: none; 
-            display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; gap: 10px; 
-            transition: background-color 0.3s;
-            border-radius: 8px;
-        }
+        .price-summary { background-color: var(--bright-green); color: var(--white); font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; padding: 15px 10px; cursor: pointer; list-style: none; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; gap: 10px; transition: background-color 0.3s; border-radius: 8px; }
         .price-summary::-webkit-details-marker { display: none; }
         .price-summary:hover { background-color: #0d9668; }
         
@@ -451,41 +412,13 @@
         .price-accordion[open] .view-btn, .price-accordion[open] .share-btn { background-color: var(--white); color: var(--bright-green); }
         .price-accordion[open] .view-btn i { transform: rotate(180deg); }
 
-        /* LOGIKA TEKS OPEN & CLOSE */
         .view-text::before { content: "Open"; }
         .price-accordion[open] .view-text::before { content: "Close"; }
 
-        /* TULISAN IMPORTANT */
-        .price-note { 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            gap: 5px;
-            background-color: var(--circle-pink); 
-            color: var(--white); 
-            font-size: 0.65rem; 
-            font-weight: 800; 
-            padding: 8px 5px; 
-            margin: 10px 0; 
-            border-radius: 6px; 
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            box-shadow: 0 4px 10px rgba(216, 84, 107, 0.3);
-            text-align: center;
-            white-space: nowrap !important; 
-        }
+        .price-note { display: flex; justify-content: center; align-items: center; gap: 5px; background-color: var(--circle-pink); color: var(--white); font-size: 0.65rem; font-weight: 800; padding: 8px 5px; margin: 10px 0; border-radius: 6px; letter-spacing: 0.5px; text-transform: uppercase; box-shadow: 0 4px 10px rgba(216, 84, 107, 0.3); text-align: center; white-space: nowrap !important; }
         .price-note i { font-size: 0.8rem; }
 
-        /* KOTAK UNTUK TABEL & NOTE */
-        .price-table-wrapper { 
-            background-color: var(--white); 
-            animation: fadeInDown 0.3s ease-in-out; 
-            padding-bottom: 10px; 
-            border: 1px solid #eaeaea;
-            border-radius: 8px;
-            margin-top: 10px;
-            overflow-x: auto;
-        }
+        .price-table-wrapper { background-color: var(--white); animation: fadeInDown 0.3s ease-in-out; padding-bottom: 10px; border: 1px solid #eaeaea; border-radius: 8px; margin-top: 10px; overflow-x: auto; }
         .modern-table { width: 100%; border-collapse: collapse; font-family: 'Lato', sans-serif; }
         .modern-table thead { background-color: #f9f9f9; color: var(--black); }
         .modern-table th { padding: 10px 5px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; text-align: center; border-bottom: 2px solid #eaeaea; }
@@ -537,48 +470,18 @@
            --- MEDIA QUERY RESPONSIVE (TAMPILAN KHUSUS HP) --- 
            ======================================================= */
         @media (max-width: 768px) {
-            html { scroll-padding-top: 100px; }
+            html { scroll-padding-top: 145px; } 
 
-            /* MENGEMBALIKAN LOGO KE TENGAH SESUAI PERMINTAAN AWAL (TERPUSAT) */
             nav { flex-direction: column; padding: 12px 5%; gap: 15px; height: auto; align-items: center;}
-            
-            /* Logo di HP dikembalikan ukurannya dan diset max-content agar garis tidak melar */
             .logo { transform: scale(0.9); transform-origin: center; margin: 0 auto; width: max-content; display: flex; justify-content: center; }
             
-            /* MENGHILANGKAN GARIS TIGA DAN MENU DROPDOWN */
-            .menu-toggle { display: none !important; }
-            .nav-links { display: none !important; }
-            
-            /* TAMPILAN 3 TOMBOL PINTASAN DI HP (FONT KECIL & IKON MENYAMPING 1 BARIS) */
-            .mobile-quick-nav { 
-                display: flex; 
-                width: 100%; 
-                justify-content: center; 
-                gap: 10px; 
+            .quick-nav { width: 100%; justify-content: center; gap: 8px; }
+            .quick-nav a { 
+                flex: 1; flex-direction: row; align-items: center; justify-content: center;
+                padding: 8px 5px; font-size: 0.6rem; gap: 5px; white-space: nowrap; max-width: none;
             }
-            .mobile-quick-nav a { 
-                flex: 1; 
-                display: flex;
-                flex-direction: row; /* Membuat ikon dan teks jadi 1 baris */
-                align-items: center;
-                justify-content: center;
-                background-color: var(--black); 
-                color: var(--white); 
-                padding: 8px 5px; 
-                border-radius: 6px; 
-                font-size: 0.65rem; /* Font diperkecil lagi */
-                font-weight: 800; 
-                text-decoration: none; 
-                letter-spacing: 0.5px;
-                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-                gap: 5px;
-                white-space: nowrap; /* Teks tidak akan turun ke bawah */
-            }
-            .mobile-quick-nav a i { font-size: 0.8rem; margin-bottom: 0; color: var(--bright-green); }
-            .mobile-quick-nav a:active { background-color: var(--bright-green); transform: translateY(2px);}
-            .mobile-quick-nav a:active i { color: var(--white); }
+            .quick-nav a i { font-size: 0.75rem; margin-bottom: 0;}
 
-            /* MENGHILANGKAN BAGIAN HIGHLIGHTS DI HP AGAR LEBIH CEPAT KE PRODUK */
             .highlights { display: none !important; }
             
             .about { padding-top: 150px; gap: 50px; } 
@@ -629,108 +532,46 @@
             .detail-table th, .detail-table td { padding: 3px 2px; }
             
             .buy-now-btn { 
-                padding: 8px 4px; 
-                font-size: 0.55rem; 
-                border-radius: 6px; 
-                gap: 5px; 
-                letter-spacing: 0; 
-                text-align: center;
-                flex-wrap: wrap; 
-                justify-content: center;
-                line-height: 1.2;
+                padding: 8px 4px; font-size: 0.55rem; border-radius: 6px; gap: 5px; letter-spacing: 0; text-align: center; flex-wrap: wrap; justify-content: center; line-height: 1.2;
             }
             .buy-now-btn i { font-size: 0.8rem; }
 
-            /* ===================================================================================
-               === PERBAIKAN TAMPILAN HP: PRICE LIST ===
-               =================================================================================== */
             .price-grid { gap: 20px; grid-template-columns: 1fr; } 
-            
-            .price-card { 
-                padding: 0 !important; 
-                border-radius: 0; 
-                display: grid;
-                grid-template-columns: repeat(2, minmax(0, 1fr)); 
-                gap: 10px;
-                align-items: start; 
-                background-color: transparent !important; 
-                box-shadow: none !important;
-                border: none !important;
-            }
+            .price-card { padding: 0 !important; border-radius: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; align-items: start; background-color: transparent !important; box-shadow: none !important; border: none !important; }
             .price-card::before { display: none; } 
             
-            .price-card-title { 
-                grid-column: span 2; 
-                margin-bottom: 2px; 
-                padding-bottom: 5px; 
-                border-bottom: 2px solid var(--black); 
-                text-align: center; 
-                padding-left: 0; 
-            }
+            .price-card-title { grid-column: span 2; margin-bottom: 2px; padding-bottom: 5px; border-bottom: 2px solid var(--black); text-align: center; padding-left: 0; }
             .price-card-title h3 { font-size: 1.3rem; letter-spacing: 1px; margin: 0; color: var(--black); }
             
-            .price-accordion { 
-                margin-bottom: 0 !important; 
-                border-radius: 8px !important; 
-                background-color: transparent !important; 
-                border: none !important;  
-                box-shadow: none !important;                
-                width: 100% !important;
-            }
-            .price-summary { 
-                flex-direction: column; 
-                gap: 6px; 
-                padding: 10px 4px !important; 
-                font-size: 0.6rem !important; 
-                text-align: center; 
-            }
+            .price-accordion { margin-bottom: 0 !important; border-radius: 8px !important; background-color: transparent !important; border: none !important; box-shadow: none !important; width: 100% !important; }
+            .price-summary { flex-direction: column; gap: 6px; padding: 10px 4px !important; font-size: 0.6rem !important; text-align: center; }
             .summary-actions { gap: 4px; justify-content: center; }
             .view-btn { font-size: 0.55rem; padding: 4px 8px; }
             .share-btn { width: 24px; height: 24px; font-size: 0.65rem; }
             
-            .price-note { 
-                font-size: 7px !important; 
-                letter-spacing: -0.3px !important; 
-                padding: 4px 2px !important; 
-                margin: 5px 0 !important; 
-                gap: 2px; 
-                white-space: nowrap !important; 
-                line-height: 1;
-                text-align: center;
-                justify-content: center;
-                width: 100%;
-                box-sizing: border-box;
-            }
+            .price-note { font-size: 7px !important; letter-spacing: -0.3px !important; padding: 4px 2px !important; margin: 5px 0 !important; gap: 2px; white-space: nowrap !important; line-height: 1; text-align: center; justify-content: center; width: 100%; box-sizing: border-box; }
             .price-note i { font-size: 8px !important; }
 
             .modern-table th { padding: 6px 2px; font-size: 0.45rem; letter-spacing: 0; }
             .modern-table td { padding: 6px 2px; font-size: 0.55rem; line-height: 1.3; }
             .modern-table td:first-child { padding-left: 6px; font-size: 0.5rem; white-space: normal;}
             
-            /* ===================================================================================
-               === PERBAIKAN TAMPILAN POPUP & KALKULATOR DI HP ===
-               =================================================================================== */
-            
-            /* Memastikan bagian kalkulator tidak melebar keluar layar HP */
+            /* KALKULATOR HP */
             .calculator-section { padding: 60px 3%; overflow: hidden; } 
             .calc-container { padding: 20px 15px; width: 100%; box-sizing: border-box; } 
-            
-            /* Memastikan form jadi 1 kolom (atas-bawah) rapi di HP */
             .calc-form { grid-template-columns: 1fr; gap: 15px; width: 100%; box-sizing: border-box;} 
             .calc-full { grid-column: span 1; } 
-            
             .calc-group label { font-size: 0.75rem; }
             .calc-group select, .calc-group input { padding: 10px 10px; font-size: 0.8rem; width: 100%; box-sizing: border-box; }
-            
             .calc-header h3 { font-size: 1.3rem; } 
             .calc-header p { font-size: 0.8rem; }
             
-            /* MEMAKSA TOMBOL CHECKOUT JADI 1 BARIS DI HP DAN DIKECILKAN */
-            .calc-btn { 
-                font-size: 0.7rem; /* Font diperkecil */
-                padding: 12px 5px; 
-                white-space: nowrap; /* Dipaksa jadi 1 baris */
-                line-height: 1.3; 
+            /* TOMBOL CHECKOUT & ADD ITEM JADI 1 BARIS MUTLAK DI HP */
+            .add-item-btn, .calc-btn { 
+                font-size: 0.65rem !important; 
+                padding: 10px 5px !important; 
+                white-space: nowrap !important; 
+                line-height: 1 !important; 
                 width: 100%; 
                 box-sizing: border-box; 
                 text-align: center; 
@@ -748,7 +589,6 @@
         .calc-header h3 { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 1.8rem; color: var(--dark-blue); margin-bottom: 5px; }
         .calc-header p { font-size: 0.95rem; color: var(--gray); margin-bottom: 0; }
         
-        /* Set form 1 kolom (atas ke bawah) rapi untuk Desktop & HP */
         .calc-form { display: grid; grid-template-columns: 1fr; gap: 20px; width: 100%; box-sizing: border-box;}
         .calc-group { display: flex; flex-direction: column; gap: 8px; width: 100%; box-sizing: border-box;}
         .calc-group label { font-size: 0.85rem; font-weight: 700; color: var(--black); }
@@ -770,15 +610,14 @@
         .remove-item-btn { background: none; border: none; color: var(--bright-red); font-size: 1.2rem; cursor: pointer; padding: 5px; transition: 0.3s;}
         .remove-item-btn:hover { transform: scale(1.2); }
 
-        /* Tombol Kirim Akhir WA (Diubah menjadi Hijau WA) */
-        .calc-btn { background-color: #25D366; color: var(--white); padding: 15px; border: none; border-radius: 8px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: 5px; width: 100%; box-sizing: border-box; text-transform: uppercase; letter-spacing: 1px; display: flex; justify-content: center; align-items: center; gap: 10px; }
+        /* Tombol Kirim Akhir WA */
+        .calc-btn { background-color: #25D366; color: var(--white); padding: 12px; border: none; border-radius: 8px; font-size: 0.85rem; font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: 5px; width: 100%; box-sizing: border-box; text-transform: uppercase; letter-spacing: 1px; display: flex; justify-content: center; align-items: center; gap: 8px; }
         .calc-btn:hover { background-color: #1ebe56; box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3); transform: translateY(-3px); }
     </style>
 </head>
 <body class="notranslate">
 
     <nav>
-        <!-- Logo container ditambahkan ID untuk animasi hide via JS -->
         <a href="#" class="logo" id="mainLogo">
             <div class="logo-top">
                 <span class="line-top"></span>
@@ -789,23 +628,11 @@
             <div class="logo-year">2019</div>
         </a>
         
-        <!-- MENU KHUSUS PC (DESKTOP) -->
-        <ul class="nav-links">
-            <li><a href="#about">ABOUT</a></li>
-            <li><a href="#products">PRODUCTS</a></li>
-            <li><a href="#pricelist">PRICE LIST</a></li>
-            <li><a href="#contact">CONTACT</a></li>
-        </ul>
-
-        <!-- TOMBOL PINTASAN KHUSUS HP (MOBILE) - BAHASA INGGRIS -->
-        <div class="mobile-quick-nav">
+        <!-- MENU NAVIGASI KILAT SERAGAM (DESKTOP & HP) -->
+        <div class="quick-nav">
             <a href="#products"><i class="fa-solid fa-box"></i> PRODUCTS</a>
             <a href="#pricelist"><i class="fa-solid fa-tags"></i> PRICE</a>
             <a href="#quote"><i class="fa-solid fa-calculator"></i> ORDER</a>
-        </div>
-
-        <div class="menu-toggle" id="mobile-menu">
-            <i class="fa-solid fa-bars"></i>
         </div>
     </nav>
 
@@ -1152,7 +979,6 @@
             <div class="price-card" data-aos="fade-up">
                 <div class="price-card-title"><h3>HAIR BULK</h3></div>
                 
-                <!-- Kotak Akordion untuk DOUBLE DRAWN -->
                 <details class="price-accordion" id="price-hairbulk-dd">
                     <summary class="price-summary">
                         <span>Double Drawn</span>
@@ -1178,7 +1004,6 @@
                     </div>
                 </details>
 
-                <!-- Kotak Akordion untuk SUPER DOUBLE DRAWN -->
                 <details class="price-accordion" id="price-hairbulk-sdd">
                     <summary class="price-summary">
                         <span>Super Double Drawn</span>
@@ -1209,7 +1034,6 @@
             <div class="price-card" data-aos="fade-up" data-aos-delay="100">
                 <div class="price-card-title"><h3>HAIR WEFT</h3></div>
                 
-                <!-- Kotak Akordion untuk DOUBLE DRAWN -->
                 <details class="price-accordion" id="price-hairweft-dd">
                     <summary class="price-summary">
                         <span>Double Drawn</span>
@@ -1235,7 +1059,6 @@
                     </div>
                 </details>
 
-                <!-- Kotak Akordion untuk SUPER DOUBLE DRAWN -->
                 <details class="price-accordion" id="price-hairweft-sdd">
                     <summary class="price-summary">
                         <span>Super Double Drawn</span>
@@ -1541,7 +1364,7 @@
                     <label for="calcColorType">Color Selection</label>
                     <select id="calcColorType" onchange="toggleColorInput()">
                         <option value="">-- Choose Color Category --</option>
-                        <option value="Natural">Natural Color (Black/Brown)</option>
+                        <option value="Natural">Natural Color (Black)</option>
                         <option value="Color">Custom Color (Blonde, Ash, etc.)</option>
                     </select>
                 </div>
@@ -1624,7 +1447,7 @@
         });
 
         // Mendaftarkan tombol pintasan untuk scroll mulus
-        const allNavLinks = document.querySelectorAll('.nav-links a, .mobile-quick-nav a, .buy-now-btn');
+        const allNavLinks = document.querySelectorAll('.nav-links a, .quick-nav a, .buy-now-btn');
         allNavLinks.forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const targetID = this.getAttribute('href');
@@ -1661,16 +1484,6 @@
                     console.error('Gagal menyalin link: ', err);
                 });
             });
-        });
-
-        // Script Menyembunyikan Logo Setelah 2 Detik agar lebih bersih di HP
-        window.addEventListener('load', () => {
-            setTimeout(() => { 
-                const mainLogo = document.getElementById('mainLogo');
-                if(mainLogo) {
-                    mainLogo.classList.add('hide-logo');
-                }
-            }, 2000); 
         });
 
         window.addEventListener('DOMContentLoaded', () => {
@@ -1783,7 +1596,6 @@
             if (touchEndX < touchStartX - 50) { showImage(currentIndex + 1); }
             if (touchEndX > touchStartX + 50) { showImage(currentIndex - 1); }
         }, { passive: true });
-
 
         // ===================================================================
         // === FUNGSI KALKULATOR PESANAN DINAMIS & SISTEM HARGA (VOUCHER) ===
@@ -1910,7 +1722,7 @@
             let totalWeight = 0;
             let totalPrice = 0;
             
-            // Pengelompokan berdasarkan kualitas agar rapi di WA
+            // Pengelompokan berdasarkan kualitas agar rapi di WA seperti katalog
             let groupedItems = {};
             
             quoteItems.forEach(item => {
