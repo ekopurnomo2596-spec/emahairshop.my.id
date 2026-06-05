@@ -585,29 +585,55 @@
             }
             .buy-now-btn i { font-size: 0.8rem; }
 
-            .price-grid { gap: 20px; grid-template-columns: 1fr; } 
-            .price-card { padding: 0 !important; border-radius: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; align-items: start; background-color: transparent !important; box-shadow: none !important; border: none !important; }
+            /* ======================================================= */
+            /* === PERBAIKAN TAMPILAN PRICE LIST DI MOBILE (HP) === */
+            /* ======================================================= */
+            section#pricelist { padding: 60px 2% !important; } /* Mengurangi ruang kosong di kiri & kanan sepenuhnya */
+            
+            .price-grid { gap: 20px; grid-template-columns: 1fr; width: 100%; } 
+            
+            /* Dibuat 2 Kolom Kiri Kanan membagi layar penuh */
+            .price-card { 
+                padding: 0 !important; 
+                border-radius: 0; 
+                display: grid; 
+                grid-template-columns: repeat(2, minmax(0, 1fr)); /* Membagi layar jadi 2 kolom sama besar */
+                gap: 8px; /* Jarak celah tengah antar kotak */
+                align-items: start; 
+                background-color: transparent !important; 
+                box-shadow: none !important; 
+                border: none !important; 
+            }
             .price-card::before { display: none; } 
             
-            .price-card-title { grid-column: span 2; margin-bottom: 2px; padding-bottom: 5px; border-bottom: 2px solid var(--black); text-align: center; padding-left: 0; }
+            .price-card-title { 
+                grid-column: span 2; /* Judul Hair Bulk dkk memanjang penuh */
+                margin-bottom: 2px; 
+                padding-bottom: 5px; 
+                border-bottom: 2px solid var(--black); 
+                text-align: center; 
+                width: 100%; 
+            }
             .price-card-title h3 { font-size: 1.3rem; letter-spacing: 1px; margin: 0; color: var(--black); }
             
             .price-accordion { margin-bottom: 0 !important; border-radius: 8px !important; background-color: transparent !important; border: none !important; box-shadow: none !important; width: 100% !important; min-width: 0 !important; }
-            .price-summary { flex-direction: column; gap: 6px; padding: 10px 4px !important; font-size: 0.6rem !important; text-align: center; }
-            .summary-actions { gap: 4px; justify-content: center; }
+            
+            /* Tombol Accordion (Double Drawn / Super Double Drawn) dibuat ringkas agar muat di separuh layar */
+            .price-summary { flex-direction: column; gap: 4px; padding: 10px 4px !important; font-size: 0.6rem !important; text-align: center; justify-content: center; }
+            .summary-actions { gap: 6px; justify-content: center; }
             .view-btn { font-size: 0.55rem; padding: 4px 8px; }
             .share-btn { width: 24px; height: 24px; font-size: 0.65rem; }
             
-            /* GAYA MEWAH TABEL HARGA - VERSI HP */
-            .price-table-wrapper { padding: 15px 10px; width: 100%; box-sizing: border-box;}
+            /* TABEL HARGA HP DIBUAT LEBIH PADAT AGAR MUAT KIRI-KANAN (SEPARUH LAYAR) */
+            .price-table-wrapper { padding: 10px 2px; width: 100%; box-sizing: border-box;}
             
-            /* CATATAN HARGA DI HP: DIPAKSA 1 BARIS & LEBIH KECIL */
-            .price-note { font-size: 0.48rem !important; padding: 5px 0 10px 0 !important; letter-spacing: -0.3px !important; white-space: nowrap !important; border-bottom: 1px solid #eaeaea !important; margin: 0 0 10px 0 !important; color: var(--gray) !important; background-color: transparent !important; display: flex !important; justify-content: center !important; align-items: center !important; width: 100%; box-sizing: border-box; }
-            .price-note i { font-size: 0.6rem !important; }
+            .price-note { font-size: 0.45rem !important; padding: 5px 0 8px 0 !important; letter-spacing: -0.3px !important; white-space: normal !important; line-height:1.2; border-bottom: 1px solid #eaeaea !important; margin: 0 0 5px 0 !important; color: var(--gray) !important; background-color: transparent !important; display: flex !important; justify-content: center !important; align-items: center !important; text-align:center; width: 100%; box-sizing: border-box; }
+            .price-note i { display: none !important; } /* Sembunyikan ikon info agar teks muat */
 
-            .modern-table th { padding: 12px 2px; font-size: 0.55rem; letter-spacing: 1px; }
-            .modern-table td { padding: 12px 2px; font-size: 0.75rem; border-bottom: 1px solid #f5f5f5;}
-            .modern-table td:first-child { padding-left: 2px; font-size: 0.7rem; white-space: normal;}
+            /* Ukuran font tabel diperkecil & padding dikurangi agar pas saat layarnya dibagi dua */
+            .modern-table th { padding: 6px 1px; font-size: 0.45rem; letter-spacing: 0; }
+            .modern-table td { padding: 6px 1px; font-size: 0.65rem; border-bottom: 1px solid #f5f5f5;}
+            .modern-table td:first-child { padding-left: 2px; font-size: 0.55rem; white-space: normal;}
             
             /* KALKULATOR HP */
             .calculator-section { padding: 60px 3%; overflow: hidden; } 
@@ -634,11 +660,11 @@
             }
 
             /* ========================================================= */
-            /* === PERBAIKAN KOTAK ORDER FORM DI HP === */
+            /* === PERBAIKAN KOTAK ORDER FORM DI HP (Tanpa Centang) === */
             /* ========================================================= */
             .pill-label {
                 flex: 1 1 calc(50% - 12px); 
-                font-size: 0.65rem; /* Dikecilkan sedikit agar teks muat */
+                font-size: 0.65rem; 
                 padding: 10px 5px !important; /* Dibuat murni seragam di semua sisi */
             }
 
