@@ -372,6 +372,14 @@
             .pill-label { font-size: 0.55rem !important; padding: 4px 2px !important; min-height: 28px !important; letter-spacing: -0.2px; width: 100%; box-sizing: border-box; margin: 0; }
             
             .calc-group > label:not(.pill-label) { font-size: 0.65rem !important; letter-spacing: 1.5px !important; margin-bottom: 5px !important; margin-top: 5px !important; padding: 6px 5px !important; border-radius: 4px !important; width: 100% !important; }
+
+            /* Penyesuaian Mobile: List Pesanan Agar Sebaris */
+            .quote-item-minimal { padding: 8px 0 !important; }
+            .quote-item-minimal-details strong { font-size: 0.6rem !important; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;}
+            .quote-item-minimal-details span { font-size: 0.55rem !important; display: block; }
+            .quote-item-minimal-price { font-size: 0.75rem !important; }
+            .quote-item-minimal-actions { gap: 6px !important; }
+            .action-btn-minimal { font-size: 0.85rem !important; }
         }
         
         /* --- KALKULATOR PESANAN --- */
@@ -407,11 +415,11 @@
         .quote-item-list { display: flex; flex-direction: column; gap: 0; margin-top: 5px; margin-bottom: 10px; }
         .quote-item-minimal { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px dashed #eaeaea; background: transparent; }
         .quote-item-minimal:last-child { border-bottom: none; }
-        .quote-item-minimal-details { display: flex; flex-direction: column; line-height: 1.3; }
-        .quote-item-minimal-details strong { font-size: 0.85rem; color: var(--black); font-weight: 800; }
+        .quote-item-minimal-details { display: flex; flex-direction: column; line-height: 1.3; flex: 1; min-width: 0; padding-right: 10px;}
+        .quote-item-minimal-details strong { font-size: 0.85rem; color: var(--black); font-weight: 800; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
         .quote-item-minimal-details span { font-size: 0.75rem; color: var(--gray); margin-top: 2px; }
         .quote-item-minimal-actions { display: flex; align-items: center; gap: 12px; }
-        .quote-item-minimal-price { font-size: 0.9rem; font-weight: 900; color: #25D366; } /* <-- HARGA WARNA HIJAU */
+        .quote-item-minimal-price { font-size: 0.9rem; font-weight: 900; color: #25D366; } 
         
         .action-btn-minimal { background: none; border: none; font-size: 1rem; cursor: pointer; transition: 0.3s; padding: 2px; }
         .edit-btn { color: #aaaaaa; }
@@ -1231,6 +1239,19 @@
                 <!-- Data akan muncul di sini via JavaScript -->
             </div>
 
+            <!-- MENU DROPDOWN PAYMENT METHOD -->
+            <div class="calc-group calc-full" style="margin-top: 10px; border-top: 1px dashed #ccc; padding-top: 15px;">
+                <label for="paymentMethod" style="background: transparent; border: none; padding: 0; margin: 0 0 5px 0; font-size: 0.8rem;">PAYMENT METHOD</label>
+                <select id="paymentMethod" style="background-color: #fff; cursor: pointer; text-align: center; font-weight: bold;">
+                    <option value="" selected disabled>-- Select Payment Method --</option>
+                    <option value="Western Union">Western Union</option>
+                    <option value="MoneyGram">MoneyGram</option>
+                    <option value="PayPal">PayPal</option>
+                    <option value="Bank Transfer">Bank Transfer</option>
+                    <option value="USDT">USDT</option>
+                </select>
+            </div>
+
             <div class="calc-full">
                 <button type="button" class="calc-btn" onclick="prepareCheckout()">
                     <i class="fa-brands fa-whatsapp"></i> Checkout To WhatsApp
@@ -1507,7 +1528,7 @@
 
         let quoteItems = []; 
         let finalWhatsAppMessage = ""; 
-        let currentEditIndex = -1; // Variabel baru untuk melacak produk yang sedang diedit
+        let currentEditIndex = -1; 
         
         // --- VARIABEL UNTUK MENYIMPAN STATUS CHECKOUT ---
         let checkoutState = {
@@ -1518,6 +1539,7 @@
             isPromoApplied: false,
             appliedPromoCode: "",
             discountAmount: 0,
+            paymentMethod: "", // Status Metode Pembayaran Baru
             baseWAMessage: ""
         };
         
@@ -1702,6 +1724,13 @@
                 return;
             }
 
+            // --- CEK PEMBAYARAN SEBELUM CHECKOUT ---
+            const paymentSelect = document.getElementById('paymentMethod').value;
+            if (!paymentSelect) {
+                alert("Please select a Payment Method before checking out.");
+                return;
+            }
+
             let totalWeight = 0;
             let totalPrice = 0;
             
@@ -1736,6 +1765,7 @@
             checkoutState.isPromoApplied = false;
             checkoutState.appliedPromoCode = "";
             checkoutState.discountAmount = 0;
+            checkoutState.paymentMethod = paymentSelect; // Simpan Metode Pembayaran
 
             let modalHTML = ``;
             for (const [quality, types] of Object.entries(groupedItems)) {
@@ -1762,6 +1792,9 @@
 
             // Baris diskon (dinamis, disembunyikan secara default)
             modalHTML += `<div id="discountRow" class="modal-summary-row" style="color:var(--circle-pink); display: none;"><span id="discountName">Promo:</span><strong id="discountValue">-$0</strong></div>`;
+            
+            // Tampilkan Metode Pembayaran di Modal
+            modalHTML += `<div class="modal-summary-row" style="margin-top: 5px; padding-top: 5px; border-top: 1px dashed #eaeaea;"><span>Payment:</span><strong style="color: var(--dark-blue);">${checkoutState.paymentMethod}</strong></div>`;
 
             // Total Harga
             modalHTML += `<div class="modal-total-row"><span>Total Payment:</span><span id="modalFinalTotal" style="color:#25D366;">$${checkoutState.baseTotal.toFixed(0)}</span></div>`;
@@ -1800,6 +1833,7 @@
             message += `Total Weight: ${totalWeight} Grams\n`;
             message += `Subtotal: $${totalPrice.toFixed(0)}\n`;
             message += `Shipping Fee: $${shippingFee}\n`;
+            message += `Payment Method: *${checkoutState.paymentMethod}*\n`; // Kirim Payment Method ke WA
 
             checkoutState.baseWAMessage = message; 
             updateWAMessage(); 
