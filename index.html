@@ -403,14 +403,21 @@
         .add-item-btn { background-color: var(--dark-blue); color: var(--white); padding: 12px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; width: 100%; display: flex; justify-content: center; align-items: center; gap: 8px; text-transform: uppercase; font-size: 0.85rem;}
         .add-item-btn:hover { background-color: var(--black); }
         
-        .quote-item-list { display: flex; flex-direction: column; gap: 10px; margin-top: 5px; margin-bottom: 10px; }
-        .quote-item { background: #fff; border: 1px solid #ddd; padding: 12px 15px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; border-left: 4px solid #25D366; box-shadow: 0 4px 6px rgba(0,0,0,0.02);}
-        .quote-item-details { display: flex; flex-direction: column; line-height: 1.3;}
-        .quote-item-details strong { font-size: 0.9rem; color: var(--black); }
-        .quote-item-details span { font-size: 0.8rem; color: var(--gray); margin-top: 3px; }
-        .quote-item-price { font-size: 0.85rem; font-weight: bold; color: var(--circle-pink); margin-top: 3px;}
-        .remove-item-btn { background: none; border: none; color: var(--bright-red); font-size: 1.2rem; cursor: pointer; padding: 5px; transition: 0.3s;}
-        .remove-item-btn:hover { transform: scale(1.2); }
+        /* --- DESAIN LIST PRODUK MINIMALIS & ELEGAN --- */
+        .quote-item-list { display: flex; flex-direction: column; gap: 0; margin-top: 5px; margin-bottom: 10px; }
+        .quote-item-minimal { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px dashed #eaeaea; background: transparent; }
+        .quote-item-minimal:last-child { border-bottom: none; }
+        .quote-item-minimal-details { display: flex; flex-direction: column; line-height: 1.3; }
+        .quote-item-minimal-details strong { font-size: 0.85rem; color: var(--black); font-weight: 800; }
+        .quote-item-minimal-details span { font-size: 0.75rem; color: var(--gray); margin-top: 2px; }
+        .quote-item-minimal-actions { display: flex; align-items: center; gap: 12px; }
+        .quote-item-minimal-price { font-size: 0.9rem; font-weight: 900; color: #25D366; } /* <-- HARGA WARNA HIJAU */
+        
+        .action-btn-minimal { background: none; border: none; font-size: 1rem; cursor: pointer; transition: 0.3s; padding: 2px; }
+        .edit-btn { color: #aaaaaa; }
+        .edit-btn:hover { color: var(--dark-blue); transform: scale(1.15); }
+        .remove-btn { color: #cccccc; }
+        .remove-btn:hover { color: var(--bright-red); transform: scale(1.15); }
 
         .calc-btn { background-color: #25D366; color: var(--white); padding: 12px; border: none; border-radius: 8px; font-size: 0.85rem; font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: 5px; width: 100%; box-sizing: border-box; text-transform: uppercase; letter-spacing: 1px; display: flex; justify-content: center; align-items: center; gap: 8px; }
         .calc-btn:hover { background-color: #1ebe56; box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3); transform: translateY(-3px); }
@@ -1214,7 +1221,7 @@
                 </div>
                 
                 <div class="calc-full">
-                    <button type="button" class="add-item-btn" onclick="addQuoteItem()">
+                    <button type="button" id="addBtn" class="add-item-btn" onclick="addQuoteItem()">
                         <i class="fa-solid fa-plus"></i> Add Product To List
                     </button>
                 </div>
@@ -1500,6 +1507,7 @@
 
         let quoteItems = []; 
         let finalWhatsAppMessage = ""; 
+        let currentEditIndex = -1; // Variabel baru untuk melacak produk yang sedang diedit
         
         // --- VARIABEL UNTUK MENYIMPAN STATUS CHECKOUT ---
         let checkoutState = {
@@ -1563,8 +1571,22 @@
 
             const displayColor = colorType === 'Natural' ? 'Natural' : specificColor;
 
-            quoteItems.push({ type, quality, length, weight, colorType, displayColor, price: itemPrice });
+            // Jika dalam mode tambah produk baru
+            if (currentEditIndex === -1) {
+                quoteItems.push({ type, quality, length, weight, colorType, displayColor, price: itemPrice });
+            } 
+            // Jika dalam mode update produk lama
+            else {
+                quoteItems[currentEditIndex] = { type, quality, length, weight, colorType, displayColor, price: itemPrice };
+                currentEditIndex = -1; // Kembalikan ke mode normal
+                
+                // Kembalikan tampilan tombol ke "Add Product"
+                const addBtn = document.getElementById('addBtn');
+                addBtn.innerHTML = '<i class="fa-solid fa-plus"></i> Add Product To List';
+                addBtn.style.backgroundColor = ''; 
+            }
             
+            // Mengosongkan form kembali setelah ditambahkan/diupdate
             if (typeElement) typeElement.checked = false;
             if (qualityElement) qualityElement.checked = false;
             if (lengthElement) lengthElement.checked = false;
@@ -1577,8 +1599,58 @@
             renderQuoteItems();
         }
 
+        // --- FUNGSI EDIT PESANAN ---
+        function editQuoteItem(index) {
+            const item = quoteItems[index];
+
+            // 1. Pilih kembali Radio Buttons sesuai data produk
+            const typeRadio = document.querySelector(`input[name="calcType"][value="${item.type}"]`);
+            if(typeRadio) typeRadio.checked = true;
+
+            const qualRadio = document.querySelector(`input[name="calcQuality"][value="${item.quality}"]`);
+            if(qualRadio) qualRadio.checked = true;
+
+            const lenRadio = document.querySelector(`input[name="calcLength"][value="${item.length}"]`);
+            if(lenRadio) lenRadio.checked = true;
+
+            const colRadio = document.querySelector(`input[name="calcColorType"][value="${item.colorType}"]`);
+            if(colRadio) {
+                colRadio.checked = true;
+                toggleColorInput(); // Tampilkan input warna spesifik jika 'Color'
+            }
+
+            // 2. Isi nilai berat (weight)
+            document.getElementById('calcWeight').value = item.weight;
+
+            // 3. Isi warna kustom (jika ada)
+            if(item.colorType === 'Color') {
+                document.getElementById('calcSpecificColor').value = item.displayColor.replace('#', '');
+            }
+
+            // 4. Update status mode edit dan ubah tombol UI menjadi "Update"
+            currentEditIndex = index;
+            const addBtn = document.getElementById('addBtn');
+            addBtn.innerHTML = '<i class="fa-solid fa-check"></i> Update Product';
+            addBtn.style.backgroundColor = '#25D366'; // Berubah hijau menandakan proses update
+
+            // Scroll otomatis naik ke form
+            document.getElementById('quote').scrollIntoView({behavior: 'smooth'});
+        }
+
         function removeQuoteItem(index) {
             quoteItems.splice(index, 1); 
+            
+            // Jika item yang sedang diedit dihapus secara manual, batalkan mode edit
+            if (currentEditIndex === index) {
+                currentEditIndex = -1;
+                const addBtn = document.getElementById('addBtn');
+                addBtn.innerHTML = '<i class="fa-solid fa-plus"></i> Add Product To List';
+                addBtn.style.backgroundColor = ''; 
+            } else if (currentEditIndex > index) {
+                // Geser index ke bawah jika urutan berubah
+                currentEditIndex--;
+            }
+            
             renderQuoteItems(); 
         }
 
@@ -1590,19 +1662,24 @@
 
             quoteItems.forEach((item, index) => {
                 const itemDiv = document.createElement('div');
-                itemDiv.className = 'quote-item';
+                itemDiv.className = 'quote-item-minimal';
                 
                 let lenStr = item.length.replace(" inches", '"');
                 
                 itemDiv.innerHTML = `
-                    <div class="quote-item-details">
+                    <div class="quote-item-minimal-details">
                         <strong>${index + 1}. ${item.quality} - ${item.type}</strong>
                         <span>${lenStr} | ${item.weight}g | ${item.displayColor}</span>
-                        <span class="quote-item-price">$${item.price.toFixed(0)}</span>
                     </div>
-                    <button type="button" class="remove-item-btn" onclick="removeQuoteItem(${index})" title="Remove item">
-                        <i class="fa-solid fa-xmark"></i>
-                    </button>
+                    <div class="quote-item-minimal-actions">
+                        <span class="quote-item-minimal-price">$${item.price.toFixed(0)}</span>
+                        <button type="button" class="action-btn-minimal edit-btn" onclick="editQuoteItem(${index})" title="Edit item">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </button>
+                        <button type="button" class="action-btn-minimal remove-btn" onclick="removeQuoteItem(${index})" title="Remove item">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
                 `;
                 listDiv.appendChild(itemDiv);
             });
