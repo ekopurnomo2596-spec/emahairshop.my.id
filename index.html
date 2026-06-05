@@ -665,7 +665,7 @@
             .calc-group select, .calc-group input { padding: 10px 10px; font-size: 0.8rem; width: 100%; box-sizing: border-box; }
             
             .calc-header h3 { font-size: 1.2rem; white-space: normal; line-height: 1.3; margin-bottom: 5px; } 
-            .calc-header p { font-size: 0.7rem; white-space: normal; line-height: 1.4; padding: 0 5px; letter-spacing: 0; }
+            .calc-header p { font-size: 0.7rem; white-space: normal; line-height: 1.4; padding: 0 5px; letter-spacing: 0; font-weight: 400; }
             
             .add-item-btn, .calc-btn { 
                 font-size: 0.65rem !important; 
@@ -705,7 +705,7 @@
         .calc-container::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: linear-gradient(90deg, #25D366, var(--black)); border-radius: 12px 12px 0 0; }
         .calc-header { text-align: center; margin-bottom: 30px; }
         .calc-header h3 { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 1.8rem; color: var(--dark-blue); margin-bottom: 5px; }
-        .calc-header p { font-size: 0.95rem; color: var(--gray); margin-bottom: 0; }
+        .calc-header p { font-size: 0.95rem; color: var(--gray); margin-bottom: 0; font-weight: 400; }
         
         .calc-form { display: grid; grid-template-columns: 1fr; gap: 20px; width: 100%; box-sizing: border-box;}
         .calc-group { display: flex; flex-direction: column; gap: 8px; width: 100%; box-sizing: border-box;}
@@ -724,7 +724,7 @@
         }
         
         /* MEMBUAT TEKS INPUT BERADA DI TENGAH SAAT DIKETIK */
-        .calc-group select, .calc-group input { width: 100%; box-sizing: border-box; padding: 12px 15px; border: 1px solid #ccc; border-radius: 8px; font-family: 'Lato', sans-serif; font-size: 0.9rem; outline: none; transition: 0.3s; background: var(--white); text-align: center; }
+        .calc-group select, .calc-group input { width: 100%; box-sizing: border-box; padding: 12px 15px; border: 1px solid #ccc; border-radius: 8px; font-family: 'Lato', sans-serif; font-size: 0.9rem; outline: none; transition: 0.3s; background: var(--white); text-align: center; font-weight: 400; }
         .calc-group select:focus, .calc-group input:focus { border-color: #25D366; box-shadow: 0 0 5px rgba(37, 211, 102, 0.3); }
         .calc-full { grid-column: span 1; width: 100%; }
 
@@ -746,7 +746,7 @@
         }
 
         .item-centered {
-            grid-column: 2; /* Memaksa elemen ini berada di kolom tengah pada grid 3 kolom */
+            grid-column: 1 / -1; /* Memaksa elemen 28" memanjang penuh dari kiri ke kanan */
         }
         
         .hidden-radio {
@@ -761,12 +761,13 @@
             padding: 12px 5px;
             font-size: 0.85rem;
             font-family: 'Lato', sans-serif;
+            font-weight: 400; /* KETEBALAN TEKS SAMA PERSIS DENGAN TEKS ADD MULTIPLE */
             text-align: center;
             cursor: pointer;
             transition: all 0.3s ease;
             color: var(--gray);
             user-select: none;
-            display: block; /* Memenuhi sel grid */
+            display: block; /* Memenuhi sel grid penuh */
             width: 100%;
             box-sizing: border-box;
         }
@@ -783,11 +784,11 @@
             background: #f0fdf4; /* Background hijau sangat pudar/elegan */
             color: var(--black); /* Teks kontras hitam tebal */
             border: 1.5px solid #25D366; /* Border hijau menyala */
-            font-weight: 800;
+            font-weight: 800; /* Tetap tebal saat dicentang agar jelas membedakan */
             box-shadow: 0 4px 15px rgba(37, 211, 102, 0.15);
             transform: translateY(-2px);
         }
-
+        
         /* Tombol Tambah Produk */
         .add-item-btn { background-color: var(--dark-blue); color: var(--white); padding: 12px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; width: 100%; display: flex; justify-content: center; align-items: center; gap: 8px; text-transform: uppercase; font-size: 0.85rem;}
         .add-item-btn:hover { background-color: var(--black); }
