@@ -639,6 +639,98 @@
         .calc-group select, .calc-group input { width: 100%; box-sizing: border-box; padding: 12px 15px; border: 1px solid #ccc; border-radius: 8px; font-family: 'Lato', sans-serif; font-size: 0.9rem; outline: none; transition: 0.3s; background: var(--white); }
         .calc-group select:focus, .calc-group input:focus { border-color: #25D366; box-shadow: 0 0 5px rgba(37, 211, 102, 0.3); }
         .calc-full { grid-column: span 1; width: 100%; }
+
+        /* --- PILL BUTTON SELECTOR (PREMIUM CHECKLIST STYLE) --- */
+        .pill-selector {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px; /* Jarak sedikit dilonggarkan agar lebih elegan */
+            width: 100%;
+        }
+        .hidden-radio {
+            display: none;
+        }
+        .pill-label {
+            flex: 1 1 calc(33.333% - 12px); 
+            min-width: 90px;
+            background: var(--white);
+            border: 1.5px solid #e0e0e0; /* Border lebih rapi */
+            border-radius: 8px;
+            padding: 12px 8px;
+            font-size: 0.85rem;
+            font-family: 'Lato', sans-serif;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--gray);
+            user-select: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .pill-label:hover {
+            border-color: #a3e6be;
+            background-color: #f4fdf7;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+
+        /* --- ANIMASI IKON CEKLIS (FONT AWESOME) --- */
+        .pill-label::before {
+            content: '\f00c'; /* Kode Unicode untuk fa-check */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            font-size: 0.85rem;
+            color: #25D366;
+            
+            /* Posisi awal tersembunyi */
+            max-width: 0;
+            opacity: 0;
+            margin-right: 0;
+            overflow: hidden;
+            transform: scale(0.5);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); /* Efek membal halus (bounce) */
+        }
+
+        /* --- SAAT OPSI DIPILIH (CHECKED) --- */
+        .hidden-radio:checked + .pill-label {
+            background: #f4fdf7; /* Background hijau sangat pudar/elegan */
+            color: var(--black); /* Teks kontras */
+            border: 1.5px solid #25D366; /* Border menyala */
+            font-weight: 800;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.15);
+            transform: translateY(-2px);
+        }
+
+        /* Memunculkan Ikon Ceklis saat dipilih */
+        .hidden-radio:checked + .pill-label::before {
+            max-width: 20px; /* Ruang untuk ikon terbuka */
+            opacity: 1;
+            margin-right: 6px;
+            transform: scale(1);
+        }
+
+        /* Modifikasi agar opsi Length (Inches) terlihat rapi */
+        .pill-length .pill-label {
+            flex: 1 1 calc(25% - 12px); /* 4 kotak sejajar di Desktop */
+        }
+
+        /* --- TAMPILAN RESPONSIVE HP --- */
+        @media (max-width: 768px) {
+            .pill-label {
+                flex: 1 1 calc(50% - 12px); /* 2 kotak sejajar di HP */
+                font-size: 0.75rem;
+                padding: 10px 5px;
+            }
+            .pill-label::before {
+                font-size: 0.75rem;
+            }
+            .pill-length .pill-label {
+                flex: 1 1 calc(25% - 12px); 
+            }
+        }
         
         /* Tombol Tambah Produk */
         .add-item-btn { background-color: var(--dark-blue); color: var(--white); padding: 12px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; width: 100%; display: flex; justify-content: center; align-items: center; gap: 8px; text-transform: uppercase; font-size: 0.85rem;}
@@ -1380,54 +1472,85 @@
             </div>
             
             <div class="calc-form">
+                <!-- Hair Type Pill Buttons -->
                 <div class="calc-group">
-                    <label for="calcType">Hair Type</label>
-                    <select id="calcType">
-                        <option value="">-- Choose Hair Type --</option>
-                        <option value="Hair Bulk">Hair Bulk</option>
-                        <option value="Hair Weft">Hair Weft</option>
-                        <option value="Hair Tape">Hair Tape</option>
-                        <option value="I Tip / Keratin">I Tip / Keratin</option>
-                        <option value="Nano Ring">Nano Ring</option>
-                        <option value="Genius Weft">Genius Weft</option>
-                    </select>
+                    <label>Hair Type</label>
+                    <div class="pill-selector">
+                        <input type="radio" id="type1" name="calcType" value="Hair Bulk" class="hidden-radio">
+                        <label for="type1" class="pill-label">Hair Bulk</label>
+
+                        <input type="radio" id="type2" name="calcType" value="Hair Weft" class="hidden-radio">
+                        <label for="type2" class="pill-label">Hair Weft</label>
+
+                        <input type="radio" id="type3" name="calcType" value="Hair Tape" class="hidden-radio">
+                        <label for="type3" class="pill-label">Hair Tape</label>
+
+                        <input type="radio" id="type4" name="calcType" value="I Tip / Keratin" class="hidden-radio">
+                        <label for="type4" class="pill-label">I Tip / Keratin</label>
+
+                        <input type="radio" id="type5" name="calcType" value="Nano Ring" class="hidden-radio">
+                        <label for="type5" class="pill-label">Nano Ring</label>
+
+                        <input type="radio" id="type6" name="calcType" value="Genius Weft" class="hidden-radio">
+                        <label for="type6" class="pill-label">Genius Weft</label>
+                    </div>
                 </div>
                 
+                <!-- Quality Pill Buttons -->
                 <div class="calc-group">
-                    <label for="calcQuality">Quality</label>
-                    <select id="calcQuality">
-                        <option value="">-- Choose Quality --</option>
-                        <option value="Double Drawn">Double Drawn</option>
-                        <option value="Super Double Drawn">Super Double Drawn</option>
-                    </select>
+                    <label>Quality</label>
+                    <div class="pill-selector">
+                        <input type="radio" id="qual1" name="calcQuality" value="Double Drawn" class="hidden-radio">
+                        <label for="qual1" class="pill-label">Double Drawn</label>
+
+                        <input type="radio" id="qual2" name="calcQuality" value="Super Double Drawn" class="hidden-radio">
+                        <label for="qual2" class="pill-label">Super Double Drawn</label>
+                    </div>
                 </div>
                 
+                <!-- Length Pill Buttons -->
                 <div class="calc-group">
-                    <label for="calcLength">Length (Inches)</label>
-                    <select id="calcLength">
-                        <option value="">-- Choose Length --</option>
-                        <option value="16 inches">16"</option>
-                        <option value="18 inches">18"</option>
-                        <option value="20 inches">20"</option>
-                        <option value="22 inches">22"</option>
-                        <option value="24 inches">24"</option>
-                        <option value="26 inches">26"</option>
-                        <option value="28 inches">28"</option>
-                    </select>
+                    <label>Length (Inches)</label>
+                    <div class="pill-selector pill-length">
+                        <input type="radio" id="len16" name="calcLength" value="16 inches" class="hidden-radio">
+                        <label for="len16" class="pill-label">16"</label>
+
+                        <input type="radio" id="len18" name="calcLength" value="18 inches" class="hidden-radio">
+                        <label for="len18" class="pill-label">18"</label>
+
+                        <input type="radio" id="len20" name="calcLength" value="20 inches" class="hidden-radio">
+                        <label for="len20" class="pill-label">20"</label>
+
+                        <input type="radio" id="len22" name="calcLength" value="22 inches" class="hidden-radio">
+                        <label for="len22" class="pill-label">22"</label>
+
+                        <input type="radio" id="len24" name="calcLength" value="24 inches" class="hidden-radio">
+                        <label for="len24" class="pill-label">24"</label>
+
+                        <input type="radio" id="len26" name="calcLength" value="26 inches" class="hidden-radio">
+                        <label for="len26" class="pill-label">26"</label>
+
+                        <input type="radio" id="len28" name="calcLength" value="28 inches" class="hidden-radio">
+                        <label for="len28" class="pill-label">28"</label>
+                    </div>
                 </div>
                 
+                <!-- Quantity Input (Tetap diketik karena angka bebas) -->
                 <div class="calc-group">
                     <label for="calcWeight">Quantity Needed (Grams)</label>
                     <input type="number" id="calcWeight" placeholder="e.g. 500" min="100" step="100">
                 </div>
 
+                <!-- Color Pill Buttons -->
                 <div class="calc-group">
-                    <label for="calcColorType">Color Selection</label>
-                    <select id="calcColorType" onchange="toggleColorInput()">
-                        <option value="">-- Choose Color Category --</option>
-                        <option value="Natural">Natural Color (Black)</option>
-                        <option value="Color">Custom Color (Blonde, Ash, etc.)</option>
-                    </select>
+                    <label>Color Selection</label>
+                    <div class="pill-selector">
+                        <input type="radio" id="col1" name="calcColorType" value="Natural" class="hidden-radio" onchange="toggleColorInput()">
+                        <label for="col1" class="pill-label">Natural (Black)</label>
+
+                        <input type="radio" id="col2" name="calcColorType" value="Color" class="hidden-radio" onchange="toggleColorInput()">
+                        <label for="col2" class="pill-label">Custom Color</label>
+                    </div>
                 </div>
 
                 <div class="calc-group" id="specificColorGroup" style="display: none;">
@@ -1727,25 +1850,39 @@
         let finalWhatsAppMessage = ""; // Menyimpan pesan yang sudah siap dikirim
         
         function toggleColorInput() {
-            const val = document.getElementById('calcColorType').value;
+            // Ambil data dari radio button color yang dipilih
+            const colorElement = document.querySelector('input[name="calcColorType"]:checked');
+            const val = colorElement ? colorElement.value : "";
             const group = document.getElementById('specificColorGroup');
+            
             if(val === 'Color') {
                 group.style.display = 'flex';
             } else {
                 group.style.display = 'none';
+                document.getElementById('calcSpecificColor').value = ""; // Reset input jika ganti ke Natural
             }
         }
 
         function addQuoteItem() {
-            const type = document.getElementById('calcType').value;
-            const quality = document.getElementById('calcQuality').value;
-            const length = document.getElementById('calcLength').value;
+            // Ambil semua data dari radio button (Pill Buttons)
+            const typeElement = document.querySelector('input[name="calcType"]:checked');
+            const type = typeElement ? typeElement.value : "";
+            
+            const qualityElement = document.querySelector('input[name="calcQuality"]:checked');
+            const quality = qualityElement ? qualityElement.value : "";
+            
+            const lengthElement = document.querySelector('input[name="calcLength"]:checked');
+            const length = lengthElement ? lengthElement.value : "";
+            
+            const colorElement = document.querySelector('input[name="calcColorType"]:checked');
+            const colorType = colorElement ? colorElement.value : "";
+            
             const weight = parseFloat(document.getElementById('calcWeight').value);
-            const colorType = document.getElementById('calcColorType').value;
             let specificColor = document.getElementById('calcSpecificColor').value.trim();
 
+            // Validasi
             if (!type || !quality || !length || !weight || !colorType) {
-                alert("Please fill out all required fields.");
+                alert("Please select all required options and fill the quantity.");
                 return;
             }
             
@@ -1754,26 +1891,28 @@
                     alert("Please type the specific color you want (e.g., 4, 613, Piano).");
                     return;
                 }
-                // Jika warna adalah angka (misal "4" atau "613") dan belum ada hastag, tambahkan otomatis
                 if (!specificColor.startsWith('#') && !isNaN(specificColor)) {
                     specificColor = '#' + specificColor;
                 }
             }
 
+            // Kalkulasi Harga
             const priceType = colorType === 'Natural' ? 'nat' : 'col';
             const pricePer100g = pricingDB[type][quality][length][priceType];
             const itemPrice = (weight / 100) * pricePer100g;
 
             const displayColor = colorType === 'Natural' ? 'Natural' : specificColor;
 
+            // Masukkan ke keranjang
             quoteItems.push({ type, quality, length, weight, colorType, displayColor, price: itemPrice });
             
-            // Mengosongkan form
-            document.getElementById('calcType').value = "";
-            document.getElementById('calcQuality').value = "";
-            document.getElementById('calcLength').value = "";
+            // Reset semua form pill buttons & input text
+            if (typeElement) typeElement.checked = false;
+            if (qualityElement) qualityElement.checked = false;
+            if (lengthElement) lengthElement.checked = false;
+            if (colorElement) colorElement.checked = false;
+            
             document.getElementById('calcWeight').value = "";
-            document.getElementById('calcColorType').value = "";
             document.getElementById('calcSpecificColor').value = "";
             document.getElementById('specificColorGroup').style.display = "none";
             
