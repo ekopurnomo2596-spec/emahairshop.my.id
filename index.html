@@ -501,47 +501,15 @@
 
             nav { flex-direction: column; padding: 12px 5%; gap: 15px; height: auto; align-items: center;}
             
-            /* Logo memendek rapi, animasi auto-hide diletakkan KHUSUS DI HP */
             .logo { transform: scale(0.9); transform-origin: center; margin: 0 auto; width: max-content; display: flex; justify-content: center; }
-            .logo.hide-logo {
-                max-height: 0 !important;
-                opacity: 0 !important;
-                margin: 0 !important;
-                padding: 0 !important;
-                transform: scale(0.5);
-                border: none;
-            }
+            .logo.hide-logo { max-height: 0 !important; opacity: 0 !important; margin: 0 !important; padding: 0 !important; transform: scale(0.5); border: none; }
             
-            /* TAMPILAN 3 TOMBOL PINTASAN DI HP (FONT KECIL & IKON MENYAMPING 1 BARIS) */
-            .quick-nav { 
-                display: flex; 
-                width: 100%; 
-                justify-content: center; 
-                gap: 10px; 
-            }
-            .quick-nav a { 
-                flex: 1; 
-                display: flex;
-                flex-direction: row; 
-                align-items: center;
-                justify-content: center;
-                background-color: var(--black); 
-                color: var(--white); 
-                padding: 8px 5px; 
-                border-radius: 6px; 
-                font-size: 0.65rem; 
-                font-weight: 800; 
-                text-decoration: none; 
-                letter-spacing: 0.5px;
-                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-                gap: 5px;
-                white-space: nowrap; 
-            }
+            .quick-nav { display: flex; width: 100%; justify-content: center; gap: 10px; }
+            .quick-nav a { flex: 1; display: flex; flex-direction: row; align-items: center; justify-content: center; background-color: var(--black); color: var(--white); padding: 8px 5px; border-radius: 6px; font-size: 0.65rem; font-weight: 800; text-decoration: none; letter-spacing: 0.5px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); gap: 5px; white-space: nowrap; }
             .quick-nav a i { font-size: 0.8rem; margin-bottom: 0; color: var(--bright-green); }
             .quick-nav a:active { background-color: var(--bright-green); transform: translateY(2px);}
             .quick-nav a:active i { color: var(--white); }
 
-            /* MENGHILANGKAN BAGIAN HIGHLIGHTS DI HP AGAR LEBIH CEPAT KE PRODUK */
             .highlights { display: none !important; }
             
             .about { padding-top: 150px; gap: 50px; } 
@@ -591,39 +559,17 @@
             .detail-table { font-size: 0.5rem; }
             .detail-table th, .detail-table td { padding: 3px 2px; }
             
-            .buy-now-btn { 
-                padding: 8px 4px; font-size: 0.55rem; border-radius: 6px; gap: 5px; letter-spacing: 0; text-align: center; flex-wrap: wrap; justify-content: center; line-height: 1.2;
-            }
+            .buy-now-btn { padding: 8px 4px; font-size: 0.55rem; border-radius: 6px; gap: 5px; letter-spacing: 0; text-align: center; flex-wrap: wrap; justify-content: center; line-height: 1.2; }
             .buy-now-btn i { font-size: 0.8rem; }
 
-            /* ======================================================= */
-            /* === PERBAIKAN TAMPILAN PRICE LIST DI MOBILE (HP) === */
-            /* ======================================================= */
             section#pricelist { padding: 60px 2% !important; } 
             
             .price-grid { gap: 20px; grid-template-columns: 1fr; width: 100%; } 
             
-            .price-card { 
-                padding: 0 !important; 
-                border-radius: 0; 
-                display: grid; 
-                grid-template-columns: repeat(2, minmax(0, 1fr)); 
-                gap: 8px; 
-                align-items: start; 
-                background-color: transparent !important; 
-                box-shadow: none !important; 
-                border: none !important; 
-            }
+            .price-card { padding: 0 !important; border-radius: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; align-items: start; background-color: transparent !important; box-shadow: none !important; border: none !important; }
             .price-card::before { display: none; } 
             
-            .price-card-title { 
-                grid-column: span 2; 
-                margin-bottom: 2px; 
-                padding-bottom: 5px; 
-                border-bottom: 2px solid var(--black); 
-                text-align: center; 
-                width: 100%; 
-            }
+            .price-card-title { grid-column: span 2; margin-bottom: 2px; padding-bottom: 5px; border-bottom: 2px solid var(--black); text-align: center; width: 100%; }
             .price-card-title h3 { font-size: 1.3rem; letter-spacing: 1px; margin: 0; color: var(--black); }
             
             .price-accordion { margin-bottom: 0 !important; border-radius: 8px !important; background-color: transparent !important; border: none !important; box-shadow: none !important; width: 100% !important; min-width: 0 !important; }
@@ -635,22 +581,7 @@
             
             .price-table-wrapper { padding: 10px 2px; width: 100%; box-sizing: border-box;}
             
-            /* TAMPILAN NOTIF HARGA DI HP: LEBIH MENCOLOK & IKON DIMUNCULKAN */
-            .price-note { 
-                font-size: 0.55rem !important; 
-                padding: 8px 5px !important; 
-                letter-spacing: 0px !important; 
-                white-space: normal !important; 
-                line-height:1.2; border-bottom: none !important; 
-                border-radius: 4px !important;
-                margin: 0 0 8px 0 !important; 
-                color: var(--circle-pink) !important; 
-                background-color: rgba(216, 84, 107, 0.05) !important; 
-                display: flex !important; justify-content: center !important; 
-                align-items: center !important; text-align:center; 
-                width: 100%; box-sizing: border-box; 
-                font-weight: 900 !important; 
-            }
+            .price-note { font-size: 0.55rem !important; padding: 8px 5px !important; letter-spacing: 0px !important; white-space: normal !important; line-height:1.2; border-bottom: none !important; border-radius: 4px !important; margin: 0 0 8px 0 !important; color: var(--circle-pink) !important; background-color: rgba(216, 84, 107, 0.05) !important; display: flex !important; justify-content: center !important; align-items: center !important; text-align:center; width: 100%; box-sizing: border-box; font-weight: 900 !important; }
             .price-note i { display: inline-block !important; font-size: 0.65rem !important; margin-right: 2px;}
 
             .modern-table th { padding: 6px 1px; font-size: 0.45rem; letter-spacing: 0; }
@@ -658,51 +589,65 @@
             .modern-table td:first-child { padding-left: 2px; font-size: 0.55rem; white-space: normal;}
             
             /* ==================================================================== */
-            /* KALKULATOR HP - DIPADATKAN AGAR MUAT 1 LAYAR */
+            /* KALKULATOR HP - DIPADATKAN AGAR MUAT 1 LAYAR & MENTOK KANAN-KIRI */
             /* ==================================================================== */
             .calculator-section { padding: 30px 0; overflow: hidden; } 
-            .calc-container { padding: 15px 10px; width: 100%; box-sizing: border-box; border-radius: 0; border-left: none; border-right: none; } 
-            .calc-container::before { border-radius: 0; }
-            .calc-header { margin-bottom: 12px; } /* Jarak bawah judul Order Form dikecilkan */
             
-            .calc-form { grid-template-columns: 1fr; gap: 8px; width: 100%; box-sizing: border-box;} /* Gap antar baris dikecilkan dari 15px ke 8px */
+            .calc-container { 
+                padding: 15px 4px; /* Padding dikurangi agar tombol benar-benar mentok ke tepi abu-abu */
+                width: 100%; 
+                box-sizing: border-box; 
+                border-radius: 0; 
+                border-left: none; 
+                border-right: none; 
+            } 
+            .calc-container::before { border-radius: 0; }
+            
+            .calc-header { margin-bottom: 12px; padding: 0 5px; } /* Memberi jarak agar judul tidak mentok pinggir layar */
+            
+            .calc-form { grid-template-columns: 1fr; gap: 8px; width: 100%; box-sizing: border-box; margin: 0; } 
             .calc-full { grid-column: span 1; } 
             
-            /* Input dibuat lebih ceper */
-            .calc-group select, .calc-group input { padding: 8px 10px; font-size: 0.8rem; width: 100%; box-sizing: border-box; height: 35px;} 
+            /* Input dibuat sejajar mentok kanan-kiri */
+            .calc-group select, .calc-group input { padding: 8px 10px; font-size: 0.8rem; width: 100%; box-sizing: border-box; height: 35px; margin: 0;} 
             
             .calc-header h3 { font-size: 1.2rem; white-space: normal; line-height: 1.2; margin-bottom: 2px; } 
-            .calc-header p { font-size: 0.7rem; white-space: normal; line-height: 1.4; padding: 0 5px; letter-spacing: 0; font-weight: 400; }
+            .calc-header p { font-size: 0.7rem; white-space: normal; line-height: 1.4; letter-spacing: 0; font-weight: 400; }
             
             .add-item-btn, .calc-btn { 
                 font-size: 0.65rem !important; 
-                padding: 8px 5px !important; /* Padding tombol utama dikecilkan */
+                padding: 8px 5px !important; 
                 white-space: nowrap !important; 
                 line-height: 1 !important; 
                 width: 100%; 
                 box-sizing: border-box; 
                 text-align: center; 
                 justify-content: center;
+                margin: 0;
             }
 
-            /* === KUNCI TATA LETAK GRID UNTUK MOBILE (Sesuai Desain Foto) === */
-            .pill-grid-3 { grid-template-columns: repeat(3, 1fr) !important; gap: 4px !important; } /* Gap tombol pilihan dikecilkan dari 6px ke 4px */
-            .pill-grid-2 { grid-template-columns: repeat(2, 1fr) !important; gap: 4px !important; }
+            /* === KUNCI TATA LETAK GRID UNTUK MOBILE (Mentok Kanan-Kiri & Rapi) === */
+            .pill-grid-3 { grid-template-columns: repeat(3, 1fr) !important; gap: 4px !important; width: 100%; margin: 0; padding: 0; } 
+            .pill-grid-2 { grid-template-columns: repeat(2, 1fr) !important; gap: 4px !important; width: 100%; margin: 0; padding: 0; }
             
             .pill-label { 
                 font-size: 0.55rem !important; 
-                padding: 4px 2px !important; /* Padding tombol pill dikecilkan */
-                min-height: 28px !important; /* Tinggi minimal tombol pill dikecilkan dari 32px ke 28px */
+                padding: 4px 2px !important; 
+                min-height: 28px !important; 
                 letter-spacing: -0.2px;        
+                width: 100%;
+                box-sizing: border-box;
+                margin: 0;
             }
             
-            /* MEMASTIKAN LABEL SEBARIS DAN TIDAK KELUAR KOTAK DI HP */
+            /* Label Judul Kategori (HAIR TYPE, dll) sedikit diberi padding agar teksnya tetap rapi tidak menabrak bingkai HP */
             .calc-group > label:not(.pill-label) {
                 font-size: 0.8rem !important; 
                 white-space: nowrap !important; 
                 letter-spacing: 0.5px !important;
-                margin-bottom: 4px !important; /* Jarak antara label dan tombol pilihan dikecilkan */
-                margin-top: 0px !important; /* Jarak atas dihilangkan */
+                margin-bottom: 4px !important; 
+                margin-top: 0px !important;
+                padding: 0 4px; 
             }
         }
         
