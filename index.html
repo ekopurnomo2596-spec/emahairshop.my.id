@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EMAHAIRSHOP</title>
     
-    <!-- === MENCEGAH BROWSER MENERJEMAHKAN OTOMATIS (MENCEGAH TEKS KELUAR/BERANTAKAN) === -->
+    <!-- === MENCEGAH BROWSER MENERJEMAHKAN OTOMATIS === -->
     <meta name="google" content="notranslate">
     
     <!-- === SEO META TAGS === -->
@@ -19,10 +19,7 @@
     <meta property="og:url" content="https://www.emahairshop.my.id/">
     <meta property="og:type" content="website">
 
-    <!-- ====================================================================
-         === GOOGLE ANALYTICS (PELACAK PENGUNJUNG, FB/IG, & ASAL NEGARA) ===
-         ==================================================================== -->
-    <!-- Google tag (gtag.js) -->
+    <!-- === GOOGLE ANALYTICS === -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-W5HY2PJ62X"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -37,266 +34,68 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,600&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     
     <style>
-        /* --- 1. PENGATURAN DASAR --- */
+        /* --- PENGATURAN DASAR --- */
         :root {
-            --black: #111111;
-            --white: #ffffff;
-            --gray: #666666;
-            --green: #2F4E37; 
-            --circle-pink: #d8546b; 
-            --dark-blue: #4a5568; 
-            --bright-green: #10B981; 
-            --bright-red: #FF1E1E; 
-            --gold: #D4AF37; 
+            --black: #111111; --white: #ffffff; --gray: #666666;
+            --green: #2F4E37; --circle-pink: #d8546b; --dark-blue: #4a5568; 
+            --bright-green: #10B981; --bright-red: #FF1E1E; --gold: #D4AF37; 
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 90px; 
-        }
-
-        body {
-            font-family: 'Lato', sans-serif;
-            background-color: var(--white);
-            color: var(--black);
-            line-height: 1.8;
-            font-weight: 300;
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 400;
-            text-transform: uppercase;
-        }
-
+        html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+        body { font-family: 'Lato', sans-serif; background-color: var(--white); color: var(--black); line-height: 1.8; font-weight: 300; overflow-x: hidden; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; text-transform: uppercase; }
         section { padding: 100px 10%; display: flex; flex-direction: column; justify-content: center; }
 
-        /* --- 2. NAVIGASI BARU (DESKTOP & MOBILE SERAGAM) --- */
+        /* --- NAVIGASI BARU (DESKTOP & MOBILE SERAGAM) --- */
         nav {
-            position: fixed;
-            top: 0; width: 100%; padding: 15px 10%;
+            position: fixed; top: 0; width: 100%; padding: 15px 10%;
             background: rgba(255, 255, 255, 0.98);
             display: flex; justify-content: space-between; align-items: center;
-            z-index: 1000; border-bottom: 1px solid #f0f0f0;
-            transition: all 0.4s ease-in-out;
+            z-index: 1000; border-bottom: 1px solid #f0f0f0; transition: all 0.4s ease-in-out;
         }
 
-        .logo { 
-            background-color: transparent; 
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            max-height: 150px;
-            opacity: 1;
-        }
+        .logo { background-color: transparent; padding: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); max-height: 150px; opacity: 1; }
+        .logo.hide-logo { max-height: 0; opacity: 0; margin: 0 !important; padding: 0 !important; transform: scale(0.5); border: none; }
+        .logo-top { display: flex; align-items: center; width: 100%; margin-bottom: -3px; }
+        .line-top { height: 2px; background-color: var(--black); flex-grow: 1; margin-right: 6px; }
+        .text-ext { color: var(--black); font-family: 'Lato', sans-serif; font-weight: 900; font-size: 0.45rem; letter-spacing: 2px; text-transform: uppercase; }
+        .logo-main { color: var(--black); font-family: 'Arial Black', 'Lato', sans-serif; font-weight: 900; font-size: 1.2rem; letter-spacing: 0px; line-height: 1.1; text-transform: uppercase; }
+        .line-bottom { width: 95%; height: 2px; background-color: var(--black); margin: 0px auto 2px auto; }
+        .logo-year { color: var(--gold); font-family: 'Lato', sans-serif; font-weight: 900; font-size: 0.6rem; letter-spacing: 1px; }
 
-        .logo.hide-logo {
-            max-height: 0;
-            opacity: 0;
-            margin: 0 !important;
-            padding: 0 !important;
-            transform: scale(0.5);
-            border: none;
-        }
-
-        .logo-top {
-            display: flex;
-            align-items: center;
-            width: 100%;
-            margin-bottom: -3px; 
-        }
-
-        .line-top {
-            height: 2px; 
-            background-color: var(--black); 
-            flex-grow: 1;
-            margin-right: 6px;
-        }
-
-        .text-ext {
-            color: var(--black); 
-            font-family: 'Lato', sans-serif;
-            font-weight: 900;
-            font-size: 0.45rem; 
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        .logo-main {
-            color: var(--black); 
-            font-family: 'Arial Black', 'Lato', sans-serif; 
-            font-weight: 900;
-            font-size: 1.2rem; 
-            letter-spacing: 0px;
-            line-height: 1.1;
-            text-transform: uppercase;
-        }
-
-        .line-bottom {
-            width: 95%; 
-            height: 2px; 
-            background-color: var(--black); 
-            margin: 0px auto 2px auto;
-        }
-
-        .logo-year {
-            color: var(--gold); 
-            font-family: 'Lato', sans-serif;
-            font-weight: 900;
-            font-size: 0.6rem; 
-            letter-spacing: 1px;
-        }
-
-        /* QUICK NAV (MENGGANTIKAN MENU TEKS LAMA) */
-        .quick-nav { 
-            display: flex; 
-            gap: 15px; 
-        }
-        .quick-nav a { 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: var(--black); 
-            color: var(--white); 
-            padding: 10px 20px; 
-            border-radius: 8px; 
-            font-size: 0.8rem; 
-            font-weight: 800; 
-            text-decoration: none; 
-            letter-spacing: 1px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            gap: 8px;
-            transition: 0.3s;
-        }
+        .quick-nav { display: flex; gap: 15px; }
+        .quick-nav a { display: flex; align-items: center; justify-content: center; background-color: var(--black); color: var(--white); padding: 10px 20px; border-radius: 8px; font-size: 0.8rem; font-weight: 800; text-decoration: none; letter-spacing: 1px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); gap: 8px; transition: 0.3s; }
         .quick-nav a i { font-size: 1rem; color: var(--bright-green); transition: 0.3s;}
         .quick-nav a:hover { background-color: var(--circle-pink); transform: translateY(-3px);}
         .quick-nav a:hover i { color: var(--white); }
 
         /* --- ABOUT SECTION --- */
-        .about { 
-            text-align: center; 
-            background-color: #152219; 
-            align-items: center; 
-            padding-top: 150px; 
-            display: flex;
-            flex-direction: column;
-            gap: 60px; 
-        } 
+        .about { text-align: center; background-color: #152219; align-items: center; padding-top: 150px; display: flex; flex-direction: column; gap: 60px; } 
 
-        /* --- STYLING UTAMA: PREVIEW GALERI --- */
-        .product-preview-gallery {
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 25px;
-            width: 100%;
-            max-width: 1100px;
-            margin: 0 auto;
-            overflow-anchor: none; 
-        }
-
-        .preview-box {
-            position: relative;
-            background: var(--white); 
-            padding: 15px; 
-            border-radius: 12px; 
-            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-            border: 1px solid rgba(255,255,255,0.1); 
-            width: 100%;
-            height: 100%;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-        }
-
-        .preview-box img, .swiper-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 6px; 
-            display: block;
-            flex-grow: 1;
-            min-height: 0; 
-            transition: opacity 0.6s ease, transform 0.6s ease; 
-        }
-        
+        .product-preview-gallery { display: grid; grid-template-columns: 1.2fr 1fr; gap: 25px; width: 100%; max-width: 1100px; margin: 0 auto; overflow-anchor: none; }
+        .preview-box { position: relative; background: var(--white); padding: 15px; border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); width: 100%; height: 100%; box-sizing: border-box; display: flex; flex-direction: column; overflow: hidden; }
+        .preview-box img, .swiper-slide img { width: 100%; height: 100%; object-fit: cover; border-radius: 6px; display: block; flex-grow: 1; min-height: 0; transition: opacity 0.6s ease, transform 0.6s ease; }
         .swiper-slide img { cursor: zoom-in; }
 
-        .preview-overlay {
-            position: absolute;
-            top: 15px; left: 15px; 
-            width: calc(100% - 30px); 
-            height: calc(100% - 30px);
-            border-radius: 6px;
-            background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.1) 60%, rgba(0,0,0,0) 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            align-items: flex-start;
-            color: var(--white);
-            text-align: left;
-            pointer-events: none; 
-        }
-        
+        .preview-overlay { position: absolute; top: 15px; left: 15px; width: calc(100% - 30px); height: calc(100% - 30px); border-radius: 6px; background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.1) 60%, rgba(0,0,0,0) 100%); display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; color: var(--white); text-align: left; pointer-events: none; }
         .preview-overlay a { pointer-events: auto; }
-
         .preview-left { height: 480px; }
         .preview-left .preview-overlay { padding: 30px; }
-        .preview-left h2 {
-            font-family: 'Lato', sans-serif;
-            font-size: 2.2rem;
-            font-weight: 900;
-            line-height: 1.2;
-            margin-bottom: 5px;
-            text-transform: none;
-            letter-spacing: 0.5px;
-        }
+        .preview-left h2 { font-family: 'Lato', sans-serif; font-size: 2.2rem; font-weight: 900; line-height: 1.2; margin-bottom: 5px; text-transform: none; letter-spacing: 0.5px; }
         .preview-left p { font-size: 0.85rem; font-weight: 700; opacity: 0.8; letter-spacing: 1px; margin-bottom: 20px; }
 
-        .view-products-btn {
-            background-color: var(--bright-green);
-            color: var(--white);
-            text-decoration: none;
-            font-size: 0.8rem;
-            font-weight: 700;
-            padding: 10px 22px;
-            border-radius: 4px;
-            transition: 0.3s;
-            text-transform: none;
-        }
+        .view-products-btn { background-color: var(--bright-green); color: var(--white); text-decoration: none; font-size: 0.8rem; font-weight: 700; padding: 10px 22px; border-radius: 4px; transition: 0.3s; text-transform: none; }
         .view-products-btn:hover { background-color: var(--white); color: var(--black); transform: translateY(-2px); }
 
         .preview-right-grid { display: grid; grid-template-rows: 1fr 1fr; gap: 20px; height: 480px; }
 
-        /* --- DUA KOTAK BANNER --- */
         .top-banners { display: flex; justify-content: center; gap: 25px; width: 100%; max-width: 1100px; flex-wrap: wrap; }
-        .banner-box { 
-            display: flex; 
-            flex-direction: row; 
-            align-items: center; 
-            justify-content: space-between; 
-            padding: 25px 30px; 
-            border-radius: 12px; 
-            flex: 1; 
-            min-width: 300px; 
-            background-color: var(--bright-green); 
-            color: var(--white);
-            box-shadow: 0 5px 15px rgba(16, 185, 129, 0.15); 
-            transition: transform 0.3s, box-shadow 0.3s; 
-        }
+        .banner-box { display: flex; flex-direction: row; align-items: center; justify-content: space-between; padding: 25px 30px; border-radius: 12px; flex: 1; min-width: 300px; background-color: var(--bright-green); color: var(--white); box-shadow: 0 5px 15px rgba(16, 185, 129, 0.15); transition: transform 0.3s, box-shadow 0.3s; }
         .banner-box:hover { transform: translateY(-4px); box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3); }
         .banner-box i { font-size: 2.8rem; color: var(--white); flex: 0 0 50px; text-align: left; }
         .banner-box::after { content: ''; display: block; flex: 0 0 50px; }
@@ -304,7 +103,6 @@
         .banner-box h4 { font-family: 'Lato', sans-serif; font-weight: 700; font-size: 1.05rem; margin-bottom: 5px; color: var(--white); letter-spacing: 0.5px; text-transform: uppercase; }
         .banner-box p { font-family: 'Lato', sans-serif; font-size: 0.85rem; color: rgba(255, 255, 255, 0.9); margin: 0; line-height: 1.4; }
 
-        /* --- 4 HIGHLIGHTS BOX --- */
         .highlights { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; width: 100%; max-width: 1100px; }
         .highlight-box { background-color: transparent; padding: 10px; display: flex; flex-direction: column; align-items: center; text-align: center; flex: 1; min-width: 200px; transition: transform 0.3s; }
         .highlight-box:hover { transform: translateY(-5px); }
@@ -323,7 +121,6 @@
         
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; align-items: start; }
         
-        /* === KOTAK PRODUK PUTIH === */
         .card { background: var(--white); padding: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; border-radius: 8px; border: 1px solid #f0f0f0; position: relative; display: flex; flex-direction: column; color: var(--black); }
         .card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
         .card h3 { font-size: 1.25rem; letter-spacing: 1px; margin-bottom: 5px; text-align: center; font-weight: 700; font-family: 'Lato', sans-serif; color: var(--black); }
@@ -359,51 +156,21 @@
         .detail-table th:last-child, .detail-table td:last-child { text-align: right; }
         .check-icon { color: var(--circle-pink); margin-right: 5px; font-size: 0.8rem;}
 
-        /* === TOMBOL ORDER FORM PADA PRODUK === */
         .buy-now-btn { display: flex; justify-content: center; align-items: center; gap: 10px; width: 100%; background-color: var(--black); color: var(--white); padding: 14px 20px; text-decoration: none; border-radius: 8px; font-family: 'Lato', sans-serif; font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease; margin-top: auto; cursor: pointer; border: none; }
         .buy-now-btn i { font-size: 1.3rem; }
         .buy-now-btn:hover, .buy-now-btn:active { background-color: #25D366; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); color: var(--white); }
 
-        /* ========================================================================
-           === PRICE LIST SECTION (DESKTOP: KOTAK KIRI KANAN & OPEN MANDIRI) ===
-           ======================================================================== */
+        /* --- PRICE LIST SECTION --- */
         .price-section { background-color: #F9F8F6; } 
+        .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 30px; align-items: start; max-width: 1250px; margin: 0 auto; }
         
-        .price-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); 
-            gap: 30px; 
-            align-items: start; 
-            max-width: 1250px; 
-            margin: 0 auto; 
-        }
-        
-        .price-card { 
-            background-color: var(--white); 
-            border-radius: 16px; 
-            padding: 30px 20px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.04); 
-            border: 1px solid #eaeaea; 
-            transition: transform 0.3s ease, box-shadow 0.3s ease; 
-            position: relative; 
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr)); 
-            gap: 15px;
-            align-items: start; 
-        }
+        .price-card { background-color: var(--white); border-radius: 16px; padding: 30px 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); border: 1px solid #eaeaea; transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 15px; align-items: start; }
         .price-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.08); }
         .price-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: linear-gradient(90deg, var(--circle-pink), var(--black)); border-radius: 16px 16px 0 0; }
         
-        .price-card-title { 
-            grid-column: span 2; 
-            text-align: center; 
-            margin-bottom: 5px; 
-            padding-bottom: 15px; 
-            border-bottom: 1px dashed #eaeaea; 
-        }
+        .price-card-title { grid-column: span 2; text-align: center; margin-bottom: 5px; padding-bottom: 15px; border-bottom: 1px dashed #eaeaea; }
         .price-card-title h3 { font-family: 'Lato', sans-serif; font-size: 1.6rem; font-weight: 900; color: var(--black); letter-spacing: 2px; margin: 0; }
 
-        /* min-width: 0 ditambahkan agar kolom tidak merenggang saat dibuka */
         .price-accordion { margin-bottom: 0; background-color: transparent; border: none; box-shadow: none; width: 100%; min-width: 0; scroll-margin-top: 100px; }
         
         .price-summary { background-color: var(--bright-green); color: var(--white); font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; padding: 15px 10px; cursor: pointer; list-style: none; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; gap: 10px; transition: background-color 0.3s; border-radius: 8px; }
@@ -427,21 +194,9 @@
         .view-text::before { content: "Open"; }
         .price-accordion[open] .view-text::before { content: "Close"; }
         
-        /* GAYA MEWAH UNTUK TABEL HARGA (LUXURY STYLE) */
         .price-accordion[open] .price-summary { border-bottom-left-radius: 0; border-bottom-right-radius: 0; transition: 0s;} 
         
-        /* CATATAN HARGA DI DESKTOP: LEBIH MENCOLOK (PINK) & TANPA TULISAN IMPORTANT */
-        .price-note { 
-            display: flex; justify-content: center; align-items: center; gap: 6px; 
-            background-color: rgba(216, 84, 107, 0.05); /* Highlight pink transparan */
-            color: var(--circle-pink); /* Warna pink menyala agar notice */
-            font-size: 0.65rem; font-weight: 900; 
-            padding: 8px 0; margin: 0; letter-spacing: 0.5px; 
-            text-transform: uppercase; text-align: center; 
-            border-bottom: 1px solid #eaeaea; margin-bottom: 10px; 
-            white-space: nowrap; width: 100%; border-radius: 4px;
-        }
-        /* Ikon berdenyut agar lebih menarik perhatian */
+        .price-note { display: flex; justify-content: center; align-items: center; gap: 6px; background-color: rgba(216, 84, 107, 0.05); color: var(--circle-pink); font-size: 0.65rem; font-weight: 900; padding: 8px 0; margin: 0; letter-spacing: 0.5px; text-transform: uppercase; text-align: center; border-bottom: 1px solid #eaeaea; margin-bottom: 10px; white-space: nowrap; width: 100%; border-radius: 4px; }
         .price-note i { font-size: 0.8rem; color: var(--circle-pink); animation: pulse 2s infinite; }
         @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.15); } 100% { transform: scale(1); } }
 
@@ -493,9 +248,7 @@
         .lightbox-prev { left: 20px; }
         .lightbox-next { right: 20px; }
 
-        /* =======================================================
-           --- MEDIA QUERY RESPONSIVE (TAMPILAN KHUSUS HP) --- 
-           ======================================================= */
+        /* --- MEDIA QUERY RESPONSIVE (TAMPILAN KHUSUS HP) --- */
         @media (max-width: 768px) {
             html { scroll-padding-top: 100px; }
 
@@ -588,78 +341,28 @@
             .modern-table td { padding: 6px 1px; font-size: 0.65rem; border-bottom: 1px solid #f5f5f5;}
             .modern-table td:first-child { padding-left: 2px; font-size: 0.55rem; white-space: normal;}
             
-            /* ==================================================================== */
-            /* KALKULATOR HP - SUPER PADAT, MENTOK KANAN-KIRI, TANPA RUANG KOSONG */
-            /* ==================================================================== */
             .calculator-section { padding: 30px 0; overflow: hidden; } 
-            
-            .calc-container { 
-                padding: 15px 4px; 
-                width: 100%; 
-                box-sizing: border-box; 
-                border-radius: 0; 
-                border-left: none; 
-                border-right: none; 
-            } 
+            .calc-container { padding: 15px 4px; width: 100%; box-sizing: border-box; border-radius: 0; border-left: none; border-right: none; } 
             .calc-container::before { border-radius: 0; }
-            
             .calc-header { margin-bottom: 10px; padding: 0 5px; } 
-            
             .calc-form { grid-template-columns: 1fr; gap: 5px !important; width: 100%; box-sizing: border-box; margin: 0; } 
-            
             .calc-full { grid-column: span 1; } 
-            
             .calc-group { gap: 2px !important; width: 100%; box-sizing: border-box; }
-            
             .calc-group select, .calc-group input { padding: 8px 10px; font-size: 0.8rem; width: 100%; box-sizing: border-box; height: 35px; margin: 0;} 
-            
             .calc-header h3 { font-size: 1.2rem; white-space: normal; line-height: 1.2; margin-bottom: 2px; } 
             .calc-header p { font-size: 0.7rem; white-space: normal; line-height: 1.4; letter-spacing: 0; font-weight: 400; margin:0;}
             
-            .add-item-btn {
-                margin-top: 15px !important; 
-            }
-            
-            .add-item-btn, .calc-btn { 
-                font-size: 0.65rem !important; 
-                padding: 8px 5px !important; 
-                white-space: nowrap !important; 
-                line-height: 1 !important; 
-                width: 100%; 
-                box-sizing: border-box; 
-                text-align: center; 
-                justify-content: center;
-                margin: 0;
-            }
+            .add-item-btn { margin-top: 15px !important; }
+            .add-item-btn, .calc-btn { font-size: 0.65rem !important; padding: 8px 5px !important; white-space: nowrap !important; line-height: 1 !important; width: 100%; box-sizing: border-box; text-align: center; justify-content: center; margin: 0; }
 
             .pill-grid-3 { grid-template-columns: repeat(3, 1fr) !important; gap: 4px !important; width: 100%; margin: 0; padding: 0; } 
             .pill-grid-2 { grid-template-columns: repeat(2, 1fr) !important; gap: 4px !important; width: 100%; margin: 0; padding: 0; }
+            .pill-label { font-size: 0.55rem !important; padding: 4px 2px !important; min-height: 28px !important; letter-spacing: -0.2px; width: 100%; box-sizing: border-box; margin: 0; }
             
-            .pill-label { 
-                font-size: 0.55rem !important; 
-                padding: 4px 2px !important; 
-                min-height: 28px !important; 
-                letter-spacing: -0.2px;        
-                width: 100%;
-                box-sizing: border-box;
-                margin: 0;
-            }
-            
-            /* === GAYA LABEL KHUSUS HP (Tema Tema Simple Luxury Hijau) === */
-            .calc-group > label:not(.pill-label) {
-                font-size: 0.65rem !important; 
-                letter-spacing: 1.5px !important;
-                margin-bottom: 5px !important; 
-                margin-top: 5px !important;
-                padding: 6px 5px !important; 
-                border-radius: 4px !important; 
-                width: 100% !important; 
-            }
+            .calc-group > label:not(.pill-label) { font-size: 0.65rem !important; letter-spacing: 1.5px !important; margin-bottom: 5px !important; margin-top: 5px !important; padding: 6px 5px !important; border-radius: 4px !important; width: 100% !important; }
         }
         
-        /* ==========================================================
-           === FITUR 2: KALKULATOR PESANAN DINAMIS (MULTI-ITEM) ===
-           ========================================================== */
+        /* --- KALKULATOR PESANAN --- */
         .calculator-section { background-color: var(--white); padding: 80px 10%; border-top: 1px dashed #eaeaea; }
         .calc-container { max-width: 600px; margin: 0 auto; background: #F9F8F6; padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eaeaea; position: relative; box-sizing: border-box; width: 100%;}
         .calc-container::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: linear-gradient(90deg, #25D366, var(--black)); border-radius: 12px 12px 0 0; }
@@ -670,105 +373,24 @@
         .calc-form { display: grid; grid-template-columns: 1fr; gap: 20px; width: 100%; box-sizing: border-box;}
         .calc-group { display: flex; flex-direction: column; gap: 8px; width: 100%; box-sizing: border-box;}
         
-        /* =================================================================
-           GAYA LABEL BARU: SIMPLE LUXURY (THEME GREEN)
-           ================================================================= */
-        .calc-group > label:not(.pill-label) { 
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: rgba(47, 78, 55, 0.08); /* Hijau Gelap Transparan */
-            color: var(--green); /* Teks hijau pekat menyatu dengan tema */
-            border: 1px solid rgba(47, 78, 55, 0.2); /* Bingkai hijau tipis elegan */
-            font-size: 0.8rem; 
-            font-weight: 800; 
-            padding: 8px 10px; 
-            margin: 10px 0 10px 0; 
-            letter-spacing: 2px; /* Trik desain luxury: spasi huruf dilebarkan */
-            text-transform: uppercase; 
-            text-align: center; 
-            width: 100%; 
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
+        .calc-group > label:not(.pill-label) { display: flex; justify-content: center; align-items: center; background-color: rgba(47, 78, 55, 0.08); color: var(--green); border: 1px solid rgba(47, 78, 55, 0.2); font-size: 0.8rem; font-weight: 800; padding: 8px 10px; margin: 10px 0 10px 0; letter-spacing: 2px; text-transform: uppercase; text-align: center; width: 100%; border-radius: 4px; box-sizing: border-box; }
         
-        /* MEMBUAT TEKS INPUT BERADA DI TENGAH SAAT DIKETIK */
         .calc-group select, .calc-group input { width: 100%; box-sizing: border-box; padding: 12px 15px; border: 1px solid #ccc; border-radius: 8px; font-family: 'Lato', sans-serif; font-size: 0.9rem; outline: none; transition: 0.3s; background: var(--white); text-align: center; font-weight: 400; }
         .calc-group select:focus, .calc-group input:focus { border-color: #25D366; box-shadow: 0 0 5px rgba(37, 211, 102, 0.3); }
         .calc-full { grid-column: span 1; width: 100%; }
 
-        /* ========================================================
-           SISTEM GRID CSS UNTUK TATA LETAK TOMBOL YANG PRESISI
-           ======================================================== */
-        .pill-grid-3 {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            width: 100%;
-        }
+        .pill-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; width: 100%; }
+        .pill-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; width: 100%; }
+        .item-centered { grid-column: 1 / -1; }
+        .hidden-radio { display: none; }
+
+        .pill-label { background: #f8f9fa; border: 1px solid #dcdcdc; border-radius: 6px; padding: 8px 4px; font-size: 0.85rem; font-family: 'Lato', sans-serif; font-weight: 400; text-align: center; cursor: pointer; transition: all 0.3s ease; color: var(--gray); user-select: none; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; box-sizing: border-box; line-height: 1.2; }
+        .pill-label:hover { border-color: #a3e6be; background-color: #f0fdf4; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
+        .hidden-radio:checked + .pill-label { background: #f0fdf4; color: var(--black); border: 1.5px solid #25D366; font-weight: 800; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.15); transform: translateY(-2px); }
         
-        .pill-grid-2 {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            width: 100%;
-        }
-
-        .item-centered {
-            grid-column: 1 / -1; /* Memaksa elemen 28" memanjang penuh dari kiri ke kanan */
-        }
-        
-        .hidden-radio {
-            display: none;
-        }
-
-        /* GAYA TOMBOL PILIHAN (Sesuai Foto: Kotak Abu Tipis, Tanpa Ikon) */
-        .pill-label {
-            background: #f8f9fa; /* Latar abu-abu sangat terang */
-            border: 1px solid #dcdcdc; /* Border abu-abu tipis */
-            border-radius: 6px;
-            padding: 8px 4px; /* Padding dikurangi agar tinggi kotak lebih rendah (ceper) */
-            font-size: 0.85rem;
-            font-family: 'Lato', sans-serif;
-            font-weight: 400; /* KETEBALAN TEKS SAMA PERSIS DENGAN TEKS ADD MULTIPLE */
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            color: var(--gray);
-            user-select: none;
-            
-            /* Flex center memastikan teks selalu persis di tengah atas-bawah */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            height: 100%;
-            box-sizing: border-box;
-            line-height: 1.2;
-        }
-
-        .pill-label:hover {
-            border-color: #a3e6be;
-            background-color: #f0fdf4;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
-        }
-
-        /* --- SAAT OPSI DIPILIH (CHECKED) --- */
-        .hidden-radio:checked + .pill-label {
-            background: #f0fdf4; /* Background hijau sangat pudar/elegan */
-            color: var(--black); /* Teks kontras hitam tebal */
-            border: 1.5px solid #25D366; /* Border hijau menyala */
-            font-weight: 800; /* Tetap tebal saat dicentang agar jelas membedakan */
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.15);
-            transform: translateY(-2px);
-        }
-        
-        /* Tombol Tambah Produk */
         .add-item-btn { background-color: var(--dark-blue); color: var(--white); padding: 12px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; width: 100%; display: flex; justify-content: center; align-items: center; gap: 8px; text-transform: uppercase; font-size: 0.85rem;}
         .add-item-btn:hover { background-color: var(--black); }
         
-        /* Daftar Item Belanjaan */
         .quote-item-list { display: flex; flex-direction: column; gap: 10px; margin-top: 5px; margin-bottom: 10px; }
         .quote-item { background: #fff; border: 1px solid #ddd; padding: 12px 15px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; border-left: 4px solid #25D366; box-shadow: 0 4px 6px rgba(0,0,0,0.02);}
         .quote-item-details { display: flex; flex-direction: column; line-height: 1.3;}
@@ -778,13 +400,10 @@
         .remove-item-btn { background: none; border: none; color: var(--bright-red); font-size: 1.2rem; cursor: pointer; padding: 5px; transition: 0.3s;}
         .remove-item-btn:hover { transform: scale(1.2); }
 
-        /* Tombol Kirim Akhir WA */
         .calc-btn { background-color: #25D366; color: var(--white); padding: 12px; border: none; border-radius: 8px; font-size: 0.85rem; font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: 5px; width: 100%; box-sizing: border-box; text-transform: uppercase; letter-spacing: 1px; display: flex; justify-content: center; align-items: center; gap: 8px; }
         .calc-btn:hover { background-color: #1ebe56; box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3); transform: translateY(-3px); }
 
-        /* ==========================================================
-           === CSS CHECKOUT MODAL (POP-UP KONFIRMASI PESANAN) ===
-           ========================================================== */
+        /* --- CHECKOUT MODAL --- */
         .checkout-modal-content { background:#fff; width:90%; max-width:450px; padding:25px; border-radius:12px; color:var(--black); transform: scale(1); border-top: 5px solid #25D366; text-align: left; }
         .checkout-modal-header { border-bottom: 1px solid #eaeaea; padding-bottom: 10px; margin-bottom: 15px; }
         .checkout-modal-header h3 { font-family: 'Lato', sans-serif; font-size: 1.3rem; font-weight: 900; color: var(--black); text-transform: none; margin: 0; }
@@ -813,7 +432,6 @@
             <div class="logo-year">2019</div>
         </a>
         
-        <!-- MENU NAVIGASI KILAT SERAGAM (DESKTOP & HP) -->
         <div class="quick-nav">
             <a href="#products"><i class="fa-solid fa-box"></i> PRODUCTS</a>
             <a href="#pricelist"><i class="fa-solid fa-tags"></i> PRICE</a>
@@ -1493,9 +1111,7 @@
         </div>
     </section>
 
-    <!-- ==========================================================
-         === SECTION BARU: KALKULATOR PESANAN DINAMIS (MULTI-ITEM) ===
-         ========================================================== -->
+    <!-- SECTION: KALKULATOR PESANAN DINAMIS (MULTI-ITEM) -->
     <section id="quote" class="calculator-section">
         <div class="calc-container" data-aos="fade-up">
             <div class="calc-header">
@@ -1504,7 +1120,6 @@
             </div>
             
             <div class="calc-form">
-                <!-- Hair Type Pill Buttons -->
                 <div class="calc-group">
                     <label>HAIR TYPE</label> 
                     <div class="pill-grid-3">
@@ -1528,7 +1143,6 @@
                     </div>
                 </div>
                 
-                <!-- Quality Pill Buttons -->
                 <div class="calc-group">
                     <label>QUALITY</label>
                     <div class="pill-grid-2">
@@ -1540,7 +1154,6 @@
                     </div>
                 </div>
                 
-                <!-- Length Pill Buttons -->
                 <div class="calc-group">
                     <label>LENGTH</label>
                     <div class="pill-grid-3">
@@ -1567,13 +1180,11 @@
                     </div>
                 </div>
                 
-                <!-- Quantity Input (Tetap diketik karena angka bebas) -->
                 <div class="calc-group">
                     <label for="calcWeight">QUANTITY NEEDED (GRAMS)</label>
                     <input type="number" id="calcWeight" placeholder="e.g. 500" min="100" step="100">
                 </div>
 
-                <!-- Color Pill Buttons -->
                 <div class="calc-group">
                     <label>COLOR SELECTION</label>
                     <div class="pill-grid-2">
@@ -1597,7 +1208,6 @@
                 </div>
             </div>
 
-            <!-- Area untuk menampilkan barang yang sudah ditambahkan -->
             <div id="quoteItemList" class="quote-item-list calc-full">
                 <!-- Data akan muncul di sini via JavaScript -->
             </div>
@@ -1679,7 +1289,6 @@
             pagination: { el: ".swiper-pagination", clickable: true }
         });
 
-        // Mendaftarkan tombol pintasan untuk scroll mulus
         const allNavLinks = document.querySelectorAll('.nav-links a, .quick-nav a, .buy-now-btn');
         allNavLinks.forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1719,7 +1328,6 @@
             });
         });
 
-        // Script Animasi Logo Menghilang (KHUSUS HP)
         window.addEventListener('load', () => {
             setTimeout(() => { 
                 const mainLogo = document.getElementById('mainLogo');
@@ -1737,9 +1345,9 @@
                 
                 if (mainLogo) {
                     if (scrollTop > lastScrollTop && scrollTop > 50) {
-                        mainLogo.classList.add('hide-logo'); // Scroll Bawah -> Sembunyikan
+                        mainLogo.classList.add('hide-logo'); 
                     } else if (scrollTop < lastScrollTop) {
-                        mainLogo.classList.remove('hide-logo'); // Scroll Atas -> Tampilkan Kembali
+                        mainLogo.classList.remove('hide-logo'); 
                     }
                 }
                 lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; 
@@ -1879,10 +1487,21 @@
         };
 
         let quoteItems = []; 
-        let finalWhatsAppMessage = ""; // Menyimpan pesan yang sudah siap dikirim
+        let finalWhatsAppMessage = ""; 
+        
+        // --- VARIABEL UNTUK MENYIMPAN STATUS CHECKOUT ---
+        let checkoutState = {
+            totalWeight: 0,
+            totalPrice: 0,
+            shippingFee: 0,
+            baseTotal: 0,
+            isPromoApplied: false,
+            appliedPromoCode: "",
+            discountAmount: 0,
+            baseWAMessage: ""
+        };
         
         function toggleColorInput() {
-            // Ambil data dari radio button color yang dipilih
             const colorElement = document.querySelector('input[name="calcColorType"]:checked');
             const val = colorElement ? colorElement.value : "";
             const group = document.getElementById('specificColorGroup');
@@ -1891,12 +1510,11 @@
                 group.style.display = 'flex';
             } else {
                 group.style.display = 'none';
-                document.getElementById('calcSpecificColor').value = ""; // Reset input jika ganti ke Natural
+                document.getElementById('calcSpecificColor').value = ""; 
             }
         }
 
         function addQuoteItem() {
-            // Ambil semua data dari radio button (Pill Buttons)
             const typeElement = document.querySelector('input[name="calcType"]:checked');
             const type = typeElement ? typeElement.value : "";
             
@@ -1912,7 +1530,6 @@
             const weight = parseFloat(document.getElementById('calcWeight').value);
             let specificColor = document.getElementById('calcSpecificColor').value.trim();
 
-            // Validasi
             if (!type || !quality || !length || !weight || !colorType) {
                 alert("Please select all required options and fill the quantity.");
                 return;
@@ -1928,17 +1545,14 @@
                 }
             }
 
-            // Kalkulasi Harga
             const priceType = colorType === 'Natural' ? 'nat' : 'col';
             const pricePer100g = pricingDB[type][quality][length][priceType];
             const itemPrice = (weight / 100) * pricePer100g;
 
             const displayColor = colorType === 'Natural' ? 'Natural' : specificColor;
 
-            // Masukkan ke keranjang
             quoteItems.push({ type, quality, length, weight, colorType, displayColor, price: itemPrice });
             
-            // Reset semua form pill buttons & input text
             if (typeElement) typeElement.checked = false;
             if (qualityElement) qualityElement.checked = false;
             if (lengthElement) lengthElement.checked = false;
@@ -2002,7 +1616,6 @@
             let totalWeight = 0;
             let totalPrice = 0;
             
-            // Pengelompokan berdasarkan kualitas dan tipe rambut
             let groupedItems = {};
             
             quoteItems.forEach(item => {
@@ -2018,19 +1631,23 @@
                 groupedItems[item.quality][item.type].push(item);
             });
 
-            // Urutkan item berdasarkan inci (panjang) dari terpendek ke terpanjang
             for (const quality in groupedItems) {
                 for (const type in groupedItems[quality]) {
                     groupedItems[quality][type].sort((a, b) => parseInt(a.length) - parseInt(b.length));
                 }
             }
 
-            // Hitung Biaya Pengiriman (Setiap kelipatan 1 KG = $60)
             let shippingFee = Math.ceil(totalWeight / 1000) * 60;
 
-            // ==========================================
-            // 1. MENYUSUN TAMPILAN DI MODAL POP-UP
-            // ==========================================
+            // Simpan data transaksi ke state global
+            checkoutState.totalWeight = totalWeight;
+            checkoutState.totalPrice = totalPrice;
+            checkoutState.shippingFee = shippingFee;
+            checkoutState.baseTotal = totalPrice + shippingFee;
+            checkoutState.isPromoApplied = false;
+            checkoutState.appliedPromoCode = "";
+            checkoutState.discountAmount = 0;
+
             let modalHTML = ``;
             for (const [quality, types] of Object.entries(groupedItems)) {
                 modalHTML += `<div class="modal-item-title">${quality.toUpperCase()}</div>`;
@@ -2054,29 +1671,35 @@
             modalHTML += `<div class="modal-summary-row"><span>Subtotal:</span><strong>$${totalPrice.toFixed(0)}</strong></div>`;
             modalHTML += `<div class="modal-summary-row"><span>Shipping (${totalWeight}g):</span><strong>$${shippingFee}</strong></div>`;
 
-            let finalTotal = totalPrice + shippingFee;
-            if (totalWeight >= 1000) {
-                finalTotal -= 50;
-                modalHTML += `<div class="modal-summary-row" style="color:var(--circle-pink);"><span>Voucher 1KG:</span><strong>-$50</strong></div>`;
-            }
+            // Baris diskon (dinamis, disembunyikan secara default)
+            modalHTML += `<div id="discountRow" class="modal-summary-row" style="color:var(--circle-pink); display: none;"><span id="discountName">Promo:</span><strong id="discountValue">-$0</strong></div>`;
 
-            modalHTML += `<div class="modal-total-row"><span>Total Payment:</span><span style="color:#25D366;">$${finalTotal.toFixed(0)}</span></div>`;
+            // Total Harga
+            modalHTML += `<div class="modal-total-row"><span>Total Payment:</span><span id="modalFinalTotal" style="color:#25D366;">$${checkoutState.baseTotal.toFixed(0)}</span></div>`;
             
-            // Masukkan ke modal dan tampilkan
+            // --- FORM INPUT KODE PROMO ---
+            // Tulisan di dalam form (placeholder) sudah dihilangkan sesuai permintaan
+            modalHTML += `
+            <div class="promo-container" style="margin-top: 15px; border-top: 2px solid #eaeaea; padding-top: 10px;">
+                <label style="font-size: 0.8rem; font-weight: bold; color: var(--dark-blue);">PROMO CODE</label>
+                <div style="display: flex; gap: 8px; margin-top: 5px; align-items: center;">
+                    <input type="text" id="promoInput" placeholder="" style="flex: 1; padding: 8px; border: 1px solid #ccc; border-radius: 6px; text-transform: uppercase; font-family: 'Lato', sans-serif;">
+                    <button type="button" onclick="applyPromoCode()" style="padding: 8px 15px; background: var(--black); color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; transition: 0.3s;">Apply</button>
+                    <span id="promoStatus" style="font-size: 1.2rem; width: 24px; text-align: center;"></span>
+                </div>
+                <div id="promoMessage" style="font-size: 0.75rem; color: var(--bright-red); margin-top: 5px; display: none;"></div>
+            </div>`;
+            
             document.getElementById('checkoutModalBody').innerHTML = modalHTML;
             document.getElementById('checkoutModal').classList.add('show');
             document.body.style.overflow = 'hidden';
 
-            // ==========================================
-            // 2. MENYUSUN PESAN WHATSAPP YANG RAPI
-            // ==========================================
+            // Menyusun format dasar pesan WhatsApp
             let message = "";
             for (const [quality, types] of Object.entries(groupedItems)) {
-                message += `*${quality.toUpperCase()}*\n`; // Super Double Drawn / Double Drawn
-                
+                message += `*${quality.toUpperCase()}*\n`; 
                 for (const [type, items] of Object.entries(types)) {
-                    message += `${type}\n`; // Nama produk misal: Hair Bulk / Hair Weft
-                    
+                    message += `${type}\n`; 
                     items.forEach(item => {
                         let lenStr = item.length.replace(" inches", '"');
                         message += `${lenStr} ${item.weight}g ${item.displayColor} $${item.price.toFixed(0)}\n`;
@@ -2090,18 +1713,99 @@
             message += `Subtotal: $${totalPrice.toFixed(0)}\n`;
             message += `Shipping Fee: $${shippingFee}\n`;
 
-            if (totalWeight >= 1000) {
-                message += `\n🎁 *VOUCHER CLAIMED: -$50*\n`;
-                message += `_Congratulations! You get a $50 voucher for ordering over 1kg!_\n\n`;
-                message += `*Total Amount: $${finalTotal.toFixed(0)}*\n\n`;
+            checkoutState.baseWAMessage = message; 
+            updateWAMessage(); 
+        }
+
+        // --- FUNGSI VALIDASI PROMO ---
+        function applyPromoCode() {
+            const inputField = document.getElementById('promoInput');
+            const input = inputField.value.trim().toUpperCase();
+            const statusIcon = document.getElementById('promoStatus');
+            const promoMsg = document.getElementById('promoMessage');
+            const discountRow = document.getElementById('discountRow');
+            const finalTotalEl = document.getElementById('modalFinalTotal');
+
+            let discount = 0;
+            let promoName = "";
+            let errorMsg = "";
+
+            // Cek kondisi promo yang dimasukkan
+            if (input === 'EMAJUNE50') {
+                if (checkoutState.totalWeight >= 1000) {
+                    discount = 50;
+                    promoName = "EMAJUNE50";
+                } else {
+                    errorMsg = "Minimum purchase of 1000g (1kg) required for this promo.";
+                }
+            } else if (input === 'EMAJUNE25') {
+                if (checkoutState.totalWeight >= 500) {
+                    discount = 25;
+                    promoName = "EMAJUNE25";
+                } else {
+                    errorMsg = "Minimum purchase of 500g required for this promo.";
+                }
             } else {
-                message += `\n*Total Amount: $${finalTotal.toFixed(0)}*\n\n`;
+                errorMsg = "Invalid promo code.";
             }
-            
-            message += "Please confirm my order.";
-            
-            // Simpan ke variabel global untuk dikirim saat tombol confirm diklik
-            finalWhatsAppMessage = message;
+
+            // Eksekusi tampilan berdasarkan hasil cek di atas
+            if (discount > 0) {
+                // Validasi Sukses: Centang Hijau & Update Harga
+                statusIcon.innerHTML = '<i class="fa-solid fa-circle-check" style="color: #25D366;"></i>';
+                promoMsg.style.display = 'none';
+                inputField.style.borderColor = '#25D366';
+                
+                document.getElementById('discountName').innerText = `Promo ${promoName}:`;
+                document.getElementById('discountValue').innerText = `-$${discount}`;
+                discountRow.style.display = 'flex';
+
+                let newTotal = checkoutState.baseTotal - discount;
+                finalTotalEl.innerText = '$' + newTotal.toFixed(0);
+
+                // Update state
+                checkoutState.isPromoApplied = true;
+                checkoutState.appliedPromoCode = promoName;
+                checkoutState.discountAmount = discount;
+                updateWAMessage();
+            } else {
+                // Validasi Gagal: Tampilkan Teks Merah
+                statusIcon.innerHTML = '<i class="fa-solid fa-circle-xmark" style="color: #FF1E1E;"></i>';
+                promoMsg.innerText = errorMsg;
+                promoMsg.style.display = 'block';
+                inputField.style.borderColor = '#FF1E1E';
+                resetPromoUI();
+            }
+        }
+
+        // Fungsi mengembalikan harga semula jika promo gagal/dicabut
+        function resetPromoUI() {
+            const discountRow = document.getElementById('discountRow');
+            const finalTotalEl = document.getElementById('modalFinalTotal');
+
+            discountRow.style.display = 'none';
+            finalTotalEl.innerText = '$' + checkoutState.baseTotal.toFixed(0);
+            checkoutState.isPromoApplied = false;
+            checkoutState.appliedPromoCode = "";
+            checkoutState.discountAmount = 0;
+            updateWAMessage();
+        }
+
+        // Fungsi memperbarui total harga yang akan dikirim ke WA
+        function updateWAMessage() {
+            let msg = checkoutState.baseWAMessage;
+            let finalAmt = checkoutState.baseTotal;
+
+            if (checkoutState.isPromoApplied) {
+                finalAmt -= checkoutState.discountAmount;
+                msg += `\n🎁 *PROMO APPLIED:*\n`;
+                msg += `*${checkoutState.appliedPromoCode} (-$${checkoutState.discountAmount})*\n\n`;
+                msg += `*Total Amount: $${finalAmt.toFixed(0)}*\n\n`;
+            } else {
+                msg += `\n*Total Amount: $${finalAmt.toFixed(0)}*\n\n`;
+            }
+            msg += "Please confirm my order.";
+            finalWhatsAppMessage = msg;
         }
     </script>
 </body>
