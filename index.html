@@ -589,12 +589,12 @@
             .modern-table td:first-child { padding-left: 2px; font-size: 0.55rem; white-space: normal;}
             
             /* ==================================================================== */
-            /* KALKULATOR HP - DIPADATKAN AGAR MUAT 1 LAYAR & MENTOK KANAN-KIRI */
+            /* KALKULATOR HP - SUPER PADAT, MENTOK KANAN-KIRI, TANPA RUANG KOSONG */
             /* ==================================================================== */
             .calculator-section { padding: 30px 0; overflow: hidden; } 
             
             .calc-container { 
-                padding: 15px 4px; /* Padding dikurangi agar tombol benar-benar mentok ke tepi abu-abu */
+                padding: 15px 4px; 
                 width: 100%; 
                 box-sizing: border-box; 
                 border-radius: 0; 
@@ -603,16 +603,20 @@
             } 
             .calc-container::before { border-radius: 0; }
             
-            .calc-header { margin-bottom: 12px; padding: 0 5px; } /* Memberi jarak agar judul tidak mentok pinggir layar */
+            .calc-header { margin-bottom: 10px; padding: 0 5px; } 
             
-            .calc-form { grid-template-columns: 1fr; gap: 8px; width: 100%; box-sizing: border-box; margin: 0; } 
+            /* Jarak ANTAR GRUP kategori dikecilkan menjadi 5px */
+            .calc-form { grid-template-columns: 1fr; gap: 5px !important; width: 100%; box-sizing: border-box; margin: 0; } 
+            
             .calc-full { grid-column: span 1; } 
             
-            /* Input dibuat sejajar mentok kanan-kiri */
+            /* Jarak ANTARA JUDUL dengan TOMBOL di dalam satu grup dibuat sangat rapat (2px) */
+            .calc-group { gap: 2px !important; width: 100%; box-sizing: border-box; }
+            
             .calc-group select, .calc-group input { padding: 8px 10px; font-size: 0.8rem; width: 100%; box-sizing: border-box; height: 35px; margin: 0;} 
             
             .calc-header h3 { font-size: 1.2rem; white-space: normal; line-height: 1.2; margin-bottom: 2px; } 
-            .calc-header p { font-size: 0.7rem; white-space: normal; line-height: 1.4; letter-spacing: 0; font-weight: 400; }
+            .calc-header p { font-size: 0.7rem; white-space: normal; line-height: 1.4; letter-spacing: 0; font-weight: 400; margin:0;}
             
             .add-item-btn, .calc-btn { 
                 font-size: 0.65rem !important; 
@@ -626,7 +630,6 @@
                 margin: 0;
             }
 
-            /* === KUNCI TATA LETAK GRID UNTUK MOBILE (Mentok Kanan-Kiri & Rapi) === */
             .pill-grid-3 { grid-template-columns: repeat(3, 1fr) !important; gap: 4px !important; width: 100%; margin: 0; padding: 0; } 
             .pill-grid-2 { grid-template-columns: repeat(2, 1fr) !important; gap: 4px !important; width: 100%; margin: 0; padding: 0; }
             
@@ -640,12 +643,12 @@
                 margin: 0;
             }
             
-            /* Label Judul Kategori (HAIR TYPE, dll) sedikit diberi padding agar teksnya tetap rapi tidak menabrak bingkai HP */
+            /* Margin Bawah pada label (Hair Type, dll) diubah menjadi 0px agar benar-benar menempel dengan tombol */
             .calc-group > label:not(.pill-label) {
                 font-size: 0.8rem !important; 
                 white-space: nowrap !important; 
                 letter-spacing: 0.5px !important;
-                margin-bottom: 4px !important; 
+                margin-bottom: 0px !important; /* Dibuat 0 agar nempel ke bawah */
                 margin-top: 0px !important;
                 padding: 0 4px; 
             }
