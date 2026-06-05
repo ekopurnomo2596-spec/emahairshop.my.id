@@ -425,19 +425,22 @@
 
         .view-text::before { content: "Open"; }
         .price-accordion[open] .view-text::before { content: "Close"; }
+        
+        /* GAYA MEWAH UNTUK TABEL HARGA (LUXURY STYLE) */
+        .price-accordion[open] .price-summary { border-bottom-left-radius: 0; border-bottom-right-radius: 0; transition: 0s;} 
+        
+        .price-note { display: flex; justify-content: center; align-items: center; gap: 8px; background-color: transparent; color: var(--gray); font-size: 0.7rem; font-weight: 700; padding: 5px 0 15px 0; margin: 0; letter-spacing: 1px; text-transform: uppercase; text-align: center; box-shadow: none; border-bottom: 1px solid #eaeaea; margin-bottom: 10px; }
+        .price-note i { font-size: 0.9rem; color: var(--gold); }
 
-        .price-note { display: flex; justify-content: center; align-items: center; gap: 5px; background-color: var(--circle-pink); color: var(--white); font-size: 0.65rem; font-weight: 800; padding: 8px 5px; margin: 10px 0; border-radius: 6px; letter-spacing: 0.5px; text-transform: uppercase; box-shadow: 0 4px 10px rgba(216, 84, 107, 0.3); text-align: center; white-space: nowrap !important; }
-        .price-note i { font-size: 0.8rem; }
-
-        .price-table-wrapper { background-color: var(--white); animation: fadeInDown 0.3s ease-in-out; padding-bottom: 10px; border: 1px solid #eaeaea; border-radius: 8px; margin-top: 10px; overflow-x: auto; }
+        .price-table-wrapper { background-color: var(--white); animation: fadeInDown 0.4s ease-out; padding: 20px 25px; border: 1px solid #eaeaea; border-top: none; border-radius: 0 0 8px 8px; margin-top: 0; box-shadow: 0 10px 25px rgba(0,0,0,0.02); overflow-x: auto; }
         .modern-table { width: 100%; border-collapse: collapse; font-family: 'Lato', sans-serif; }
-        .modern-table thead { background-color: #f9f9f9; color: var(--black); }
-        .modern-table th { padding: 10px 5px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; text-align: center; border-bottom: 2px solid #eaeaea; }
-        .modern-table td { padding: 10px 5px; text-align: center; font-size: 0.85rem; font-weight: 700; color: var(--dark-blue); border-bottom: 1px dashed #eaeaea; }
-        .modern-table td:first-child { text-align: left; padding-left: 10px; font-weight: 600; color: var(--gray); font-size: 0.75rem; white-space: nowrap; }
+        .modern-table thead { background-color: transparent; }
+        .modern-table th { padding: 15px 5px; font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; text-align: center; border-bottom: 2px solid var(--gold); color: var(--black); }
+        .modern-table td { padding: 15px 5px; text-align: center; font-size: 0.85rem; font-weight: 600; color: var(--gray); border-bottom: 1px solid #f5f5f5; transition: background-color 0.3s; }
+        .modern-table td:first-child { text-align: left; padding-left: 5px; font-weight: 700; color: var(--black); font-size: 0.8rem; white-space: nowrap; }
         .modern-table tbody tr:last-child td { border-bottom: none; }
-        .modern-table tbody tr:hover { background-color: #fdfdfd; }
-        .price-value { color: var(--circle-pink); font-weight: 900; }
+        .modern-table tbody tr:hover td { background-color: #faf9f7; color: var(--black); }
+        .price-value { color: var(--black); font-weight: 900; }
 
         /* --- CONTACT SECTION --- */
         .kontak { text-align: center; background-color: var(--black); color: var(--white); border-top: 1px solid rgba(255,255,255,0.1); }
@@ -593,12 +596,14 @@
             .view-btn { font-size: 0.55rem; padding: 4px 8px; }
             .share-btn { width: 24px; height: 24px; font-size: 0.65rem; }
             
-            .price-note { font-size: 7px !important; letter-spacing: -0.3px !important; padding: 4px 2px !important; margin: 5px 0 !important; gap: 2px; white-space: nowrap !important; line-height: 1; text-align: center; justify-content: center; width: 100%; box-sizing: border-box; }
-            .price-note i { font-size: 8px !important; }
+            /* GAYA MEWAH TABEL HARGA - VERSI HP */
+            .price-table-wrapper { padding: 15px 10px; }
+            .price-note { font-size: 0.6rem !important; padding: 5px 0 10px 0 !important; letter-spacing: 0.5px !important; white-space: normal !important; border-bottom: 1px solid #eaeaea; margin: 0 0 10px 0 !important; color: var(--gray) !important; background-color: transparent !important; }
+            .price-note i { font-size: 0.7rem !important; }
 
-            .modern-table th { padding: 6px 2px; font-size: 0.45rem; letter-spacing: 0; }
-            .modern-table td { padding: 6px 2px; font-size: 0.55rem; line-height: 1.3; }
-            .modern-table td:first-child { padding-left: 6px; font-size: 0.5rem; white-space: normal;}
+            .modern-table th { padding: 12px 2px; font-size: 0.55rem; letter-spacing: 1px; }
+            .modern-table td { padding: 12px 2px; font-size: 0.75rem; border-bottom: 1px solid #f5f5f5;}
+            .modern-table td:first-child { padding-left: 2px; font-size: 0.7rem; white-space: normal;}
             
             /* KALKULATOR HP */
             .calculator-section { padding: 60px 3%; overflow: hidden; } 
@@ -608,7 +613,7 @@
             .calc-group label { font-size: 0.75rem; }
             .calc-group select, .calc-group input { padding: 10px 10px; font-size: 0.8rem; width: 100%; box-sizing: border-box; }
             
-            /* MERAPIKAN TEKS JUDUL YANG KELUAR KOTAK (Dikembalikan ke Normal) */
+            /* MERAPIKAN TEKS JUDUL KALKULATOR */
             .calc-header h3 { font-size: 1.2rem; white-space: normal; line-height: 1.3; margin-bottom: 5px; } 
             .calc-header p { font-size: 0.7rem; white-space: normal; line-height: 1.4; padding: 0 5px; letter-spacing: 0; }
             
@@ -1472,7 +1477,7 @@
     <section id="quote" class="calculator-section">
         <div class="calc-container" data-aos="fade-up">
             <div class="calc-header">
-                <h3>Order Form / Custom Quote</h3>
+                <h3>Order Form</h3>
                 <p>Add multiple products to your list and we'll calculate your wholesale discount!</p>
             </div>
             
