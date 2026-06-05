@@ -373,13 +373,19 @@
             
             .calc-group > label:not(.pill-label) { font-size: 0.65rem !important; letter-spacing: 1.5px !important; margin-bottom: 5px !important; margin-top: 5px !important; padding: 6px 5px !important; border-radius: 4px !important; width: 100% !important; }
 
-            /* Penyesuaian Mobile: List Pesanan Agar Sebaris */
+            /* --- Penyesuaian Mobile: List Pesanan (1 Baris) --- */
             .quote-item-minimal { padding: 8px 0 !important; }
-            .quote-item-minimal-details strong { font-size: 0.6rem !important; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;}
+            .quote-item-minimal-details strong { font-size: 0.65rem !important; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; max-width: 100%;}
             .quote-item-minimal-details span { font-size: 0.55rem !important; display: block; }
             .quote-item-minimal-price { font-size: 0.75rem !important; }
             .quote-item-minimal-actions { gap: 6px !important; }
             .action-btn-minimal { font-size: 0.85rem !important; }
+
+            /* --- Penyesuaian Mobile: Payment Method Pill Buttons --- */
+            .pill-grid-payment { grid-template-columns: repeat(2, 1fr) !important; gap: 6px !important; }
+            .payment-pill { flex-direction: row !important; font-size: 0.65rem !important; padding: 8px 6px !important; gap: 8px !important; justify-content: flex-start !important; padding-left: 15px !important;}
+            .payment-pill i { font-size: 1.2rem !important; width: 20px; text-align: center; }
+            #pay5 + label { grid-column: span 2; justify-content: center !important; padding-left: 0 !important;}
         }
         
         /* --- KALKULATOR PESANAN --- */
@@ -426,6 +432,11 @@
         .edit-btn:hover { color: var(--dark-blue); transform: scale(1.15); }
         .remove-btn { color: #cccccc; }
         .remove-btn:hover { color: var(--bright-red); transform: scale(1.15); }
+
+        /* --- DESAIN MENU PAYMENT METHOD PILL BUTTONS --- */
+        .pill-grid-payment { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; width: 100%; margin-top: 5px; }
+        .payment-pill { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; padding: 12px 5px !important; font-weight: 700 !important; }
+        .payment-pill i { font-size: 1.8rem; }
 
         .calc-btn { background-color: #25D366; color: var(--white); padding: 12px; border: none; border-radius: 8px; font-size: 0.85rem; font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: 5px; width: 100%; box-sizing: border-box; text-transform: uppercase; letter-spacing: 1px; display: flex; justify-content: center; align-items: center; gap: 8px; }
         .calc-btn:hover { background-color: #1ebe56; box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3); transform: translateY(-3px); }
@@ -1239,20 +1250,39 @@
                 <!-- Data akan muncul di sini via JavaScript -->
             </div>
 
-            <!-- MENU DROPDOWN PAYMENT METHOD -->
+            <!-- OPSI PEMBAYARAN: PILL BUTTONS + ICON MEREK -->
             <div class="calc-group calc-full" style="margin-top: 10px; border-top: 1px dashed #ccc; padding-top: 15px;">
-                <label for="paymentMethod" style="background: transparent; border: none; padding: 0; margin: 0 0 5px 0; font-size: 0.8rem;">PAYMENT METHOD</label>
-                <select id="paymentMethod" style="background-color: #fff; cursor: pointer; text-align: center; font-weight: bold;">
-                    <option value="" selected disabled>-- Select Payment Method --</option>
-                    <option value="Western Union">Western Union</option>
-                    <option value="MoneyGram">MoneyGram</option>
-                    <option value="PayPal">PayPal</option>
-                    <option value="Bank Transfer">Bank Transfer</option>
-                    <option value="USDT">USDT</option>
-                </select>
+                <label style="background: transparent; border: none; padding: 0; margin: 0 0 5px 0; font-size: 0.8rem; letter-spacing: 2px;">PAYMENT METHOD</label>
+                
+                <div class="pill-grid-payment">
+                    <input type="radio" id="pay1" name="calcPayment" value="Western Union" class="hidden-radio">
+                    <label for="pay1" class="pill-label payment-pill">
+                        <i class="fa-solid fa-money-bill-transfer" style="color: #e0a800;"></i> <span>Western Union</span>
+                    </label>
+
+                    <input type="radio" id="pay2" name="calcPayment" value="MoneyGram" class="hidden-radio">
+                    <label for="pay2" class="pill-label payment-pill">
+                        <i class="fa-solid fa-money-bill-wave" style="color: #e31837;"></i> <span>MoneyGram</span>
+                    </label>
+
+                    <input type="radio" id="pay3" name="calcPayment" value="PayPal" class="hidden-radio">
+                    <label for="pay3" class="pill-label payment-pill">
+                        <i class="fa-brands fa-paypal" style="color: #00457C;"></i> <span>PayPal</span>
+                    </label>
+
+                    <input type="radio" id="pay4" name="calcPayment" value="Bank Transfer" class="hidden-radio">
+                    <label for="pay4" class="pill-label payment-pill">
+                        <i class="fa-solid fa-building-columns" style="color: #4a5568;"></i> <span>Bank Transfer</span>
+                    </label>
+
+                    <input type="radio" id="pay5" name="calcPayment" value="USDT" class="hidden-radio">
+                    <label for="pay5" class="pill-label payment-pill">
+                        <i class="fa-solid fa-coins" style="color: #26a17b;"></i> <span>USDT</span>
+                    </label>
+                </div>
             </div>
 
-            <div class="calc-full">
+            <div class="calc-full" style="margin-top: 10px;">
                 <button type="button" class="calc-btn" onclick="prepareCheckout()">
                     <i class="fa-brands fa-whatsapp"></i> Checkout To WhatsApp
                 </button>
@@ -1539,7 +1569,7 @@
             isPromoApplied: false,
             appliedPromoCode: "",
             discountAmount: 0,
-            paymentMethod: "", // Status Metode Pembayaran Baru
+            paymentMethod: "", // Status Metode Pembayaran
             baseWAMessage: ""
         };
         
@@ -1724,12 +1754,13 @@
                 return;
             }
 
-            // --- CEK PEMBAYARAN SEBELUM CHECKOUT ---
-            const paymentSelect = document.getElementById('paymentMethod').value;
-            if (!paymentSelect) {
+            // --- CEK METODE PEMBAYARAN ---
+            const paymentElement = document.querySelector('input[name="calcPayment"]:checked');
+            if (!paymentElement) {
                 alert("Please select a Payment Method before checking out.");
                 return;
             }
+            const paymentSelect = paymentElement.value;
 
             let totalWeight = 0;
             let totalPrice = 0;
@@ -1765,7 +1796,7 @@
             checkoutState.isPromoApplied = false;
             checkoutState.appliedPromoCode = "";
             checkoutState.discountAmount = 0;
-            checkoutState.paymentMethod = paymentSelect; // Simpan Metode Pembayaran
+            checkoutState.paymentMethod = paymentSelect; // Menyimpan Payment Method terpilih
 
             let modalHTML = ``;
             for (const [quality, types] of Object.entries(groupedItems)) {
@@ -1833,7 +1864,7 @@
             message += `Total Weight: ${totalWeight} Grams\n`;
             message += `Subtotal: $${totalPrice.toFixed(0)}\n`;
             message += `Shipping Fee: $${shippingFee}\n`;
-            message += `Payment Method: *${checkoutState.paymentMethod}*\n`; // Kirim Payment Method ke WA
+            message += `Payment Method: *${checkoutState.paymentMethod}*\n`; // Mengirim info Payment ke WhatsApp
 
             checkoutState.baseWAMessage = message; 
             updateWAMessage(); 
