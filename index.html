@@ -662,7 +662,6 @@
             .calc-container { padding: 20px 15px; width: 100%; box-sizing: border-box; } 
             .calc-form { grid-template-columns: 1fr; gap: 15px; width: 100%; box-sizing: border-box;} 
             .calc-full { grid-column: span 1; } 
-            .calc-group label { font-size: 0.75rem; }
             .calc-group select, .calc-group input { padding: 10px 10px; font-size: 0.8rem; width: 100%; box-sizing: border-box; }
             
             .calc-header h3 { font-size: 1.2rem; white-space: normal; line-height: 1.3; margin-bottom: 5px; } 
@@ -680,28 +679,21 @@
             }
 
             /* ========================================================================= */
-            /* === PERBAIKAN TATA LETAK KOLOM ORDER FORM DI HP (Sesuai Desain Asli) === */
+            /* === KUNCI TATA LETAK GRID UNTUK MOBILE (Sesuai Desain Foto) === */
             /* ========================================================================= */
-            .pill-selector {
-                gap: 8px; /* Jarak antar kotak diperkecil di HP */
-            }
-            .pill-label {
-                flex: 0 1 calc(33.333% - 5.33px) !important; /* MURNI 3 KOLOM DI HP */
-                font-size: 0.6rem !important; 
+            .pill-grid-3 { gap: 6px; }
+            .pill-grid-2 { gap: 6px; }
+            
+            /* Font dikecilkan sedikit di HP agar muat 3 kolom tanpa terpotong */
+            .pill-label { 
+                font-size: 0.55rem !important; 
                 padding: 10px 2px !important; 
-                line-height: 1.2 !important;
-                min-width: 0 !important;
+                line-height: 1.2; 
+                letter-spacing: -0.2px; 
+                word-wrap: break-word;
             }
-
-            /* KOTAK QUALITY & COLOR (Double Drawn dkk) MURNI 2 KOLOM DI HP */
-            .pill-half .pill-label {
-                flex: 0 1 calc(50% - 4px) !important; 
-                font-size: 0.65rem !important;
-            }
-
-            /* KOTAK LENGTH (Inci) MURNI 3 KOLOM DI HP */
-            .pill-length .pill-label {
-                flex: 0 1 calc(33.333% - 5.33px) !important; 
+            .calc-group > label:not(.pill-label) {
+                font-size: 0.95rem; /* Menyesuaikan ukuran label di HP */
             }
         }
         
@@ -717,35 +709,56 @@
         
         .calc-form { display: grid; grid-template-columns: 1fr; gap: 20px; width: 100%; box-sizing: border-box;}
         .calc-group { display: flex; flex-direction: column; gap: 8px; width: 100%; box-sizing: border-box;}
-        .calc-group > label:not(.pill-label) { text-align: center; font-size: 1.05rem; font-weight: 900; color: var(--black); text-transform: uppercase; letter-spacing: 1.5px; display: block; margin-bottom: 12px; }
+        
+        /* GAYA LABEL SESUAI FOTO (Tengah, Bold, Biru Gelap) */
+        .calc-group > label:not(.pill-label) { 
+            text-align: center; 
+            font-size: 1.1rem; 
+            font-weight: 900; 
+            color: #374151; /* Warna biru abu-abu gelap mirip di foto */
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            display: block; 
+            margin-bottom: 12px; 
+            margin-top: 10px;
+        }
         
         /* MEMBUAT TEKS INPUT BERADA DI TENGAH SAAT DIKETIK */
         .calc-group select, .calc-group input { width: 100%; box-sizing: border-box; padding: 12px 15px; border: 1px solid #ccc; border-radius: 8px; font-family: 'Lato', sans-serif; font-size: 0.9rem; outline: none; transition: 0.3s; background: var(--white); text-align: center; }
-        
         .calc-group select:focus, .calc-group input:focus { border-color: #25D366; box-shadow: 0 0 5px rgba(37, 211, 102, 0.3); }
         .calc-full { grid-column: span 1; width: 100%; }
 
-        /* --- PILL BUTTON SELECTOR (PREMIUM CHECKLIST STYLE) --- */
-        .pill-selector {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center; /* MEMASTIKAN ITEM SISA (28") ADA TEPAT DI TENGAH */
-            gap: 12px; 
+        /* ========================================================
+           SISTEM GRID CSS UNTUK TATA LETAK TOMBOL YANG PRESISI
+           ======================================================== */
+        .pill-grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
             width: 100%;
+        }
+        
+        .pill-grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            width: 100%;
+        }
+
+        .item-centered {
+            grid-column: 2; /* Memaksa elemen ini berada di kolom tengah pada grid 3 kolom */
         }
         
         .hidden-radio {
             display: none;
         }
 
-        /* Set flex menjadi 0 1 agar lebarnya fix dan seragam sesuai gambar */
+        /* GAYA TOMBOL PILIHAN (Sesuai Foto: Kotak Abu Tipis, Tanpa Ikon) */
         .pill-label {
-            flex: 0 1 calc(33.333% - 8px); /* 3 KOLOM DI DESKTOP */
-            min-width: 90px;
-            background: var(--white);
-            border: 1.5px solid #e0e0e0;
+            background: #f8f9fa; /* Latar abu-abu sangat terang */
+            border: 1px solid #dcdcdc; /* Border abu-abu tipis */
             border-radius: 8px;
-            padding: 12px 8px;
+            padding: 12px 5px;
             font-size: 0.85rem;
             font-family: 'Lato', sans-serif;
             text-align: center;
@@ -753,39 +766,28 @@
             transition: all 0.3s ease;
             color: var(--gray);
             user-select: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
+            display: block; /* Memenuhi sel grid */
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .pill-label:hover {
             border-color: #a3e6be;
-            background-color: #f4fdf7;
+            background-color: #f0fdf4;
             transform: translateY(-2px);
             box-shadow: 0 4px 10px rgba(0,0,0,0.02);
         }
 
         /* --- SAAT OPSI DIPILIH (CHECKED) --- */
         .hidden-radio:checked + .pill-label {
-            background: #f4fdf7; /* Background hijau sangat pudar/elegan */
-            color: var(--black); /* Teks kontras */
-            border: 1.5px solid #25D366; /* Border menyala */
+            background: #f0fdf4; /* Background hijau sangat pudar/elegan */
+            color: var(--black); /* Teks kontras hitam tebal */
+            border: 1.5px solid #25D366; /* Border hijau menyala */
             font-weight: 800;
             box-shadow: 0 4px 15px rgba(37, 211, 102, 0.15);
             transform: translateY(-2px);
         }
 
-        /* KOTAK QUALITY: 2 KOLOM DI DESKTOP */
-        .pill-half .pill-label {
-            flex: 0 1 calc(50% - 6px); 
-        }
-
-        /* KOTAK LENGTH (Inci): 3 KOLOM DI DESKTOP */
-        .pill-length .pill-label {
-            flex: 0 1 calc(33.333% - 8px); 
-        }
-        
         /* Tombol Tambah Produk */
         .add-item-btn { background-color: var(--dark-blue); color: var(--white); padding: 12px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; width: 100%; display: flex; justify-content: center; align-items: center; gap: 8px; text-transform: uppercase; font-size: 0.85rem;}
         .add-item-btn:hover { background-color: var(--black); }
@@ -1528,8 +1530,9 @@
             <div class="calc-form">
                 <!-- Hair Type Pill Buttons -->
                 <div class="calc-group">
-                    <label>Hair Type</label>
-                    <div class="pill-selector">
+                    <!-- Label sengaja disembunyikan agar mirip dengan foto, bisa dihapus komentarnya jika ingin dimunculkan -->
+                    <!-- <label>Hair Type</label>  -->
+                    <div class="pill-grid-3">
                         <input type="radio" id="type1" name="calcType" value="Hair Bulk" class="hidden-radio">
                         <label for="type1" class="pill-label">Hair Bulk</label>
 
@@ -1552,8 +1555,8 @@
                 
                 <!-- Quality Pill Buttons -->
                 <div class="calc-group">
-                    <label>Quality</label>
-                    <div class="pill-selector pill-half">
+                    <label>QUALITY</label>
+                    <div class="pill-grid-2">
                         <input type="radio" id="qual1" name="calcQuality" value="Double Drawn" class="hidden-radio">
                         <label for="qual1" class="pill-label">Double Drawn</label>
 
@@ -1564,8 +1567,8 @@
                 
                 <!-- Length Pill Buttons -->
                 <div class="calc-group">
-                    <label>Length (Inches)</label>
-                    <div class="pill-selector pill-length">
+                    <label>LENGTH (INCHES)</label>
+                    <div class="pill-grid-3">
                         <input type="radio" id="len16" name="calcLength" value="16 inches" class="hidden-radio">
                         <label for="len16" class="pill-label">16"</label>
 
@@ -1585,7 +1588,7 @@
                         <label for="len26" class="pill-label">26"</label>
 
                         <input type="radio" id="len28" name="calcLength" value="28 inches" class="hidden-radio">
-                        <label for="len28" class="pill-label">28"</label>
+                        <label for="len28" class="pill-label item-centered">28"</label>
                     </div>
                 </div>
                 
@@ -1597,8 +1600,8 @@
 
                 <!-- Color Pill Buttons -->
                 <div class="calc-group">
-                    <label>Color Selection</label>
-                    <div class="pill-selector pill-half">
+                    <label>COLOR SELECTION</label>
+                    <div class="pill-grid-2">
                         <input type="radio" id="col1" name="calcColorType" value="Natural" class="hidden-radio" onchange="toggleColorInput()">
                         <label for="col1" class="pill-label">Natural (Black)</label>
 
