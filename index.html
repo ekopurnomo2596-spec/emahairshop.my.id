@@ -20,6 +20,7 @@
     <meta property="og:type" content="website">
 
     <!-- === GOOGLE ANALYTICS === -->
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-W5HY2PJ62X"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -38,20 +39,30 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     
     <style>
-        /* --- PENGATURAN DASAR --- */
+        /* --- 1. PENGATURAN DASAR --- */
         :root {
-            --black: #111111; --white: #ffffff; --gray: #666666;
-            --green: #2F4E37; --circle-pink: #d8546b; --dark-blue: #4a5568; 
-            --bright-green: #10B981; --bright-red: #FF1E1E; --gold: #D4AF37; 
+            --black: #111111;
+            --white: #ffffff;
+            --gray: #666666;
+            --green: #2F4E37; 
+            --circle-pink: #d8546b; 
+            --dark-blue: #4a5568; 
+            --bright-green: #10B981; 
+            --bright-red: #FF1E1E; 
+            --gold: #D4AF37; 
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
         html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+
         body { font-family: 'Lato', sans-serif; background-color: var(--white); color: var(--black); line-height: 1.8; font-weight: 300; overflow-x: hidden; }
+
         h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; text-transform: uppercase; }
+
         section { padding: 100px 10%; display: flex; flex-direction: column; justify-content: center; }
 
-        /* --- NAVIGASI BARU (DESKTOP & MOBILE SERAGAM) --- */
+        /* --- 2. NAVIGASI BARU (DESKTOP & MOBILE SERAGAM) --- */
         nav {
             position: fixed; top: 0; width: 100%; padding: 15px 10%;
             background: rgba(255, 255, 255, 0.98);
@@ -60,6 +71,7 @@
         }
 
         .logo { background-color: transparent; padding: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); max-height: 150px; opacity: 1; }
+
         .logo.hide-logo { max-height: 0; opacity: 0; margin: 0 !important; padding: 0 !important; transform: scale(0.5); border: none; }
         .logo-top { display: flex; align-items: center; width: 100%; margin-bottom: -3px; }
         .line-top { height: 2px; background-color: var(--black); flex-grow: 1; margin-right: 6px; }
@@ -1678,7 +1690,6 @@
             modalHTML += `<div class="modal-total-row"><span>Total Payment:</span><span id="modalFinalTotal" style="color:#25D366;">$${checkoutState.baseTotal.toFixed(0)}</span></div>`;
             
             // --- FORM INPUT KODE PROMO ---
-            // Tulisan di dalam form (placeholder) sudah dihilangkan sesuai permintaan
             modalHTML += `
             <div class="promo-container" style="margin-top: 15px; border-top: 2px solid #eaeaea; padding-top: 10px;">
                 <label style="font-size: 0.8rem; font-weight: bold; color: var(--dark-blue);">PROMO CODE</label>
@@ -1730,18 +1741,18 @@
             let promoName = "";
             let errorMsg = "";
 
-            // Cek kondisi promo yang dimasukkan
-            if (input === 'EMAJUNE50') {
+            // Cek kondisi promo yang dimasukkan pembeli
+            if (input === 'EMAJUNE50' || input === 'EMAQUEEN50') {
                 if (checkoutState.totalWeight >= 1000) {
                     discount = 50;
-                    promoName = "EMAJUNE50";
+                    promoName = input;
                 } else {
                     errorMsg = "Minimum purchase of 1000g (1kg) required for this promo.";
                 }
-            } else if (input === 'EMAJUNE25') {
+            } else if (input === 'EMAJUNE25' || input === 'EMAQUEEN25') {
                 if (checkoutState.totalWeight >= 500) {
                     discount = 25;
-                    promoName = "EMAJUNE25";
+                    promoName = input;
                 } else {
                     errorMsg = "Minimum purchase of 500g required for this promo.";
                 }
@@ -1761,6 +1772,12 @@
                 discountRow.style.display = 'flex';
 
                 let newTotal = checkoutState.baseTotal - discount;
+                
+                // Mencegah harga menjadi minus jika diskon lebih besar dari belanjaan
+                if (newTotal < 0) {
+                    newTotal = 0;
+                }
+                
                 finalTotalEl.innerText = '$' + newTotal.toFixed(0);
 
                 // Update state
@@ -1798,6 +1815,8 @@
 
             if (checkoutState.isPromoApplied) {
                 finalAmt -= checkoutState.discountAmount;
+                if (finalAmt < 0) finalAmt = 0; // Cegah minus di WA
+                
                 msg += `\n🎁 *PROMO APPLIED:*\n`;
                 msg += `*${checkoutState.appliedPromoCode} (-$${checkoutState.discountAmount})*\n\n`;
                 msg += `*Total Amount: $${finalAmt.toFixed(0)}*\n\n`;
