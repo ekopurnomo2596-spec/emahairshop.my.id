@@ -2002,7 +2002,7 @@
             let totalWeight = 0;
             let totalPrice = 0;
             
-            // Pengelompokan berdasarkan kualitas
+            // Pengelompokan berdasarkan kualitas dan tipe rambut
             let groupedItems = {};
             
             quoteItems.forEach(item => {
@@ -2010,10 +2010,20 @@
                 totalPrice += item.price;
                 
                 if (!groupedItems[item.quality]) {
-                    groupedItems[item.quality] = [];
+                    groupedItems[item.quality] = {};
                 }
-                groupedItems[item.quality].push(item);
+                if (!groupedItems[item.quality][item.type]) {
+                    groupedItems[item.quality][item.type] = [];
+                }
+                groupedItems[item.quality][item.type].push(item);
             });
+
+            // Urutkan item berdasarkan inci (panjang) dari terpendek ke terpanjang
+            for (const quality in groupedItems) {
+                for (const type in groupedItems[quality]) {
+                    groupedItems[quality][type].sort((a, b) => parseInt(a.length) - parseInt(b.length));
+                }
+            }
 
             // Hitung Biaya Pengiriman (Setiap kelipatan 1 KG = $60)
             let shippingFee = Math.ceil(totalWeight / 1000) * 60;
@@ -2022,17 +2032,22 @@
             // 1. MENYUSUN TAMPILAN DI MODAL POP-UP
             // ==========================================
             let modalHTML = ``;
-            for (const [quality, items] of Object.entries(groupedItems)) {
+            for (const [quality, types] of Object.entries(groupedItems)) {
                 modalHTML += `<div class="modal-item-title">${quality.toUpperCase()}</div>`;
-                items.forEach(item => {
-                    let lenStr = item.length.replace(" inches", '"');
-                    modalHTML += `
-                        <div class="modal-item-row">
-                            <span>${item.type} (${lenStr}, ${item.weight}g, ${item.displayColor})</span>
-                            <strong>$${item.price.toFixed(0)}</strong>
-                        </div>
-                    `;
-                });
+                
+                for (const [type, items] of Object.entries(types)) {
+                    modalHTML += `<div style="font-weight: 700; font-size: 0.8rem; color: var(--gray); margin-top: 5px; text-transform: uppercase;">${type}</div>`;
+                    
+                    items.forEach(item => {
+                        let lenStr = item.length.replace(" inches", '"');
+                        modalHTML += `
+                            <div class="modal-item-row" style="padding-left: 10px; border-bottom: 1px dotted #eee;">
+                                <span>${lenStr}, ${item.weight}g, ${item.displayColor}</span>
+                                <strong>$${item.price.toFixed(0)}</strong>
+                            </div>
+                        `;
+                    });
+                }
             }
 
             modalHTML += `<div style="margin-top:15px;"></div>`;
@@ -2056,14 +2071,17 @@
             // 2. MENYUSUN PESAN WHATSAPP YANG RAPI
             // ==========================================
             let message = "";
-            for (const [quality, items] of Object.entries(groupedItems)) {
+            for (const [quality, types] of Object.entries(groupedItems)) {
                 message += `*${quality.toUpperCase()}*\n`; // Super Double Drawn / Double Drawn
                 
-                items.forEach(item => {
-                    let lenStr = item.length.replace(" inches", '"');
-                    message += `${item.type}\n`;
-                    message += `${lenStr} ${item.weight}g ${item.displayColor} $${item.price.toFixed(0)}\n`;
-                });
+                for (const [type, items] of Object.entries(types)) {
+                    message += `${type}\n`; // Nama produk misal: Hair Bulk / Hair Weft
+                    
+                    items.forEach(item => {
+                        let lenStr = item.length.replace(" inches", '"');
+                        message += `${lenStr} ${item.weight}g ${item.displayColor} $${item.price.toFixed(0)}\n`;
+                    });
+                }
                 message += `\n`;
             }
             
