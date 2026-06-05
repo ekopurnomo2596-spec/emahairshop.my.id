@@ -658,8 +658,9 @@
             .modern-table td:first-child { padding-left: 2px; font-size: 0.55rem; white-space: normal;}
             
             /* KALKULATOR HP */
-            .calculator-section { padding: 60px 3%; overflow: hidden; } 
-            .calc-container { padding: 20px 15px; width: 100%; box-sizing: border-box; } 
+            .calculator-section { padding: 60px 0; overflow: hidden; } 
+            .calc-container { padding: 20px 15px; width: 100%; box-sizing: border-box; border-radius: 0; border-left: none; border-right: none; } 
+            .calc-container::before { border-radius: 0; }
             .calc-form { grid-template-columns: 1fr; gap: 15px; width: 100%; box-sizing: border-box;} 
             .calc-full { grid-column: span 1; } 
             .calc-group select, .calc-group input { padding: 10px 10px; font-size: 0.8rem; width: 100%; box-sizing: border-box; }
