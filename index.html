@@ -5,24 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EMAHAIRSHOP</title>
     
-    <!-- === MENCEGAH BROWSER MENERJEMAHKAN OTOMATIS (MENCEGAH TEKS KELUAR/BERANTAKAN) === -->
     <meta name="google" content="notranslate">
     
-    <!-- === SEO META TAGS === -->
     <meta name="description" content="Top Quality Human Hair Extension Supplier & Manufacturer from Indonesia. Worldwide shipping for Hair Bulk, Weft, Tape, Keratin, and Wigs. 100% Human Remy Hair.">
     <meta name="keywords" content="Supplier Human Hair Indonesia, Hair Extension, Human Hair, Hair Bulk, Hair Weft, Hair Tape, Keratin Hair, Nano Ring, Genius Weft, Wholesale Hair Supplier, Emahairshop, Indonesia">
     <meta name="author" content="Emahairshop">
 
-    <!-- === OPEN GRAPH (OG) / WHATSAPP / FACEBOOK PREVIEW TAGS === -->
     <meta property="og:title" content="Emahairshop | Supplier Hair Indonesia">
     <meta property="og:description" content="Wholesale Supplier & Manufacturer of 100% Human Hair Extensions from Indonesia. Exporting to 15+ Countries Worldwide.">
     <meta property="og:url" content="https://www.emahairshop.my.id/">
     <meta property="og:type" content="website">
 
-    <!-- ====================================================================
-         === GOOGLE ANALYTICS (PELACAK PENGUNJUNG, FB/IG, & ASAL NEGARA) ===
-         ==================================================================== -->
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-W5HY2PJ62X"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -32,7 +25,6 @@
       gtag('config', 'G-W5HY2PJ62X');
     </script>
     
-    <!-- Favicon SVG Kustom -->
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='white'/%3E%3Cline x1='15' y1='62' x2='45' y2='62' stroke='%23111' stroke-width='4'/%3E%3Ctext x='115' y='68' font-family='sans-serif' font-weight='900' font-size='16' text-anchor='middle' letter-spacing='1' fill='%23111'%3EEXTENSION%3C/text%3E%3Ctext x='100' y='110' font-family='sans-serif' font-weight='900' font-size='24' text-anchor='middle' fill='%23111'%3EEMAHAIRSHOP%3C/text%3E%3Cline x1='15' y1='130' x2='185' y2='130' stroke='%23111' stroke-width='4'/%3E%3Ctext x='100' y='165' font-family='sans-serif' font-weight='900' font-size='20' text-anchor='middle' fill='%23D4AF37'%3E2019%3C/text%3E%3C/svg%3E" type="image/svg+xml">
     
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,600&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
@@ -632,6 +624,12 @@
                 text-align: center; 
                 justify-content: center;
             }
+
+            /* PENYESUAIAN IKON CENTANG KHUSUS HP (AGAR TEKS TETAP PRESISI) */
+            .pill-label::before {
+                font-size: 0.75rem;
+                left: 8px; /* Mengatur jarak ikon di versi Mobile */
+            }
         }
         
         /* ==========================================================
@@ -705,10 +703,9 @@
             font-size: 0.85rem;
             color: #25D366;
             
-            /* MEMBERIKAN RUANG PERMANEN UNTUK CENTANG AGAR KOTAK TIDAK BERGESER */
-            width: 14px;
-            display: inline-block;
-            margin-right: 6px;
+            /* DITAMBAHKAN: Menggunakan posisi absolut agar tidak menggeser teks di dalam kotak */
+            position: absolute;
+            left: 12px;
             
             /* Posisi awal tersembunyi/transparan */
             opacity: 0;
@@ -735,21 +732,6 @@
         /* Modifikasi agar opsi Length (Inches) terlihat rapi */
         .pill-length .pill-label {
             flex: 1 1 calc(25% - 12px); /* 4 kotak sejajar di Desktop */
-        }
-
-        /* --- TAMPILAN RESPONSIVE HP --- */
-        @media (max-width: 768px) {
-            .pill-label {
-                flex: 1 1 calc(50% - 12px); /* 2 kotak sejajar di HP */
-                font-size: 0.75rem;
-                padding: 10px 5px;
-            }
-            .pill-label::before {
-                font-size: 0.75rem;
-            }
-            .pill-length .pill-label {
-                flex: 1 1 calc(25% - 12px); 
-            }
         }
         
         /* Tombol Tambah Produk */
@@ -801,7 +783,6 @@
             <div class="logo-year">2019</div>
         </a>
         
-        <!-- MENU NAVIGASI KILAT SERAGAM (DESKTOP & HP) -->
         <div class="quick-nav">
             <a href="#products"><i class="fa-solid fa-box"></i> PRODUCTS</a>
             <a href="#pricelist"><i class="fa-solid fa-tags"></i> PRICE</a>
@@ -809,7 +790,6 @@
         </div>
     </nav>
 
-    <!-- SECTION 1: ABOUT -->
     <section id="about" class="about">
         <div class="product-preview-gallery">
             <div class="preview-box preview-left" data-aos="fade-right">
@@ -867,7 +847,6 @@
         </div>
     </section>
 
-    <!-- SECTION 2: PRODUK -->
     <section id="products" class="produk">
         <div class="produk-header" data-aos="fade-up">
             <span class="sub-title">Our Products</span>
@@ -1139,7 +1118,6 @@
         </div>
     </section>
 
-    <!-- SECTION 3: PRICE LIST -->
     <section id="pricelist" class="price-section">
         <div class="produk-header">
             <span class="sub-title">Wholesale Rates</span>
@@ -1148,7 +1126,6 @@
         </div>
 
         <div class="price-grid">
-            <!-- PRICE: HAIR BULK -->
             <div class="price-card">
                 <div class="price-card-title"><h3>HAIR BULK</h3></div>
                 
@@ -1203,7 +1180,6 @@
                 </details>
             </div>
 
-            <!-- PRICE: HAIR WEFT -->
             <div class="price-card">
                 <div class="price-card-title"><h3>HAIR WEFT</h3></div>
                 
@@ -1258,7 +1234,6 @@
                 </details>
             </div>
 
-            <!-- PRICE: HAIR TAPE -->
             <div class="price-card">
                 <div class="price-card-title"><h3>HAIR TAPE</h3></div>
                 
@@ -1313,7 +1288,6 @@
                 </details>
             </div>
 
-            <!-- PRICE: I TIP / KERATIN -->
             <div class="price-card">
                 <div class="price-card-title"><h3>I TIP / KERATIN</h3></div>
                 
@@ -1368,7 +1342,6 @@
                 </details>
             </div>
 
-            <!-- PRICE: NANO RING -->
             <div class="price-card">
                 <div class="price-card-title"><h3>NANO RING</h3></div>
                 
@@ -1423,7 +1396,6 @@
                 </details>
             </div>
 
-            <!-- PRICE: GENIUS WEFT -->
             <div class="price-card">
                 <div class="price-card-title"><h3>GENIUS WEFT</h3></div>
                 
@@ -1481,9 +1453,6 @@
         </div>
     </section>
 
-    <!-- ==========================================================
-         === SECTION BARU: KALKULATOR PESANAN DINAMIS (MULTI-ITEM) ===
-         ========================================================== -->
     <section id="quote" class="calculator-section">
         <div class="calc-container" data-aos="fade-up">
             <div class="calc-header">
@@ -1492,7 +1461,6 @@
             </div>
             
             <div class="calc-form">
-                <!-- Hair Type Pill Buttons -->
                 <div class="calc-group">
                     <label>Hair Type</label>
                     <div class="pill-selector">
@@ -1516,7 +1484,6 @@
                     </div>
                 </div>
                 
-                <!-- Quality Pill Buttons -->
                 <div class="calc-group">
                     <label>Quality</label>
                     <div class="pill-selector pill-half">
@@ -1528,7 +1495,6 @@
                     </div>
                 </div>
                 
-                <!-- Length Pill Buttons -->
                 <div class="calc-group">
                     <label>Length (Inches)</label>
                     <div class="pill-selector pill-length">
@@ -1555,13 +1521,11 @@
                     </div>
                 </div>
                 
-                <!-- Quantity Input (Tetap diketik karena angka bebas) -->
                 <div class="calc-group">
                     <label for="calcWeight">Quantity Needed (Grams)</label>
                     <input type="number" id="calcWeight" placeholder="e.g. 500" min="100" step="100">
                 </div>
 
-                <!-- Color Pill Buttons -->
                 <div class="calc-group">
                     <label>Color Selection</label>
                     <div class="pill-selector pill-half">
@@ -1585,10 +1549,8 @@
                 </div>
             </div>
 
-            <!-- Area untuk menampilkan barang yang sudah ditambahkan -->
             <div id="quoteItemList" class="quote-item-list calc-full">
-                <!-- Data akan muncul di sini via JavaScript -->
-            </div>
+                </div>
 
             <div class="calc-full">
                 <button type="button" class="calc-btn" onclick="prepareCheckout()">
@@ -1598,7 +1560,6 @@
         </div>
     </section>
 
-    <!-- SECTION 4: KONTAK -->
     <section id="contact" class="kontak">
         <div data-aos="fade-up">
             <h2>Get In Touch</h2>
@@ -1626,20 +1587,17 @@
         </div>
     </section>
 
-    <!-- ELEMEN MELAYANG: KEMBALI KE ATAS & LIGHTBOX -->
     <a href="#" id="backToTop" class="back-to-top">
         <i class="fa-solid fa-arrow-up"></i>
     </a>
 
-    <!-- CHECKOUT MODAL (POP UP KONFIRMASI) -->
     <div id="checkoutModal" class="lightbox">
         <div class="lightbox-content checkout-modal-content">
             <div class="checkout-modal-header">
                 <h3>Order Confirmation</h3>
             </div>
             <div class="checkout-modal-body" id="checkoutModalBody">
-                <!-- Rincian pesanan akan diisi oleh JavaScript -->
-            </div>
+                </div>
             <div class="checkout-modal-footer">
                 <button onclick="closeCheckoutModal()" class="btn-cancel">Cancel</button>
                 <button onclick="proceedToWhatsApp()" class="btn-confirm"><i class="fa-brands fa-whatsapp"></i> Send Order</button>
@@ -1647,7 +1605,6 @@
         </div>
     </div>
 
-    <!-- IMAGE LIGHTBOX -->
     <div id="imageLightbox" class="lightbox">
         <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
         <span class="lightbox-arrow lightbox-prev" onclick="showImage(currentIndex - 1); event.stopPropagation();">&#10094;</span>
@@ -1655,7 +1612,6 @@
         <span class="lightbox-arrow lightbox-next" onclick="showImage(currentIndex + 1); event.stopPropagation();">&#10095;</span>
     </div>
 
-    <!-- SCRIPT BAWAAN -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script>
