@@ -383,9 +383,8 @@
 
             /* --- Penyesuaian Mobile: Payment Method Pill Buttons --- */
             .pill-grid-payment { grid-template-columns: repeat(2, 1fr) !important; gap: 6px !important; }
-            .payment-pill { flex-direction: row !important; font-size: 0.65rem !important; padding: 8px 6px !important; gap: 8px !important; justify-content: flex-start !important; padding-left: 15px !important;}
-            .payment-pill i { font-size: 1.2rem !important; width: 20px; text-align: center; }
-            #pay5 + label { grid-column: span 2; justify-content: center !important; padding-left: 0 !important;}
+            .payment-pill { font-size: 0.65rem !important; padding: 10px 5px !important; justify-content: center !important; text-align: center !important;}
+            #pay5 + label { grid-column: span 2; }
         }
         
         /* --- KALKULATOR PESANAN --- */
@@ -435,8 +434,7 @@
 
         /* --- DESAIN MENU PAYMENT METHOD PILL BUTTONS --- */
         .pill-grid-payment { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; width: 100%; margin-top: 5px; }
-        .payment-pill { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; padding: 12px 5px !important; font-weight: 700 !important; }
-        .payment-pill i { font-size: 1.8rem; }
+        .payment-pill { display: flex; align-items: center; justify-content: center; padding: 12px 5px !important; font-weight: 700 !important; text-align: center; }
 
         .calc-btn { background-color: #25D366; color: var(--white); padding: 12px; border: none; border-radius: 8px; font-size: 0.85rem; font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: 5px; width: 100%; box-sizing: border-box; text-transform: uppercase; letter-spacing: 1px; display: flex; justify-content: center; align-items: center; gap: 8px; }
         .calc-btn:hover { background-color: #1ebe56; box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3); transform: translateY(-3px); }
@@ -1250,36 +1248,31 @@
                 <!-- Data akan muncul di sini via JavaScript -->
             </div>
 
-            <!-- OPSI PEMBAYARAN: PILL BUTTONS + ICON MEREK -->
-            <div class="calc-group calc-full" style="margin-top: 10px; border-top: 1px dashed #ccc; padding-top: 15px;">
-                <label style="background: transparent; border: none; padding: 0; margin: 0 0 5px 0; font-size: 0.8rem; letter-spacing: 2px;">PAYMENT METHOD</label>
-                
-                <div class="pill-grid-payment">
-                    <input type="radio" id="pay1" name="calcPayment" value="Western Union" class="hidden-radio">
-                    <label for="pay1" class="pill-label payment-pill">
-                        <i class="fa-solid fa-money-bill-transfer" style="color: #e0a800;"></i> <span>Western Union</span>
-                    </label>
+            <!-- OPSI PEMBAYARAN: BUKA TUTUP (ACCORDION) TANPA LOGO -->
+            <div class="calc-group calc-full" style="margin-top: 10px; border-top: 1px dashed #ccc; padding-top: 10px;">
+                <details class="custom-details" style="background: transparent; border: none; padding: 0;">
+                    <summary class="custom-summary" style="background-color: rgba(47, 78, 55, 0.08); color: var(--green); border: 1px solid rgba(47, 78, 55, 0.2); border-radius: 4px; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+                        <span style="letter-spacing: 2px; flex: 1; text-align: center; padding-left: 15px;">PAYMENT METHOD</span>
+                    </summary>
+                    <div class="details-content" style="padding-top: 10px;">
+                        <div class="pill-grid-payment">
+                            <input type="radio" id="pay1" name="calcPayment" value="Western Union" class="hidden-radio">
+                            <label for="pay1" class="pill-label payment-pill">Western Union</label>
 
-                    <input type="radio" id="pay2" name="calcPayment" value="MoneyGram" class="hidden-radio">
-                    <label for="pay2" class="pill-label payment-pill">
-                        <i class="fa-solid fa-money-bill-wave" style="color: #e31837;"></i> <span>MoneyGram</span>
-                    </label>
+                            <input type="radio" id="pay2" name="calcPayment" value="MoneyGram" class="hidden-radio">
+                            <label for="pay2" class="pill-label payment-pill">MoneyGram</label>
 
-                    <input type="radio" id="pay3" name="calcPayment" value="PayPal" class="hidden-radio">
-                    <label for="pay3" class="pill-label payment-pill">
-                        <i class="fa-brands fa-paypal" style="color: #00457C;"></i> <span>PayPal</span>
-                    </label>
+                            <input type="radio" id="pay3" name="calcPayment" value="PayPal" class="hidden-radio">
+                            <label for="pay3" class="pill-label payment-pill">PayPal</label>
 
-                    <input type="radio" id="pay4" name="calcPayment" value="Bank Transfer" class="hidden-radio">
-                    <label for="pay4" class="pill-label payment-pill">
-                        <i class="fa-solid fa-building-columns" style="color: #4a5568;"></i> <span>Bank Transfer</span>
-                    </label>
+                            <input type="radio" id="pay4" name="calcPayment" value="Bank Transfer" class="hidden-radio">
+                            <label for="pay4" class="pill-label payment-pill">Bank Transfer</label>
 
-                    <input type="radio" id="pay5" name="calcPayment" value="USDT" class="hidden-radio">
-                    <label for="pay5" class="pill-label payment-pill">
-                        <i class="fa-solid fa-coins" style="color: #26a17b;"></i> <span>USDT</span>
-                    </label>
-                </div>
+                            <input type="radio" id="pay5" name="calcPayment" value="USDT" class="hidden-radio">
+                            <label for="pay5" class="pill-label payment-pill">USDT</label>
+                        </div>
+                    </div>
+                </details>
             </div>
 
             <div class="calc-full" style="margin-top: 10px;">
