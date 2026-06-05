@@ -1565,6 +1565,29 @@
             paymentMethod: "", // Status Metode Pembayaran
             baseWAMessage: ""
         };
+
+        // --- SISTEM KURS REAL-TIME ONLINE ---
+        // Variabel global dengan nilai cadangan (diperbarui ke 18.126)
+        let currentUSDtoIDR = 18126; 
+
+        async function fetchLiveExchangeRate() {
+            try {
+                // Mengambil data kurs terbaru dari open API gratis
+                const response = await fetch('https://open.er-api.com/v6/latest/USD');
+                const data = await response.json();
+                
+                if (data && data.rates && data.rates.IDR) {
+                    currentUSDtoIDR = data.rates.IDR;
+                    console.log("Berhasil mendapat kurs online: 1 USD = Rp " + currentUSDtoIDR);
+                }
+            } catch (error) {
+                console.error("Gagal mengambil kurs online, menggunakan kurs default Rp 18.126.", error);
+            }
+        }
+
+        // Panggil fungsi ini otomatis saat website selesai dimuat
+        window.addEventListener('load', fetchLiveExchangeRate);
+        // ------------------------------------
         
         function toggleColorInput() {
             const colorElement = document.querySelector('input[name="calcColorType"]:checked');
@@ -1958,6 +1981,29 @@
             } else {
                 msg += `\n*Total Amount: $${finalAmt.toFixed(0)}*\n\n`;
             }
+
+            // --- KONVERSI KE RUPIAH (KURS ONLINE) ---
+            const method = checkoutState.paymentMethod;
+            
+            // Cek apakah metode pembayaran adalah Bank Transfer, MoneyGram, atau Western Union
+            if (method === "Bank Transfer" || method === "MoneyGram" || method === "Western Union") {
+                const totalIDR = finalAmt * currentUSDtoIDR; // Menggunakan variabel kurs online
+                
+                // Format angka otomatis ke format Rupiah (contoh: Rp 1.500.000,00)
+                const formattedIDR = new Intl.NumberFormat('id-ID', { 
+                    style: 'currency', 
+                    currency: 'IDR' 
+                }).format(totalIDR);
+                
+                // Format kurs per 1 USD
+                const formattedRate = new Intl.NumberFormat('id-ID').format(currentUSDtoIDR);
+                
+                msg += `*Estimasi Dana Diterima:*\n`;
+                msg += `*${formattedIDR}*\n`;
+                msg += `_(Kurs online saat ini: 1 USD = Rp ${formattedRate})_\n\n`;
+            }
+            // ----------------------------------------
+
             msg += "Please confirm my order.";
             finalWhatsAppMessage = msg;
         }
