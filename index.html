@@ -605,12 +605,10 @@
             
             .calc-header { margin-bottom: 10px; padding: 0 5px; } 
             
-            /* Jarak ANTAR GRUP kategori dikecilkan menjadi 5px */
             .calc-form { grid-template-columns: 1fr; gap: 5px !important; width: 100%; box-sizing: border-box; margin: 0; } 
             
             .calc-full { grid-column: span 1; } 
             
-            /* Jarak ANTARA JUDUL dengan TOMBOL di dalam satu grup dibuat sangat rapat (2px) */
             .calc-group { gap: 2px !important; width: 100%; box-sizing: border-box; }
             
             .calc-group select, .calc-group input { padding: 8px 10px; font-size: 0.8rem; width: 100%; box-sizing: border-box; height: 35px; margin: 0;} 
@@ -618,7 +616,6 @@
             .calc-header h3 { font-size: 1.2rem; white-space: normal; line-height: 1.2; margin-bottom: 2px; } 
             .calc-header p { font-size: 0.7rem; white-space: normal; line-height: 1.4; letter-spacing: 0; font-weight: 400; margin:0;}
             
-            /* Menambahkan Jarak/Margin Atas untuk Tombol Tambah Produk */
             .add-item-btn {
                 margin-top: 15px !important; 
             }
@@ -648,14 +645,15 @@
                 margin: 0;
             }
             
-            /* Margin Bawah pada label (Hair Type, dll) diubah menjadi 0px agar benar-benar menempel dengan tombol */
+            /* === GAYA LABEL KHUSUS HP (Tema Tema Simple Luxury Hijau) === */
             .calc-group > label:not(.pill-label) {
-                font-size: 0.8rem !important; 
-                white-space: nowrap !important; 
-                letter-spacing: 0.5px !important;
-                margin-bottom: 0px !important; /* Dibuat 0 agar nempel ke bawah */
-                margin-top: 0px !important;
-                padding: 0 4px; 
+                font-size: 0.65rem !important; 
+                letter-spacing: 1.5px !important;
+                margin-bottom: 5px !important; 
+                margin-top: 5px !important;
+                padding: 6px 5px !important; 
+                border-radius: 4px !important; 
+                width: 100% !important; 
             }
         }
         
@@ -672,17 +670,26 @@
         .calc-form { display: grid; grid-template-columns: 1fr; gap: 20px; width: 100%; box-sizing: border-box;}
         .calc-group { display: flex; flex-direction: column; gap: 8px; width: 100%; box-sizing: border-box;}
         
-        /* GAYA LABEL SESUAI FOTO (Tengah, Bold, Biru Gelap) */
+        /* =================================================================
+           GAYA LABEL BARU: SIMPLE LUXURY (THEME GREEN)
+           ================================================================= */
         .calc-group > label:not(.pill-label) { 
-            text-align: center; 
-            font-size: 1.1rem; 
-            font-weight: 900; 
-            color: #374151; /* Warna biru abu-abu gelap mirip di foto */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(47, 78, 55, 0.08); /* Hijau Gelap Transparan */
+            color: var(--green); /* Teks hijau pekat menyatu dengan tema */
+            border: 1px solid rgba(47, 78, 55, 0.2); /* Bingkai hijau tipis elegan */
+            font-size: 0.8rem; 
+            font-weight: 800; 
+            padding: 8px 10px; 
+            margin: 10px 0 10px 0; 
+            letter-spacing: 2px; /* Trik desain luxury: spasi huruf dilebarkan */
             text-transform: uppercase; 
-            letter-spacing: 1px; 
-            display: block; 
-            margin-bottom: 12px; 
-            margin-top: 10px;
+            text-align: center; 
+            width: 100%; 
+            border-radius: 4px;
+            box-sizing: border-box;
         }
         
         /* MEMBUAT TEKS INPUT BERADA DI TENGAH SAAT DIKETIK */
