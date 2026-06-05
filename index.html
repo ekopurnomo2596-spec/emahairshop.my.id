@@ -2094,11 +2094,11 @@
 
             if (totalWeight >= 1000) {
                 message += `🎁 *VOUCHER CLAIMED: -$50*\n`;
-                message += `(_"I want to claim the $50 voucher!"_)\n`;
+                message += `_Congratulations! You get a $50 voucher for ordering over 1kg!_\n`;
                 message += `*Total Amount: $${finalTotal.toFixed(0)}*\n\n`;
             } else {
                 message += `*Total Amount: $${finalTotal.toFixed(0)}*\n\n`;
-                message += `_(Add ${1000 - totalWeight}g more to claim a $50 voucher!)_\n\n`;
+                // Teks "Add Xg more..." telah dihapus secara permanen di sini
             }
             
             message += "Please confirm my order.";
