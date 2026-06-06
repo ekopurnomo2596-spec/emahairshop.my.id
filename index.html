@@ -269,7 +269,7 @@
         .lightbox-next { right: 20px; }
 
         /* --- Teks Transit Agar Satu Baris --- */
-        #shipTransit, #shipWeight, #shipCost { white-space: nowrap !important; font-size: 0.75rem !important; font-weight: 600 !important; color: var(--gray) !important; text-align: right; }
+        #shipTransit, #shipWeight, #shipCost { font-size: 0.75rem; font-weight: 600; color: var(--gray); text-align: right; }
 
         /* --- MEDIA QUERY RESPONSIVE (TAMPILAN KHUSUS HP) --- */
         @media (max-width: 768px) {
@@ -370,12 +370,14 @@
             .quote-item-minimal-price { font-size: 0.75rem !important; }
             .quote-item-minimal-actions { gap: 6px !important; }
             .action-btn-minimal { font-size: 0.85rem !important; }
-            .pill-grid-payment { grid-template-columns: repeat(2, 1fr) !important; gap: 6px !important; }
-            .payment-pill { font-size: 0.65rem !important; padding: 10px 5px !important; justify-content: center !important; text-align: center !important;}
-            #pay5-label { grid-column: span 2; }
+            
+            /* Penyesuaian agar tidak terpotong di HP */
+            .pill-grid-payment { grid-template-columns: repeat(2, 1fr) !important; gap: 4px !important; }
+            .payment-pill { font-size: 0.5rem !important; padding: 6px 2px !important; justify-content: center !important; text-align: center !important; white-space: normal !important; line-height: 1.1 !important; letter-spacing: -0.2px !important;}
+            #pay5-label span:first-child { font-size: 0.4rem; padding: 2px 4px; top: -6px; left: 0px; }
+            
             .estimator-form { grid-template-columns: 1fr; }
-            #shipTransit, #shipWeight, #shipCost { font-size: 0.6rem !important; } /* Lebih kecil di HP agar muat 1 baris */
-            .ship-stats .stat-row strong { font-size: 0.6rem; }
+            .stat-row span, .stat-row strong { font-size: 0.7rem !important; }
         }
         
         /* --- KALKULATOR PESANAN --- */
@@ -469,10 +471,11 @@
         .estimator-form input:focus, .estimator-form select:focus { outline: none; border-color: #25D366; }
         
         .ship-stats { display: flex; flex-direction: column; gap: 6px; background: var(--white); border: 1px solid #eaeaea; border-radius: 6px; padding: 12px 15px; margin-top: 10px; }
-        .stat-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; border-bottom: 1px dashed #eaeaea; padding-bottom: 6px; }
+        .stat-row { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px dashed #eaeaea; padding-bottom: 6px; }
         .stat-row:last-child { border-bottom: none; padding-bottom: 0; }
-        .stat-row span { color: var(--gray); font-weight: 600; }
-        .stat-row strong { font-size: 0.75rem; color: var(--gray); font-weight: 600; text-align: right; max-width: 60%; line-height: 1.2; word-wrap: break-word;}
+        /* Font dikiri dan dikanan dibuat persis sama! */
+        .stat-row span { font-size: 0.75rem; color: var(--gray); font-weight: 600; font-family: 'Lato', sans-serif; }
+        .stat-row strong { font-size: 0.75rem; color: var(--gray); font-weight: 600; font-family: 'Lato', sans-serif; text-align: right; line-height: 1.2; word-wrap: break-word; }
         
         /* Elegan Dark Estimated Arrival Box */
         .est-arrival-box { background: linear-gradient(135deg, var(--black) 0%, #222 100%); color: var(--white); padding: 12px 15px; border-radius: 8px; margin-top: 12px; display: flex; align-items: center; position: relative; box-shadow: 0 6px 15px rgba(0,0,0,0.15); }
@@ -2039,7 +2042,7 @@
             let courierStr = checkoutState.courierInfo ? checkoutState.courierInfo : "Courier";
             let destStr = checkoutState.destCountry ? checkoutState.destCountry : "Destination";
             let shippingText = checkoutState.isCustomShipping ? "Calculated via WhatsApp" : "$" + checkoutState.shippingFee.toFixed(2);
-            modalHTML += `<div class="modal-summary-row"><span>Shipping (${courierStr} to ${destStr}):</span><strong style="${checkoutState.isCustomShipping ? 'color: var(--circle-pink); font-size: 0.8rem;' : ''}">${shippingText}</strong></div>`;
+            modalHTML += `<div class="modal-summary-row"><span>Shipping (${courierStr} to ${destStr}):</span><strong>${shippingText}</strong></div>`;
 
             modalHTML += `<div id="discountRow" class="modal-summary-row" style="color:var(--circle-pink); display: none;"><span id="discountName">Promo:</span><strong id="discountValue">-$0</strong></div>`;
             
@@ -2068,36 +2071,23 @@
             document.getElementById('checkoutModal').classList.add('show');
             document.body.style.overflow = 'hidden';
 
-            // --- FORMAT PESAN WHATSAPP BARU ---
-            let message = "📝 *DETAIL ORDER*\n";
+            // --- BUILD WHATSAPP MESSAGE ---
+            let message = "DETAIL ORDER\n";
             message += "━━━━━━━━━━\n\n";
 
             for (const [quality, types] of Object.entries(groupedItems)) {
-                message += `*${quality.toUpperCase()}*\n`; 
+                message += `${quality.toUpperCase()}\n`;
+                message += "━━━━━━━━━━\n";
                 for (const [type, items] of Object.entries(types)) {
-                    message += `_${type}_\n`; 
+                    message += `${type}\n`;
                     items.forEach(item => {
                         let lenStr = item.length.replace(" inches", '"');
                         let weightStr = item.weight >= 1000 ? (item.weight / 1000) + 'kg' : item.weight + 'g';
-                        message += `${lenStr} | ${weightStr} | ${item.displayColor} *$${item.price.toFixed(0)}*\n`;
+                        message += `${lenStr} | ${weightStr} | ${item.displayColor} $${item.price.toFixed(0)}\n`;
                     });
                 }
                 message += `\n`;
             }
-            
-            let totalWeightStrWA = totalWeight >= 1000 ? (totalWeight / 1000) + ' kg' : totalWeight + ' Grams';
-            
-            message += `Total Weight: *${totalWeightStrWA}*\n`;
-            message += `Subtotal: *$${totalPrice.toFixed(0)}*\n\n`;
-
-            message += `Destination: *${checkoutState.destCountry}*\n`;
-            if (checkoutState.courierInfo) message += `Courier: *${checkoutState.courierInfo}*\n`;
-            
-            if (!checkoutState.isCustomShipping && checkoutState.estArrivalDate) {
-                message += `Est. Arrival: *${checkoutState.estArrivalDate}*\n`;
-            }
-            
-            message += `Payment Method: *${checkoutState.paymentMethod}*\n`;
 
             checkoutState.baseWAMessage = message; 
             updateWAMessage(); 
@@ -2178,50 +2168,78 @@
         }
 
         function updateWAMessage() {
-            let msg = checkoutState.baseWAMessage; let finalAmt = checkoutState.baseTotal;
+            let msg = checkoutState.baseWAMessage; 
+            let finalAmt = checkoutState.baseTotal;
 
+            let promoString = "";
             if (checkoutState.isPromoApplied) {
                 finalAmt -= checkoutState.discountAmount;
                 if (finalAmt < 0) finalAmt = 0; 
-                msg += `\n🎁 *PROMO APPLIED:*\n*${checkoutState.appliedPromoCode} (-$${checkoutState.discountAmount})*\n`;
+                promoString = `Promo Applied: ${checkoutState.appliedPromoCode} (-$${checkoutState.discountAmount})\n`;
             }
             
             if (checkoutState.paymentMethod === 'PayPal' && checkoutState.paypalFee > 0) {
-                msg += `\nPayPal Fee (5%): *$${checkoutState.paypalFee.toFixed(2)}*\n`;
+                promoString += `PayPal Fee (5%): $${checkoutState.paypalFee.toFixed(2)}\n`;
             }
             
             finalAmt += checkoutState.paypalFee;
             let finalDisplayStr = (finalAmt % 1 === 0) ? finalAmt.toFixed(0) : finalAmt.toFixed(2);
 
-            msg += `\n`;
+            let totalWeightStrWA = checkoutState.totalWeight >= 1000 ? (checkoutState.totalWeight / 1000) + ' kg' : checkoutState.totalWeight + ' Grams';
+            
+            msg += `Total   : ${totalWeightStrWA}\n`;
+            msg += `Subtotal: $${checkoutState.totalPrice.toFixed(0)}\n\n`;
 
-            let countryShort = checkoutState.destCountry;
-            if(countryShort.length > 15) countryShort = countryShort.substring(0, 15) + '...';
+            if (promoString) {
+                msg += promoString + "\n";
+            }
 
             if (checkoutState.isCustomShipping) {
-                msg += `Shipping (${checkoutState.courierInfo || 'TBD'} to ${countryShort || 'TBD'}): *TBD*\n`;
-                msg += `*Total Amount: $${finalDisplayStr} + Shipping*\n`;
+                msg += `Shipping (${checkoutState.courierInfo || 'TBD'} to ${checkoutState.destCountry || 'TBD'}): TBD\n`;
+                msg += `Total Amount: $${finalDisplayStr} + Shipping\n`;
             } else {
-                msg += `Shipping (${checkoutState.courierInfo} to ${countryShort}): *$${checkoutState.shippingFee.toFixed(2)}*\n`;
-                msg += `*Total Amount: $${finalDisplayStr}*\n`;
+                msg += `Shipping (${checkoutState.courierInfo} to ${checkoutState.destCountry}): $${checkoutState.shippingFee.toFixed(2)}\n`;
+                msg += `Total Amount: $${finalDisplayStr}\n`;
             }
             msg += `━━━━━━━━━━\n\n`;
 
-            const method = checkoutState.paymentMethod;
-            
-            if (method === "Bank Transfer" || method === "MoneyGram" || method === "Western Union") {
-                const totalIDR = finalAmt * currentUSDtoIDR; 
-                const formattedIDR = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(totalIDR);
-                const formattedRate = new Intl.NumberFormat('id-ID').format(currentUSDtoIDR);
-                
-                msg += `*Estimasi Dana Diterima:*\n`;
-                if (checkoutState.isCustomShipping) msg += `*${formattedIDR} (Belum termasuk ongkir)*\n`;
-                else msg += `*${formattedIDR}*\n`;
-                
-                msg += `_(Kurs online saat ini: 1 USD = Rp ${formattedRate})_\n\n`;
+            msg += `Destination\n`;
+            msg += `━━━━━━━━━━\n`;
+            msg += `${checkoutState.destCountry}\n\n`;
+
+            if (checkoutState.courierInfo) {
+                msg += `Courier\n`;
+                msg += `━━━━━━━━━━\n`;
+                msg += `${checkoutState.courierInfo}\n\n`;
             }
 
-            msg += "Please confirm my order."; finalWhatsAppMessage = msg;
+            if (!checkoutState.isCustomShipping && checkoutState.estArrivalDate) {
+                msg += `Est. Arrival\n`;
+                msg += `━━━━━━━━━━\n`;
+                msg += ` ${checkoutState.estArrivalDate}\n\n`;
+            }
+
+            msg += `Payment Method\n`;
+            msg += `━━━━━━━━━━\n`;
+            msg += ` ${checkoutState.paymentMethod}\n\n`;
+
+            const method = checkoutState.paymentMethod;
+            if (method === "Bank Transfer" || method === "MoneyGram" || method === "Western Union") {
+                const totalIDR = finalAmt * currentUSDtoIDR; 
+                const formattedIDR = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(totalIDR).replace('Rp', 'Rp ');
+                const formattedRate = new Intl.NumberFormat('id-ID', { minimumFractionDigits: 0, maximumFractionDigits: 3 }).format(currentUSDtoIDR);
+                
+                msg += `Estimasi Dana Diterima:\n`;
+                if (checkoutState.isCustomShipping) {
+                    msg += `${formattedIDR} (Belum termasuk ongkir)\n`;
+                } else {
+                    msg += `${formattedIDR}\n`;
+                }
+                msg += `(Kurs online saat ini: 1 USD = Rp ${formattedRate})\n\n`;
+            }
+
+            msg += "Please confirm my order."; 
+            finalWhatsAppMessage = msg;
         }
     </script>
 </body>
