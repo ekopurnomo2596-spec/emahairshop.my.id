@@ -1335,7 +1335,6 @@
             
             <div style="overflow-y: auto; flex: 1; padding-right: 5px; margin-bottom: 10px;">
                 
-                <!-- PROGRESS BAR UPSELL -->
                 <div id="upsellContainer" class="upsell-container" style="display: none;">
                     <div id="upsellText" class="upsell-text"></div>
                     <div class="progress-bar-bg">
@@ -1345,7 +1344,6 @@
 
                 <div id="quoteItemList" class="quote-item-list"></div>
                 
-                <!-- PAYMENT ACCORDION BUKA TUTUP -->
                 <details class="payment-accordion" id="paymentAccordion">
                     <summary class="payment-summary">
                         <span><i class="fa-solid fa-credit-card" style="margin-right: 5px; color: var(--circle-pink);"></i> Select Payment Method</span>
@@ -1361,14 +1359,14 @@
                             <input type="radio" id="pay3" name="calcPayment" value="PayPal" class="hidden-radio">
                             <label for="pay3" class="pill-label payment-pill">PayPal</label>
 
-                            <input type="radio" id="pay4" name="calcPayment" value="Bank Transfer" class="hidden-radio">
-                            <label for="pay4" class="pill-label payment-pill" style="position: relative;">
+                            <input type="radio" id="pay4" name="calcPayment" value="USDT" class="hidden-radio">
+                            <label for="pay4" class="pill-label payment-pill">USDT</label>
+
+                            <input type="radio" id="pay5" name="calcPayment" value="Bank Transfer" class="hidden-radio">
+                            <label for="pay5" class="pill-label payment-pill" style="position: relative; grid-column: span 2;">
                                 <span style="position: absolute; top: -6px; left: -6px; background: #FF1E1E; color: var(--white); font-size: 0.45rem; padding: 2px 5px; border-radius: 4px; font-weight: 900; letter-spacing: 0.5px; box-shadow: 0 2px 4px rgba(0,0,0,0.2); z-index: 1;">RECOMMENDED</span>
                                 <span>Bank Transfer</span>
                             </label>
-
-                            <input type="radio" id="pay5" name="calcPayment" value="USDT" class="hidden-radio">
-                            <label for="pay5" class="pill-label payment-pill" style="grid-column: span 2;">USDT</label>
                         </div>
                     </div>
                 </details>
