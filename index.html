@@ -60,21 +60,20 @@
         }
 
         .nav-brand {
-            font-family: 'Arial Black', 'Lato', sans-serif;
-            font-weight: 900; font-size: 1.3rem; color: var(--black);
-            text-decoration: none; letter-spacing: 1px;
-            display: flex; align-items: center; gap: 5px;
-            transition: all 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: all 0.4s ease;
         }
-        .nav-brand span { font-size: 0.75rem; color: var(--gold); }
-
-        .logo-about { display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 40px; }
-        .logo-top { display: flex; align-items: center; width: 100%; margin-bottom: -3px; }
-        .line-top { height: 2px; background-color: var(--white); flex-grow: 1; margin-right: 6px; }
-        .text-ext { color: var(--white); font-family: 'Lato', sans-serif; font-weight: 900; font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; }
-        .logo-main { color: var(--white); font-family: 'Arial Black', 'Lato', sans-serif; font-weight: 900; font-size: 1.8rem; letter-spacing: 1px; line-height: 1.1; text-transform: uppercase; }
-        .line-bottom { width: 95%; height: 2px; background-color: var(--white); margin: 0px auto 2px auto; }
-        .logo-year { color: var(--gold); font-family: 'Lato', sans-serif; font-weight: 900; font-size: 0.8rem; letter-spacing: 2px; }
+        
+        /* Desain Logo Lengkap dengan Garis di Navigasi */
+        .logo-nav-container { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 140px; }
+        .logo-nav-container .logo-top { display: flex; align-items: center; width: 100%; margin-bottom: -1px; }
+        .logo-nav-container .line-top { height: 1.5px; background-color: var(--black); flex-grow: 1; margin-right: 4px; }
+        .logo-nav-container .text-ext { color: var(--black); font-family: 'Lato', sans-serif; font-weight: 900; font-size: 0.45rem; letter-spacing: 2px; text-transform: uppercase; }
+        .logo-nav-container .logo-main { color: var(--black); font-family: 'Arial Black', 'Lato', sans-serif; font-weight: 900; font-size: 1.25rem; letter-spacing: 0.5px; line-height: 1.1; text-transform: uppercase; }
+        .logo-nav-container .line-bottom { width: 95%; height: 1.5px; background-color: var(--black); margin: 0px auto 1px auto; }
+        .logo-nav-container .logo-year { color: var(--gold); font-family: 'Lato', sans-serif; font-weight: 900; font-size: 0.55rem; letter-spacing: 1.5px; }
 
         .quick-nav { display: flex; gap: 15px; }
         .quick-nav a { display: flex; align-items: center; justify-content: center; background-color: var(--black); color: var(--white); padding: 10px 20px; border-radius: 8px; font-size: 0.8rem; font-weight: 800; text-decoration: none; letter-spacing: 1px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); gap: 8px; transition: 0.3s; }
@@ -439,17 +438,20 @@
             html { scroll-padding-top: 100px; }
             /* Penyesuaian Navigasi HP untuk Logo */
             nav { flex-direction: column; padding: 12px 5%; gap: 15px; height: auto; align-items: center; justify-content: center;}
-            .nav-brand { transition: all 0.3s ease; overflow: hidden; height: 22px; margin-bottom: -5px; }
+            
+            .nav-brand { overflow: hidden; }
             .nav-brand.mobile-hide { opacity: 0; height: 0; margin: 0; padding: 0; border: none; pointer-events: none; }
+            .logo-nav-container { width: 160px; margin-bottom: 5px;}
+            .logo-nav-container .logo-main { font-size: 1.45rem; }
+            .logo-nav-container .text-ext { font-size: 0.5rem; }
 
-            .logo-about { transform: scale(0.9); margin-bottom: 20px; }
             .quick-nav { display: flex; width: 100%; justify-content: center; gap: 10px; }
             .quick-nav a { flex: 1; display: flex; flex-direction: row; align-items: center; justify-content: center; background-color: var(--black); color: var(--white); padding: 8px 5px; border-radius: 6px; font-size: 0.65rem; font-weight: 800; text-decoration: none; letter-spacing: 0.5px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); gap: 5px; white-space: nowrap; }
             .quick-nav a i { font-size: 0.8rem; margin-bottom: 0; color: var(--bright-green); }
             .quick-nav a:active { background-color: var(--bright-green); transform: translateY(2px);}
             .quick-nav a:active i { color: var(--white); }
             .highlights { display: none !important; }
-            .about { padding-top: 130px; gap: 30px; } 
+            .about { padding-top: 110px; gap: 30px; } 
             .product-preview-gallery { grid-template-columns: 1fr; gap: 15px; }
             .preview-box { padding: 10px; border-radius: 8px; }
             .preview-overlay { top: 10px; left: 10px; width: calc(100% - 20px); height: calc(100% - 20px); }
@@ -541,7 +543,11 @@
             #selectedPaymentText { font-size: 0.55rem !important; padding: 3px 6px !important; }
             #pay5-label span:first-child { font-size: 0.45rem; padding: 2px 4px; top: -8px; left: 0px; }
             
-            .estimator-form { grid-template-columns: 1fr; }
+            /* Penyesuaian Country & Courier jadi 2 kolom (Kiri-Kanan) di Mobile */
+            .estimator-form { grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
+            .form-group-ship label { font-size: 0.55rem !important; }
+            .estimator-form input, .estimator-form select { padding: 8px 6px !important; font-size: 0.7rem !important; }
+            
             .stat-row { padding-bottom: 4px; gap: 5px; }
             .stat-row span, .stat-row strong { font-size: 0.65rem !important; }
         }
@@ -550,7 +556,17 @@
 <body class="notranslate">
 
     <nav>
-        <a href="#about" class="nav-brand" id="navLogo">EMAHAIRSHOP <span>2019</span></a>
+        <a href="#about" class="nav-brand" id="navLogo">
+            <div class="logo-nav-container">
+                <div class="logo-top">
+                    <span class="line-top"></span>
+                    <span class="text-ext">EXTENSION</span>
+                </div>
+                <div class="logo-main">EMAHAIRSHOP</div>
+                <div class="line-bottom"></div>
+                <div class="logo-year">2019</div>
+            </div>
+        </a>
         <div class="quick-nav">
             <a href="#products"><i class="fa-solid fa-box"></i> PRODUCTS</a>
             <a href="#pricelist"><i class="fa-solid fa-tags"></i> PRICE</a>
@@ -559,17 +575,6 @@
     </nav>
 
     <section id="about" class="about">
-        <!-- Logo Eksklusif About Us -->
-        <div class="logo-about" data-aos="fade-down">
-            <div class="logo-top">
-                <span class="line-top"></span>
-                <span class="text-ext">EXTENSION</span>
-            </div>
-            <div class="logo-main">EMAHAIRSHOP</div>
-            <div class="line-bottom"></div>
-            <div class="logo-year">2019</div>
-        </div>
-
         <div class="product-preview-gallery">
             <div class="preview-box preview-left" data-aos="fade-right">
                 <img src="hairbulk2.webp" alt="Premium Hair Extensions Showcase Emahairshop">
@@ -1343,7 +1348,7 @@
                     <!-- Hanya tampilkan form teks jika Custom Color dipilih -->
                     <div class="calc-group" id="specificColorGroup" style="display: none;">
                         <label for="calcSpecificColor" style="background: transparent; color: var(--gray); border: none; font-size: 0.65rem; padding: 0; margin-bottom: 0;">TYPE SPECIFIC COLOR</label>
-                        <input type="text" id="calcSpecificColor" placeholder="e.g. Piano, Ombre, #613, dll">
+                        <input type="text" id="calcSpecificColor" placeholder="e.g. Piano, Ombre, 613, dll">
                     </div>
                     
                     <div class="calc-full">
@@ -1700,6 +1705,8 @@
 
         function backToCart() {
             document.getElementById('checkoutModal').classList.remove('show');
+            document.body.style.overflow = ''; // Mencegah bug tidak bisa di-scroll di Desktop
+            
             // Hanya pop-up modal khusus versi mobile
             if (window.innerWidth <= 768) openCartModal(); 
         }
@@ -1909,6 +1916,12 @@
                 priceType = 'col';
                 let spec = document.getElementById('calcSpecificColor').value.trim();
                 if (!spec) { alert("Please type the specific color you want."); return; }
+                
+                // Menambahkan otomatis # jika belum ada
+                if (!spec.startsWith('#')) {
+                    spec = '#' + spec;
+                }
+                
                 displayColor = spec;
             } else {
                 alert("Please select Natural or Custom Color."); return;
