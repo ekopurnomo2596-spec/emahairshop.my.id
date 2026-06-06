@@ -1351,11 +1351,11 @@
                         <span><i class="fa-solid fa-credit-card" style="margin-right: 5px; color: var(--circle-pink);"></i> Select Payment Method</span>
                     </summary>
                     <div class="payment-accordion-content">
-                
+                        <div class="pill-grid-payment" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
                             <input type="radio" id="pay1" name="calcPayment" value="Western Union" class="hidden-radio">
-                            <label for="pay1" class="pill-label payment-pill" style="position: relative;">
-                                
-                                Western Union
+                            <label for="pay1" class="pill-label payment-pill" style="flex-direction: column; gap: 3px;">
+                                <span>Western Union</span>
+                                <span style="background: #D4AF37; color: white; font-size: 0.5rem; padding: 2px 6px; border-radius: 4px; font-weight: 900; letter-spacing: 0.5px;"><i class="fa-solid fa-star" style="font-size: 0.45rem;"></i> BEST</span>
                             </label>
 
                             <input type="radio" id="pay2" name="calcPayment" value="MoneyGram" class="hidden-radio">
@@ -1365,9 +1365,9 @@
                             <label for="pay3" class="pill-label payment-pill">PayPal</label>
 
                             <input type="radio" id="pay4" name="calcPayment" value="Bank Transfer" class="hidden-radio">
-                            <label for="pay4" class="pill-label payment-pill" style="position: relative;">
-                                <span style="position: absolute; top: -6px; left: -6px; background-color: #FF1E1E; color: white; font-size: 0.45rem; padding: 2px 5px; border-radius: 4px; font-weight: 900; letter-spacing: 0.5px; box-shadow: 0 2px 5px rgba(255, 30, 30, 0.3); z-index: 2; line-height: 1;">RECOMMENDED</span>
-                                Bank Transfer
+                            <label for="pay4" class="pill-label payment-pill" style="flex-direction: column; gap: 3px;">
+                                <span>Bank Transfer</span>
+                                <span style="background: #D4AF37; color: white; font-size: 0.5rem; padding: 2px 6px; border-radius: 4px; font-weight: 900; letter-spacing: 0.5px;"><i class="fa-solid fa-star" style="font-size: 0.45rem;"></i> BEST</span>
                             </label>
 
                             <input type="radio" id="pay5" name="calcPayment" value="USDT" class="hidden-radio">
