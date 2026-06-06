@@ -373,11 +373,14 @@
             
             /* Penyesuaian agar tidak terpotong di HP */
             .pill-grid-payment { grid-template-columns: repeat(2, 1fr) !important; gap: 4px !important; }
-            .payment-pill { font-size: 0.5rem !important; padding: 6px 2px !important; justify-content: center !important; text-align: center !important; white-space: normal !important; line-height: 1.1 !important; letter-spacing: -0.2px !important;}
+            .payment-pill { font-size: 0.65rem !important; padding: 10px 5px !important; justify-content: center !important; text-align: center !important;}
+            #selectedPaymentText { font-size: 0.55rem !important; padding: 3px 6px !important; }
             #pay5-label span:first-child { font-size: 0.4rem; padding: 2px 4px; top: -6px; left: 0px; }
             
             .estimator-form { grid-template-columns: 1fr; }
             .stat-row span, .stat-row strong { font-size: 0.7rem !important; }
+            
+            .color-circle-label { width: 30px; height: 30px; font-size: 0.65rem; }
         }
         
         /* --- KALKULATOR PESANAN --- */
@@ -409,6 +412,22 @@
         .add-item-btn { background-color: var(--dark-blue); color: var(--white); padding: 12px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; width: 100%; display: flex; justify-content: center; align-items: center; gap: 8px; text-transform: uppercase; font-size: 0.85rem;}
         .add-item-btn:hover { background-color: var(--black); }
         
+        /* --- CSS WARNA BULATAN --- */
+        .color-circles-wrapper { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 5px; margin-bottom: 5px; }
+        .color-circle-label {
+            width: 32px; height: 32px; border-radius: 50%; border: 1px solid #dcdcdc;
+            background: #f8f9fa; color: var(--gray); font-size: 0.75rem; font-weight: 700;
+            display: flex; justify-content: center; align-items: center; cursor: pointer;
+            transition: all 0.3s ease; user-select: none;
+        }
+        .color-circle-label:hover {
+            border-color: #a3e6be; background-color: #f0fdf4; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+        .hidden-radio:checked + .color-circle-label {
+            background: #25D366; color: var(--white); border-color: #25D366;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2); transform: translateY(-2px); font-weight: 900;
+        }
+
         /* --- DESAIN LIST PRODUK MINIMALIS & ELEGAN --- */
         .quote-item-list { display: flex; flex-direction: column; gap: 0; margin-bottom: 10px; }
         .quote-item-minimal { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px dashed #eaeaea; background: transparent; }
@@ -473,7 +492,6 @@
         .ship-stats { display: flex; flex-direction: column; gap: 6px; background: var(--white); border: 1px solid #eaeaea; border-radius: 6px; padding: 12px 15px; margin-top: 10px; }
         .stat-row { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px dashed #eaeaea; padding-bottom: 6px; }
         .stat-row:last-child { border-bottom: none; padding-bottom: 0; }
-        /* Font dikiri dan dikanan dibuat persis sama! */
         .stat-row span { font-size: 0.75rem; color: var(--gray); font-weight: 600; font-family: 'Lato', sans-serif; }
         .stat-row strong { font-size: 0.75rem; color: var(--gray); font-weight: 600; font-family: 'Lato', sans-serif; text-align: right; line-height: 1.2; word-wrap: break-word; }
         
@@ -1267,18 +1285,87 @@
 
                 <div class="calc-group">
                     <label>COLOR SELECTION</label>
-                    <div class="pill-grid-2">
-                        <input type="radio" id="col1" name="calcColorType" value="Natural" class="hidden-radio" onchange="toggleColorInput()">
-                        <label for="col1" class="pill-label">Natural (Black)</label>
+                    <div class="color-circles-wrapper">
+                        <!-- Natural / 1b -->
+                        <input type="radio" id="col_nat" name="calcColorSelection" value="Natural" class="hidden-radio" onchange="toggleColorInput()">
+                        <label for="col_nat" class="color-circle-label" title="Natural">Nat</label>
+                        
+                        <input type="radio" id="col_1b" name="calcColorSelection" value="1b" class="hidden-radio" onchange="toggleColorInput()">
+                        <label for="col_1b" class="color-circle-label" title="1b">1b</label>
 
-                        <input type="radio" id="col2" name="calcColorType" value="Color" class="hidden-radio" onchange="toggleColorInput()">
-                        <label for="col2" class="pill-label">Custom Color</label>
+                        <!-- Standard Colors -->
+                        <input type="radio" id="col_1" name="calcColorSelection" value="1" class="hidden-radio" onchange="toggleColorInput()">
+                        <label for="col_1" class="color-circle-label" title="1">1</label>
+                        
+                        <input type="radio" id="col_2" name="calcColorSelection" value="2" class="hidden-radio" onchange="toggleColorInput()">
+                        <label for="col_2" class="color-circle-label" title="2">2</label>
+                        
+                        <input type="radio" id="col_3" name="calcColorSelection" value="3" class="hidden-radio" onchange="toggleColorInput()">
+                        <label for="col_3" class="color-circle-label" title="3">3</label>
+                        
+                        <input type="radio" id="col_4" name="calcColorSelection" value="4" class="hidden-radio" onchange="toggleColorInput()">
+                        <label for="col_4" class="color-circle-label" title="4">4</label>
+
+                        <input type="radio" id="col_5" name="calcColorSelection" value="5" class="hidden-radio" onchange="toggleColorInput()">
+                        <label for="col_5" class="color-circle-label" title="5">5</label>
+
+                        <input type="radio" id="col_6" name="calcColorSelection" value="6" class="hidden-radio" onchange="toggleColorInput()">
+                        <label for="col_6" class="color-circle-label" title="6">6</label>
+
+                        <input type="radio" id="col_7" name="calcColorSelection" value="7" class="hidden-radio" onchange="toggleColorInput()">
+                        <label for="col_7" class="color-circle-label" title="7">7</label>
+
+                        <input type="radio" id="col_8" name="calcColorSelection" value="8" class="hidden-radio" onchange="toggleColorInput()">
+                        <label for="col_8" class="color-circle-label" title="8">8</label>
+
+                        <input type="radio" id="col_9" name="calcColorSelection" value="9" class="hidden-radio" onchange="toggleColorInput()">
+                        <label for="col_9" class="color-circle-label" title="9">9</label>
+
+                        <input type="radio" id="col_10" name="calcColorSelection" value="10" class="hidden-radio" onchange="toggleColorInput()">
+                        <label for="col_10" class="color-circle-label" title="10">10</label>
+
+                        <input type="radio" id="col_12" name="calcColorSelection" value="12" class="hidden-radio" onchange="toggleColorInput()">
+                        <label for="col_12" class="color-circle-label" title="12">12</label>
+
+                        <input type="radio" id="col_14" name="calcColorSelection" value="14" class="hidden-radio" onchange="toggleColorInput()">
+                        <label for="col_14" class="color-circle-label" title="14">14</label>
+
+                        <input type="radio" id="col_16" name="calcColorSelection" value="16" class="hidden-radio" onchange="toggleColorInput()">
+                        <label for="col_16" class="color-circle-label" title="16">16</label>
+
+                        <input type="radio" id="col_18" name="calcColorSelection" value="18" class="hidden-radio" onchange="toggleColorInput()">
+                        <label for="col_18" class="color-circle-label" title="18">18</label>
+
+                        <input type="radio" id="col_22" name="calcColorSelection" value="22" class="hidden-radio" onchange="toggleColorInput()">
+                        <label for="col_22" class="color-circle-label" title="22">22</label>
+
+                        <input type="radio" id="col_24" name="calcColorSelection" value="24" class="hidden-radio" onchange="toggleColorInput()">
+                        <label for="col_24" class="color-circle-label" title="24">24</label>
+
+                        <input type="radio" id="col_27" name="calcColorSelection" value="27" class="hidden-radio" onchange="toggleColorInput()">
+                        <label for="col_27" class="color-circle-label" title="27">27</label>
+
+                        <input type="radio" id="col_30" name="calcColorSelection" value="30" class="hidden-radio" onchange="toggleColorInput()">
+                        <label for="col_30" class="color-circle-label" title="30">30</label>
+
+                        <input type="radio" id="col_33" name="calcColorSelection" value="33" class="hidden-radio" onchange="toggleColorInput()">
+                        <label for="col_33" class="color-circle-label" title="33">33</label>
+
+                        <input type="radio" id="col_60" name="calcColorSelection" value="60" class="hidden-radio" onchange="toggleColorInput()">
+                        <label for="col_60" class="color-circle-label" title="60">60</label>
+
+                        <input type="radio" id="col_613" name="calcColorSelection" value="613" class="hidden-radio" onchange="toggleColorInput()">
+                        <label for="col_613" class="color-circle-label" title="613" style="font-size: 0.6rem;">613</label>
+
+                        <!-- Custom Box -->
+                        <input type="radio" id="col_custom" name="calcColorSelection" value="Custom" class="hidden-radio" onchange="toggleColorInput()">
+                        <label for="col_custom" class="color-circle-label" title="Custom Color" style="width: auto; padding: 0 12px; border-radius: 16px;">Custom</label>
                     </div>
                 </div>
 
                 <div class="calc-group" id="specificColorGroup" style="display: none;">
                     <label for="calcSpecificColor">TYPE SPECIFIC COLOR</label>
-                    <input type="text" id="calcSpecificColor" placeholder="e.g. 4, 613, Piano">
+                    <input type="text" id="calcSpecificColor" placeholder="e.g. Piano, Ombre">
                 </div>
                 
                 <div class="calc-full">
@@ -1677,8 +1764,7 @@
             appliedPromoCode: "",
             discountAmount: 0,
             paymentMethod: "", 
-            paypalFee: 0, 
-            baseWAMessage: ""
+            paypalFee: 0
         };
 
         let currentUSDtoIDR = 18126; 
@@ -1712,7 +1798,7 @@
 
                 document.getElementById('shipWeight').innerText = weightKg.toFixed(1) + " kg";
                 document.getElementById('shipCost').innerText = "$" + cost.toFixed(2);
-                document.getElementById('shipTransit').innerText = transitDays + " business days after production";
+                document.getElementById('shipTransit').innerText = transitDays + " days after production";
 
                 // Tanggal Estimasi
                 const arrivalDate = new Date();
@@ -1745,11 +1831,12 @@
         document.getElementById('shipCourier').addEventListener('change', calculateShipping);
 
         function toggleColorInput() {
-            const colorElement = document.querySelector('input[name="calcColorType"]:checked');
+            const colorElement = document.querySelector('input[name="calcColorSelection"]:checked');
             const val = colorElement ? colorElement.value : "";
             const group = document.getElementById('specificColorGroup');
-            if(val === 'Color') group.style.display = 'flex';
+            if(val === 'Custom') group.style.display = 'flex';
             else { group.style.display = 'none'; document.getElementById('calcSpecificColor').value = ""; }
+            updateLivePrice();
         }
 
         function toggleManualWeight() {
@@ -1764,7 +1851,7 @@
             const typeElement = document.querySelector('input[name="calcType"]:checked');
             const qualityElement = document.querySelector('input[name="calcQuality"]:checked');
             const lengthElement = document.querySelector('input[name="calcLength"]:checked');
-            const colorElement = document.querySelector('input[name="calcColorType"]:checked');
+            const colorElement = document.querySelector('input[name="calcColorSelection"]:checked');
             
             let weight = 0;
             const weightRadio = document.querySelector('input[name="calcWeightRadio"]:checked');
@@ -1778,8 +1865,8 @@
 
             if (typeElement && qualityElement && lengthElement && colorElement && weight > 0) {
                 const type = typeElement.value; const quality = qualityElement.value;
-                const length = lengthElement.value; const colorType = colorElement.value;
-                const priceType = colorType === 'Natural' ? 'nat' : 'col';
+                const length = lengthElement.value; const colorSelection = colorElement.value;
+                const priceType = (colorSelection === 'Natural' || colorSelection === '1b') ? 'nat' : 'col';
                 
                 if(pricingDB[type] && pricingDB[type][quality] && pricingDB[type][quality][length]) {
                     const pricePer100g = pricingDB[type][quality][length][priceType];
@@ -1791,7 +1878,7 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('input[name="calcType"], input[name="calcQuality"], input[name="calcLength"], input[name="calcColorType"], input[name="calcWeightRadio"]').forEach(radio => {
+            document.querySelectorAll('input[name="calcType"], input[name="calcQuality"], input[name="calcLength"], input[name="calcColorSelection"], input[name="calcWeightRadio"]').forEach(radio => {
                 radio.addEventListener('change', updateLivePrice);
             });
             document.getElementById('calcWeight').addEventListener('input', updateLivePrice);
@@ -1801,7 +1888,7 @@
             const typeElement = document.querySelector('input[name="calcType"]:checked'); const type = typeElement ? typeElement.value : "";
             const qualityElement = document.querySelector('input[name="calcQuality"]:checked'); const quality = qualityElement ? qualityElement.value : "";
             const lengthElement = document.querySelector('input[name="calcLength"]:checked'); const length = lengthElement ? lengthElement.value : "";
-            const colorElement = document.querySelector('input[name="calcColorType"]:checked'); const colorType = colorElement ? colorElement.value : "";
+            const colorElement = document.querySelector('input[name="calcColorSelection"]:checked'); const colorSelection = colorElement ? colorElement.value : "";
             
             let weight = 0;
             const weightRadio = document.querySelector('input[name="calcWeightRadio"]:checked');
@@ -1812,24 +1899,29 @@
             
             let specificColor = document.getElementById('calcSpecificColor').value.trim();
 
-            if (!type || !quality || !length || !weight || weight <= 0 || !colorType) {
+            if (!type || !quality || !length || !weight || weight <= 0 || !colorSelection) {
                 alert("Please select all required options and make sure the quantity is correct."); return;
             }
             
-            if (colorType === 'Color') {
-                if (!specificColor) { alert("Please type the specific color you want (e.g., 4, 613, Piano)."); return; }
-                if (!specificColor.startsWith('#') && !isNaN(specificColor)) specificColor = '#' + specificColor;
+            let displayColor = "";
+            let priceType = "";
+            
+            if (colorSelection === 'Custom') {
+                if (!specificColor) { alert("Please type the specific color you want."); return; }
+                displayColor = specificColor;
+                priceType = 'col';
+            } else {
+                displayColor = (colorSelection === 'Natural' || colorSelection === '1b') ? 'Natural' : colorSelection;
+                priceType = (colorSelection === 'Natural' || colorSelection === '1b') ? 'nat' : 'col';
             }
 
-            const priceType = colorType === 'Natural' ? 'nat' : 'col';
             const pricePer100g = pricingDB[type][quality][length][priceType];
             const itemPrice = (weight / 100) * pricePer100g;
-            const displayColor = colorType === 'Natural' ? 'Natural' : specificColor;
 
             if (currentEditIndex === -1) {
-                quoteItems.push({ type, quality, length, weight, colorType, displayColor, price: itemPrice });
+                quoteItems.push({ type, quality, length, weight, colorSelection, displayColor, price: itemPrice });
             } else {
-                quoteItems[currentEditIndex] = { type, quality, length, weight, colorType, displayColor, price: itemPrice };
+                quoteItems[currentEditIndex] = { type, quality, length, weight, colorSelection, displayColor, price: itemPrice };
                 currentEditIndex = -1; 
                 const addBtn = document.getElementById('addBtn');
                 addBtn.innerHTML = '<i class="fa-solid fa-cart-plus"></i> Add Product To Cart';
@@ -1852,7 +1944,8 @@
             const typeRadio = document.querySelector(`input[name="calcType"][value="${item.type}"]`); if(typeRadio) typeRadio.checked = true;
             const qualRadio = document.querySelector(`input[name="calcQuality"][value="${item.quality}"]`); if(qualRadio) qualRadio.checked = true;
             const lenRadio = document.querySelector(`input[name="calcLength"][value="${item.length}"]`); if(lenRadio) lenRadio.checked = true;
-            const colRadio = document.querySelector(`input[name="calcColorType"][value="${item.colorType}"]`);
+            
+            const colRadio = document.querySelector(`input[name="calcColorSelection"][value="${item.colorSelection}"]`);
             if(colRadio) { colRadio.checked = true; toggleColorInput(); }
 
             const exactWeightRadio = document.querySelector(`input[name="calcWeightRadio"][value="${item.weight}"]`);
@@ -1864,7 +1957,7 @@
                 toggleManualWeight(); document.getElementById('calcWeight').value = item.weight;
             }
 
-            if(item.colorType === 'Color') document.getElementById('calcSpecificColor').value = item.displayColor.replace('#', '');
+            if(item.colorSelection === 'Custom') document.getElementById('calcSpecificColor').value = item.displayColor;
 
             currentEditIndex = index;
             const addBtn = document.getElementById('addBtn');
@@ -2042,7 +2135,7 @@
             let courierStr = checkoutState.courierInfo ? checkoutState.courierInfo : "Courier";
             let destStr = checkoutState.destCountry ? checkoutState.destCountry : "Destination";
             let shippingText = checkoutState.isCustomShipping ? "Calculated via WhatsApp" : "$" + checkoutState.shippingFee.toFixed(2);
-            modalHTML += `<div class="modal-summary-row"><span>Shipping (${courierStr} to ${destStr}):</span><strong>${shippingText}</strong></div>`;
+            modalHTML += `<div class="modal-summary-row"><span>Shipping (${courierStr} to ${destStr}):</span><strong style="${checkoutState.isCustomShipping ? 'color: var(--circle-pink); font-size: 0.8rem;' : ''}">${shippingText}</strong></div>`;
 
             modalHTML += `<div id="discountRow" class="modal-summary-row" style="color:var(--circle-pink); display: none;"><span id="discountName">Promo:</span><strong id="discountValue">-$0</strong></div>`;
             
@@ -2071,25 +2164,6 @@
             document.getElementById('checkoutModal').classList.add('show');
             document.body.style.overflow = 'hidden';
 
-            // --- BUILD WHATSAPP MESSAGE ---
-            let message = "DETAIL ORDER\n";
-            message += "━━━━━━━━━━\n\n";
-
-            for (const [quality, types] of Object.entries(groupedItems)) {
-                message += `${quality.toUpperCase()}\n`;
-                message += "━━━━━━━━━━\n";
-                for (const [type, items] of Object.entries(types)) {
-                    message += `${type}\n`;
-                    items.forEach(item => {
-                        let lenStr = item.length.replace(" inches", '"');
-                        let weightStr = item.weight >= 1000 ? (item.weight / 1000) + 'kg' : item.weight + 'g';
-                        message += `${lenStr} | ${weightStr} | ${item.displayColor} $${item.price.toFixed(0)}\n`;
-                    });
-                }
-                message += `\n`;
-            }
-
-            checkoutState.baseWAMessage = message; 
             updateWAMessage(); 
         }
 
@@ -2168,60 +2242,67 @@
         }
 
         function updateWAMessage() {
-            let msg = checkoutState.baseWAMessage; 
-            let finalAmt = checkoutState.baseTotal;
+            let msg = "*DETAIL ORDER*\n━━━━━━━━━━\n\n";
 
-            let promoString = "";
+            let groupedItems = {};
+            quoteItems.forEach(item => {
+                if (!groupedItems[item.quality]) groupedItems[item.quality] = {};
+                if (!groupedItems[item.quality][item.type]) groupedItems[item.quality][item.type] = [];
+                groupedItems[item.quality][item.type].push(item);
+            });
+
+            for (const quality in groupedItems) {
+                for (const type in groupedItems[quality]) groupedItems[quality][type].sort((a, b) => parseInt(a.length) - parseInt(b.length));
+            }
+
+            for (const [quality, types] of Object.entries(groupedItems)) {
+                msg += `*${quality.toUpperCase()}*\n`; 
+                for (const [type, items] of Object.entries(types)) {
+                    msg += `_${type}_\n`; 
+                    items.forEach(item => {
+                        let lenStr = item.length.replace(" inches", '"');
+                        let weightStr = item.weight >= 1000 ? (item.weight / 1000) + 'kg' : item.weight + 'g';
+                        msg += `${lenStr}  ${weightStr}  ${item.displayColor} *$${item.price.toFixed(0)}*\n`;
+                    });
+                }
+                msg += `\n`;
+            }
+
+            let totalWeightStrWA = checkoutState.totalWeight >= 1000 ? (checkoutState.totalWeight / 1000) + ' kg' : checkoutState.totalWeight + ' Grams';
+            msg += `Total : *${totalWeightStrWA}*\n`;
+            msg += `Subtotal: *$${checkoutState.totalPrice.toFixed(0)}*\n\n`;
+
+            let finalAmt = checkoutState.baseTotal;
             if (checkoutState.isPromoApplied) {
                 finalAmt -= checkoutState.discountAmount;
                 if (finalAmt < 0) finalAmt = 0; 
-                promoString = `Promo Applied: ${checkoutState.appliedPromoCode} (-$${checkoutState.discountAmount})\n`;
+                msg += `Promo Applied: ${checkoutState.appliedPromoCode} (-$${checkoutState.discountAmount})\n`;
             }
             
             if (checkoutState.paymentMethod === 'PayPal' && checkoutState.paypalFee > 0) {
-                promoString += `PayPal Fee (5%): $${checkoutState.paypalFee.toFixed(2)}\n`;
+                msg += `PayPal Fee (5%): $${checkoutState.paypalFee.toFixed(2)}\n`;
             }
             
             finalAmt += checkoutState.paypalFee;
             let finalDisplayStr = (finalAmt % 1 === 0) ? finalAmt.toFixed(0) : finalAmt.toFixed(2);
 
-            let totalWeightStrWA = checkoutState.totalWeight >= 1000 ? (checkoutState.totalWeight / 1000) + ' kg' : checkoutState.totalWeight + ' Grams';
-            
-            msg += `Total   : ${totalWeightStrWA}\n`;
-            msg += `Subtotal: $${checkoutState.totalPrice.toFixed(0)}\n\n`;
-
-            if (promoString) {
-                msg += promoString + "\n";
-            }
-
             if (checkoutState.isCustomShipping) {
-                msg += `Shipping (${checkoutState.courierInfo || 'TBD'} to ${checkoutState.destCountry || 'TBD'}): TBD\n`;
-                msg += `Total Amount: $${finalDisplayStr} + Shipping\n`;
+                msg += `Shipping (${checkoutState.courierInfo || 'TBD'} to ${checkoutState.destCountry || 'TBD'}): *TBD*\n`;
+                msg += `*Total Amount: $${finalDisplayStr} + Shipping*\n`;
             } else {
-                msg += `Shipping (${checkoutState.courierInfo} to ${checkoutState.destCountry}): $${checkoutState.shippingFee.toFixed(2)}\n`;
-                msg += `Total Amount: $${finalDisplayStr}\n`;
+                msg += `Shipping (${checkoutState.courierInfo} to ${checkoutState.destCountry}): *$${checkoutState.shippingFee.toFixed(2)}*\n`;
+                msg += `*Total Amount: $${finalDisplayStr}*\n`;
             }
+
             msg += `━━━━━━━━━━\n\n`;
-
-            msg += `Destination\n`;
+            msg += `SHIPPING INFO\n`;
             msg += `━━━━━━━━━━\n`;
-            msg += `${checkoutState.destCountry}\n\n`;
-
-            if (checkoutState.courierInfo) {
-                msg += `Courier\n`;
-                msg += `━━━━━━━━━━\n`;
-                msg += `${checkoutState.courierInfo}\n\n`;
-            }
-
+            msg += `Destination: *${checkoutState.destCountry}*\n`;
+            if (checkoutState.courierInfo) msg += `Courier: *${checkoutState.courierInfo}*\n`;
             if (!checkoutState.isCustomShipping && checkoutState.estArrivalDate) {
-                msg += `Est. Arrival\n`;
-                msg += `━━━━━━━━━━\n`;
-                msg += ` ${checkoutState.estArrivalDate}\n\n`;
+                msg += `Est. Arrival: *${checkoutState.estArrivalDate}*\n`;
             }
-
-            msg += `Payment Method\n`;
-            msg += `━━━━━━━━━━\n`;
-            msg += ` ${checkoutState.paymentMethod}\n\n`;
+            msg += `Payment Method: *${checkoutState.paymentMethod}*\n\n`;
 
             const method = checkoutState.paymentMethod;
             if (method === "Bank Transfer" || method === "MoneyGram" || method === "Western Union") {
@@ -2229,13 +2310,13 @@
                 const formattedIDR = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(totalIDR).replace('Rp', 'Rp ');
                 const formattedRate = new Intl.NumberFormat('id-ID', { minimumFractionDigits: 0, maximumFractionDigits: 3 }).format(currentUSDtoIDR);
                 
-                msg += `Estimasi Dana Diterima:\n`;
+                msg += `*Estimasi Dana Diterima:*\n`;
                 if (checkoutState.isCustomShipping) {
-                    msg += `${formattedIDR} (Belum termasuk ongkir)\n`;
+                    msg += `*${formattedIDR}* _(Belum termasuk ongkir)_\n`;
                 } else {
-                    msg += `${formattedIDR}\n`;
+                    msg += `*${formattedIDR}*\n`;
                 }
-                msg += `(Kurs online saat ini: 1 USD = Rp ${formattedRate})\n\n`;
+                msg += `_(Kurs online saat ini: 1 USD = Rp ${formattedRate})_\n\n`;
             }
 
             msg += "Please confirm my order."; 
