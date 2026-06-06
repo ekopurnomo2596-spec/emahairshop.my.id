@@ -5,22 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EMAHAIRSHOP</title>
     
-    <!-- === MENCEGAH BROWSER MENERJEMAHKAN OTOMATIS === -->
     <meta name="google" content="notranslate">
     
-    <!-- === SEO META TAGS === -->
     <meta name="description" content="Top Quality Human Hair Extension Supplier & Manufacturer from Indonesia. Worldwide shipping for Hair Bulk, Weft, Tape, Keratin, and Wigs. 100% Human Remy Hair.">
     <meta name="keywords" content="Supplier Human Hair Indonesia, Hair Extension, Human Hair, Hair Bulk, Hair Weft, Hair Tape, Keratin Hair, Nano Ring, Genius Weft, Wholesale Hair Supplier, Emahairshop, Indonesia">
     <meta name="author" content="Emahairshop">
 
-    <!-- === OPEN GRAPH (OG) / WHATSAPP / FACEBOOK PREVIEW TAGS === -->
     <meta property="og:title" content="Emahairshop | Supplier Hair Indonesia">
     <meta property="og:description" content="Wholesale Supplier & Manufacturer of 100% Human Hair Extensions from Indonesia. Exporting to 15+ Countries Worldwide.">
     <meta property="og:url" content="https://www.emahairshop.my.id/">
     <meta property="og:type" content="website">
 
-    <!-- === GOOGLE ANALYTICS === -->
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-W5HY2PJ62X"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -30,7 +25,6 @@
       gtag('config', 'G-W5HY2PJ62X');
     </script>
     
-    <!-- Favicon SVG Kustom -->
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='white'/%3E%3Cline x1='15' y1='62' x2='45' y2='62' stroke='%23111' stroke-width='4'/%3E%3Ctext x='115' y='68' font-family='sans-serif' font-weight='900' font-size='16' text-anchor='middle' letter-spacing='1' fill='%23111'%3EEXTENSION%3C/text%3E%3Ctext x='100' y='110' font-family='sans-serif' font-weight='900' font-size='24' text-anchor='middle' fill='%23111'%3EEMAHAIRSHOP%3C/text%3E%3Cline x1='15' y1='130' x2='185' y2='130' stroke='%23111' stroke-width='4'/%3E%3Ctext x='100' y='165' font-family='sans-serif' font-weight='900' font-size='20' text-anchor='middle' fill='%23D4AF37'%3E2019%3C/text%3E%3C/svg%3E" type="image/svg+xml">
     
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,600&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
@@ -85,6 +79,15 @@
         .quick-nav a i { font-size: 1rem; color: var(--bright-green); transition: 0.3s;}
         .quick-nav a:hover { background-color: var(--circle-pink); transform: translateY(-3px);}
         .quick-nav a:hover i { color: var(--white); }
+
+        /* --- STICKY CART BANNER (MOBILE ONLY) - DIPERKECIL UKURANNYA --- */
+        .sticky-cart-banner { position: fixed; bottom: -100px; left: 0; width: 100%; background-color: var(--dark-blue); color: var(--white); padding: 8px 15px; display: flex; justify-content: space-between; align-items: center; z-index: 1002; box-shadow: 0 -4px 15px rgba(0,0,0,0.2); transition: bottom 0.4s ease-in-out; cursor: pointer; box-sizing: border-box; border-top: 2px solid #25D366; }
+        .sticky-cart-banner.show { bottom: 0; }
+        .sticky-cart-info { display: flex; flex-direction: column; line-height: 1.2; }
+        .sticky-cart-info span { font-size: 0.65rem; color: #cbd5e0; font-weight: 700; letter-spacing: 0.5px;}
+        .sticky-cart-info strong { font-size: 0.95rem; color: #25D366; font-weight: 900; }
+        .sticky-cart-btn { background: #25D366; color: var(--white); border: none; padding: 6px 12px; border-radius: 4px; font-weight: bold; font-size: 0.65rem; pointer-events: none; text-transform: uppercase; letter-spacing: 0.5px;}
+        @media (min-width: 769px) { .sticky-cart-banner { display: none !important; } }
 
         /* --- ABOUT SECTION --- */
         .about { text-align: center; background-color: #152219; align-items: center; padding-top: 150px; display: flex; flex-direction: column; gap: 60px; } 
@@ -475,7 +478,6 @@
         </div>
     </nav>
 
-    <!-- SECTION 1: ABOUT -->
     <section id="about" class="about">
         <div class="product-preview-gallery">
             <div class="preview-box preview-left" data-aos="fade-right">
@@ -533,7 +535,6 @@
         </div>
     </section>
 
-    <!-- SECTION 2: PRODUK -->
     <section id="products" class="produk">
         <div class="produk-header" data-aos="fade-up">
             <span class="sub-title">Our Products</span>
@@ -805,7 +806,6 @@
         </div>
     </section>
 
-    <!-- SECTION 3: PRICE LIST -->
     <section id="pricelist" class="price-section">
         <div class="produk-header">
             <span class="sub-title">Wholesale Rates</span>
@@ -814,7 +814,6 @@
         </div>
 
         <div class="price-grid">
-            <!-- PRICE: HAIR BULK -->
             <div class="price-card">
                 <div class="price-card-title"><h3>HAIR BULK</h3></div>
                 
@@ -869,7 +868,6 @@
                 </details>
             </div>
 
-            <!-- PRICE: HAIR WEFT -->
             <div class="price-card">
                 <div class="price-card-title"><h3>HAIR WEFT</h3></div>
                 
@@ -924,7 +922,6 @@
                 </details>
             </div>
 
-            <!-- PRICE: HAIR TAPE -->
             <div class="price-card">
                 <div class="price-card-title"><h3>HAIR TAPE</h3></div>
                 
@@ -979,7 +976,6 @@
                 </details>
             </div>
 
-            <!-- PRICE: I TIP / KERATIN -->
             <div class="price-card">
                 <div class="price-card-title"><h3>I TIP / KERATIN</h3></div>
                 
@@ -1034,7 +1030,6 @@
                 </details>
             </div>
 
-            <!-- PRICE: NANO RING -->
             <div class="price-card">
                 <div class="price-card-title"><h3>NANO RING</h3></div>
                 
@@ -1089,7 +1084,6 @@
                 </details>
             </div>
 
-            <!-- PRICE: GENIUS WEFT -->
             <div class="price-card">
                 <div class="price-card-title"><h3>GENIUS WEFT</h3></div>
                 
@@ -1147,7 +1141,6 @@
         </div>
     </section>
 
-    <!-- SECTION: KALKULATOR PESANAN DINAMIS (MULTI-ITEM) -->
     <section id="quote" class="calculator-section">
         <div class="calc-container" data-aos="fade-up">
             <div class="calc-header">
@@ -1238,6 +1231,10 @@
                 </div>
                 
                 <div class="calc-full">
+                    <div id="livePricePreview" style="text-align: center; font-family: 'Lato', sans-serif; font-size: 0.65rem; font-weight: 800; color: var(--dark-blue); margin-bottom: 12px; display: none; background: #e8f9ee; padding: 6px; border-radius: 6px; border: 1px dashed #25D366; text-transform: uppercase; letter-spacing: 1px;">
+                        Estimated Price: <span id="livePriceValue" style="color: #25D366; font-size: 0.95rem; font-weight: 900;">$0</span>
+                    </div>
+
                     <button type="button" id="addBtn" class="add-item-btn" onclick="addQuoteItem()">
                         <i class="fa-solid fa-plus"></i> Add Product To List
                     </button>
@@ -1245,10 +1242,8 @@
             </div>
 
             <div id="quoteItemList" class="quote-item-list calc-full">
-                <!-- Data akan muncul di sini via JavaScript -->
-            </div>
+                </div>
 
-            <!-- OPSI PEMBAYARAN: BUKA TUTUP (ACCORDION) TANPA LOGO -->
             <div class="calc-group calc-full" style="margin-top: 10px; border-top: 1px dashed #ccc; padding-top: 10px;">
                 <details class="custom-details" style="background: transparent; border: none; padding: 0;">
                     <summary class="custom-summary" style="background-color: rgba(47, 78, 55, 0.08); color: var(--green); border: 1px solid rgba(47, 78, 55, 0.2); border-radius: 4px; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
@@ -1283,7 +1278,6 @@
         </div>
     </section>
 
-    <!-- SECTION 4: KONTAK -->
     <section id="contact" class="kontak">
         <div data-aos="fade-up">
             <h2>Get In Touch</h2>
@@ -1311,20 +1305,25 @@
         </div>
     </section>
 
-    <!-- ELEMEN MELAYANG: KEMBALI KE ATAS & LIGHTBOX -->
     <a href="#" id="backToTop" class="back-to-top">
         <i class="fa-solid fa-arrow-up"></i>
     </a>
 
-    <!-- CHECKOUT MODAL (POP UP KONFIRMASI) -->
+    <div id="stickyCartBanner" class="sticky-cart-banner" onclick="document.getElementById('quote').scrollIntoView({behavior: 'smooth'})">
+        <div class="sticky-cart-info">
+            <span id="stickyCartItems">0 ITEM(S) IN CART</span>
+            <strong id="stickyCartTotal">$0</strong>
+        </div>
+        <button class="sticky-cart-btn">View Cart</button>
+    </div>
+
     <div id="checkoutModal" class="lightbox">
         <div class="lightbox-content checkout-modal-content">
             <div class="checkout-modal-header">
                 <h3>Order Confirmation</h3>
             </div>
             <div class="checkout-modal-body" id="checkoutModalBody">
-                <!-- Rincian pesanan akan diisi oleh JavaScript -->
-            </div>
+                </div>
             <div class="checkout-modal-footer">
                 <button onclick="closeCheckoutModal()" class="btn-cancel">Cancel</button>
                 <button onclick="proceedToWhatsApp()" class="btn-confirm"><i class="fa-brands fa-whatsapp"></i> Send Order</button>
@@ -1332,7 +1331,6 @@
         </div>
     </div>
 
-    <!-- IMAGE LIGHTBOX -->
     <div id="imageLightbox" class="lightbox">
         <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
         <span class="lightbox-arrow lightbox-prev" onclick="showImage(currentIndex - 1); event.stopPropagation();">&#10094;</span>
@@ -1340,7 +1338,6 @@
         <span class="lightbox-arrow lightbox-next" onclick="showImage(currentIndex + 1); event.stopPropagation();">&#10095;</span>
     </div>
 
-    <!-- SCRIPT BAWAAN -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script>
@@ -1559,20 +1556,19 @@
             totalPrice: 0,
             shippingFee: 0,
             baseTotal: 0,
+            isCustomShipping: false, // Status untuk ongkir dinamis > 10kg
             isPromoApplied: false,
             appliedPromoCode: "",
             discountAmount: 0,
-            paymentMethod: "", // Status Metode Pembayaran
+            paymentMethod: "", 
             baseWAMessage: ""
         };
 
         // --- SISTEM KURS REAL-TIME ONLINE ---
-        // Variabel global dengan nilai cadangan (diperbarui ke 18.126)
         let currentUSDtoIDR = 18126; 
 
         async function fetchLiveExchangeRate() {
             try {
-                // Mengambil data kurs terbaru dari open API gratis
                 const response = await fetch('https://open.er-api.com/v6/latest/USD');
                 const data = await response.json();
                 
@@ -1585,9 +1581,7 @@
             }
         }
 
-        // Panggil fungsi ini otomatis saat website selesai dimuat
         window.addEventListener('load', fetchLiveExchangeRate);
-        // ------------------------------------
         
         function toggleColorInput() {
             const colorElement = document.querySelector('input[name="calcColorType"]:checked');
@@ -1601,6 +1595,48 @@
                 document.getElementById('calcSpecificColor').value = ""; 
             }
         }
+
+        // --- FUNGSI LIVE PRICE PREVIEW ---
+        function updateLivePrice() {
+            const typeElement = document.querySelector('input[name="calcType"]:checked');
+            const qualityElement = document.querySelector('input[name="calcQuality"]:checked');
+            const lengthElement = document.querySelector('input[name="calcLength"]:checked');
+            const colorElement = document.querySelector('input[name="calcColorType"]:checked');
+            const weightInput = document.getElementById('calcWeight').value;
+
+            const previewContainer = document.getElementById('livePricePreview');
+            const previewValue = document.getElementById('livePriceValue');
+
+            if (typeElement && qualityElement && lengthElement && colorElement && weightInput > 0) {
+                const type = typeElement.value;
+                const quality = qualityElement.value;
+                const length = lengthElement.value;
+                const colorType = colorElement.value;
+                const weight = parseFloat(weightInput);
+
+                const priceType = colorType === 'Natural' ? 'nat' : 'col';
+                
+                if(pricingDB[type] && pricingDB[type][quality] && pricingDB[type][quality][length]) {
+                    const pricePer100g = pricingDB[type][quality][length][priceType];
+                    const itemPrice = (weight / 100) * pricePer100g;
+                    
+                    previewValue.innerText = "$" + itemPrice.toFixed(0);
+                    previewContainer.style.display = "block";
+                } else {
+                    previewContainer.style.display = "none";
+                }
+            } else {
+                previewContainer.style.display = "none"; 
+            }
+        }
+
+        // --- PASANG DETEKTOR KE SEMUA INPUT UNTUK LIVE PREVIEW ---
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('input[name="calcType"], input[name="calcQuality"], input[name="calcLength"], input[name="calcColorType"]').forEach(radio => {
+                radio.addEventListener('change', updateLivePrice);
+            });
+            document.getElementById('calcWeight').addEventListener('input', updateLivePrice);
+        });
 
         function addQuoteItem() {
             const typeElement = document.querySelector('input[name="calcType"]:checked');
@@ -1639,22 +1675,18 @@
 
             const displayColor = colorType === 'Natural' ? 'Natural' : specificColor;
 
-            // Jika dalam mode tambah produk baru
             if (currentEditIndex === -1) {
                 quoteItems.push({ type, quality, length, weight, colorType, displayColor, price: itemPrice });
             } 
-            // Jika dalam mode update produk lama
             else {
                 quoteItems[currentEditIndex] = { type, quality, length, weight, colorType, displayColor, price: itemPrice };
-                currentEditIndex = -1; // Kembalikan ke mode normal
+                currentEditIndex = -1; 
                 
-                // Kembalikan tampilan tombol ke "Add Product"
                 const addBtn = document.getElementById('addBtn');
                 addBtn.innerHTML = '<i class="fa-solid fa-plus"></i> Add Product To List';
                 addBtn.style.backgroundColor = ''; 
             }
             
-            // Mengosongkan form kembali setelah ditambahkan/diupdate
             if (typeElement) typeElement.checked = false;
             if (qualityElement) qualityElement.checked = false;
             if (lengthElement) lengthElement.checked = false;
@@ -1664,14 +1696,15 @@
             document.getElementById('calcSpecificColor').value = "";
             document.getElementById('specificColorGroup').style.display = "none";
             
+            // Sembunyikan live preview setelah produk dimasukkan
+            document.getElementById('livePricePreview').style.display = "none";
+
             renderQuoteItems();
         }
 
-        // --- FUNGSI EDIT PESANAN ---
         function editQuoteItem(index) {
             const item = quoteItems[index];
 
-            // 1. Pilih kembali Radio Buttons sesuai data produk
             const typeRadio = document.querySelector(`input[name="calcType"][value="${item.type}"]`);
             if(typeRadio) typeRadio.checked = true;
 
@@ -1684,38 +1717,34 @@
             const colRadio = document.querySelector(`input[name="calcColorType"][value="${item.colorType}"]`);
             if(colRadio) {
                 colRadio.checked = true;
-                toggleColorInput(); // Tampilkan input warna spesifik jika 'Color'
+                toggleColorInput(); 
             }
 
-            // 2. Isi nilai berat (weight)
             document.getElementById('calcWeight').value = item.weight;
 
-            // 3. Isi warna kustom (jika ada)
             if(item.colorType === 'Color') {
                 document.getElementById('calcSpecificColor').value = item.displayColor.replace('#', '');
             }
 
-            // 4. Update status mode edit dan ubah tombol UI menjadi "Update"
             currentEditIndex = index;
             const addBtn = document.getElementById('addBtn');
             addBtn.innerHTML = '<i class="fa-solid fa-check"></i> Update Product';
-            addBtn.style.backgroundColor = '#25D366'; // Berubah hijau menandakan proses update
+            addBtn.style.backgroundColor = '#25D366'; 
 
-            // Scroll otomatis naik ke form
+            updateLivePrice();
+
             document.getElementById('quote').scrollIntoView({behavior: 'smooth'});
         }
 
         function removeQuoteItem(index) {
             quoteItems.splice(index, 1); 
             
-            // Jika item yang sedang diedit dihapus secara manual, batalkan mode edit
             if (currentEditIndex === index) {
                 currentEditIndex = -1;
                 const addBtn = document.getElementById('addBtn');
                 addBtn.innerHTML = '<i class="fa-solid fa-plus"></i> Add Product To List';
                 addBtn.style.backgroundColor = ''; 
             } else if (currentEditIndex > index) {
-                // Geser index ke bawah jika urutan berubah
                 currentEditIndex--;
             }
             
@@ -1726,9 +1755,15 @@
             const listDiv = document.getElementById('quoteItemList');
             listDiv.innerHTML = ""; 
             
-            if (quoteItems.length === 0) return; 
+            let currentTotal = 0;
+
+            if (quoteItems.length === 0) {
+                document.getElementById('stickyCartBanner').classList.remove('show');
+                return; 
+            }
 
             quoteItems.forEach((item, index) => {
+                currentTotal += item.price;
                 const itemDiv = document.createElement('div');
                 itemDiv.className = 'quote-item-minimal';
                 
@@ -1751,6 +1786,14 @@
                 `;
                 listDiv.appendChild(itemDiv);
             });
+
+            // Update Sticky Banner (Fitur #4)
+            const stickyBanner = document.getElementById('stickyCartBanner');
+            if(quoteItems.length > 0) {
+                document.getElementById('stickyCartItems').innerText = `${quoteItems.length} ITEM(S) IN CART`;
+                document.getElementById('stickyCartTotal').innerText = `$${currentTotal.toFixed(0)}`;
+                stickyBanner.classList.add('show');
+            }
         }
 
         function closeCheckoutModal() {
@@ -1770,7 +1813,6 @@
                 return;
             }
 
-            // --- CEK METODE PEMBAYARAN ---
             const paymentElement = document.querySelector('input[name="calcPayment"]:checked');
             if (!paymentElement) {
                 alert("Please select a Payment Method before checking out.");
@@ -1780,19 +1822,14 @@
 
             let totalWeight = 0;
             let totalPrice = 0;
-            
             let groupedItems = {};
             
             quoteItems.forEach(item => {
                 totalWeight += item.weight;
                 totalPrice += item.price;
                 
-                if (!groupedItems[item.quality]) {
-                    groupedItems[item.quality] = {};
-                }
-                if (!groupedItems[item.quality][item.type]) {
-                    groupedItems[item.quality][item.type] = [];
-                }
+                if (!groupedItems[item.quality]) groupedItems[item.quality] = {};
+                if (!groupedItems[item.quality][item.type]) groupedItems[item.quality][item.type] = [];
                 groupedItems[item.quality][item.type].push(item);
             });
 
@@ -1802,17 +1839,28 @@
                 }
             }
 
-            let shippingFee = Math.ceil(totalWeight / 1000) * 60;
+            // FITUR #5: Custom Shipping untuk berat grosir ekstrim (>10kg)
+            let shippingFee = 0;
+            let shippingText = "";
+            let isCustomShipping = false;
 
-            // Simpan data transaksi ke state global
+            if (totalWeight > 10000) {
+                isCustomShipping = true;
+                shippingText = "Calculated via WhatsApp";
+            } else {
+                shippingFee = Math.ceil(totalWeight / 1000) * 60;
+                shippingText = "$" + shippingFee;
+            }
+
             checkoutState.totalWeight = totalWeight;
             checkoutState.totalPrice = totalPrice;
             checkoutState.shippingFee = shippingFee;
-            checkoutState.baseTotal = totalPrice + shippingFee;
+            checkoutState.baseTotal = totalPrice + shippingFee; // jika >10kg, shippingFee = 0 (baru harga produk)
+            checkoutState.isCustomShipping = isCustomShipping; 
             checkoutState.isPromoApplied = false;
             checkoutState.appliedPromoCode = "";
             checkoutState.discountAmount = 0;
-            checkoutState.paymentMethod = paymentSelect; // Menyimpan Payment Method terpilih
+            checkoutState.paymentMethod = paymentSelect;
 
             let modalHTML = ``;
             for (const [quality, types] of Object.entries(groupedItems)) {
@@ -1835,18 +1883,15 @@
 
             modalHTML += `<div style="margin-top:15px;"></div>`;
             modalHTML += `<div class="modal-summary-row"><span>Subtotal:</span><strong>$${totalPrice.toFixed(0)}</strong></div>`;
-            modalHTML += `<div class="modal-summary-row"><span>Shipping (${totalWeight}g):</span><strong>$${shippingFee}</strong></div>`;
+            modalHTML += `<div class="modal-summary-row"><span>Shipping (${totalWeight}g):</span><strong style="${isCustomShipping ? 'color: var(--circle-pink); font-size: 0.8rem;' : ''}">${shippingText}</strong></div>`;
 
-            // Baris diskon (dinamis, disembunyikan secara default)
             modalHTML += `<div id="discountRow" class="modal-summary-row" style="color:var(--circle-pink); display: none;"><span id="discountName">Promo:</span><strong id="discountValue">-$0</strong></div>`;
             
-            // Tampilkan Metode Pembayaran di Modal
             modalHTML += `<div class="modal-summary-row" style="margin-top: 5px; padding-top: 5px; border-top: 1px dashed #eaeaea;"><span>Payment:</span><strong style="color: var(--dark-blue);">${checkoutState.paymentMethod}</strong></div>`;
 
-            // Total Harga
-            modalHTML += `<div class="modal-total-row"><span>Total Payment:</span><span id="modalFinalTotal" style="color:#25D366;">$${checkoutState.baseTotal.toFixed(0)}</span></div>`;
+            let finalDisplayTotal = isCustomShipping ? `$${checkoutState.baseTotal.toFixed(0)} + Shipping` : `$${checkoutState.baseTotal.toFixed(0)}`;
+            modalHTML += `<div class="modal-total-row"><span>Total Payment:</span><span id="modalFinalTotal" style="color:#25D366; font-size:${isCustomShipping ? '0.9rem' : '1.1rem'}">${finalDisplayTotal}</span></div>`;
             
-            // --- FORM INPUT KODE PROMO ---
             modalHTML += `
             <div class="promo-container" style="margin-top: 15px; border-top: 2px solid #eaeaea; padding-top: 10px;">
                 <label style="font-size: 0.8rem; font-weight: bold; color: var(--dark-blue);">PROMO CODE</label>
@@ -1862,7 +1907,6 @@
             document.getElementById('checkoutModal').classList.add('show');
             document.body.style.overflow = 'hidden';
 
-            // Menyusun format dasar pesan WhatsApp
             let message = "";
             for (const [quality, types] of Object.entries(groupedItems)) {
                 message += `*${quality.toUpperCase()}*\n`; 
@@ -1879,14 +1923,19 @@
             message += `*📋 SUMMARY*\n`;
             message += `Total Weight: ${totalWeight} Grams\n`;
             message += `Subtotal: $${totalPrice.toFixed(0)}\n`;
-            message += `Shipping Fee: $${shippingFee}\n`;
-            message += `Payment Method: *${checkoutState.paymentMethod}*\n`; // Mengirim info Payment ke WhatsApp
+            
+            if (isCustomShipping) {
+                message += `Shipping Fee: *To Be Calculated*\n`;
+            } else {
+                message += `Shipping Fee: $${shippingFee}\n`;
+            }
+            
+            message += `Payment Method: *${checkoutState.paymentMethod}*\n`;
 
             checkoutState.baseWAMessage = message; 
             updateWAMessage(); 
         }
 
-        // --- FUNGSI VALIDASI PROMO ---
         function applyPromoCode() {
             const inputField = document.getElementById('promoInput');
             const input = inputField.value.trim().toUpperCase();
@@ -1899,28 +1948,17 @@
             let promoName = "";
             let errorMsg = "";
 
-            // Cek kondisi promo yang dimasukkan pembeli
             if (input === 'EMAJUNE50' || input === 'EMAQUEEN50') {
-                if (checkoutState.totalWeight >= 1000) {
-                    discount = 50;
-                    promoName = input;
-                } else {
-                    errorMsg = "Minimum purchase of 1000g (1kg) required for this promo.";
-                }
+                if (checkoutState.totalWeight >= 1000) { discount = 50; promoName = input; } 
+                else { errorMsg = "Minimum purchase of 1000g (1kg) required for this promo."; }
             } else if (input === 'EMAJUNE25' || input === 'EMAQUEEN25') {
-                if (checkoutState.totalWeight >= 500) {
-                    discount = 25;
-                    promoName = input;
-                } else {
-                    errorMsg = "Minimum purchase of 500g required for this promo.";
-                }
+                if (checkoutState.totalWeight >= 500) { discount = 25; promoName = input; } 
+                else { errorMsg = "Minimum purchase of 500g required for this promo."; }
             } else {
                 errorMsg = "Invalid promo code.";
             }
 
-            // Eksekusi tampilan berdasarkan hasil cek di atas
             if (discount > 0) {
-                // Validasi Sukses: Centang Hijau & Update Harga
                 statusIcon.innerHTML = '<i class="fa-solid fa-circle-check" style="color: #25D366;"></i>';
                 promoMsg.style.display = 'none';
                 inputField.style.borderColor = '#25D366';
@@ -1930,21 +1968,19 @@
                 discountRow.style.display = 'flex';
 
                 let newTotal = checkoutState.baseTotal - discount;
+                if (newTotal < 0) newTotal = 0;
                 
-                // Mencegah harga menjadi minus jika diskon lebih besar dari belanjaan
-                if (newTotal < 0) {
-                    newTotal = 0;
+                if (checkoutState.isCustomShipping) {
+                    finalTotalEl.innerText = '$' + newTotal.toFixed(0) + ' + Shipping';
+                } else {
+                    finalTotalEl.innerText = '$' + newTotal.toFixed(0);
                 }
-                
-                finalTotalEl.innerText = '$' + newTotal.toFixed(0);
 
-                // Update state
                 checkoutState.isPromoApplied = true;
                 checkoutState.appliedPromoCode = promoName;
                 checkoutState.discountAmount = discount;
                 updateWAMessage();
             } else {
-                // Validasi Gagal: Tampilkan Teks Merah
                 statusIcon.innerHTML = '<i class="fa-solid fa-circle-xmark" style="color: #FF1E1E;"></i>';
                 promoMsg.innerText = errorMsg;
                 promoMsg.style.display = 'block';
@@ -1953,56 +1989,56 @@
             }
         }
 
-        // Fungsi mengembalikan harga semula jika promo gagal/dicabut
         function resetPromoUI() {
             const discountRow = document.getElementById('discountRow');
             const finalTotalEl = document.getElementById('modalFinalTotal');
 
             discountRow.style.display = 'none';
-            finalTotalEl.innerText = '$' + checkoutState.baseTotal.toFixed(0);
+            if (checkoutState.isCustomShipping) {
+                finalTotalEl.innerText = '$' + checkoutState.baseTotal.toFixed(0) + ' + Shipping';
+            } else {
+                finalTotalEl.innerText = '$' + checkoutState.baseTotal.toFixed(0);
+            }
+            
             checkoutState.isPromoApplied = false;
             checkoutState.appliedPromoCode = "";
             checkoutState.discountAmount = 0;
             updateWAMessage();
         }
 
-        // Fungsi memperbarui total harga yang akan dikirim ke WA
         function updateWAMessage() {
             let msg = checkoutState.baseWAMessage;
             let finalAmt = checkoutState.baseTotal;
 
             if (checkoutState.isPromoApplied) {
                 finalAmt -= checkoutState.discountAmount;
-                if (finalAmt < 0) finalAmt = 0; // Cegah minus di WA
+                if (finalAmt < 0) finalAmt = 0; 
                 
                 msg += `\n🎁 *PROMO APPLIED:*\n`;
                 msg += `*${checkoutState.appliedPromoCode} (-$${checkoutState.discountAmount})*\n\n`;
-                msg += `*Total Amount: $${finalAmt.toFixed(0)}*\n\n`;
+            }
+
+            if (checkoutState.isCustomShipping) {
+                msg += `*Total Amount: $${finalAmt.toFixed(0)} + Shipping Fee*\n\n`;
             } else {
                 msg += `\n*Total Amount: $${finalAmt.toFixed(0)}*\n\n`;
             }
 
-            // --- KONVERSI KE RUPIAH (KURS ONLINE) ---
             const method = checkoutState.paymentMethod;
             
-            // Cek apakah metode pembayaran adalah Bank Transfer, MoneyGram, atau Western Union
             if (method === "Bank Transfer" || method === "MoneyGram" || method === "Western Union") {
-                const totalIDR = finalAmt * currentUSDtoIDR; // Menggunakan variabel kurs online
-                
-                // Format angka otomatis ke format Rupiah (contoh: Rp 1.500.000,00)
-                const formattedIDR = new Intl.NumberFormat('id-ID', { 
-                    style: 'currency', 
-                    currency: 'IDR' 
-                }).format(totalIDR);
-                
-                // Format kurs per 1 USD
+                const totalIDR = finalAmt * currentUSDtoIDR; 
+                const formattedIDR = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(totalIDR);
                 const formattedRate = new Intl.NumberFormat('id-ID').format(currentUSDtoIDR);
                 
                 msg += `*Estimasi Dana Diterima:*\n`;
-                msg += `*${formattedIDR}*\n`;
+                if (checkoutState.isCustomShipping) {
+                    msg += `*${formattedIDR} (Belum termasuk ongkir)*\n`;
+                } else {
+                    msg += `*${formattedIDR}*\n`;
+                }
                 msg += `_(Kurs online saat ini: 1 USD = Rp ${formattedRate})_\n\n`;
             }
-            // ----------------------------------------
 
             msg += "Please confirm my order.";
             finalWhatsAppMessage = msg;
