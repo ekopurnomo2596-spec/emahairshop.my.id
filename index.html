@@ -267,8 +267,177 @@
         .lightbox-prev { left: 20px; }
         .lightbox-next { right: 20px; }
 
-        /* --- Teks Transit Agar Satu Baris --- */
-        #shipTransit, #shipWeight, #shipCost { font-size: 0.75rem; font-weight: 600; color: var(--gray); text-align: right; }
+        /* --- KALKULATOR PESANAN --- */
+        .calculator-section { background-color: var(--white); padding: 80px 10%; border-top: 1px dashed #eaeaea; }
+        
+        /* Flex Layout Desktop utk Form & Cart */
+        .calc-wrapper { display: flex; flex-direction: column; width: 100%; }
+        .calc-container { max-width: 600px; margin: 0 auto; background: #F9F8F6; padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eaeaea; position: relative; box-sizing: border-box; width: 100%;}
+        .calc-container::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: linear-gradient(90deg, #25D366, var(--black)); border-radius: 12px 12px 0 0; }
+        
+        .calc-header { text-align: center; margin-bottom: 30px; }
+        .calc-header h3 { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 1.8rem; color: var(--dark-blue); margin-bottom: 5px; }
+        .calc-header p { font-size: 0.95rem; color: var(--gray); margin-bottom: 0; font-weight: 400; }
+        
+        .calc-form { display: grid; grid-template-columns: 1fr; gap: 20px; width: 100%; box-sizing: border-box;}
+        .calc-group { display: flex; flex-direction: column; gap: 8px; width: 100%; box-sizing: border-box;}
+        
+        .calc-group > label:not(.pill-label) { display: flex; justify-content: center; align-items: center; background-color: rgba(47, 78, 55, 0.08); color: var(--green); border: 1px solid rgba(47, 78, 55, 0.2); font-size: 0.8rem; font-weight: 800; padding: 8px 10px; margin: 10px 0 10px 0; letter-spacing: 2px; text-transform: uppercase; text-align: center; width: 100%; border-radius: 4px; box-sizing: border-box; }
+        
+        .calc-group select, .calc-group input[type="number"], .calc-group input[type="text"] { width: 100%; box-sizing: border-box; padding: 12px 15px; border: 1px solid #ccc; border-radius: 8px; font-family: 'Lato', sans-serif; font-size: 0.9rem; outline: none; transition: 0.3s; background: var(--white); text-align: center; font-weight: 400; }
+        .calc-group select:focus, .calc-group input[type="number"]:focus, .calc-group input[type="text"]:focus { border-color: #25D366; box-shadow: 0 0 5px rgba(37, 211, 102, 0.3); }
+        .calc-full { grid-column: span 1; width: 100%; }
+
+        .pill-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; width: 100%; }
+        .pill-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; width: 100%; }
+        .item-centered { grid-column: 1 / -1; }
+        .hidden-radio { display: none; }
+
+        .pill-label { background: #f8f9fa; border: 1px solid #dcdcdc; border-radius: 6px; padding: 8px 4px; font-size: 0.85rem; font-family: 'Lato', sans-serif; font-weight: 400; text-align: center; cursor: pointer; transition: all 0.3s ease; color: var(--gray); user-select: none; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; box-sizing: border-box; line-height: 1.2; }
+        .pill-label:hover { border-color: #a3e6be; background-color: #f0fdf4; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
+        .hidden-radio:checked + .pill-label { background: #f0fdf4; color: var(--black); border: 1.5px solid #25D366; font-weight: 800; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.15); transform: translateY(-2px); }
+        
+        .add-item-btn { background-color: var(--dark-blue); color: var(--white); padding: 12px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; width: 100%; display: flex; justify-content: center; align-items: center; gap: 8px; text-transform: uppercase; font-size: 0.85rem;}
+        .add-item-btn:hover { background-color: var(--black); }
+        
+        .color-circles-wrapper { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 5px; margin-bottom: 5px; }
+        .color-circle-label {
+            width: 35px; height: 35px; border-radius: 50%; border: 2px solid transparent;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex; justify-content: center; align-items: center; cursor: pointer;
+            transition: all 0.3s ease; user-select: none; font-size: 0.75rem; font-weight: 700;
+        }
+        .color-circle-label:hover { transform: scale(1.1); box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        .hidden-radio:checked + .color-circle-label {
+            border: 3px solid #25D366; 
+            transform: scale(1.15); box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            font-weight: 900;
+        }
+
+        .quote-item-list { display: flex; flex-direction: column; gap: 0; margin-bottom: 10px; }
+        .quote-item-minimal { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px dashed #eaeaea; background: transparent; }
+        .quote-item-minimal:last-child { border-bottom: none; }
+        .quote-item-minimal-details { display: flex; flex-direction: column; line-height: 1.3; flex: 1; min-width: 0; padding-right: 10px;}
+        .quote-item-minimal-details strong { font-size: 0.85rem; color: var(--black); font-weight: 800; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+        .quote-item-minimal-details span { font-size: 0.75rem; color: var(--gray); margin-top: 2px; }
+        .quote-item-minimal-actions { display: flex; align-items: center; gap: 12px; }
+        .quote-item-minimal-price { font-size: 0.9rem; font-weight: 900; color: #25D366; } 
+        
+        .action-btn-minimal { background: none; border: none; font-size: 1rem; cursor: pointer; transition: 0.3s; padding: 2px; }
+        .edit-btn { color: #aaaaaa; }
+        .edit-btn:hover { color: var(--dark-blue); transform: scale(1.15); }
+        .remove-btn { color: #cccccc; }
+        .remove-btn:hover { color: var(--bright-red); transform: scale(1.15); }
+
+        .calc-btn { background-color: #25D366; color: var(--white); padding: 12px; border: none; border-radius: 8px; font-size: 0.85rem; font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: 5px; width: 100%; box-sizing: border-box; text-transform: uppercase; letter-spacing: 1px; display: flex; justify-content: center; align-items: center; gap: 8px; }
+        .calc-btn:hover { background-color: #1ebe56; box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3); transform: translateY(-3px); }
+
+        /* --- CART PANEL / CHECKOUT MODAL UTAMA --- */
+        .cart-panel {
+            display: none; 
+            position: fixed; 
+            z-index: 2000; 
+            left: 0; top: 0; 
+            width: 100%; height: 100%; 
+            background-color: rgba(0,0,0,0.9); 
+            justify-content: center; 
+            align-items: center; 
+            opacity: 0; 
+            transition: opacity 0.3s ease-in-out; 
+        }
+        .cart-panel.show { display: flex; opacity: 1; }
+        .checkout-modal-content { background:#fff; width:90%; max-width:450px; padding:25px; border-radius:12px; color:var(--black); transform: scale(1); border-top: 5px solid #25D366; text-align: left; position: relative;}
+        
+        .checkout-modal-header { border-bottom: 1px solid #eaeaea; padding-bottom: 10px; margin-bottom: 15px; }
+        .checkout-modal-header h3 { font-family: 'Lato', sans-serif; font-size: 1.3rem; font-weight: 900; color: var(--black); text-transform: none; margin: 0; }
+        .checkout-modal-body { font-size: 0.85rem; line-height: 1.5; margin-bottom: 20px; max-height: 55vh; overflow-y: auto; padding-right: 5px; }
+        .modal-item-row { display: flex; justify-content: space-between; border-bottom: 1px dashed #eaeaea; padding: 6px 0; }
+        .modal-item-title { font-weight: 700; color: var(--dark-blue); font-size: 0.9rem; margin-top: 10px; }
+        .modal-summary-row { display: flex; justify-content: space-between; padding: 4px 0; font-size: 0.9rem; }
+        .modal-total-row { display: flex; justify-content: space-between; padding: 10px 0; font-size: 1.1rem; font-weight: 900; border-top: 2px solid #eaeaea; margin-top: 10px; color: var(--black); }
+        .checkout-modal-footer { display: flex; gap: 10px; }
+        .btn-cancel { flex: 1; padding: 12px; border: 1px solid #ccc; background: #fafafa; color: var(--gray); border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.3s; font-family: 'Lato', sans-serif; display: flex; justify-content: center; align-items: center; gap: 8px;}
+        .btn-cancel:hover { background: #eaeaea; color: var(--black); }
+        .btn-confirm { flex: 1; padding: 12px; border: none; background: #25D366; color: #fff; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.3s; font-family: 'Lato', sans-serif; display: flex; justify-content: center; align-items: center; gap: 8px;}
+        .btn-confirm:hover { background: #1ebe56; }
+        
+        .upsell-container { background: #f8f9fa; border: 1px solid #eaeaea; border-radius: 8px; padding: 12px; margin-bottom: 15px; text-align: center; }
+        .upsell-text { font-size: 0.75rem; font-weight: 800; color: var(--dark-blue); margin-bottom: 8px; letter-spacing: 0.5px; }
+        .upsell-text span { color: var(--circle-pink); }
+        .progress-bar-bg { width: 100%; height: 8px; background: #e2e8f0; border-radius: 10px; overflow: hidden; position: relative; }
+        .progress-bar-fill { height: 100%; background: linear-gradient(90deg, #f6ad55, #ed8936); border-radius: 10px; transition: width 0.4s ease-in-out; }
+        .progress-bar-fill.success { background: linear-gradient(90deg, #48bb78, #38a169); }
+        
+        .payment-accordion { margin-top: 15px; border: 1px solid #eaeaea; border-radius: 8px; background: #fafafa; padding: 0 15px; transition: 0.3s; }
+        .payment-accordion[open] { border-color: #dcdcdc; box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
+        .payment-summary { font-size: 0.75rem; font-weight: 800; color: var(--dark-blue); padding: 12px 0; text-align: left; letter-spacing: 1px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; text-transform: uppercase; flex-wrap: nowrap; }
+        .payment-summary::-webkit-details-marker { display: none; }
+        .payment-summary::after { content: '\f078'; font-family: 'Font Awesome 6 Free'; font-weight: 900; font-size: 0.8rem; transition: transform 0.3s ease; color: var(--gray); margin-left: 5px; }
+        .payment-accordion[open] .payment-summary::after { transform: rotate(180deg); color: var(--circle-pink); }
+        .payment-accordion-content { padding-bottom: 15px; border-top: 1px dashed #eaeaea; padding-top: 15px; animation: fadeInDown 0.3s ease-in-out; }
+        #selectedPaymentText { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 50%; }
+
+        .shipping-estimator { margin-top: 15px; background: #fcfcfc; border: 1px solid #eaeaea; border-radius: 8px; padding: 15px; }
+        .shipping-estimator h4 { display: flex; align-items: center; font-family: 'Lato', sans-serif; font-size: 0.75rem; font-weight: 800; color: var(--dark-blue); margin-bottom: 12px; letter-spacing: 1px; text-transform: uppercase; }
+        .estimator-form { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+        .form-group-ship { display: flex; flex-direction: column; gap: 4px; }
+        .form-group-ship label { font-size: 0.65rem; font-weight: 700; color: var(--gray); text-transform: uppercase; letter-spacing: 0.5px; padding-left: 2px; }
+        .estimator-form input, .estimator-form select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-family: 'Lato', sans-serif; font-size: 0.8rem; }
+        .estimator-form input:focus, .estimator-form select:focus { outline: none; border-color: #25D366; }
+        
+        .ship-stats { display: flex; flex-direction: column; gap: 6px; background: var(--white); border: 1px solid #eaeaea; border-radius: 6px; padding: 12px 15px; margin-top: 10px; }
+        .stat-row { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px dashed #eaeaea; padding-bottom: 6px; flex-wrap: nowrap; gap: 10px;}
+        .stat-row:last-child { border-bottom: none; padding-bottom: 0; }
+        .stat-row span { font-size: 0.75rem; color: var(--gray); font-weight: 600; font-family: 'Lato', sans-serif; white-space: nowrap; }
+        .stat-row strong { font-size: 0.75rem; color: var(--gray); font-weight: 600; font-family: 'Lato', sans-serif; text-align: right; line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+        
+        .est-arrival-box { background: linear-gradient(135deg, var(--black) 0%, #222 100%); color: var(--white); padding: 12px 15px; border-radius: 8px; margin-top: 12px; display: flex; align-items: center; position: relative; box-shadow: 0 6px 15px rgba(0,0,0,0.15); }
+        .est-arrival-icon { background: rgba(255,255,255,0.1); width: 35px; height: 35px; border-radius: 50%; display: flex; justify-content: center; align-items: center; flex-shrink: 0; position: absolute; left: 15px; }
+        .est-arrival-icon i { font-size: 1.1rem; color: var(--gold); }
+        .est-arrival-text { width: 100%; display: flex; flex-direction: column; align-items: center; text-align: center; line-height: 1.2;}
+        .est-arrival-text span { font-size: 0.65rem; font-weight: 700; color: #cbd5e0; text-transform: uppercase; letter-spacing: 1px; }
+        .est-arrival-text strong { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--gold); font-weight: 600; margin-top: 3px; letter-spacing: 0.5px; }
+
+        /* --- DESKTOP LAYOUT OVERRIDE --- */
+        @media (min-width: 769px) {
+            .calculator-section { padding: 80px 5%; }
+            .calc-wrapper {
+                display: flex;
+                flex-direction: row;
+                gap: 30px;
+                align-items: stretch;
+                justify-content: center;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+            .calc-container {
+                flex: 1.5;
+                margin: 0;
+                height: fit-content;
+            }
+            .cart-panel {
+                flex: 1;
+                display: block !important; 
+                position: relative !important;
+                background: transparent !important;
+                opacity: 1 !important;
+                z-index: 1 !important;
+                width: 100%;
+                height: 100%;
+            }
+            .cart-panel .checkout-modal-content {
+                transform: scale(1) !important;
+                max-width: 100% !important;
+                width: 100%;
+                margin: 0 !important;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+            }
+            #closeCartBtn { display: none !important; }
+            .sticky-cart-banner { display: none !important; }
+        }
 
         /* --- MEDIA QUERY RESPONSIVE (TAMPILAN KHUSUS HP) --- */
         @media (max-width: 768px) {
@@ -330,7 +499,6 @@
             .price-card-title { grid-column: span 2; margin-bottom: 2px; padding-bottom: 5px; border-bottom: 2px solid var(--black); text-align: center; width: 100%; }
             .price-card-title h3 { font-size: 1.3rem; letter-spacing: 1px; margin: 0; color: var(--black); }
             
-            /* Penyesuaian Harga HP: Tetap Menempel! */
             .price-accordion:nth-of-type(1) .price-summary { border-radius: 8px 0 0 8px !important; border-right: 1px solid rgba(255,255,255,0.3) !important; }
             .price-accordion:nth-of-type(2) .price-summary { border-radius: 0 8px 8px 0 !important; }
             .price-accordion:nth-of-type(1)[open] .price-table-wrapper { border-right: 1px dashed #eaeaea !important; }
@@ -369,137 +537,17 @@
             .quote-item-minimal-actions { gap: 6px !important; }
             .action-btn-minimal { font-size: 0.85rem !important; }
             
-            /* Penyesuaian Payment: Ukuran dibesarkan, diatur agar rapi sebaris */
             .pill-grid-payment { grid-template-columns: repeat(2, 1fr) !important; gap: 6px !important; }
             .payment-pill { font-size: 0.8rem !important; padding: 12px 4px !important; justify-content: center !important; text-align: center !important; white-space: nowrap !important; }
             #selectedPaymentText { font-size: 0.55rem !important; padding: 3px 6px !important; }
             #pay5-label span:first-child { font-size: 0.45rem; padding: 2px 4px; top: -8px; left: 0px; }
             
             .estimator-form { grid-template-columns: 1fr; }
-            .stat-row span, .stat-row strong { font-size: 0.7rem !important; }
+            .stat-row { padding-bottom: 4px; gap: 5px; }
+            .stat-row span, .stat-row strong { font-size: 0.65rem !important; }
             
             .color-circle-label { width: 32px; height: 32px; font-size: 0.65rem; }
         }
-        
-        /* --- KALKULATOR PESANAN --- */
-        .calculator-section { background-color: var(--white); padding: 80px 10%; border-top: 1px dashed #eaeaea; }
-        .calc-container { max-width: 600px; margin: 0 auto; background: #F9F8F6; padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eaeaea; position: relative; box-sizing: border-box; width: 100%;}
-        .calc-container::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: linear-gradient(90deg, #25D366, var(--black)); border-radius: 12px 12px 0 0; }
-        .calc-header { text-align: center; margin-bottom: 30px; }
-        .calc-header h3 { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 1.8rem; color: var(--dark-blue); margin-bottom: 5px; }
-        .calc-header p { font-size: 0.95rem; color: var(--gray); margin-bottom: 0; font-weight: 400; }
-        
-        .calc-form { display: grid; grid-template-columns: 1fr; gap: 20px; width: 100%; box-sizing: border-box;}
-        .calc-group { display: flex; flex-direction: column; gap: 8px; width: 100%; box-sizing: border-box;}
-        
-        .calc-group > label:not(.pill-label) { display: flex; justify-content: center; align-items: center; background-color: rgba(47, 78, 55, 0.08); color: var(--green); border: 1px solid rgba(47, 78, 55, 0.2); font-size: 0.8rem; font-weight: 800; padding: 8px 10px; margin: 10px 0 10px 0; letter-spacing: 2px; text-transform: uppercase; text-align: center; width: 100%; border-radius: 4px; box-sizing: border-box; }
-        
-        .calc-group select, .calc-group input[type="number"], .calc-group input[type="text"] { width: 100%; box-sizing: border-box; padding: 12px 15px; border: 1px solid #ccc; border-radius: 8px; font-family: 'Lato', sans-serif; font-size: 0.9rem; outline: none; transition: 0.3s; background: var(--white); text-align: center; font-weight: 400; }
-        .calc-group select:focus, .calc-group input[type="number"]:focus, .calc-group input[type="text"]:focus { border-color: #25D366; box-shadow: 0 0 5px rgba(37, 211, 102, 0.3); }
-        .calc-full { grid-column: span 1; width: 100%; }
-
-        .pill-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; width: 100%; }
-        .pill-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; width: 100%; }
-        .item-centered { grid-column: 1 / -1; }
-        .hidden-radio { display: none; }
-
-        .pill-label { background: #f8f9fa; border: 1px solid #dcdcdc; border-radius: 6px; padding: 8px 4px; font-size: 0.85rem; font-family: 'Lato', sans-serif; font-weight: 400; text-align: center; cursor: pointer; transition: all 0.3s ease; color: var(--gray); user-select: none; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; box-sizing: border-box; line-height: 1.2; }
-        .pill-label:hover { border-color: #a3e6be; background-color: #f0fdf4; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
-        .hidden-radio:checked + .pill-label { background: #f0fdf4; color: var(--black); border: 1.5px solid #25D366; font-weight: 800; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.15); transform: translateY(-2px); }
-        
-        .add-item-btn { background-color: var(--dark-blue); color: var(--white); padding: 12px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; width: 100%; display: flex; justify-content: center; align-items: center; gap: 8px; text-transform: uppercase; font-size: 0.85rem;}
-        .add-item-btn:hover { background-color: var(--black); }
-        
-        /* --- CSS WARNA BULATAN ASLI --- */
-        .color-circles-wrapper { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 5px; margin-bottom: 5px; }
-        .color-circle-label {
-            width: 35px; height: 35px; border-radius: 50%; border: 2px solid transparent;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            display: flex; justify-content: center; align-items: center; cursor: pointer;
-            transition: all 0.3s ease; user-select: none; font-size: 0.75rem; font-weight: 700;
-        }
-        .color-circle-label:hover { transform: scale(1.1); box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
-        .hidden-radio:checked + .color-circle-label {
-            border: 3px solid #25D366; 
-            transform: scale(1.15); box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-            font-weight: 900;
-        }
-
-        /* --- DESAIN LIST PRODUK MINIMALIS & ELEGAN --- */
-        .quote-item-list { display: flex; flex-direction: column; gap: 0; margin-bottom: 10px; }
-        .quote-item-minimal { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px dashed #eaeaea; background: transparent; }
-        .quote-item-minimal:last-child { border-bottom: none; }
-        .quote-item-minimal-details { display: flex; flex-direction: column; line-height: 1.3; flex: 1; min-width: 0; padding-right: 10px;}
-        .quote-item-minimal-details strong { font-size: 0.85rem; color: var(--black); font-weight: 800; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
-        .quote-item-minimal-details span { font-size: 0.75rem; color: var(--gray); margin-top: 2px; }
-        .quote-item-minimal-actions { display: flex; align-items: center; gap: 12px; }
-        .quote-item-minimal-price { font-size: 0.9rem; font-weight: 900; color: #25D366; } 
-        
-        .action-btn-minimal { background: none; border: none; font-size: 1rem; cursor: pointer; transition: 0.3s; padding: 2px; }
-        .edit-btn { color: #aaaaaa; }
-        .edit-btn:hover { color: var(--dark-blue); transform: scale(1.15); }
-        .remove-btn { color: #cccccc; }
-        .remove-btn:hover { color: var(--bright-red); transform: scale(1.15); }
-
-        .calc-btn { background-color: #25D366; color: var(--white); padding: 12px; border: none; border-radius: 8px; font-size: 0.85rem; font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: 5px; width: 100%; box-sizing: border-box; text-transform: uppercase; letter-spacing: 1px; display: flex; justify-content: center; align-items: center; gap: 8px; }
-        .calc-btn:hover { background-color: #1ebe56; box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3); transform: translateY(-3px); }
-
-        /* --- CHECKOUT MODAL --- */
-        .checkout-modal-content { background:#fff; width:90%; max-width:450px; padding:25px; border-radius:12px; color:var(--black); transform: scale(1); border-top: 5px solid #25D366; text-align: left; }
-        .checkout-modal-header { border-bottom: 1px solid #eaeaea; padding-bottom: 10px; margin-bottom: 15px; }
-        .checkout-modal-header h3 { font-family: 'Lato', sans-serif; font-size: 1.3rem; font-weight: 900; color: var(--black); text-transform: none; margin: 0; }
-        .checkout-modal-body { font-size: 0.85rem; line-height: 1.5; margin-bottom: 20px; max-height: 55vh; overflow-y: auto; padding-right: 5px; }
-        .modal-item-row { display: flex; justify-content: space-between; border-bottom: 1px dashed #eaeaea; padding: 6px 0; }
-        .modal-item-title { font-weight: 700; color: var(--dark-blue); font-size: 0.9rem; margin-top: 10px; }
-        .modal-summary-row { display: flex; justify-content: space-between; padding: 4px 0; font-size: 0.9rem; }
-        .modal-total-row { display: flex; justify-content: space-between; padding: 10px 0; font-size: 1.1rem; font-weight: 900; border-top: 2px solid #eaeaea; margin-top: 10px; color: var(--black); }
-        .checkout-modal-footer { display: flex; gap: 10px; }
-        .btn-cancel { flex: 1; padding: 12px; border: 1px solid #ccc; background: #fafafa; color: var(--gray); border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.3s; font-family: 'Lato', sans-serif; display: flex; justify-content: center; align-items: center; gap: 8px;}
-        .btn-cancel:hover { background: #eaeaea; color: var(--black); }
-        .btn-confirm { flex: 1; padding: 12px; border: none; background: #25D366; color: #fff; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.3s; font-family: 'Lato', sans-serif; display: flex; justify-content: center; align-items: center; gap: 8px;}
-        .btn-confirm:hover { background: #1ebe56; }
-        
-        /* --- PROGRESS BAR UPSELL --- */
-        .upsell-container { background: #f8f9fa; border: 1px solid #eaeaea; border-radius: 8px; padding: 12px; margin-bottom: 15px; text-align: center; }
-        .upsell-text { font-size: 0.75rem; font-weight: 800; color: var(--dark-blue); margin-bottom: 8px; letter-spacing: 0.5px; }
-        .upsell-text span { color: var(--circle-pink); }
-        .progress-bar-bg { width: 100%; height: 8px; background: #e2e8f0; border-radius: 10px; overflow: hidden; position: relative; }
-        .progress-bar-fill { height: 100%; background: linear-gradient(90deg, #f6ad55, #ed8936); border-radius: 10px; transition: width 0.4s ease-in-out; }
-        .progress-bar-fill.success { background: linear-gradient(90deg, #48bb78, #38a169); }
-        
-        /* --- PAYMENT ACCORDION (CART) --- */
-        .payment-accordion { margin-top: 15px; border: 1px solid #eaeaea; border-radius: 8px; background: #fafafa; padding: 0 15px; transition: 0.3s; }
-        .payment-accordion[open] { border-color: #dcdcdc; box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
-        .payment-summary { font-size: 0.75rem; font-weight: 800; color: var(--dark-blue); padding: 12px 0; text-align: left; letter-spacing: 1px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; text-transform: uppercase; flex-wrap: nowrap; }
-        .payment-summary::-webkit-details-marker { display: none; }
-        .payment-summary::after { content: '\f078'; font-family: 'Font Awesome 6 Free'; font-weight: 900; font-size: 0.8rem; transition: transform 0.3s ease; color: var(--gray); margin-left: 5px; }
-        .payment-accordion[open] .payment-summary::after { transform: rotate(180deg); color: var(--circle-pink); }
-        .payment-accordion-content { padding-bottom: 15px; border-top: 1px dashed #eaeaea; padding-top: 15px; animation: fadeInDown 0.3s ease-in-out; }
-        #selectedPaymentText { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 50%; }
-
-        /* --- SHIPPING ESTIMATOR --- */
-        .shipping-estimator { margin-top: 15px; background: #fcfcfc; border: 1px solid #eaeaea; border-radius: 8px; padding: 15px; }
-        .shipping-estimator h4 { display: flex; align-items: center; font-family: 'Lato', sans-serif; font-size: 0.75rem; font-weight: 800; color: var(--dark-blue); margin-bottom: 12px; letter-spacing: 1px; text-transform: uppercase; }
-        .estimator-form { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
-        .form-group-ship { display: flex; flex-direction: column; gap: 4px; }
-        .form-group-ship label { font-size: 0.65rem; font-weight: 700; color: var(--gray); text-transform: uppercase; letter-spacing: 0.5px; padding-left: 2px; }
-        .estimator-form input, .estimator-form select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-family: 'Lato', sans-serif; font-size: 0.8rem; }
-        .estimator-form input:focus, .estimator-form select:focus { outline: none; border-color: #25D366; }
-        
-        .ship-stats { display: flex; flex-direction: column; gap: 6px; background: var(--white); border: 1px solid #eaeaea; border-radius: 6px; padding: 12px 15px; margin-top: 10px; }
-        .stat-row { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px dashed #eaeaea; padding-bottom: 6px; }
-        .stat-row:last-child { border-bottom: none; padding-bottom: 0; }
-        .stat-row span { font-size: 0.75rem; color: var(--gray); font-weight: 600; font-family: 'Lato', sans-serif; }
-        .stat-row strong { font-size: 0.75rem; color: var(--gray); font-weight: 600; font-family: 'Lato', sans-serif; text-align: right; line-height: 1.2; word-wrap: break-word; }
-        
-        /* Elegan Dark Estimated Arrival Box */
-        .est-arrival-box { background: linear-gradient(135deg, var(--black) 0%, #222 100%); color: var(--white); padding: 12px 15px; border-radius: 8px; margin-top: 12px; display: flex; align-items: center; position: relative; box-shadow: 0 6px 15px rgba(0,0,0,0.15); }
-        .est-arrival-icon { background: rgba(255,255,255,0.1); width: 35px; height: 35px; border-radius: 50%; display: flex; justify-content: center; align-items: center; flex-shrink: 0; position: absolute; left: 15px; }
-        .est-arrival-icon i { font-size: 1.1rem; color: var(--gold); }
-        .est-arrival-text { width: 100%; display: flex; flex-direction: column; align-items: center; text-align: center; line-height: 1.2;}
-        .est-arrival-text span { font-size: 0.65rem; font-weight: 700; color: #cbd5e0; text-transform: uppercase; letter-spacing: 1px; }
-        .est-arrival-text strong { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--gold); font-weight: 600; margin-top: 3px; letter-spacing: 0.5px; }
-
     </style>
 </head>
 <body class="notranslate">
@@ -1187,203 +1235,309 @@
     </section>
 
     <section id="quote" class="calculator-section">
-        <div class="calc-container" data-aos="fade-up">
-            <div class="calc-header">
-                <h3>Order Form</h3>
-                <p></p>
-            </div>
-            
-            <div class="calc-form">
-                <div class="calc-group">
-                    <label>HAIR TYPE</label> 
-                    <div class="pill-grid-3">
-                        <input type="radio" id="type1" name="calcType" value="Hair Bulk" class="hidden-radio">
-                        <label for="type1" class="pill-label">Hair Bulk</label>
-
-                        <input type="radio" id="type2" name="calcType" value="Hair Weft" class="hidden-radio">
-                        <label for="type2" class="pill-label">Hair Weft</label>
-
-                        <input type="radio" id="type3" name="calcType" value="Hair Tape" class="hidden-radio">
-                        <label for="type3" class="pill-label">Hair Tape</label>
-
-                        <input type="radio" id="type4" name="calcType" value="I Tip / Keratin" class="hidden-radio">
-                        <label for="type4" class="pill-label">I Tip / Keratin</label>
-
-                        <input type="radio" id="type5" name="calcType" value="Nano Ring" class="hidden-radio">
-                        <label for="type5" class="pill-label">Nano Ring</label>
-
-                        <input type="radio" id="type6" name="calcType" value="Genius Weft" class="hidden-radio">
-                        <label for="type6" class="pill-label">Genius Weft</label>
-                    </div>
+        <div class="calc-wrapper">
+            <!-- Sisi Kiri: Form -->
+            <div class="calc-container" data-aos="fade-up">
+                <div class="calc-header">
+                    <h3>Order Form</h3>
+                    <p></p>
                 </div>
                 
-                <div class="calc-group">
-                    <label>QUALITY</label>
-                    <div class="pill-grid-2">
-                        <input type="radio" id="qual1" name="calcQuality" value="Double Drawn" class="hidden-radio">
-                        <label for="qual1" class="pill-label">Double Drawn</label>
+                <div class="calc-form">
+                    <div class="calc-group">
+                        <label>HAIR TYPE</label> 
+                        <div class="pill-grid-3">
+                            <input type="radio" id="type1" name="calcType" value="Hair Bulk" class="hidden-radio">
+                            <label for="type1" class="pill-label">Hair Bulk</label>
 
-                        <input type="radio" id="qual2" name="calcQuality" value="Super Double Drawn" class="hidden-radio">
-                        <label for="qual2" class="pill-label">Super Double Drawn</label>
-                    </div>
-                </div>
-                
-                <div class="calc-group">
-                    <label>LENGTH</label>
-                    <div class="pill-grid-3">
-                        <input type="radio" id="len16" name="calcLength" value="16 inches" class="hidden-radio">
-                        <label for="len16" class="pill-label">16"</label>
+                            <input type="radio" id="type2" name="calcType" value="Hair Weft" class="hidden-radio">
+                            <label for="type2" class="pill-label">Hair Weft</label>
 
-                        <input type="radio" id="len18" name="calcLength" value="18 inches" class="hidden-radio">
-                        <label for="len18" class="pill-label">18"</label>
+                            <input type="radio" id="type3" name="calcType" value="Hair Tape" class="hidden-radio">
+                            <label for="type3" class="pill-label">Hair Tape</label>
 
-                        <input type="radio" id="len20" name="calcLength" value="20 inches" class="hidden-radio">
-                        <label for="len20" class="pill-label">20"</label>
+                            <input type="radio" id="type4" name="calcType" value="I Tip / Keratin" class="hidden-radio">
+                            <label for="type4" class="pill-label">I Tip / Keratin</label>
 
-                        <input type="radio" id="len22" name="calcLength" value="22 inches" class="hidden-radio">
-                        <label for="len22" class="pill-label">22"</label>
+                            <input type="radio" id="type5" name="calcType" value="Nano Ring" class="hidden-radio">
+                            <label for="type5" class="pill-label">Nano Ring</label>
 
-                        <input type="radio" id="len24" name="calcLength" value="24 inches" class="hidden-radio">
-                        <label for="len24" class="pill-label">24"</label>
-
-                        <input type="radio" id="len26" name="calcLength" value="26 inches" class="hidden-radio">
-                        <label for="len26" class="pill-label">26"</label>
-
-                        <input type="radio" id="len28" name="calcLength" value="28 inches" class="hidden-radio">
-                        <label for="len28" class="pill-label item-centered">28"</label>
-                    </div>
-                </div>
-                
-                <div class="calc-group">
-                    <label>QUANTITY (GRAMS)</label>
-                    <div class="pill-grid-3">
-                        <input type="radio" id="w100" name="calcWeightRadio" value="100" class="hidden-radio" onchange="toggleManualWeight()">
-                        <label for="w100" class="pill-label">100g</label>
-
-                        <input type="radio" id="w200" name="calcWeightRadio" value="200" class="hidden-radio" onchange="toggleManualWeight()">
-                        <label for="w200" class="pill-label">200g</label>
-
-                        <input type="radio" id="w300" name="calcWeightRadio" value="300" class="hidden-radio" onchange="toggleManualWeight()">
-                        <label for="w300" class="pill-label">300g</label>
-
-                        <input type="radio" id="w400" name="calcWeightRadio" value="400" class="hidden-radio" onchange="toggleManualWeight()">
-                        <label for="w400" class="pill-label">400g</label>
-
-                        <input type="radio" id="w500" name="calcWeightRadio" value="500" class="hidden-radio" onchange="toggleManualWeight()">
-                        <label for="w500" class="pill-label">500g</label>
-
-                        <input type="radio" id="wCustom" name="calcWeightRadio" value="Custom" class="hidden-radio" onchange="toggleManualWeight()">
-                        <label for="wCustom" class="pill-label">Manual</label>
+                            <input type="radio" id="type6" name="calcType" value="Genius Weft" class="hidden-radio">
+                            <label for="type6" class="pill-label">Genius Weft</label>
+                        </div>
                     </div>
                     
-                    <div id="manualWeightGroup" style="display: none; margin-top: 8px;">
-                        <input type="number" id="calcWeight" placeholder="Type grams (e.g. 1500)" min="100" step="100">
+                    <div class="calc-group">
+                        <label>QUALITY</label>
+                        <div class="pill-grid-2">
+                            <input type="radio" id="qual1" name="calcQuality" value="Double Drawn" class="hidden-radio">
+                            <label for="qual1" class="pill-label">Double Drawn</label>
+
+                            <input type="radio" id="qual2" name="calcQuality" value="Super Double Drawn" class="hidden-radio">
+                            <label for="qual2" class="pill-label">Super Double Drawn</label>
+                        </div>
                     </div>
-                </div>
+                    
+                    <div class="calc-group">
+                        <label>LENGTH</label>
+                        <div class="pill-grid-3">
+                            <input type="radio" id="len16" name="calcLength" value="16 inches" class="hidden-radio">
+                            <label for="len16" class="pill-label">16"</label>
 
-                <div class="calc-group">
-                    <label>COLOR SELECTION</label>
-                    <div class="pill-grid-2">
-                        <input type="radio" id="col_type_nat" name="calcColorType" value="Natural" class="hidden-radio" onchange="toggleColorInput()">
-                        <label for="col_type_nat" class="pill-label">Natural (Black)</label>
+                            <input type="radio" id="len18" name="calcLength" value="18 inches" class="hidden-radio">
+                            <label for="len18" class="pill-label">18"</label>
 
-                        <input type="radio" id="col_type_cus" name="calcColorType" value="Color" class="hidden-radio" onchange="toggleColorInput()">
-                        <label for="col_type_cus" class="pill-label">Custom Color</label>
+                            <input type="radio" id="len20" name="calcLength" value="20 inches" class="hidden-radio">
+                            <label for="len20" class="pill-label">20"</label>
+
+                            <input type="radio" id="len22" name="calcLength" value="22 inches" class="hidden-radio">
+                            <label for="len22" class="pill-label">22"</label>
+
+                            <input type="radio" id="len24" name="calcLength" value="24 inches" class="hidden-radio">
+                            <label for="len24" class="pill-label">24"</label>
+
+                            <input type="radio" id="len26" name="calcLength" value="26 inches" class="hidden-radio">
+                            <label for="len26" class="pill-label">26"</label>
+
+                            <input type="radio" id="len28" name="calcLength" value="28 inches" class="hidden-radio">
+                            <label for="len28" class="pill-label item-centered">28"</label>
+                        </div>
                     </div>
-                </div>
+                    
+                    <div class="calc-group">
+                        <label>QUANTITY (GRAMS)</label>
+                        <div class="pill-grid-3">
+                            <input type="radio" id="w100" name="calcWeightRadio" value="100" class="hidden-radio" onchange="toggleManualWeight()">
+                            <label for="w100" class="pill-label">100g</label>
 
-                <!-- Bagian ini muncul jika Custom Color dipilih -->
-                <div class="calc-group" id="colorCirclesGroup" style="display: none;">
-                    <label style="background: transparent; color: var(--gray); border: none; font-size: 0.65rem; padding: 0; margin-bottom: 0;">SELECT SPECIFIC COLOR</label>
-                    <div class="color-circles-wrapper">
-                        <!-- Circle buttons with original hair background colors -->
-                        <input type="radio" id="circ_1" name="calcColorSelection" value="1" class="hidden-radio" onchange="toggleColorInput()">
-                        <label for="circ_1" class="color-circle-label" style="background-color: #000000; color: #fff;" title="1">1</label>
+                            <input type="radio" id="w200" name="calcWeightRadio" value="200" class="hidden-radio" onchange="toggleManualWeight()">
+                            <label for="w200" class="pill-label">200g</label>
+
+                            <input type="radio" id="w300" name="calcWeightRadio" value="300" class="hidden-radio" onchange="toggleManualWeight()">
+                            <label for="w300" class="pill-label">300g</label>
+
+                            <input type="radio" id="w400" name="calcWeightRadio" value="400" class="hidden-radio" onchange="toggleManualWeight()">
+                            <label for="w400" class="pill-label">400g</label>
+
+                            <input type="radio" id="w500" name="calcWeightRadio" value="500" class="hidden-radio" onchange="toggleManualWeight()">
+                            <label for="w500" class="pill-label">500g</label>
+
+                            <input type="radio" id="wCustom" name="calcWeightRadio" value="Custom" class="hidden-radio" onchange="toggleManualWeight()">
+                            <label for="wCustom" class="pill-label">Manual</label>
+                        </div>
                         
-                        <input type="radio" id="circ_1b" name="calcColorSelection" value="1b" class="hidden-radio" onchange="toggleColorInput()">
-                        <label for="circ_1b" class="color-circle-label" style="background-color: #1c1c1c; color: #fff;" title="1b">1b</label>
-
-                        <input type="radio" id="circ_2" name="calcColorSelection" value="2" class="hidden-radio" onchange="toggleColorInput()">
-                        <label for="circ_2" class="color-circle-label" style="background-color: #2a201c; color: #fff;" title="2">2</label>
-
-                        <input type="radio" id="circ_3" name="calcColorSelection" value="3" class="hidden-radio" onchange="toggleColorInput()">
-                        <label for="circ_3" class="color-circle-label" style="background-color: #362820; color: #fff;" title="3">3</label>
-
-                        <input type="radio" id="circ_4" name="calcColorSelection" value="4" class="hidden-radio" onchange="toggleColorInput()">
-                        <label for="circ_4" class="color-circle-label" style="background-color: #473426; color: #fff;" title="4">4</label>
-
-                        <input type="radio" id="circ_5" name="calcColorSelection" value="5" class="hidden-radio" onchange="toggleColorInput()">
-                        <label for="circ_5" class="color-circle-label" style="background-color: #5a4030; color: #fff;" title="5">5</label>
-
-                        <input type="radio" id="circ_6" name="calcColorSelection" value="6" class="hidden-radio" onchange="toggleColorInput()">
-                        <label for="circ_6" class="color-circle-label" style="background-color: #694b37; color: #fff;" title="6">6</label>
-
-                        <input type="radio" id="circ_7" name="calcColorSelection" value="7" class="hidden-radio" onchange="toggleColorInput()">
-                        <label for="circ_7" class="color-circle-label" style="background-color: #7c5940; color: #fff;" title="7">7</label>
-
-                        <input type="radio" id="circ_8" name="calcColorSelection" value="8" class="hidden-radio" onchange="toggleColorInput()">
-                        <label for="circ_8" class="color-circle-label" style="background-color: #946e4a; color: #fff;" title="8">8</label>
-
-                        <input type="radio" id="circ_9" name="calcColorSelection" value="9" class="hidden-radio" onchange="toggleColorInput()">
-                        <label for="circ_9" class="color-circle-label" style="background-color: #a88158; color: #fff;" title="9">9</label>
-
-                        <input type="radio" id="circ_10" name="calcColorSelection" value="10" class="hidden-radio" onchange="toggleColorInput()">
-                        <label for="circ_10" class="color-circle-label" style="background-color: #c19b68; color: #000;" title="10">10</label>
-
-                        <input type="radio" id="circ_12" name="calcColorSelection" value="12" class="hidden-radio" onchange="toggleColorInput()">
-                        <label for="circ_12" class="color-circle-label" style="background-color: #d1ae7a; color: #000;" title="12">12</label>
-
-                        <input type="radio" id="circ_14" name="calcColorSelection" value="14" class="hidden-radio" onchange="toggleColorInput()">
-                        <label for="circ_14" class="color-circle-label" style="background-color: #e0c28e; color: #000;" title="14">14</label>
-
-                        <input type="radio" id="circ_16" name="calcColorSelection" value="16" class="hidden-radio" onchange="toggleColorInput()">
-                        <label for="circ_16" class="color-circle-label" style="background-color: #ead0a1; color: #000;" title="16">16</label>
-
-                        <input type="radio" id="circ_18" name="calcColorSelection" value="18" class="hidden-radio" onchange="toggleColorInput()">
-                        <label for="circ_18" class="color-circle-label" style="background-color: #bfa07c; color: #000;" title="18">18</label>
-
-                        <input type="radio" id="circ_22" name="calcColorSelection" value="22" class="hidden-radio" onchange="toggleColorInput()">
-                        <label for="circ_22" class="color-circle-label" style="background-color: #ecd8b1; color: #000;" title="22">22</label>
-
-                        <input type="radio" id="circ_24" name="calcColorSelection" value="24" class="hidden-radio" onchange="toggleColorInput()">
-                        <label for="circ_24" class="color-circle-label" style="background-color: #e8d2a6; color: #000;" title="24">24</label>
-
-                        <input type="radio" id="circ_27" name="calcColorSelection" value="27" class="hidden-radio" onchange="toggleColorInput()">
-                        <label for="circ_27" class="color-circle-label" style="background-color: #d39750; color: #fff;" title="27">27</label>
-
-                        <input type="radio" id="circ_30" name="calcColorSelection" value="30" class="hidden-radio" onchange="toggleColorInput()">
-                        <label for="circ_30" class="color-circle-label" style="background-color: #a15325; color: #fff;" title="30">30</label>
-
-                        <input type="radio" id="circ_33" name="calcColorSelection" value="33" class="hidden-radio" onchange="toggleColorInput()">
-                        <label for="circ_33" class="color-circle-label" style="background-color: #682914; color: #fff;" title="33">33</label>
-
-                        <input type="radio" id="circ_60" name="calcColorSelection" value="60" class="hidden-radio" onchange="toggleColorInput()">
-                        <label for="circ_60" class="color-circle-label" style="background-color: #f5ebe1; color: #000;" title="60">60</label>
-
-                        <input type="radio" id="circ_613" name="calcColorSelection" value="613" class="hidden-radio" onchange="toggleColorInput()">
-                        <label for="circ_613" class="color-circle-label" style="background-color: #fce6b1; color: #000;" title="613" style="font-size: 0.6rem;">613</label>
-                        
-                        <!-- Pilihan Ketik Sendiri (Piano, Ombre, dll) -->
-                        <input type="radio" id="circ_custom" name="calcColorSelection" value="Type" class="hidden-radio" onchange="toggleColorInput()">
-                        <label for="circ_custom" class="color-circle-label" style="width: auto; padding: 0 12px; border-radius: 16px; background: #eee; color:#333; font-weight:800;" title="Type Color">Type...</label>
-                    </div>
-                </div>
-
-                <div class="calc-group" id="specificColorGroup" style="display: none;">
-                    <label for="calcSpecificColor">TYPE SPECIFIC COLOR</label>
-                    <input type="text" id="calcSpecificColor" placeholder="e.g. Piano, Ombre, dll">
-                </div>
-                
-                <div class="calc-full">
-                    <div id="livePricePreview" style="text-align: center; font-family: 'Lato', sans-serif; font-size: 0.55rem; font-weight: 800; color: #cccccc; margin-bottom: 8px; display: none; background: var(--black); padding: 8px; border-radius: 4px; border: 1px solid #333333; text-transform: uppercase; letter-spacing: 0.5px;">
-                        Estimated Price <span id="livePriceValue" style="display: block; color: #25D366; font-size: 1rem; font-weight: 900; margin-top: 2px;">$0</span>
+                        <div id="manualWeightGroup" style="display: none; margin-top: 8px;">
+                            <input type="number" id="calcWeight" placeholder="Type grams (e.g. 1500)" min="100" step="100">
+                        </div>
                     </div>
 
-                    <button type="button" id="addBtn" class="add-item-btn" onclick="addQuoteItem()">
-                        <i class="fa-solid fa-cart-plus"></i> Add Product To Cart
-                    </button>
+                    <div class="calc-group">
+                        <label>COLOR SELECTION</label>
+                        <div class="pill-grid-2">
+                            <input type="radio" id="col_type_nat" name="calcColorType" value="Natural" class="hidden-radio" onchange="toggleColorInput()">
+                            <label for="col_type_nat" class="pill-label">Natural (Black)</label>
+
+                            <input type="radio" id="col_type_cus" name="calcColorType" value="Color" class="hidden-radio" onchange="toggleColorInput()">
+                            <label for="col_type_cus" class="pill-label">Custom Color</label>
+                        </div>
+                    </div>
+
+                    <!-- Bagian ini muncul jika Custom Color dipilih -->
+                    <div class="calc-group" id="colorCirclesGroup" style="display: none;">
+                        <div class="color-circles-wrapper">
+                            <!-- Circle buttons with original hair background colors -->
+                            <input type="radio" id="circ_1" name="calcColorSelection" value="1" class="hidden-radio" onchange="toggleColorInput()">
+                            <label for="circ_1" class="color-circle-label" style="background-color: #000000; color: #fff;" title="1">1</label>
+                            
+                            <input type="radio" id="circ_1b" name="calcColorSelection" value="1b" class="hidden-radio" onchange="toggleColorInput()">
+                            <label for="circ_1b" class="color-circle-label" style="background-color: #1c1c1c; color: #fff;" title="1b">1b</label>
+
+                            <input type="radio" id="circ_2" name="calcColorSelection" value="2" class="hidden-radio" onchange="toggleColorInput()">
+                            <label for="circ_2" class="color-circle-label" style="background-color: #2a201c; color: #fff;" title="2">2</label>
+
+                            <input type="radio" id="circ_3" name="calcColorSelection" value="3" class="hidden-radio" onchange="toggleColorInput()">
+                            <label for="circ_3" class="color-circle-label" style="background-color: #362820; color: #fff;" title="3">3</label>
+
+                            <input type="radio" id="circ_4" name="calcColorSelection" value="4" class="hidden-radio" onchange="toggleColorInput()">
+                            <label for="circ_4" class="color-circle-label" style="background-color: #473426; color: #fff;" title="4">4</label>
+
+                            <input type="radio" id="circ_5" name="calcColorSelection" value="5" class="hidden-radio" onchange="toggleColorInput()">
+                            <label for="circ_5" class="color-circle-label" style="background-color: #5a4030; color: #fff;" title="5">5</label>
+
+                            <input type="radio" id="circ_6" name="calcColorSelection" value="6" class="hidden-radio" onchange="toggleColorInput()">
+                            <label for="circ_6" class="color-circle-label" style="background-color: #694b37; color: #fff;" title="6">6</label>
+
+                            <input type="radio" id="circ_7" name="calcColorSelection" value="7" class="hidden-radio" onchange="toggleColorInput()">
+                            <label for="circ_7" class="color-circle-label" style="background-color: #7c5940; color: #fff;" title="7">7</label>
+
+                            <input type="radio" id="circ_8" name="calcColorSelection" value="8" class="hidden-radio" onchange="toggleColorInput()">
+                            <label for="circ_8" class="color-circle-label" style="background-color: #946e4a; color: #fff;" title="8">8</label>
+
+                            <input type="radio" id="circ_9" name="calcColorSelection" value="9" class="hidden-radio" onchange="toggleColorInput()">
+                            <label for="circ_9" class="color-circle-label" style="background-color: #a88158; color: #fff;" title="9">9</label>
+
+                            <input type="radio" id="circ_10" name="calcColorSelection" value="10" class="hidden-radio" onchange="toggleColorInput()">
+                            <label for="circ_10" class="color-circle-label" style="background-color: #c19b68; color: #000;" title="10">10</label>
+
+                            <input type="radio" id="circ_12" name="calcColorSelection" value="12" class="hidden-radio" onchange="toggleColorInput()">
+                            <label for="circ_12" class="color-circle-label" style="background-color: #d1ae7a; color: #000;" title="12">12</label>
+
+                            <input type="radio" id="circ_14" name="calcColorSelection" value="14" class="hidden-radio" onchange="toggleColorInput()">
+                            <label for="circ_14" class="color-circle-label" style="background-color: #e0c28e; color: #000;" title="14">14</label>
+
+                            <input type="radio" id="circ_16" name="calcColorSelection" value="16" class="hidden-radio" onchange="toggleColorInput()">
+                            <label for="circ_16" class="color-circle-label" style="background-color: #ead0a1; color: #000;" title="16">16</label>
+
+                            <input type="radio" id="circ_18" name="calcColorSelection" value="18" class="hidden-radio" onchange="toggleColorInput()">
+                            <label for="circ_18" class="color-circle-label" style="background-color: #bfa07c; color: #000;" title="18">18</label>
+
+                            <input type="radio" id="circ_22" name="calcColorSelection" value="22" class="hidden-radio" onchange="toggleColorInput()">
+                            <label for="circ_22" class="color-circle-label" style="background-color: #ecd8b1; color: #000;" title="22">22</label>
+
+                            <input type="radio" id="circ_24" name="calcColorSelection" value="24" class="hidden-radio" onchange="toggleColorInput()">
+                            <label for="circ_24" class="color-circle-label" style="background-color: #e8d2a6; color: #000;" title="24">24</label>
+
+                            <input type="radio" id="circ_27" name="calcColorSelection" value="27" class="hidden-radio" onchange="toggleColorInput()">
+                            <label for="circ_27" class="color-circle-label" style="background-color: #d39750; color: #fff;" title="27">27</label>
+
+                            <input type="radio" id="circ_30" name="calcColorSelection" value="30" class="hidden-radio" onchange="toggleColorInput()">
+                            <label for="circ_30" class="color-circle-label" style="background-color: #a15325; color: #fff;" title="30">30</label>
+
+                            <input type="radio" id="circ_33" name="calcColorSelection" value="33" class="hidden-radio" onchange="toggleColorInput()">
+                            <label for="circ_33" class="color-circle-label" style="background-color: #682914; color: #fff;" title="33">33</label>
+
+                            <input type="radio" id="circ_60" name="calcColorSelection" value="60" class="hidden-radio" onchange="toggleColorInput()">
+                            <label for="circ_60" class="color-circle-label" style="background-color: #f5ebe1; color: #000;" title="60">60</label>
+
+                            <input type="radio" id="circ_613" name="calcColorSelection" value="613" class="hidden-radio" onchange="toggleColorInput()">
+                            <label for="circ_613" class="color-circle-label" style="background-color: #fce6b1; color: #000;" title="613" style="font-size: 0.6rem;">613</label>
+                            
+                            <!-- Pilihan Ketik Sendiri (Piano, Ombre, dll) -->
+                            <input type="radio" id="circ_custom" name="calcColorSelection" value="Type" class="hidden-radio" onchange="toggleColorInput()">
+                            <label for="circ_custom" class="color-circle-label" style="width: auto; padding: 0 12px; border-radius: 16px; background: #eee; color:#333; font-weight:800;" title="Type Color">Type...</label>
+                        </div>
+                    </div>
+
+                    <div class="calc-group" id="specificColorGroup" style="display: none;">
+                        <label for="calcSpecificColor">TYPE SPECIFIC COLOR</label>
+                        <input type="text" id="calcSpecificColor" placeholder="e.g. Piano, Ombre, dll">
+                    </div>
+                    
+                    <div class="calc-full">
+                        <div id="livePricePreview" style="text-align: center; font-family: 'Lato', sans-serif; font-size: 0.55rem; font-weight: 800; color: #cccccc; margin-bottom: 8px; display: none; background: var(--black); padding: 8px; border-radius: 4px; border: 1px solid #333333; text-transform: uppercase; letter-spacing: 0.5px;">
+                            Estimated Price <span id="livePriceValue" style="display: block; color: #25D366; font-size: 1rem; font-weight: 900; margin-top: 2px;">$0</span>
+                        </div>
+
+                        <button type="button" id="addBtn" class="add-item-btn" onclick="addQuoteItem()">
+                            <i class="fa-solid fa-cart-plus"></i> Add Product To Cart
+                        </button>
+                    </div>
                 </div>
             </div>
+            
+            <!-- Sisi Kanan (Desktop) / Modal (HP): Panel Cart -->
+            <div id="cartPanel" class="cart-panel" data-aos="fade-up" data-aos-delay="100">
+                <div class="checkout-modal-content" style="max-height: 90vh; display: flex; flex-direction: column;">
+                    <div class="checkout-modal-header" style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #eaeaea; padding-bottom: 10px; margin-bottom: 10px;">
+                        <h3 style="margin: 0; font-family: 'Lato', sans-serif; font-size: 1.2rem; font-weight: 900; color: var(--black); text-transform: uppercase;">
+                            <i class="fa-solid fa-cart-shopping" style="color: #25D366;"></i> Shopping Cart
+                        </h3>
+                        <span id="closeCartBtn" onclick="closeCartModal()" style="font-size: 1.8rem; cursor: pointer; color: var(--gray); line-height: 1;">&times;</span>
+                    </div>
+                    
+                    <div style="overflow-y: auto; flex: 1; padding-right: 5px; margin-bottom: 10px;">
+                        
+                        <div id="upsellContainer" class="upsell-container" style="display: none;">
+                            <div id="upsellText" class="upsell-text"></div>
+                            <div class="progress-bar-bg">
+                                <div id="upsellProgressBar" class="progress-bar-fill"></div>
+                            </div>
+                        </div>
+
+                        <div id="quoteItemList" class="quote-item-list">
+                            <!-- Helper text kalau kosong di Desktop -->
+                            <div style='text-align:center; padding:20px 0; color:var(--gray); font-size: 0.85rem; font-weight: 700;'>Your cart is empty.</div>
+                        </div>
+                        
+                        <details class="payment-accordion" id="paymentAccordion">
+                            <summary class="payment-summary">
+                                <div style="display: flex; align-items: center; justify-content: space-between; width: 100%; gap: 8px; overflow: hidden;">
+                                    <span style="white-space: nowrap; flex-shrink: 0;"><i class="fa-solid fa-credit-card" style="margin-right: 5px; color: var(--circle-pink);"></i> Select Payment</span>
+                                    <span id="selectedPaymentText" style="color: #25D366; font-size: 0.65rem; font-weight: 900; display: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; background: #e8f9ee; padding: 4px 8px; border-radius: 4px; text-align: right;"></span>
+                                </div>
+                            </summary>
+                            <div class="payment-accordion-content">
+                                <div class="pill-grid-payment" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
+                                    <input type="radio" id="pay1" name="calcPayment" value="Western Union" class="hidden-radio">
+                                    <label for="pay1" class="pill-label payment-pill">Western Union</label>
+
+                                    <input type="radio" id="pay2" name="calcPayment" value="MoneyGram" class="hidden-radio">
+                                    <label for="pay2" class="pill-label payment-pill">MoneyGram</label>
+
+                                    <input type="radio" id="pay3" name="calcPayment" value="PayPal" class="hidden-radio">
+                                    <label for="pay3" class="pill-label payment-pill">PayPal</label>
+
+                                    <input type="radio" id="pay4" name="calcPayment" value="USDT" class="hidden-radio">
+                                    <label for="pay4" class="pill-label payment-pill">USDT</label>
+
+                                    <input type="radio" id="pay5" name="calcPayment" value="Bank Transfer" class="hidden-radio">
+                                    <label for="pay5" class="pill-label payment-pill" style="position: relative; grid-column: span 2;">
+                                        <span style="position: absolute; top: -6px; left: -6px; background: #FF1E1E; color: var(--white); font-size: 0.45rem; padding: 2px 5px; border-radius: 4px; font-weight: 900; letter-spacing: 0.5px; box-shadow: 0 2px 4px rgba(0,0,0,0.2); z-index: 1;">RECOMMENDED</span>
+                                        <span>Bank Transfer</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </details>
+
+                        <div class="shipping-estimator">
+                            <h4><i class="fa-solid fa-truck-fast" style="margin-right: 5px; color: var(--circle-pink);"></i> Shipping</h4>
+                            <div class="estimator-form">
+                                <div class="form-group-ship">
+                                    <label for="shipCountry">Country</label>
+                                    <input type="text" list="countryList" id="shipCountry" placeholder="Destination Country...">
+                                    <datalist id="countryList"></datalist>
+                                </div>
+                                
+                                <div class="form-group-ship">
+                                    <label for="shipCourier">Courier</label>
+                                    <select id="shipCourier">
+                                        <option value="" disabled selected>Select Courier</option>
+                                        <option value="DHL Express">DHL Express</option>
+                                        <option value="FedEx">FedEx</option>
+                                        <option value="EMS">EMS</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div id="shippingResult" style="display: none;">
+                                <div class="ship-stats">
+                                   <div class="stat-row"><span>Est. Weight</span> <strong id="shipWeight">0.5 kg</strong></div>
+                                   <div class="stat-row"><span>Shipping Cost</span> <strong id="shipCost">$0.00</strong></div>
+                                   <div class="stat-row"><span>Transit Time</span> <strong id="shipTransit">4 days</strong></div>
+                                </div>
+
+                                <div id="estArrivalBox" class="est-arrival-box">
+                                    <div class="est-arrival-icon">
+                                        <i class="fa-regular fa-calendar-check"></i>
+                                    </div>
+                                    <div class="est-arrival-text">
+                                        <span>Estimated Arrival</span>
+                                        <strong id="shipEstDate">July 11, 2026</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div style="border-top: 2px solid #eaeaea; padding-top: 15px; margin-top: auto;">
+                        <button type="button" class="calc-btn" onclick="prepareCheckout()" style="width: 100%; margin: 0; font-size: 1rem;">
+                            Review Order <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Akhir Sisi Kanan (Cart Panel) -->
         </div>
     </section>
 
@@ -1418,6 +1572,7 @@
         <i class="fa-solid fa-arrow-up"></i>
     </a>
 
+    <!-- Sticky banner khusus Mobile -->
     <div id="stickyCartBanner" class="sticky-cart-banner" onclick="openCartModal()">
         <div class="sticky-cart-info">
             <span id="stickyCartItems">0 ITEM(S) IN CART</span>
@@ -1426,105 +1581,7 @@
         <button class="sticky-cart-btn"><i class="fa-solid fa-cart-shopping"></i> View Cart</button>
     </div>
 
-    <div id="cartModal" class="lightbox">
-        <div class="lightbox-content checkout-modal-content" style="max-height: 90vh; display: flex; flex-direction: column; padding: 20px;">
-            <div class="checkout-modal-header" style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #eaeaea; padding-bottom: 10px; margin-bottom: 10px;">
-                <h3 style="margin: 0; font-family: 'Lato', sans-serif; font-size: 1.2rem; font-weight: 900; color: var(--black); text-transform: uppercase;">
-                    <i class="fa-solid fa-cart-shopping" style="color: #25D366;"></i> Shopping Cart
-                </h3>
-                <span onclick="closeCartModal()" style="font-size: 1.8rem; cursor: pointer; color: var(--gray); line-height: 1;">&times;</span>
-            </div>
-            
-            <div style="overflow-y: auto; flex: 1; padding-right: 5px; margin-bottom: 10px;">
-                
-                <div id="upsellContainer" class="upsell-container" style="display: none;">
-                    <div id="upsellText" class="upsell-text"></div>
-                    <div class="progress-bar-bg">
-                        <div id="upsellProgressBar" class="progress-bar-fill"></div>
-                    </div>
-                </div>
-
-                <div id="quoteItemList" class="quote-item-list"></div>
-                
-                <details class="payment-accordion" id="paymentAccordion">
-                    <summary class="payment-summary">
-                        <div style="display: flex; align-items: center; justify-content: space-between; width: 100%; gap: 8px; overflow: hidden;">
-                            <span style="white-space: nowrap; flex-shrink: 0;"><i class="fa-solid fa-credit-card" style="margin-right: 5px; color: var(--circle-pink);"></i> Select Payment</span>
-                            <span id="selectedPaymentText" style="color: #25D366; font-size: 0.65rem; font-weight: 900; display: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; background: #e8f9ee; padding: 4px 8px; border-radius: 4px; text-align: right;"></span>
-                        </div>
-                    </summary>
-                    <div class="payment-accordion-content">
-                        <div class="pill-grid-payment" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
-                            <input type="radio" id="pay1" name="calcPayment" value="Western Union" class="hidden-radio">
-                            <label for="pay1" class="pill-label payment-pill">Western Union</label>
-
-                            <input type="radio" id="pay2" name="calcPayment" value="MoneyGram" class="hidden-radio">
-                            <label for="pay2" class="pill-label payment-pill">MoneyGram</label>
-
-                            <input type="radio" id="pay3" name="calcPayment" value="PayPal" class="hidden-radio">
-                            <label for="pay3" class="pill-label payment-pill">PayPal</label>
-
-                            <input type="radio" id="pay4" name="calcPayment" value="USDT" class="hidden-radio">
-                            <label for="pay4" class="pill-label payment-pill">USDT</label>
-
-                            <input type="radio" id="pay5" name="calcPayment" value="Bank Transfer" class="hidden-radio">
-                            <label for="pay5" class="pill-label payment-pill" style="position: relative; grid-column: span 2;">
-                                <span style="position: absolute; top: -6px; left: -6px; background: #FF1E1E; color: var(--white); font-size: 0.45rem; padding: 2px 5px; border-radius: 4px; font-weight: 900; letter-spacing: 0.5px; box-shadow: 0 2px 4px rgba(0,0,0,0.2); z-index: 1;">RECOMMENDED</span>
-                                <span>Bank Transfer</span>
-                            </label>
-                        </div>
-                    </div>
-                </details>
-
-                <div class="shipping-estimator">
-                    <h4><i class="fa-solid fa-truck-fast" style="margin-right: 5px; color: var(--circle-pink);"></i> Shipping</h4>
-                    <div class="estimator-form">
-                        <div class="form-group-ship">
-                            <label for="shipCountry">Country</label>
-                            <input type="text" list="countryList" id="shipCountry" placeholder="Destination Country...">
-                            <datalist id="countryList"></datalist>
-                        </div>
-                        
-                        <div class="form-group-ship">
-                            <label for="shipCourier">Courier</label>
-                            <select id="shipCourier">
-                                <option value="" disabled selected>Select Courier</option>
-                                <option value="DHL Express">DHL Express</option>
-                                <option value="FedEx">FedEx</option>
-                                <option value="EMS">EMS</option>
-                            </select>
-                        </div>
-                    </div>
-                    
-                    <div id="shippingResult" style="display: none;">
-                        <div class="ship-stats">
-                           <div class="stat-row"><span>📦 Est. Weight</span> <strong id="shipWeight">0.5 kg</strong></div>
-                           <div class="stat-row"><span>💵 Shipping Cost</span> <strong id="shipCost">$0.00</strong></div>
-                           <div class="stat-row"><span>⏱ Transit Time</span> <strong id="shipTransit">4 days</strong></div>
-                        </div>
-
-                        <div id="estArrivalBox" class="est-arrival-box">
-                            <div class="est-arrival-icon">
-                                <i class="fa-regular fa-calendar-check"></i>
-                            </div>
-                            <div class="est-arrival-text">
-                                <span>Estimated Arrival</span>
-                                <strong id="shipEstDate">July 11, 2026</strong>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <div style="border-top: 2px solid #eaeaea; padding-top: 15px; margin-top: auto;">
-                <button type="button" class="calc-btn" onclick="prepareCheckout()" style="width: 100%; margin: 0; font-size: 1rem;">
-                    Review Order <i class="fa-solid fa-arrow-right"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-
+    <!-- Modal Konfirmasi Akhir (Review Order Sebelum Chat WA) -->
     <div id="checkoutModal" class="lightbox">
         <div class="lightbox-content checkout-modal-content">
             <div class="checkout-modal-header">
@@ -1539,6 +1596,7 @@
         </div>
     </div>
 
+    <!-- Image Zooming Modal -->
     <div id="imageLightbox" class="lightbox">
         <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
         <span class="lightbox-arrow lightbox-prev" onclick="showImage(currentIndex - 1); event.stopPropagation();">&#10094;</span>
@@ -1681,19 +1739,22 @@
 
         function openCartModal() {
             if (quoteItems.length === 0) return;
-            document.getElementById('cartModal').classList.add('show');
-            document.body.style.overflow = 'hidden';
+            document.getElementById('cartPanel').classList.add('show');
+            if (window.innerWidth <= 768) {
+                document.body.style.overflow = 'hidden';
+            }
             calculateShipping(); // Update estimasi ongkir
         }
 
         function closeCartModal() {
-            document.getElementById('cartModal').classList.remove('show');
+            document.getElementById('cartPanel').classList.remove('show');
             document.body.style.overflow = '';
         }
 
         function backToCart() {
             document.getElementById('checkoutModal').classList.remove('show');
-            openCartModal(); 
+            // Hanya pop-up modal khusus versi mobile
+            if (window.innerWidth <= 768) openCartModal(); 
         }
 
         // FUNGSI UNTUK MENAMPILKAN PEMBAYARAN DAN MENUTUP ACCORDION OTOMATIS
@@ -1980,7 +2041,10 @@
             addBtn.innerHTML = '<i class="fa-solid fa-check"></i> Update Product';
             addBtn.style.backgroundColor = '#25D366'; 
 
-            updateLivePrice(); closeCartModal(); document.getElementById('quote').scrollIntoView({behavior: 'smooth'});
+            updateLivePrice(); 
+            // Jika di HP, tutup modal biar bisa ngedit
+            if (window.innerWidth <= 768) closeCartModal(); 
+            document.getElementById('quote').scrollIntoView({behavior: 'smooth'});
         }
 
         function removeQuoteItem(index) {
@@ -2001,8 +2065,15 @@
             let currentTotal = 0; let currentWeight = 0;
 
             if (quoteItems.length === 0) {
+                listDiv.innerHTML = "<div style='text-align:center; padding:20px 0; color:var(--gray); font-size: 0.85rem; font-weight: 700;'>Your cart is empty.</div>";
                 document.getElementById('stickyCartBanner').classList.remove('show');
-                closeCartModal(); 
+                if (window.innerWidth <= 768) closeCartModal(); 
+                
+                checkoutState.totalWeight = 0;
+                calculateShipping();
+                
+                const upsellContainer = document.getElementById('upsellContainer');
+                if(upsellContainer) upsellContainer.style.display = 'none';
                 return; 
             }
 
@@ -2099,7 +2170,7 @@
                 return;
             }
             
-            document.getElementById('cartModal').classList.remove('show');
+            if (window.innerWidth <= 768) closeCartModal();
 
             const paymentSelect = paymentElement.value;
 
@@ -2151,7 +2222,7 @@
             let courierStr = checkoutState.courierInfo ? checkoutState.courierInfo : "Courier";
             let destStr = checkoutState.destCountry ? checkoutState.destCountry : "Destination";
             let shippingText = checkoutState.isCustomShipping ? "Calculated via WhatsApp" : "$" + checkoutState.shippingFee.toFixed(2);
-            modalHTML += `<div class="modal-summary-row"><span>Shipping (${courierStr} to ${destStr}):</span><strong style="${checkoutState.isCustomShipping ? 'color: var(--circle-pink); font-size: 0.8rem;' : ''}">${shippingText}</strong></div>`;
+            modalHTML += `<div class="modal-summary-row"><span>Shipping (${courierStr} to ${destStr}):</span><strong style="${checkoutState.isCustomShipping ? 'color: var(--circle-pink);' : ''}">${shippingText}</strong></div>`;
 
             modalHTML += `<div id="discountRow" class="modal-summary-row" style="color:var(--circle-pink); display: none;"><span id="discountName">Promo:</span><strong id="discountValue">-$0</strong></div>`;
             
