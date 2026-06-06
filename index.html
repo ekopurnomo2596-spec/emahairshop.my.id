@@ -66,14 +66,14 @@
             transition: all 0.4s ease;
         }
         
-        /* Desain Logo Lengkap dengan Garis di Navigasi */
-        .logo-nav-container { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 140px; }
+        /* Desain Logo Lengkap dengan Garis di Navigasi (Ukuran Dikecilkan) */
+        .logo-nav-container { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 110px; }
         .logo-nav-container .logo-top { display: flex; align-items: center; width: 100%; margin-bottom: -1px; }
         .logo-nav-container .line-top { height: 1.5px; background-color: var(--black); flex-grow: 1; margin-right: 4px; }
-        .logo-nav-container .text-ext { color: var(--black); font-family: 'Lato', sans-serif; font-weight: 900; font-size: 0.45rem; letter-spacing: 2px; text-transform: uppercase; }
-        .logo-nav-container .logo-main { color: var(--black); font-family: 'Arial Black', 'Lato', sans-serif; font-weight: 900; font-size: 1.25rem; letter-spacing: 0.5px; line-height: 1.1; text-transform: uppercase; }
+        .logo-nav-container .text-ext { color: var(--black); font-family: 'Lato', sans-serif; font-weight: 900; font-size: 0.35rem; letter-spacing: 2px; text-transform: uppercase; }
+        .logo-nav-container .logo-main { color: var(--black); font-family: 'Arial Black', 'Lato', sans-serif; font-weight: 900; font-size: 1rem; letter-spacing: 0.5px; line-height: 1.1; text-transform: uppercase; }
         .logo-nav-container .line-bottom { width: 95%; height: 1.5px; background-color: var(--black); margin: 0px auto 1px auto; }
-        .logo-nav-container .logo-year { color: var(--gold); font-family: 'Lato', sans-serif; font-weight: 900; font-size: 0.55rem; letter-spacing: 1.5px; }
+        .logo-nav-container .logo-year { color: var(--gold); font-family: 'Lato', sans-serif; font-weight: 900; font-size: 0.45rem; letter-spacing: 1.5px; }
 
         .quick-nav { display: flex; gap: 15px; }
         .quick-nav a { display: flex; align-items: center; justify-content: center; background-color: var(--black); color: var(--white); padding: 10px 20px; border-radius: 8px; font-size: 0.8rem; font-weight: 800; text-decoration: none; letter-spacing: 1px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); gap: 8px; transition: 0.3s; }
@@ -441,9 +441,11 @@
             
             .nav-brand { overflow: hidden; }
             .nav-brand.mobile-hide { opacity: 0; height: 0; margin: 0; padding: 0; border: none; pointer-events: none; }
-            .logo-nav-container { width: 160px; margin-bottom: 5px;}
-            .logo-nav-container .logo-main { font-size: 1.45rem; }
-            .logo-nav-container .text-ext { font-size: 0.5rem; }
+            
+            /* Logo di HP lebih kecil lagi supaya tidak keluar */
+            .logo-nav-container { width: 100px; margin-bottom: 2px;}
+            .logo-nav-container .logo-main { font-size: 0.9rem; }
+            .logo-nav-container .text-ext { font-size: 0.35rem; }
 
             .quick-nav { display: flex; width: 100%; justify-content: center; gap: 10px; }
             .quick-nav a { flex: 1; display: flex; flex-direction: row; align-items: center; justify-content: center; background-color: var(--black); color: var(--white); padding: 8px 5px; border-radius: 6px; font-size: 0.65rem; font-weight: 800; text-decoration: none; letter-spacing: 0.5px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); gap: 5px; white-space: nowrap; }
@@ -575,6 +577,11 @@
     </nav>
 
     <section id="about" class="about">
+        <!-- Teks pembuka kecil untuk mempermanis tanpa logo besar -->
+        <div data-aos="fade-down" style="margin-bottom: 20px;">
+             <span style="color: var(--gold); font-family: 'Lato', sans-serif; font-size: 0.8rem; font-weight: 900; letter-spacing: 3px; text-transform: uppercase;">Premium Quality Manufacturer</span>
+        </div>
+
         <div class="product-preview-gallery">
             <div class="preview-box preview-left" data-aos="fade-right">
                 <img src="hairbulk2.webp" alt="Premium Hair Extensions Showcase Emahairshop">
@@ -661,17 +668,7 @@
                                 <tr><td>Raw Material</td><td>100% Human Remy Hair</td></tr>
                                 <tr><td>Hair Quality</td><td>Double Drawn / Super Double Drawn</td></tr>
                                 <tr><td>Length</td><td>11"–28"</td></tr>
-                            </table>
-                        </div>
-                    </details>
-                    <details class="custom-details">
-                        <summary class="custom-summary">Shipping Information</summary>
-                        <div class="details-content">
-                            <table class="detail-table">
-                                <tr><th>Information</th><th>Available</th></tr>
-                                <tr><td>DHL</td><td><i class="fa-solid fa-check check-icon"></i> </td></tr>
-                                <tr><td>EMS</td><td><i class="fa-solid fa-check check-icon"></i> </td></tr>
-                                <tr><td>FedEx</td><td><i class="fa-solid fa-check check-icon"></i> </td></tr>
+                                <tr><td>Long Lasting</td><td>12-24 Months</td></tr>
                             </table>
                         </div>
                     </details>
@@ -705,17 +702,7 @@
                                 <tr><td>Raw Material</td><td>100% Human Remy Hair</td></tr>
                                 <tr><td>Hair Quality</td><td>Double Drawn / Super Double Drawn</td></tr>
                                 <tr><td>Length</td><td>11"–28"</td></tr>
-                            </table>
-                        </div>
-                    </details>
-                    <details class="custom-details">
-                        <summary class="custom-summary">Shipping Information</summary>
-                        <div class="details-content">
-                            <table class="detail-table">
-                                <tr><th>Information</th><th>Available</th></tr>
-                                <tr><td>DHL</td><td><i class="fa-solid fa-check check-icon"></i> </td></tr>
-                                <tr><td>EMS</td><td><i class="fa-solid fa-check check-icon"></i> </td></tr>
-                                <tr><td>FedEx</td><td><i class="fa-solid fa-check check-icon"></i> </td></tr>
+                                <tr><td>Long Lasting</td><td>12-24 Months</td></tr>
                             </table>
                         </div>
                     </details>
@@ -748,17 +735,7 @@
                                 <tr><td>Raw Material</td><td>100% Human Remy Hair</td></tr>
                                 <tr><td>Hair Quality</td><td>Double Drawn / Super Double Drawn</td></tr>
                                 <tr><td>Length</td><td>11"–28"</td></tr>
-                            </table>
-                        </div>
-                    </details>
-                    <details class="custom-details">
-                        <summary class="custom-summary">Shipping Information</summary>
-                        <div class="details-content">
-                            <table class="detail-table">
-                                <tr><th>Information</th><th>Available</th></tr>
-                                <tr><td>DHL</td><td><i class="fa-solid fa-check check-icon"></i> </td></tr>
-                                <tr><td>EMS</td><td><i class="fa-solid fa-check check-icon"></i> </td></tr>
-                                <tr><td>FedEx</td><td><i class="fa-solid fa-check check-icon"></i> </td></tr>
+                                <tr><td>Long Lasting</td><td>12-24 Months</td></tr>
                             </table>
                         </div>
                     </details>
@@ -792,17 +769,7 @@
                                 <tr><td>Raw Material</td><td>100% Human Remy Hair</td></tr>
                                 <tr><td>Hair Quality</td><td>Double Drawn / Super Double Drawn</td></tr>
                                 <tr><td>Length</td><td>11"–28"</td></tr>
-                            </table>
-                        </div>
-                    </details>
-                    <details class="custom-details">
-                        <summary class="custom-summary">Shipping Information</summary>
-                        <div class="details-content">
-                            <table class="detail-table">
-                                <tr><th>Information</th><th>Available</th></tr>
-                                <tr><td>DHL</td><td><i class="fa-solid fa-check check-icon"></i> </td></tr>
-                                <tr><td>EMS</td><td><i class="fa-solid fa-check check-icon"></i> </td></tr>
-                                <tr><td>FedEx</td><td><i class="fa-solid fa-check check-icon"></i> </td></tr>
+                                <tr><td>Long Lasting</td><td>12-24 Months</td></tr>
                             </table>
                         </div>
                     </details>
@@ -836,17 +803,7 @@
                                 <tr><td>Raw Material</td><td>100% Human Remy Hair</td></tr>
                                 <tr><td>Hair Quality</td><td>Double Drawn / Super Double Drawn</td></tr>
                                 <tr><td>Length</td><td>11"–28"</td></tr>
-                            </table>
-                        </div>
-                    </details>
-                    <details class="custom-details">
-                        <summary class="custom-summary">Shipping Information</summary>
-                        <div class="details-content">
-                            <table class="detail-table">
-                                <tr><th>Information</th><th>Available</th></tr>
-                                <tr><td>DHL</td><td><i class="fa-solid fa-check check-icon"></i> </td></tr>
-                                <tr><td>EMS</td><td><i class="fa-solid fa-check check-icon"></i> </td></tr>
-                                <tr><td>FedEx</td><td><i class="fa-solid fa-check check-icon"></i> </td></tr>
+                                <tr><td>Long Lasting</td><td>12-24 Months</td></tr>
                             </table>
                         </div>
                     </details>
@@ -879,17 +836,7 @@
                                 <tr><td>Raw Material</td><td>100% Human Remy Hair</td></tr>
                                 <tr><td>Hair Quality</td><td>Double Drawn / Super Double Drawn</td></tr>
                                 <tr><td>Length</td><td>11"–28"</td></tr>
-                            </table>
-                        </div>
-                    </details>
-                    <details class="custom-details">
-                        <summary class="custom-summary">Shipping Information</summary>
-                        <div class="details-content">
-                            <table class="detail-table">
-                                <tr><th>Information</th><th>Available</th></tr>
-                                <tr><td>DHL</td><td><i class="fa-solid fa-check check-icon"></i> </td></tr>
-                                <tr><td>EMS</td><td><i class="fa-solid fa-check check-icon"></i> </td></tr>
-                                <tr><td>FedEx</td><td><i class="fa-solid fa-check check-icon"></i> </td></tr>
+                                <tr><td>Long Lasting</td><td>12-24 Months</td></tr>
                             </table>
                         </div>
                     </details>
@@ -1963,7 +1910,10 @@
                 document.querySelector(`input[name="calcColorType"][value="Natural"]`).checked = true;
             } else {
                 document.querySelector(`input[name="calcColorType"][value="Color"]`).checked = true;
-                document.getElementById('calcSpecificColor').value = item.displayColor;
+                // Hilangkan # saat diedit kembali jika diinginkan, atau biarkan
+                let colorVal = item.displayColor;
+                if (colorVal.startsWith('#')) colorVal = colorVal.substring(1);
+                document.getElementById('calcSpecificColor').value = colorVal;
             }
             toggleColorInput();
 
