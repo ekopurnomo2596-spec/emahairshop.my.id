@@ -363,7 +363,7 @@
             .calc-form { grid-template-columns: 1fr; gap: 5px !important; width: 100%; box-sizing: border-box; margin: 0; } 
             .calc-full { grid-column: span 1; } 
             .calc-group { gap: 2px !important; width: 100%; box-sizing: border-box; }
-            .calc-group select, .calc-group input { padding: 8px 10px; font-size: 0.8rem; width: 100%; box-sizing: border-box; height: 35px; margin: 0;} 
+            .calc-group select, .calc-group input[type="number"], .calc-group input[type="text"] { padding: 8px 10px; font-size: 0.8rem; width: 100%; box-sizing: border-box; height: 35px; margin: 0;} 
             .calc-header h3 { font-size: 1.2rem; white-space: normal; line-height: 1.2; margin-bottom: 2px; } 
             .calc-header p { font-size: 0.7rem; white-space: normal; line-height: 1.4; letter-spacing: 0; font-weight: 400; margin:0;}
             
@@ -403,8 +403,8 @@
         
         .calc-group > label:not(.pill-label) { display: flex; justify-content: center; align-items: center; background-color: rgba(47, 78, 55, 0.08); color: var(--green); border: 1px solid rgba(47, 78, 55, 0.2); font-size: 0.8rem; font-weight: 800; padding: 8px 10px; margin: 10px 0 10px 0; letter-spacing: 2px; text-transform: uppercase; text-align: center; width: 100%; border-radius: 4px; box-sizing: border-box; }
         
-        .calc-group select, .calc-group input { width: 100%; box-sizing: border-box; padding: 12px 15px; border: 1px solid #ccc; border-radius: 8px; font-family: 'Lato', sans-serif; font-size: 0.9rem; outline: none; transition: 0.3s; background: var(--white); text-align: center; font-weight: 400; }
-        .calc-group select:focus, .calc-group input:focus { border-color: #25D366; box-shadow: 0 0 5px rgba(37, 211, 102, 0.3); }
+        .calc-group select, .calc-group input[type="number"], .calc-group input[type="text"] { width: 100%; box-sizing: border-box; padding: 12px 15px; border: 1px solid #ccc; border-radius: 8px; font-family: 'Lato', sans-serif; font-size: 0.9rem; outline: none; transition: 0.3s; background: var(--white); text-align: center; font-weight: 400; }
+        .calc-group select:focus, .calc-group input[type="number"]:focus, .calc-group input[type="text"]:focus { border-color: #25D366; box-shadow: 0 0 5px rgba(37, 211, 102, 0.3); }
         .calc-full { grid-column: span 1; width: 100%; }
 
         .pill-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; width: 100%; }
@@ -1210,8 +1210,30 @@
                 </div>
                 
                 <div class="calc-group">
-                    <label for="calcWeight">QUANTITY NEEDED (GRAMS)</label>
-                    <input type="number" id="calcWeight" placeholder="e.g. 500" min="100" step="100">
+                    <label>QUANTITY (GRAMS)</label>
+                    <div class="pill-grid-3">
+                        <input type="radio" id="w100" name="calcWeightRadio" value="100" class="hidden-radio" onchange="toggleManualWeight()">
+                        <label for="w100" class="pill-label">100g</label>
+
+                        <input type="radio" id="w200" name="calcWeightRadio" value="200" class="hidden-radio" onchange="toggleManualWeight()">
+                        <label for="w200" class="pill-label">200g</label>
+
+                        <input type="radio" id="w300" name="calcWeightRadio" value="300" class="hidden-radio" onchange="toggleManualWeight()">
+                        <label for="w300" class="pill-label">300g</label>
+
+                        <input type="radio" id="w400" name="calcWeightRadio" value="400" class="hidden-radio" onchange="toggleManualWeight()">
+                        <label for="w400" class="pill-label">400g</label>
+
+                        <input type="radio" id="w500" name="calcWeightRadio" value="500" class="hidden-radio" onchange="toggleManualWeight()">
+                        <label for="w500" class="pill-label">500g</label>
+
+                        <input type="radio" id="wCustom" name="calcWeightRadio" value="Custom" class="hidden-radio" onchange="toggleManualWeight()">
+                        <label for="wCustom" class="pill-label">Manual</label>
+                    </div>
+                    
+                    <div id="manualWeightGroup" style="display: none; margin-top: 8px;">
+                        <input type="number" id="calcWeight" placeholder="Type grams (e.g. 1500)" min="100" step="100">
+                    </div>
                 </div>
 
                 <div class="calc-group">
@@ -1231,8 +1253,8 @@
                 </div>
                 
                 <div class="calc-full">
-                    <div id="livePricePreview" style="text-align: center; font-family: 'Lato', sans-serif; font-size: 0.65rem; font-weight: 800; color: var(--dark-blue); margin-bottom: 12px; display: none; background: #e8f9ee; padding: 6px; border-radius: 6px; border: 1px dashed #25D366; text-transform: uppercase; letter-spacing: 1px;">
-                        Estimated Price: <span id="livePriceValue" style="color: #25D366; font-size: 0.95rem; font-weight: 900;">$0</span>
+                    <div id="livePricePreview" style="text-align: center; font-family: 'Lato', sans-serif; font-size: 0.55rem; font-weight: 800; color: var(--dark-blue); margin-bottom: 8px; display: none; background: #e8f9ee; padding: 4px; border-radius: 4px; border: 1px dashed #25D366; text-transform: uppercase; letter-spacing: 0.5px;">
+                        Estimated Price: <span id="livePriceValue" style="color: #25D366; font-size: 0.8rem; font-weight: 900;">$0</span>
                     </div>
 
                     <button type="button" id="addBtn" class="add-item-btn" onclick="addQuoteItem()">
@@ -1604,22 +1626,43 @@
             }
         }
 
+        function toggleManualWeight() {
+            const weightElement = document.querySelector('input[name="calcWeightRadio"]:checked');
+            const val = weightElement ? weightElement.value : "";
+            const group = document.getElementById('manualWeightGroup');
+            
+            if(val === 'Custom') {
+                group.style.display = 'block';
+            } else {
+                group.style.display = 'none';
+                document.getElementById('calcWeight').value = ""; 
+            }
+        }
+
         function updateLivePrice() {
             const typeElement = document.querySelector('input[name="calcType"]:checked');
             const qualityElement = document.querySelector('input[name="calcQuality"]:checked');
             const lengthElement = document.querySelector('input[name="calcLength"]:checked');
             const colorElement = document.querySelector('input[name="calcColorType"]:checked');
-            const weightInput = document.getElementById('calcWeight').value;
+            
+            let weight = 0;
+            const weightRadio = document.querySelector('input[name="calcWeightRadio"]:checked');
+            if (weightRadio) {
+                if (weightRadio.value === 'Custom') {
+                    weight = parseFloat(document.getElementById('calcWeight').value) || 0;
+                } else {
+                    weight = parseFloat(weightRadio.value);
+                }
+            }
 
             const previewContainer = document.getElementById('livePricePreview');
             const previewValue = document.getElementById('livePriceValue');
 
-            if (typeElement && qualityElement && lengthElement && colorElement && weightInput > 0) {
+            if (typeElement && qualityElement && lengthElement && colorElement && weight > 0) {
                 const type = typeElement.value;
                 const quality = qualityElement.value;
                 const length = lengthElement.value;
                 const colorType = colorElement.value;
-                const weight = parseFloat(weightInput);
 
                 const priceType = colorType === 'Natural' ? 'nat' : 'col';
                 
@@ -1638,7 +1681,7 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('input[name="calcType"], input[name="calcQuality"], input[name="calcLength"], input[name="calcColorType"]').forEach(radio => {
+            document.querySelectorAll('input[name="calcType"], input[name="calcQuality"], input[name="calcLength"], input[name="calcColorType"], input[name="calcWeightRadio"]').forEach(radio => {
                 radio.addEventListener('change', updateLivePrice);
             });
             document.getElementById('calcWeight').addEventListener('input', updateLivePrice);
@@ -1657,11 +1700,20 @@
             const colorElement = document.querySelector('input[name="calcColorType"]:checked');
             const colorType = colorElement ? colorElement.value : "";
             
-            const weight = parseFloat(document.getElementById('calcWeight').value);
+            let weight = 0;
+            const weightRadio = document.querySelector('input[name="calcWeightRadio"]:checked');
+            if (weightRadio) {
+                if (weightRadio.value === 'Custom') {
+                    weight = parseFloat(document.getElementById('calcWeight').value) || 0;
+                } else {
+                    weight = parseFloat(weightRadio.value);
+                }
+            }
+            
             let specificColor = document.getElementById('calcSpecificColor').value.trim();
 
-            if (!type || !quality || !length || !weight || !colorType) {
-                alert("Please select all required options and fill the quantity.");
+            if (!type || !quality || !length || !weight || weight <= 0 || !colorType) {
+                alert("Please select all required options and make sure the quantity is correct.");
                 return;
             }
             
@@ -1693,11 +1745,14 @@
                 addBtn.style.backgroundColor = ''; 
             }
             
+            // Kosongkan form kembali
             if (typeElement) typeElement.checked = false;
             if (qualityElement) qualityElement.checked = false;
             if (lengthElement) lengthElement.checked = false;
             if (colorElement) colorElement.checked = false;
+            if (weightRadio) weightRadio.checked = false;
             
+            document.getElementById('manualWeightGroup').style.display = "none";
             document.getElementById('calcWeight').value = "";
             document.getElementById('calcSpecificColor').value = "";
             document.getElementById('specificColorGroup').style.display = "none";
@@ -1724,7 +1779,17 @@
                 toggleColorInput(); 
             }
 
-            document.getElementById('calcWeight').value = item.weight;
+            // Atur input quantity (berat)
+            const exactWeightRadio = document.querySelector(`input[name="calcWeightRadio"][value="${item.weight}"]`);
+            if (exactWeightRadio && item.weight <= 500) {
+                exactWeightRadio.checked = true;
+                toggleManualWeight(); 
+            } else {
+                const customRadio = document.getElementById('wCustom');
+                if (customRadio) customRadio.checked = true;
+                toggleManualWeight(); 
+                document.getElementById('calcWeight').value = item.weight;
+            }
 
             if(item.colorType === 'Color') {
                 document.getElementById('calcSpecificColor').value = item.displayColor.replace('#', '');
