@@ -51,13 +51,22 @@
         h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; text-transform: uppercase; }
         section { padding: 100px 10%; display: flex; flex-direction: column; justify-content: center; }
 
-        /* --- 2. NAVIGASI BARU (DESKTOP & MOBILE SERAGAM) --- */
+        /* --- 2. NAVIGASI BARU (KIRI LOGO, KANAN MENU) --- */
         nav {
             position: fixed; top: 0; width: 100%; padding: 15px 10%;
             background: rgba(255, 255, 255, 0.98);
-            display: flex; justify-content: center; align-items: center; /* Dipusatkan */
+            display: flex; justify-content: space-between; align-items: center; /* Logo Kiri, Menu Kanan */
             z-index: 1000; border-bottom: 1px solid #f0f0f0; transition: all 0.4s ease-in-out;
         }
+
+        .nav-brand {
+            font-family: 'Arial Black', 'Lato', sans-serif;
+            font-weight: 900; font-size: 1.3rem; color: var(--black);
+            text-decoration: none; letter-spacing: 1px;
+            display: flex; align-items: center; gap: 5px;
+            transition: all 0.3s ease;
+        }
+        .nav-brand span { font-size: 0.75rem; color: var(--gold); }
 
         .logo-about { display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 40px; }
         .logo-top { display: flex; align-items: center; width: 100%; margin-bottom: -3px; }
@@ -299,20 +308,6 @@
         
         .add-item-btn { background-color: var(--dark-blue); color: var(--white); padding: 12px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; width: 100%; display: flex; justify-content: center; align-items: center; gap: 8px; text-transform: uppercase; font-size: 0.85rem;}
         .add-item-btn:hover { background-color: var(--black); }
-        
-        .color-circles-wrapper { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 5px; margin-bottom: 5px; }
-        .color-circle-label {
-            width: 35px; height: 35px; border-radius: 50%; border: 2px solid transparent;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            display: flex; justify-content: center; align-items: center; cursor: pointer;
-            transition: all 0.3s ease; user-select: none; font-size: 0.75rem; font-weight: 700;
-        }
-        .color-circle-label:hover { transform: scale(1.1); box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
-        .hidden-radio:checked + .color-circle-label {
-            border: 3px solid #25D366; 
-            transform: scale(1.15); box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-            font-weight: 900;
-        }
 
         .quote-item-list { display: flex; flex-direction: column; gap: 0; margin-bottom: 10px; }
         .quote-item-minimal { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px dashed #eaeaea; background: transparent; }
@@ -442,7 +437,11 @@
         /* --- MEDIA QUERY RESPONSIVE (TAMPILAN KHUSUS HP) --- */
         @media (max-width: 768px) {
             html { scroll-padding-top: 100px; }
-            nav { flex-direction: column; padding: 12px 5%; gap: 15px; height: auto; align-items: center;}
+            /* Penyesuaian Navigasi HP untuk Logo */
+            nav { flex-direction: column; padding: 12px 5%; gap: 15px; height: auto; align-items: center; justify-content: center;}
+            .nav-brand { transition: all 0.3s ease; overflow: hidden; height: 22px; margin-bottom: -5px; }
+            .nav-brand.mobile-hide { opacity: 0; height: 0; margin: 0; padding: 0; border: none; pointer-events: none; }
+
             .logo-about { transform: scale(0.9); margin-bottom: 20px; }
             .quick-nav { display: flex; width: 100%; justify-content: center; gap: 10px; }
             .quick-nav a { flex: 1; display: flex; flex-direction: row; align-items: center; justify-content: center; background-color: var(--black); color: var(--white); padding: 8px 5px; border-radius: 6px; font-size: 0.65rem; font-weight: 800; text-decoration: none; letter-spacing: 0.5px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); gap: 5px; white-space: nowrap; }
@@ -545,14 +544,13 @@
             .estimator-form { grid-template-columns: 1fr; }
             .stat-row { padding-bottom: 4px; gap: 5px; }
             .stat-row span, .stat-row strong { font-size: 0.65rem !important; }
-            
-            .color-circle-label { width: 32px; height: 32px; font-size: 0.65rem; }
         }
     </style>
 </head>
 <body class="notranslate">
 
     <nav>
+        <a href="#about" class="nav-brand" id="navLogo">EMAHAIRSHOP <span>2019</span></a>
         <div class="quick-nav">
             <a href="#products"><i class="fa-solid fa-box"></i> PRODUCTS</a>
             <a href="#pricelist"><i class="fa-solid fa-tags"></i> PRICE</a>
@@ -561,7 +559,7 @@
     </nav>
 
     <section id="about" class="about">
-        <!-- Logo dipindahkan eksklusif ke About Us -->
+        <!-- Logo Eksklusif About Us -->
         <div class="logo-about" data-aos="fade-down">
             <div class="logo-top">
                 <span class="line-top"></span>
@@ -1342,85 +1340,10 @@
                         </div>
                     </div>
 
-                    <!-- Bagian ini muncul jika Custom Color dipilih -->
-                    <div class="calc-group" id="colorCirclesGroup" style="display: none;">
-                        <div class="color-circles-wrapper">
-                            <!-- Circle buttons with original hair background colors -->
-                            <input type="radio" id="circ_1" name="calcColorSelection" value="1" class="hidden-radio" onchange="toggleColorInput()">
-                            <label for="circ_1" class="color-circle-label" style="background-color: #000000; color: #fff;" title="1">1</label>
-                            
-                            <input type="radio" id="circ_1b" name="calcColorSelection" value="1b" class="hidden-radio" onchange="toggleColorInput()">
-                            <label for="circ_1b" class="color-circle-label" style="background-color: #1c1c1c; color: #fff;" title="1b">1b</label>
-
-                            <input type="radio" id="circ_2" name="calcColorSelection" value="2" class="hidden-radio" onchange="toggleColorInput()">
-                            <label for="circ_2" class="color-circle-label" style="background-color: #2a201c; color: #fff;" title="2">2</label>
-
-                            <input type="radio" id="circ_3" name="calcColorSelection" value="3" class="hidden-radio" onchange="toggleColorInput()">
-                            <label for="circ_3" class="color-circle-label" style="background-color: #362820; color: #fff;" title="3">3</label>
-
-                            <input type="radio" id="circ_4" name="calcColorSelection" value="4" class="hidden-radio" onchange="toggleColorInput()">
-                            <label for="circ_4" class="color-circle-label" style="background-color: #473426; color: #fff;" title="4">4</label>
-
-                            <input type="radio" id="circ_5" name="calcColorSelection" value="5" class="hidden-radio" onchange="toggleColorInput()">
-                            <label for="circ_5" class="color-circle-label" style="background-color: #5a4030; color: #fff;" title="5">5</label>
-
-                            <input type="radio" id="circ_6" name="calcColorSelection" value="6" class="hidden-radio" onchange="toggleColorInput()">
-                            <label for="circ_6" class="color-circle-label" style="background-color: #694b37; color: #fff;" title="6">6</label>
-
-                            <input type="radio" id="circ_7" name="calcColorSelection" value="7" class="hidden-radio" onchange="toggleColorInput()">
-                            <label for="circ_7" class="color-circle-label" style="background-color: #7c5940; color: #fff;" title="7">7</label>
-
-                            <input type="radio" id="circ_8" name="calcColorSelection" value="8" class="hidden-radio" onchange="toggleColorInput()">
-                            <label for="circ_8" class="color-circle-label" style="background-color: #946e4a; color: #fff;" title="8">8</label>
-
-                            <input type="radio" id="circ_9" name="calcColorSelection" value="9" class="hidden-radio" onchange="toggleColorInput()">
-                            <label for="circ_9" class="color-circle-label" style="background-color: #a88158; color: #fff;" title="9">9</label>
-
-                            <input type="radio" id="circ_10" name="calcColorSelection" value="10" class="hidden-radio" onchange="toggleColorInput()">
-                            <label for="circ_10" class="color-circle-label" style="background-color: #c19b68; color: #000;" title="10">10</label>
-
-                            <input type="radio" id="circ_12" name="calcColorSelection" value="12" class="hidden-radio" onchange="toggleColorInput()">
-                            <label for="circ_12" class="color-circle-label" style="background-color: #d1ae7a; color: #000;" title="12">12</label>
-
-                            <input type="radio" id="circ_14" name="calcColorSelection" value="14" class="hidden-radio" onchange="toggleColorInput()">
-                            <label for="circ_14" class="color-circle-label" style="background-color: #e0c28e; color: #000;" title="14">14</label>
-
-                            <input type="radio" id="circ_16" name="calcColorSelection" value="16" class="hidden-radio" onchange="toggleColorInput()">
-                            <label for="circ_16" class="color-circle-label" style="background-color: #ead0a1; color: #000;" title="16">16</label>
-
-                            <input type="radio" id="circ_18" name="calcColorSelection" value="18" class="hidden-radio" onchange="toggleColorInput()">
-                            <label for="circ_18" class="color-circle-label" style="background-color: #bfa07c; color: #000;" title="18">18</label>
-
-                            <input type="radio" id="circ_22" name="calcColorSelection" value="22" class="hidden-radio" onchange="toggleColorInput()">
-                            <label for="circ_22" class="color-circle-label" style="background-color: #ecd8b1; color: #000;" title="22">22</label>
-
-                            <input type="radio" id="circ_24" name="calcColorSelection" value="24" class="hidden-radio" onchange="toggleColorInput()">
-                            <label for="circ_24" class="color-circle-label" style="background-color: #e8d2a6; color: #000;" title="24">24</label>
-
-                            <input type="radio" id="circ_27" name="calcColorSelection" value="27" class="hidden-radio" onchange="toggleColorInput()">
-                            <label for="circ_27" class="color-circle-label" style="background-color: #d39750; color: #fff;" title="27">27</label>
-
-                            <input type="radio" id="circ_30" name="calcColorSelection" value="30" class="hidden-radio" onchange="toggleColorInput()">
-                            <label for="circ_30" class="color-circle-label" style="background-color: #a15325; color: #fff;" title="30">30</label>
-
-                            <input type="radio" id="circ_33" name="calcColorSelection" value="33" class="hidden-radio" onchange="toggleColorInput()">
-                            <label for="circ_33" class="color-circle-label" style="background-color: #682914; color: #fff;" title="33">33</label>
-
-                            <input type="radio" id="circ_60" name="calcColorSelection" value="60" class="hidden-radio" onchange="toggleColorInput()">
-                            <label for="circ_60" class="color-circle-label" style="background-color: #f5ebe1; color: #000;" title="60">60</label>
-
-                            <input type="radio" id="circ_613" name="calcColorSelection" value="613" class="hidden-radio" onchange="toggleColorInput()">
-                            <label for="circ_613" class="color-circle-label" style="background-color: #fce6b1; color: #000;" title="613" style="font-size: 0.6rem;">613</label>
-                            
-                            <!-- Pilihan Ketik Sendiri (Piano, Ombre, dll) -->
-                            <input type="radio" id="circ_custom" name="calcColorSelection" value="Type" class="hidden-radio" onchange="toggleColorInput()">
-                            <label for="circ_custom" class="color-circle-label" style="width: auto; padding: 0 12px; border-radius: 16px; background: #eee; color:#333; font-weight:800;" title="Type Color">Type...</label>
-                        </div>
-                    </div>
-
+                    <!-- Hanya tampilkan form teks jika Custom Color dipilih -->
                     <div class="calc-group" id="specificColorGroup" style="display: none;">
-                        <label for="calcSpecificColor">TYPE SPECIFIC COLOR</label>
-                        <input type="text" id="calcSpecificColor" placeholder="e.g. Piano, Ombre, dll">
+                        <label for="calcSpecificColor" style="background: transparent; color: var(--gray); border: none; font-size: 0.65rem; padding: 0; margin-bottom: 0;">TYPE SPECIFIC COLOR</label>
+                        <input type="text" id="calcSpecificColor" placeholder="e.g. Piano, Ombre, #613, dll">
                     </div>
                     
                     <div class="calc-full">
@@ -1615,6 +1538,30 @@
             pagination: { el: ".swiper-pagination", clickable: true }
         });
 
+        // Hiding/Showing Logo Header Logic (Sesuai Request Mobile)
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLogo = document.getElementById('navLogo');
+            
+            // Logic Sembunyikan Logo di HP setelah 2 detik
+            setTimeout(() => {
+                if (window.innerWidth <= 768 && window.scrollY > 150) {
+                    navLogo.classList.add('mobile-hide');
+                }
+            }, 2000);
+
+            window.addEventListener('scroll', () => {
+                if (window.innerWidth <= 768) {
+                    if (window.scrollY < 150) { // Jika di posisi atas (halaman about us)
+                        navLogo.classList.remove('mobile-hide');
+                    } else { // Jika scroll ke bawah produk
+                        navLogo.classList.add('mobile-hide');
+                    }
+                } else {
+                    navLogo.classList.remove('mobile-hide'); // Desktop selalu muncul
+                }
+            });
+        });
+
         // Generate Datalist Negara
         const countryArray = [
             "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cabo Verde", "Cambodia", "Cameroon", "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini", "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Korea", "North Macedonia", "Norway", "Oman", "Pakistan", "Palau", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Korea", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States of America", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"
@@ -1626,7 +1573,7 @@
             datalist.appendChild(option);
         });
 
-        const allNavLinks = document.querySelectorAll('.nav-links a, .quick-nav a, .buy-now-btn');
+        const allNavLinks = document.querySelectorAll('.nav-links a, .quick-nav a, .buy-now-btn, .nav-brand');
         allNavLinks.forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const targetID = this.getAttribute('href');
@@ -1879,16 +1826,11 @@
 
         function toggleColorInput() {
             const colorType = document.querySelector('input[name="calcColorType"]:checked')?.value;
-            const circlesGroup = document.getElementById('colorCirclesGroup');
             const specificGroup = document.getElementById('specificColorGroup');
             
             if (colorType === 'Color') {
-                circlesGroup.style.display = 'block';
-                const selectedCircle = document.querySelector('input[name="calcColorSelection"]:checked')?.value;
-                if (selectedCircle === 'Type') specificGroup.style.display = 'flex';
-                else specificGroup.style.display = 'none';
+                specificGroup.style.display = 'flex'; // Langsung tampilkan form teks
             } else {
-                circlesGroup.style.display = 'none';
                 specificGroup.style.display = 'none';
             }
             updateLivePrice();
@@ -1934,7 +1876,7 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('input[name="calcType"], input[name="calcQuality"], input[name="calcLength"], input[name="calcColorType"], input[name="calcColorSelection"], input[name="calcWeightRadio"]').forEach(radio => {
+            document.querySelectorAll('input[name="calcType"], input[name="calcQuality"], input[name="calcLength"], input[name="calcColorType"], input[name="calcWeightRadio"]').forEach(radio => {
                 radio.addEventListener('change', updateLivePrice);
             });
             document.getElementById('calcWeight').addEventListener('input', updateLivePrice);
@@ -1965,16 +1907,9 @@
                 priceType = 'nat';
             } else if (colorType === 'Color') {
                 priceType = 'col';
-                let selectedCircle = document.querySelector('input[name="calcColorSelection"]:checked')?.value;
-                if (!selectedCircle) { alert("Please select a specific custom color (1, 1b, etc)."); return; }
-                
-                if (selectedCircle === 'Type') {
-                    let spec = document.getElementById('calcSpecificColor').value.trim();
-                    if (!spec) { alert("Please type the specific color."); return; }
-                    displayColor = spec;
-                } else {
-                    displayColor = selectedCircle;
-                }
+                let spec = document.getElementById('calcSpecificColor').value.trim();
+                if (!spec) { alert("Please type the specific color you want."); return; }
+                displayColor = spec;
             } else {
                 alert("Please select Natural or Custom Color."); return;
             }
@@ -1996,12 +1931,10 @@
             if (typeElement) typeElement.checked = false; if (qualityElement) qualityElement.checked = false;
             if (lengthElement) lengthElement.checked = false; 
             const ct = document.querySelector('input[name="calcColorType"]:checked'); if (ct) ct.checked = false;
-            const cs = document.querySelector('input[name="calcColorSelection"]:checked'); if (cs) cs.checked = false;
             if (weightRadio) weightRadio.checked = false;
             
             document.getElementById('manualWeightGroup').style.display = "none"; document.getElementById('calcWeight').value = "";
             document.getElementById('calcSpecificColor').value = ""; document.getElementById('specificColorGroup').style.display = "none";
-            document.getElementById('colorCirclesGroup').style.display = "none";
             document.getElementById('livePricePreview').style.display = "none";
 
             renderQuoteItems();
@@ -2017,13 +1950,7 @@
                 document.querySelector(`input[name="calcColorType"][value="Natural"]`).checked = true;
             } else {
                 document.querySelector(`input[name="calcColorType"][value="Color"]`).checked = true;
-                let circle = document.querySelector(`input[name="calcColorSelection"][value="${item.displayColor}"]`);
-                if (circle) {
-                    circle.checked = true;
-                } else {
-                    document.querySelector(`input[name="calcColorSelection"][value="Type"]`).checked = true;
-                    document.getElementById('calcSpecificColor').value = item.displayColor;
-                }
+                document.getElementById('calcSpecificColor').value = item.displayColor;
             }
             toggleColorInput();
 
