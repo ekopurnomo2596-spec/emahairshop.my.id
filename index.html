@@ -324,13 +324,15 @@
             .buy-now-btn i { font-size: 0.8rem; }
             section#pricelist { padding: 60px 2% !important; } 
             .price-grid { gap: 20px; grid-template-columns: 1fr; width: 100%; } 
-            .price-card { padding: 0 !important; border-radius: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; align-items: start; background-color: transparent !important; box-shadow: none !important; border: none !important; }
+            .price-card { padding: 0 !important; border-radius: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; align-items: start; background-color: transparent !important; box-shadow: none !important; border: none !important; }
             .price-card::before { display: none; } 
             .price-card-title { grid-column: span 2; margin-bottom: 2px; padding-bottom: 5px; border-bottom: 2px solid var(--black); text-align: center; width: 100%; }
             .price-card-title h3 { font-size: 1.3rem; letter-spacing: 1px; margin: 0; color: var(--black); }
             
-            .price-accordion:nth-of-type(1) .price-summary, .price-accordion:nth-of-type(2) .price-summary { border-radius: 8px !important; border-right: none; }
-            .price-accordion:nth-of-type(1)[open] .price-table-wrapper { border-right: none; }
+            /* Tampilan Harga Nyambung di Mobile */
+            .price-accordion:nth-of-type(1) .price-summary { border-radius: 8px 0 0 8px !important; border-right: 1px solid rgba(255,255,255,0.3) !important; }
+            .price-accordion:nth-of-type(2) .price-summary { border-radius: 0 8px 8px 0 !important; }
+            .price-accordion:nth-of-type(1)[open] .price-table-wrapper { border-right: 1px dashed #eaeaea !important; }
 
             .price-accordion { margin-bottom: 0 !important; border-radius: 8px !important; background-color: transparent !important; border: none !important; box-shadow: none !important; width: 100% !important; min-width: 0 !important; }
             .price-summary { flex-direction: column; gap: 4px; padding: 10px 4px !important; font-size: 0.6rem !important; text-align: center; justify-content: center; }
@@ -447,7 +449,7 @@
         .payment-accordion[open] { border-color: #dcdcdc; box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
         .payment-summary { font-size: 0.75rem; font-weight: 800; color: var(--dark-blue); padding: 12px 0; text-align: left; letter-spacing: 1px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; text-transform: uppercase; }
         .payment-summary::-webkit-details-marker { display: none; }
-        .payment-summary::after { content: '\f078'; font-family: 'Font Awesome 6 Free'; font-weight: 900; font-size: 0.8rem; transition: transform 0.3s ease; color: var(--gray); }
+        .payment-summary::after { content: '\f078'; font-family: 'Font Awesome 6 Free'; font-weight: 900; font-size: 0.8rem; transition: transform 0.3s ease; color: var(--gray); margin-left: 5px; }
         .payment-accordion[open] .payment-summary::after { transform: rotate(180deg); color: var(--circle-pink); }
         .payment-accordion-content { padding-bottom: 15px; border-top: 1px dashed #eaeaea; padding-top: 15px; animation: fadeInDown 0.3s ease-in-out; }
 
@@ -467,12 +469,12 @@
         .stat-row strong { font-size: 0.85rem; color: var(--black); font-weight: 900; text-align: right; max-width: 60%; line-height: 1.2; word-wrap: break-word;}
         
         /* Elegan Dark Estimated Arrival Box */
-        .est-arrival-box { background: linear-gradient(135deg, var(--black) 0%, #222 100%); color: var(--white); padding: 8px 12px; border-radius: 6px; margin-top: 10px; display: flex; justify-content: center; align-items: center; gap: 10px; }
-        .est-arrival-icon { background: rgba(255,255,255,0.1); width: 26px; height: 26px; border-radius: 50%; display: flex; justify-content: center; align-items: center; flex-shrink: 0; }
-        .est-arrival-icon i { font-size: 0.85rem; color: var(--gold); }
-        .est-arrival-text { display: flex; flex-direction: column; line-height: 1.15; align-items: center; text-align: center; }
-        .est-arrival-text span { font-size: 0.55rem; font-weight: 700; color: #cbd5e0; text-transform: uppercase; letter-spacing: 0.5px; }
-        .est-arrival-text strong { font-size: 0.85rem; color: var(--white); font-weight: 900; margin-top: 2px; }
+        .est-arrival-box { background: linear-gradient(135deg, var(--black) 0%, #222 100%); color: var(--white); padding: 12px 15px; border-radius: 8px; margin-top: 12px; display: flex; align-items: center; position: relative; box-shadow: 0 6px 15px rgba(0,0,0,0.15); }
+        .est-arrival-icon { background: rgba(255,255,255,0.1); width: 35px; height: 35px; border-radius: 50%; display: flex; justify-content: center; align-items: center; flex-shrink: 0; position: absolute; left: 15px; }
+        .est-arrival-icon i { font-size: 1.1rem; color: var(--gold); }
+        .est-arrival-text { width: 100%; display: flex; flex-direction: column; align-items: center; text-align: center; line-height: 1.2;}
+        .est-arrival-text span { font-size: 0.65rem; font-weight: 700; color: #cbd5e0; text-transform: uppercase; letter-spacing: 1px; }
+        .est-arrival-text strong { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--gold); font-weight: 600; margin-top: 3px; letter-spacing: 0.5px; }
 
     </style>
 </head>
@@ -1344,7 +1346,10 @@
                 
                 <details class="payment-accordion" id="paymentAccordion">
                     <summary class="payment-summary">
-                        <span><i class="fa-solid fa-credit-card" style="margin-right: 5px; color: var(--circle-pink);"></i> Select Payment Method</span>
+                        <div style="display: flex; align-items: center; gap: 8px; flex: 1; overflow: hidden;">
+                            <span><i class="fa-solid fa-credit-card" style="margin-right: 5px; color: var(--circle-pink);"></i> Select Payment</span>
+                            <span id="selectedPaymentText" style="color: #25D366; font-size: 0.65rem; font-weight: 900; display: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; background: #e8f9ee; padding: 2px 6px; border-radius: 4px; border: 1px dashed #25D366;"></span>
+                        </div>
                     </summary>
                     <div class="payment-accordion-content">
                         <div class="pill-grid-payment" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
@@ -1609,6 +1614,16 @@
             openCartModal(); 
         }
 
+        // FUNGSI UNTUK MENAMPILKAN PEMBAYARAN DAN MENUTUP ACCORDION OTOMATIS
+        document.querySelectorAll('input[name="calcPayment"]').forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                const selectedText = document.getElementById('selectedPaymentText');
+                selectedText.innerText = e.target.value;
+                selectedText.style.display = 'inline-block';
+                document.getElementById('paymentAccordion').removeAttribute('open');
+            });
+        });
+
         const pricingDB = {
             "Hair Bulk": {
                 "Double Drawn": { "16 inches": {nat:50,col:53}, "18 inches": {nat:55,col:58}, "20 inches": {nat:60,col:63}, "22 inches": {nat:64,col:66}, "24 inches": {nat:68,col:70}, "26 inches": {nat:70,col:72}, "28 inches": {nat:74,col:76} },
@@ -1677,12 +1692,14 @@
                 let weightKg = checkoutState.totalWeight / 1000;
                 if (weightKg < 0.5) weightKg = 0.5; 
                 
-                let cost = 0; let transitDays = 0;
+                let cost = 0; let transitDays = 0; let ratePerKg = 0;
 
-                // SIMULASI RUMUS ONGKIR (UBAH JIKA PERLU)
-                if (courierSelect === "DHL Express") { cost = 28 + (weightKg * 15); transitDays = 4; } 
-                else if (courierSelect === "FedEx") { cost = 25 + (weightKg * 12); transitDays = 6; } 
-                else if (courierSelect === "EMS") { cost = 18 + (weightKg * 9); transitDays = 12; }
+                // HARGA ONGKIR MURNI DIKALIKAN BERAT PER KG AGAR PRESISI
+                if (courierSelect === "DHL Express") { ratePerKg = 35; transitDays = 4; } 
+                else if (courierSelect === "FedEx") { ratePerKg = 30; transitDays = 6; } 
+                else if (courierSelect === "EMS") { ratePerKg = 20; transitDays = 12; }
+                
+                cost = weightKg * ratePerKg;
 
                 document.getElementById('shipWeight').innerText = weightKg.toFixed(1) + " kg";
                 document.getElementById('shipCost').innerText = "$" + cost.toFixed(2);
@@ -1709,6 +1726,7 @@
                     checkoutState.isCustomShipping = true; checkoutState.shippingFee = 0;
                 } else {
                     checkoutState.isCustomShipping = false;
+                    // Default estimasi tanpa pilih kurir
                     checkoutState.shippingFee = Math.ceil(checkoutState.totalWeight / 1000) * 60; 
                 }
             }
