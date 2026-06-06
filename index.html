@@ -1335,6 +1335,7 @@
             
             <div style="overflow-y: auto; flex: 1; padding-right: 5px; margin-bottom: 10px;">
                 
+                <!-- PROGRESS BAR UPSELL -->
                 <div id="upsellContainer" class="upsell-container" style="display: none;">
                     <div id="upsellText" class="upsell-text"></div>
                     <div class="progress-bar-bg">
@@ -1344,6 +1345,7 @@
 
                 <div id="quoteItemList" class="quote-item-list"></div>
                 
+                <!-- PAYMENT ACCORDION BUKA TUTUP -->
                 <details class="payment-accordion" id="paymentAccordion">
                     <summary class="payment-summary">
                         <span><i class="fa-solid fa-credit-card" style="margin-right: 5px; color: var(--circle-pink);"></i> Select Payment Method</span>
@@ -1351,7 +1353,10 @@
                     <div class="payment-accordion-content">
                         <div class="pill-grid-payment" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
                             <input type="radio" id="pay1" name="calcPayment" value="Western Union" class="hidden-radio">
-                            <label for="pay1" class="pill-label payment-pill">Western Union</label>
+                            <label for="pay1" class="pill-label payment-pill" style="position: relative;">
+                                <span style="position: absolute; top: -6px; left: -6px; background-color: #FF1E1E; color: white; font-size: 0.45rem; padding: 2px 5px; border-radius: 4px; font-weight: 900; letter-spacing: 0.5px; box-shadow: 0 2px 5px rgba(255, 30, 30, 0.3); z-index: 2; line-height: 1;"></span>
+                                Western Union
+                            </label>
 
                             <input type="radio" id="pay2" name="calcPayment" value="MoneyGram" class="hidden-radio">
                             <label for="pay2" class="pill-label payment-pill">MoneyGram</label>
@@ -1360,7 +1365,10 @@
                             <label for="pay3" class="pill-label payment-pill">PayPal</label>
 
                             <input type="radio" id="pay4" name="calcPayment" value="Bank Transfer" class="hidden-radio">
-                            <label for="pay4" class="pill-label payment-pill">Bank Transfer</label>
+                            <label for="pay4" class="pill-label payment-pill" style="position: relative;">
+                                <span style="position: absolute; top: -6px; left: -6px; background-color: #FF1E1E; color: white; font-size: 0.45rem; padding: 2px 5px; border-radius: 4px; font-weight: 900; letter-spacing: 0.5px; box-shadow: 0 2px 5px rgba(255, 30, 30, 0.3); z-index: 2; line-height: 1;">RECOMMENDED</span>
+                                Bank Transfer
+                            </label>
 
                             <input type="radio" id="pay5" name="calcPayment" value="USDT" class="hidden-radio">
                             <label for="pay5" class="pill-label payment-pill" style="grid-column: span 2;">USDT</label>
@@ -2038,7 +2046,8 @@
             
             modalHTML += `<div class="modal-summary-row" style="margin-top: 5px; padding-top: 5px; border-top: 1px dashed #eaeaea;"><span>Payment:</span><strong style="color: var(--dark-blue);">${checkoutState.paymentMethod}</strong></div>`;
             
-            modalHTML += `<div id="paypalRow" class="modal-summary-row" style="color: #d8546b; ${paypalFee > 0 ? 'display: flex;' : 'display: none;'}"><span>PayPal Fee (5%):</span><strong id="paypalFeeValue">+$${paypalFee.toFixed(2)}</strong></div>`;
+            // MODIFIKASI WARNA HIJAU UNTUK PAYPAL FEE
+            modalHTML += `<div id="paypalRow" class="modal-summary-row" style="color: #25D366; ${paypalFee > 0 ? 'display: flex;' : 'display: none;'}"><span>PayPal Fee (5%):</span><strong id="paypalFeeValue">+$${paypalFee.toFixed(2)}</strong></div>`;
 
             let finalPayment = checkoutState.baseTotal + paypalFee;
             let finalDisplayStr = (finalPayment % 1 === 0) ? finalPayment.toFixed(0) : finalPayment.toFixed(2);
