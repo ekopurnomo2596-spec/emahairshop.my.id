@@ -463,6 +463,14 @@
         .btn-cancel:hover { background: #eaeaea; color: var(--black); }
         .btn-confirm { flex: 1; padding: 12px; border: none; background: #25D366; color: #fff; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.3s; font-family: 'Lato', sans-serif; display: flex; justify-content: center; align-items: center; gap: 8px;}
         .btn-confirm:hover { background: #1ebe56; }
+        
+        /* --- PROGRESS BAR UPSELL --- */
+        .upsell-container { background: #f8f9fa; border: 1px solid #eaeaea; border-radius: 8px; padding: 12px; margin-bottom: 15px; text-align: center; }
+        .upsell-text { font-size: 0.75rem; font-weight: 800; color: var(--dark-blue); margin-bottom: 8px; letter-spacing: 0.5px; }
+        .upsell-text span { color: var(--circle-pink); }
+        .progress-bar-bg { width: 100%; height: 8px; background: #e2e8f0; border-radius: 10px; overflow: hidden; position: relative; }
+        .progress-bar-fill { height: 100%; background: linear-gradient(90deg, #f6ad55, #ed8936); border-radius: 10px; transition: width 0.4s ease-in-out; }
+        .progress-bar-fill.success { background: linear-gradient(90deg, #48bb78, #38a169); }
     </style>
 </head>
 <body class="notranslate">
@@ -1321,6 +1329,15 @@
             </div>
             
             <div style="overflow-y: auto; flex: 1; padding-right: 5px; margin-bottom: 10px;">
+                
+                <!-- PROGRESS BAR UPSELL -->
+                <div id="upsellContainer" class="upsell-container" style="display: none;">
+                    <div id="upsellText" class="upsell-text"></div>
+                    <div class="progress-bar-bg">
+                        <div id="upsellProgressBar" class="progress-bar-fill"></div>
+                    </div>
+                </div>
+
                 <div id="quoteItemList" class="quote-item-list"></div>
                 
                 <div class="calc-group" style="margin-top: 20px; border-top: 1px dashed #ccc; padding-top: 15px;">
@@ -1829,6 +1846,7 @@
             listDiv.innerHTML = ""; 
             
             let currentTotal = 0;
+            let currentWeight = 0;
 
             if (quoteItems.length === 0) {
                 document.getElementById('stickyCartBanner').classList.remove('show');
@@ -1838,6 +1856,7 @@
 
             quoteItems.forEach((item, index) => {
                 currentTotal += item.price;
+                currentWeight += item.weight;
                 const itemDiv = document.createElement('div');
                 itemDiv.className = 'quote-item-minimal';
                 
@@ -1860,6 +1879,33 @@
                 `;
                 listDiv.appendChild(itemDiv);
             });
+
+            const upsellContainer = document.getElementById('upsellContainer');
+            const upsellText = document.getElementById('upsellText');
+            const upsellProgressBar = document.getElementById('upsellProgressBar');
+
+            if (upsellContainer) {
+                upsellContainer.style.display = 'block';
+                let progressPercent = 0;
+
+                if (currentWeight < 500) {
+                    let diff = 500 - currentWeight;
+                    progressPercent = (currentWeight / 500) * 100;
+                    upsellText.innerHTML = `🔥 Add <span>${diff}g</span> more to reach minimum order & unlock $25 Promo!`;
+                    upsellProgressBar.className = 'progress-bar-fill'; 
+                } else if (currentWeight >= 500 && currentWeight < 1000) {
+                    let diff = 1000 - currentWeight;
+                    progressPercent = (currentWeight / 1000) * 100;
+                    upsellText.innerHTML = `🌟 Minimum reached! Add <span>${diff}g</span> more to unlock $50 Promo!`;
+                    upsellProgressBar.className = 'progress-bar-fill'; 
+                } else {
+                    progressPercent = 100;
+                    upsellText.innerHTML = `🎉 Awesome! You've unlocked the highest <span>$50 Promo</span> tier!`;
+                    upsellProgressBar.className = 'progress-bar-fill success'; 
+                }
+
+                upsellProgressBar.style.width = `${progressPercent}%`;
+            }
 
             const stickyBanner = document.getElementById('stickyCartBanner');
             if(quoteItems.length > 0) {
@@ -1937,7 +1983,6 @@
             checkoutState.discountAmount = 0;
             checkoutState.paymentMethod = paymentSelect;
             
-            // Hitung Biaya PayPal (Jika dipilih)
             let paypalFee = 0;
             if (paymentSelect === "PayPal") {
                 paypalFee = checkoutState.baseTotal * 0.05;
@@ -1971,7 +2016,6 @@
             
             modalHTML += `<div class="modal-summary-row" style="margin-top: 5px; padding-top: 5px; border-top: 1px dashed #eaeaea;"><span>Payment:</span><strong style="color: var(--dark-blue);">${checkoutState.paymentMethod}</strong></div>`;
             
-            // Baris Khusus Tampilan PayPal Fee
             modalHTML += `<div id="paypalRow" class="modal-summary-row" style="color: #d8546b; ${paypalFee > 0 ? 'display: flex;' : 'display: none;'}"><span>PayPal Fee (5%):</span><strong id="paypalFeeValue">+$${paypalFee.toFixed(2)}</strong></div>`;
 
             let finalPayment = checkoutState.baseTotal + paypalFee;
@@ -2058,7 +2102,6 @@
                 let newTotal = checkoutState.baseTotal - discount;
                 if (newTotal < 0) newTotal = 0;
                 
-                // Kalkulasi ulang biaya PayPal setelah promo
                 let newPaypalFee = 0;
                 if (checkoutState.paymentMethod === 'PayPal') {
                     newPaypalFee = newTotal * 0.05;
@@ -2129,7 +2172,6 @@
                 msg += `*${checkoutState.appliedPromoCode} (-$${checkoutState.discountAmount})*\n\n`;
             }
             
-            // Tambahkan baris fee PayPal di pesan WA
             if (checkoutState.paymentMethod === 'PayPal' && checkoutState.paypalFee > 0) {
                 msg += `PayPal Fee (5%): *$${checkoutState.paypalFee.toFixed(2)}*\n`;
             }
