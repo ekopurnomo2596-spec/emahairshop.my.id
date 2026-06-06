@@ -1335,7 +1335,6 @@
             
             <div style="overflow-y: auto; flex: 1; padding-right: 5px; margin-bottom: 10px;">
                 
-                <!-- PROGRESS BAR UPSELL -->
                 <div id="upsellContainer" class="upsell-container" style="display: none;">
                     <div id="upsellText" class="upsell-text"></div>
                     <div class="progress-bar-bg">
@@ -1345,7 +1344,6 @@
 
                 <div id="quoteItemList" class="quote-item-list"></div>
                 
-                <!-- PAYMENT ACCORDION BUKA TUTUP -->
                 <details class="payment-accordion" id="paymentAccordion">
                     <summary class="payment-summary">
                         <span><i class="fa-solid fa-credit-card" style="margin-right: 5px; color: var(--circle-pink);"></i> Select Payment Method</span>
@@ -1871,11 +1869,12 @@
                 itemDiv.className = 'quote-item-minimal';
                 
                 let lenStr = item.length.replace(" inches", '"');
+                let weightStr = item.weight >= 1000 ? (item.weight / 1000) + 'kg' : item.weight + 'g';
                 
                 itemDiv.innerHTML = `
                     <div class="quote-item-minimal-details">
                         <strong>${index + 1}. ${item.quality} - ${item.type}</strong>
-                        <span>${lenStr} | ${item.weight}g | ${item.displayColor}</span>
+                        <span>${lenStr} | ${weightStr} | ${item.displayColor}</span>
                     </div>
                     <div class="quote-item-minimal-actions">
                         <span class="quote-item-minimal-price">$${item.price.toFixed(0)}</span>
@@ -1908,7 +1907,6 @@
                     let diff = 1000 - currentWeight;
                     progressPercent = 100;
                     
-                    // Modifikasi: Pilih acak antara EMAQUEEN25 atau EMAJUNE25
                     let randomCode25 = Math.random() < 0.5 ? 'EMAQUEEN25' : 'EMAJUNE25';
                     
                     upsellText.innerHTML = `🎉 Awesome! You unlocked the <span>$25 Promo</span>!<br><span style="font-size: 0.75rem; color: var(--black); font-weight: bold; background: #e8f9ee; padding: 2px 6px; border-radius: 4px; display: inline-block; margin-top: 5px; border: 1px dashed #25D366;">Use Code: ${randomCode25}</span><br><span style="font-size: 0.65rem; color: var(--gray); font-weight: 600; text-transform: none; display: block; margin-top: 5px;">💡 Want <strong>$50 off</strong>? Just add <span>${diff}g</span> more!</span>`;
@@ -1916,7 +1914,6 @@
                 } else {
                     progressPercent = 100;
                     
-                    // Modifikasi: Pilih acak antara EMAQUEEN50 atau EMAJUNE50
                     let randomCode50 = Math.random() < 0.5 ? 'EMAQUEEN50' : 'EMAJUNE50';
                     
                     upsellText.innerHTML = `🎉 Incredible! You've unlocked the highest <span>$50 Promo</span>!<br><span style="font-size: 0.75rem; color: var(--black); font-weight: bold; background: #e8f9ee; padding: 2px 6px; border-radius: 4px; display: inline-block; margin-top: 5px; border: 1px dashed #25D366;">Use Code: ${randomCode50}</span>`;
@@ -2020,9 +2017,10 @@
                     
                     items.forEach(item => {
                         let lenStr = item.length.replace(" inches", '"');
+                        let weightStr = item.weight >= 1000 ? (item.weight / 1000) + 'kg' : item.weight + 'g';
                         modalHTML += `
                             <div class="modal-item-row" style="padding-left: 10px; border-bottom: 1px dotted #eee;">
-                                <span>${lenStr}, ${item.weight}g, ${item.displayColor}</span>
+                                <span>${lenStr}, ${weightStr}, ${item.displayColor}</span>
                                 <strong>$${item.price.toFixed(0)}</strong>
                             </div>
                         `;
@@ -2032,7 +2030,9 @@
 
             modalHTML += `<div style="margin-top:15px;"></div>`;
             modalHTML += `<div class="modal-summary-row"><span>Subtotal:</span><strong>$${totalPrice.toFixed(0)}</strong></div>`;
-            modalHTML += `<div class="modal-summary-row"><span>Shipping (${totalWeight}g):</span><strong style="${isCustomShipping ? 'color: var(--circle-pink); font-size: 0.8rem;' : ''}">${shippingText}</strong></div>`;
+            
+            let totalWeightStrUI = totalWeight >= 1000 ? (totalWeight / 1000) + 'kg' : totalWeight + 'g';
+            modalHTML += `<div class="modal-summary-row"><span>Shipping (${totalWeightStrUI}):</span><strong style="${isCustomShipping ? 'color: var(--circle-pink); font-size: 0.8rem;' : ''}">${shippingText}</strong></div>`;
 
             modalHTML += `<div id="discountRow" class="modal-summary-row" style="color:var(--circle-pink); display: none;"><span id="discountName">Promo:</span><strong id="discountValue">-$0</strong></div>`;
             
@@ -2061,21 +2061,25 @@
             document.getElementById('checkoutModal').classList.add('show');
             document.body.style.overflow = 'hidden';
 
-            let message = "";
+            // Menambahkan *DETAIL ORDER* di awal pesan WhatsApp
+            let message = "*DETAIL ORDER*\n\n";
             for (const [quality, types] of Object.entries(groupedItems)) {
                 message += `*${quality.toUpperCase()}*\n`; 
                 for (const [type, items] of Object.entries(types)) {
                     message += `${type}\n`; 
                     items.forEach(item => {
                         let lenStr = item.length.replace(" inches", '"');
-                        message += `${lenStr} ${item.weight}g ${item.displayColor} $${item.price.toFixed(0)}\n`;
+                        let weightStr = item.weight >= 1000 ? (item.weight / 1000) + 'kg' : item.weight + 'g';
+                        message += `${lenStr} ${weightStr} ${item.displayColor} $${item.price.toFixed(0)}\n`;
                     });
                 }
                 message += `\n`;
             }
             
+            let totalWeightStrWA = totalWeight >= 1000 ? (totalWeight / 1000) + ' kg' : totalWeight + ' Grams';
+            
             message += `*📋 SUMMARY*\n`;
-            message += `Total Weight: ${totalWeight} Grams\n`;
+            message += `Total Weight: ${totalWeightStrWA}\n`;
             message += `Subtotal: $${totalPrice.toFixed(0)}\n`;
             
             if (isCustomShipping) {
