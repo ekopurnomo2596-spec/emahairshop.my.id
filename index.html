@@ -268,6 +268,9 @@
         .lightbox-prev { left: 20px; }
         .lightbox-next { right: 20px; }
 
+        /* --- Teks Transit Agar Satu Baris --- */
+        #shipTransit { white-space: nowrap !important; font-size: 0.75rem !important; }
+
         /* --- MEDIA QUERY RESPONSIVE (TAMPILAN KHUSUS HP) --- */
         @media (max-width: 768px) {
             html { scroll-padding-top: 100px; }
@@ -329,7 +332,7 @@
             .price-card-title { grid-column: span 2; margin-bottom: 2px; padding-bottom: 5px; border-bottom: 2px solid var(--black); text-align: center; width: 100%; }
             .price-card-title h3 { font-size: 1.3rem; letter-spacing: 1px; margin: 0; color: var(--black); }
             
-            /* Tampilan Harga Nyambung di Mobile */
+            /* Penyesuaian Harga HP: Tetap Menempel! */
             .price-accordion:nth-of-type(1) .price-summary { border-radius: 8px 0 0 8px !important; border-right: 1px solid rgba(255,255,255,0.3) !important; }
             .price-accordion:nth-of-type(2) .price-summary { border-radius: 0 8px 8px 0 !important; }
             .price-accordion:nth-of-type(1)[open] .price-table-wrapper { border-right: 1px dashed #eaeaea !important; }
@@ -371,6 +374,7 @@
             .payment-pill { font-size: 0.65rem !important; padding: 10px 5px !important; justify-content: center !important; text-align: center !important;}
             #pay5-label { grid-column: span 2; }
             .estimator-form { grid-template-columns: 1fr; }
+            #shipTransit { font-size: 0.6rem !important; } /* Lebih kecil di HP agar muat 1 baris */
         }
         
         /* --- KALKULATOR PESANAN --- */
@@ -1348,7 +1352,7 @@
                     <summary class="payment-summary">
                         <div style="display: flex; align-items: center; gap: 8px; flex: 1; overflow: hidden;">
                             <span><i class="fa-solid fa-credit-card" style="margin-right: 5px; color: var(--circle-pink);"></i> Select Payment</span>
-                            <span id="selectedPaymentText" style="color: #25D366; font-size: 0.65rem; font-weight: 900; display: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; background: #e8f9ee; padding: 2px 6px; border-radius: 4px; border: 1px dashed #25D366;"></span>
+                            <span id="selectedPaymentText" style="color: #25D366; font-size: 0.65rem; font-weight: 900; display: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; background: #e8f9ee; padding: 4px 8px; border-radius: 4px;"></span>
                         </div>
                     </summary>
                     <div class="payment-accordion-content">
@@ -2061,15 +2065,19 @@
             document.getElementById('checkoutModal').classList.add('show');
             document.body.style.overflow = 'hidden';
 
-            let message = "*DETAIL ORDER*\n\n";
+            // --- FORMAT PESAN WHATSAPP BARU ---
+            let message = "━━━━━━━━━━\n";
+            message += "📝 *DETAIL ORDER*\n";
+            message += "━━━━━━━━━━\n\n";
+
             for (const [quality, types] of Object.entries(groupedItems)) {
                 message += `*${quality.toUpperCase()}*\n`; 
                 for (const [type, items] of Object.entries(types)) {
-                    message += `${type}\n`; 
+                    message += `_${type}_\n`; 
                     items.forEach(item => {
                         let lenStr = item.length.replace(" inches", '"');
                         let weightStr = item.weight >= 1000 ? (item.weight / 1000) + 'kg' : item.weight + 'g';
-                        message += `${lenStr} ${weightStr} ${item.displayColor} $${item.price.toFixed(0)}\n`;
+                        message += `• ${lenStr} | ${weightStr} | ${item.displayColor} ➔ *$${item.price.toFixed(0)}*\n`;
                     });
                 }
                 message += `\n`;
@@ -2077,22 +2085,23 @@
             
             let totalWeightStrWA = totalWeight >= 1000 ? (totalWeight / 1000) + ' kg' : totalWeight + ' Grams';
             
-            message += `*📋 SUMMARY*\n`;
-            message += `Total Weight: ${totalWeightStrWA}\n`;
-            message += `Subtotal: $${totalPrice.toFixed(0)}\n\n`;
+            message += "━━━━━━━━━━\n";
+            message += `*📊 SUMMARY*\n`;
+            message += "━━━━━━━━━━\n";
+            message += `Total Weight: *${totalWeightStrWA}*\n`;
+            message += `Subtotal: *$${totalPrice.toFixed(0)}*\n\n`;
 
+            message += "━━━━━━━━━━\n";
             message += `*📦 SHIPPING INFO*\n`;
-            message += `Destination: ${checkoutState.destCountry}\n`;
-            if (checkoutState.courierInfo) message += `Courier: ${checkoutState.courierInfo}\n`;
+            message += "━━━━━━━━━━\n";
+            message += `Destination: *${checkoutState.destCountry}*\n`;
+            if (checkoutState.courierInfo) message += `Courier: *${checkoutState.courierInfo}*\n`;
             
-            if (checkoutState.isCustomShipping) {
-                message += `Shipping Fee: *To Be Calculated*\n`;
-            } else {
-                message += `Shipping Fee: $${checkoutState.shippingFee.toFixed(2)}\n`;
-                if(checkoutState.estArrivalDate) message += `Est. Arrival: *${checkoutState.estArrivalDate}*\n`;
+            if (!checkoutState.isCustomShipping && checkoutState.estArrivalDate) {
+                message += `Est. Arrival: *${checkoutState.estArrivalDate}*\n`;
             }
             
-            message += `\nPayment Method: *${checkoutState.paymentMethod}*\n`;
+            message += `Payment Method: *${checkoutState.paymentMethod}*\n`;
 
             checkoutState.baseWAMessage = message; 
             updateWAMessage(); 
@@ -2178,18 +2187,29 @@
             if (checkoutState.isPromoApplied) {
                 finalAmt -= checkoutState.discountAmount;
                 if (finalAmt < 0) finalAmt = 0; 
-                msg += `\n🎁 *PROMO APPLIED:*\n*${checkoutState.appliedPromoCode} (-$${checkoutState.discountAmount})*\n\n`;
+                msg += `\n🎁 *PROMO APPLIED:*\n*${checkoutState.appliedPromoCode} (-$${checkoutState.discountAmount})*\n`;
             }
             
             if (checkoutState.paymentMethod === 'PayPal' && checkoutState.paypalFee > 0) {
-                msg += `PayPal Fee (5%): *$${checkoutState.paypalFee.toFixed(2)}*\n`;
+                msg += `\nPayPal Fee (5%): *$${checkoutState.paypalFee.toFixed(2)}*\n`;
             }
             
             finalAmt += checkoutState.paypalFee;
             let finalDisplayStr = (finalAmt % 1 === 0) ? finalAmt.toFixed(0) : finalAmt.toFixed(2);
 
-            if (checkoutState.isCustomShipping) msg += `*Total Amount: $${finalDisplayStr} + Shipping Fee*\n\n`;
-            else msg += `\n*Total Amount: $${finalDisplayStr}*\n\n`;
+            msg += `\n━━━━━━━━━━\n`;
+
+            let countryShort = checkoutState.destCountry;
+            if(countryShort.length > 15) countryShort = countryShort.substring(0, 15) + '...';
+
+            if (checkoutState.isCustomShipping) {
+                msg += `Shipping (${checkoutState.courierInfo || 'TBD'} → ${countryShort || 'TBD'}): *TBD*\n`;
+                msg += `*Total Amount: $${finalDisplayStr} + Shipping*\n`;
+            } else {
+                msg += `Shipping (${checkoutState.courierInfo} → ${countryShort}): *$${checkoutState.shippingFee.toFixed(2)}*\n`;
+                msg += `*Total Amount: $${finalDisplayStr}*\n`;
+            }
+            msg += `━━━━━━━━━━\n\n`;
 
             const method = checkoutState.paymentMethod;
             
