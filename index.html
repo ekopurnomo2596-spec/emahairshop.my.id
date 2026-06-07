@@ -1239,6 +1239,20 @@
                             <label for="qual2" class="pill-label">Super Double Drawn</label>
                         </div>
                     </div>
+
+                    <div class="calc-group">
+                        <label>TEXTURE</label>
+                        <div class="pill-grid-3">
+                            <input type="radio" id="tex1" name="calcTexture" value="Straight" class="hidden-radio">
+                            <label for="tex1" class="pill-label">Straight</label>
+
+                            <input type="radio" id="tex2" name="calcTexture" value="Wavy" class="hidden-radio">
+                            <label for="tex2" class="pill-label">Wavy</label>
+
+                            <input type="radio" id="tex3" name="calcTexture" value="Curly" class="hidden-radio">
+                            <label for="tex3" class="pill-label">Curly</label>
+                        </div>
+                    </div>
                     
                     <div class="calc-group">
                         <label>LENGTH</label>
@@ -1852,6 +1866,7 @@
         function updateLivePrice() {
             const typeElement = document.querySelector('input[name="calcType"]:checked');
             const qualityElement = document.querySelector('input[name="calcQuality"]:checked');
+            const textureElement = document.querySelector('input[name="calcTexture"]:checked');
             const lengthElement = document.querySelector('input[name="calcLength"]:checked');
             const colorType = document.querySelector('input[name="calcColorType"]:checked')?.value;
             
@@ -1865,7 +1880,7 @@
             const previewContainer = document.getElementById('livePricePreview');
             const previewValue = document.getElementById('livePriceValue');
 
-            if (typeElement && qualityElement && lengthElement && colorType && weight > 0) {
+            if (typeElement && qualityElement && textureElement && lengthElement && colorType && weight > 0) {
                 const type = typeElement.value; const quality = qualityElement.value;
                 const length = lengthElement.value; 
                 const priceType = (colorType === 'Natural') ? 'nat' : 'col';
@@ -1880,7 +1895,7 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('input[name="calcType"], input[name="calcQuality"], input[name="calcLength"], input[name="calcColorType"], input[name="calcWeightRadio"]').forEach(radio => {
+            document.querySelectorAll('input[name="calcType"], input[name="calcQuality"], input[name="calcLength"], input[name="calcTexture"], input[name="calcColorType"], input[name="calcWeightRadio"]').forEach(radio => {
                 radio.addEventListener('change', updateLivePrice);
             });
             document.getElementById('calcWeight').addEventListener('input', updateLivePrice);
@@ -1889,6 +1904,7 @@
         function addQuoteItem() {
             const typeElement = document.querySelector('input[name="calcType"]:checked'); const type = typeElement ? typeElement.value : "";
             const qualityElement = document.querySelector('input[name="calcQuality"]:checked'); const quality = qualityElement ? qualityElement.value : "";
+            const textureElement = document.querySelector('input[name="calcTexture"]:checked'); const texture = textureElement ? textureElement.value : "";
             const lengthElement = document.querySelector('input[name="calcLength"]:checked'); const length = lengthElement ? lengthElement.value : "";
             const colorType = document.querySelector('input[name="calcColorType"]:checked')?.value;
             
@@ -1899,7 +1915,7 @@
                 else weight = parseFloat(weightRadio.value);
             }
 
-            if (!type || !quality || !length || !weight || weight <= 0 || !colorType) {
+            if (!type || !quality || !texture || !length || !weight || weight <= 0 || !colorType) {
                 alert("Please select all required options and make sure the quantity is correct."); return;
             }
             
@@ -1928,9 +1944,9 @@
             const itemPrice = (weight / 100) * pricePer100g;
 
             if (currentEditIndex === -1) {
-                quoteItems.push({ type, quality, length, weight, colorType, displayColor, price: itemPrice });
+                quoteItems.push({ type, quality, length, texture, weight, colorType, displayColor, price: itemPrice });
             } else {
-                quoteItems[currentEditIndex] = { type, quality, length, weight, colorType, displayColor, price: itemPrice };
+                quoteItems[currentEditIndex] = { type, quality, length, texture, weight, colorType, displayColor, price: itemPrice };
                 currentEditIndex = -1; 
                 const addBtn = document.getElementById('addBtn');
                 addBtn.innerHTML = '<i class="fa-solid fa-cart-plus"></i> Add Product To Cart';
@@ -1939,6 +1955,7 @@
             
             // Reset forms
             if (typeElement) typeElement.checked = false; if (qualityElement) qualityElement.checked = false;
+            if (textureElement) textureElement.checked = false;
             if (lengthElement) lengthElement.checked = false; 
             const ct = document.querySelector('input[name="calcColorType"]:checked'); if (ct) ct.checked = false;
             if (weightRadio) weightRadio.checked = false;
@@ -1954,6 +1971,7 @@
             const item = quoteItems[index];
             const typeRadio = document.querySelector(`input[name="calcType"][value="${item.type}"]`); if(typeRadio) typeRadio.checked = true;
             const qualRadio = document.querySelector(`input[name="calcQuality"][value="${item.quality}"]`); if(qualRadio) qualRadio.checked = true;
+            const texRadio = document.querySelector(`input[name="calcTexture"][value="${item.texture}"]`); if(texRadio) texRadio.checked = true;
             const lenRadio = document.querySelector(`input[name="calcLength"][value="${item.length}"]`); if(lenRadio) lenRadio.checked = true;
             
             if (item.colorType === 'Natural') {
@@ -2028,7 +2046,7 @@
                 itemDiv.innerHTML = `
                     <div class="quote-item-minimal-details">
                         <strong>${index + 1}. ${item.quality} - ${item.type}</strong>
-                        <span>${lenStr} | ${weightStr} | ${item.displayColor}</span>
+                        <span>${item.texture} | ${lenStr} | ${weightStr} | ${item.displayColor}</span>
                     </div>
                     <div class="quote-item-minimal-actions">
                         <span class="quote-item-minimal-price">$${item.price.toFixed(0)}</span>
@@ -2241,7 +2259,7 @@
                         let weightStr = item.weight >= 1000 ? (item.weight / 1000) + 'kg' : item.weight + 'g';
                         modalHTML += `
                             <div class="modal-item-row" style="padding-left: 10px; border-bottom: 1px dotted #eee;">
-                                <span>${lenStr}, ${weightStr}, ${item.displayColor}</span>
+                                <span>${item.texture}, ${lenStr}, ${weightStr}, ${item.displayColor}</span>
                                 <strong>$${item.price.toFixed(0)}</strong>
                             </div>`;
                     });
@@ -2377,7 +2395,7 @@
                     items.forEach(item => {
                         let lenStr = item.length.replace(" inches", '"');
                         let weightStr = item.weight >= 1000 ? (item.weight / 1000) + 'kg' : item.weight + 'g';
-                        msg += `_${lenStr}_ _${weightStr}_ _${item.displayColor}_ _$${item.price.toFixed(0)}_\n`;
+                        msg += `_${item.texture}_ _${lenStr}_ _${weightStr}_ _${item.displayColor}_ _$${item.price.toFixed(0)}_\n`;
                     });
                 }
             }
