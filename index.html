@@ -51,11 +51,11 @@
         h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; text-transform: uppercase; }
         section { padding: 100px 10%; display: flex; flex-direction: column; justify-content: center; }
 
-        /* --- 2. NAVIGASI BARU (KIRI LOGO, KANAN MENU) --- */
+        /* --- 2. NAVIGASI --- */
         nav {
             position: fixed; top: 0; width: 100%; padding: 15px 10%;
             background: rgba(255, 255, 255, 0.98);
-            display: flex; justify-content: space-between; align-items: center; /* Logo Kiri, Menu Kanan */
+            display: flex; justify-content: space-between; align-items: center; 
             z-index: 1000; border-bottom: 1px solid #f0f0f0; transition: all 0.4s ease-in-out;
         }
 
@@ -66,7 +66,6 @@
             transition: all 0.4s ease;
         }
         
-        /* Desain Logo Lengkap dengan Garis di Navigasi (Ukuran Disesuaikan) */
         .logo-nav-container { display: flex; flex-direction: column; align-items: center; justify-content: center; width: auto; min-width: 140px; padding: 0 5px; }
         .logo-nav-container .logo-top { display: flex; align-items: center; width: 100%; margin-bottom: -1px; }
         .logo-nav-container .line-top { height: 1.5px; background-color: var(--black); flex-grow: 1; margin-right: 4px; }
@@ -81,7 +80,7 @@
         .quick-nav a:hover { background-color: var(--circle-pink); transform: translateY(-3px);}
         .quick-nav a:hover i { color: var(--white); }
 
-        /* --- STICKY CART BANNER (BERLAKU DI DESKTOP & MOBILE) --- */
+        /* --- STICKY CART BANNER --- */
         .sticky-cart-banner { position: fixed; bottom: -100px; left: 50%; transform: translateX(-50%); width: 100%; max-width: 600px; background-color: var(--dark-blue); color: var(--white); padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; z-index: 1002; box-shadow: 0 -4px 20px rgba(0,0,0,0.3); transition: bottom 0.4s ease-in-out; cursor: pointer; box-sizing: border-box; border-top: 3px solid #25D366; border-radius: 12px 12px 0 0; }
         .sticky-cart-banner.show { bottom: 0; }
         .sticky-cart-info { display: flex; flex-direction: column; line-height: 1.2; }
@@ -144,7 +143,6 @@
         .produk-header h2 { font-size: 2.2rem; letter-spacing: 0.5px; font-family: 'Lato', sans-serif; text-transform: none; font-weight: 800; color: var(--dark-blue); }
         .produk-header h2 .highlight-text { color: var(--circle-pink); }
         
-        /* 3 KOLOM PRODUCT UNTUK DESKTOP */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; align-items: start; }
         
         .card { background: var(--white); padding: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; border-radius: 8px; border: 1px solid #f0f0f0; position: relative; display: flex; flex-direction: column; color: var(--black); }
@@ -156,13 +154,11 @@
         .swiper-button-next:after, .swiper-button-prev:after { font-size: 15px !important; font-weight: bold; }
         .swiper-pagination-bullet-active { background: var(--circle-pink) !important; }
 
-        /* DESKTOP BOX SPESIFIKASI - DESAIN ESTETIK DENGAN GARIS TRANSTPARAN */
         .specs-container { display: flex; flex-direction: row; justify-content: center; gap: 15px; margin-top: 20px; margin-bottom: 20px; }
         .spec-box { background: linear-gradient(135deg, #25D366 0%, #1da851 100%); color: var(--white); padding: 14px 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 10px; transition: 0.3s; flex: 1; text-align: center; line-height: 1.2; border: none; box-shadow: 0 5px 15px rgba(37, 211, 102, 0.2); position: relative; overflow: hidden;}
         .spec-box:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(37, 211, 102, 0.35); }
         .spec-box i { font-size: 1.2rem; margin-bottom: 6px; color: var(--white); animation: pulse 2s infinite; }
         .spec-title { font-size: 0.55rem; font-weight: 800; margin-bottom: 6px; padding-bottom: 6px; position: relative; color: var(--white); text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; width: 100%; }
-        /* Garis putih estetik di bawah tulisan */
         .spec-title::after { content: ''; position: absolute; bottom: 0; left: 15%; width: 70%; height: 1.5px; background-color: rgba(255, 255, 255, 0.4); border-radius: 2px; }
         .spec-value { font-size: 0.75rem; font-weight: 900; white-space: nowrap; color: var(--white); letter-spacing: 0.5px;}
 
@@ -191,7 +187,6 @@
 
         /* --- PRICE LIST SECTION --- */
         .price-section { background-color: #F9F8F6; } 
-        /* 3 KOLOM PRICE LIST UNTUK DESKTOP */
         .price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; align-items: start; width: 100%; max-width: 100%; margin: 0 auto; }
         
         @media (max-width: 1024px) and (min-width: 769px) {
@@ -560,7 +555,9 @@
             .pill-grid-payment { grid-template-columns: repeat(2, 1fr) !important; gap: 6px !important; }
             .payment-pill { font-size: 0.8rem !important; padding: 12px 4px !important; justify-content: center !important; text-align: center !important; white-space: nowrap !important; }
             #selectedPaymentText { font-size: 0.55rem !important; padding: 3px 6px !important; }
-            #pay5-label span:first-child { font-size: 0.45rem; padding: 2px 4px; top: -8px; left: 0px; }
+            
+            /* Penyesuaian Lencana di HP untuk Bank Transfer */
+            #pay5-label span:first-child { font-size: 0.45rem; padding: 2px 4px; top: -6px; left: -6px; }
             
             .estimator-form { grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
             .form-group-ship label { font-size: 0.55rem !important; }
@@ -1244,25 +1241,25 @@
                         <div class="pill-grid-4">
                             <input type="radio" id="tex0" name="calcTexture" value="Natural" class="hidden-radio">
                             <label for="tex0" class="pill-label">
-                                <span style="position: absolute; top: -8px; right: -6px; background: rgba(37, 211, 102, 0.85); color: var(--white); font-size: 0.65rem; padding: 3px 6px; border-radius: 6px; font-weight: 900; letter-spacing: 0.5px; border: none; box-shadow: none; z-index: 1;">+$0</span>
+                                <span style="position: absolute; top: -6px; left: -6px; background: rgba(37, 211, 102, 0.85); color: var(--white); font-size: 0.5rem; padding: 2px 6px; border-radius: 4px; font-weight: 900; letter-spacing: 0.5px; border: none; box-shadow: none; z-index: 1;">+$0</span>
                                 Natural
                             </label>
                             
                             <input type="radio" id="tex1" name="calcTexture" value="Straight" class="hidden-radio">
                             <label for="tex1" class="pill-label">
-                                <span style="position: absolute; top: -8px; right: -6px; background: rgba(37, 211, 102, 0.85); color: var(--white); font-size: 0.65rem; padding: 3px 6px; border-radius: 6px; font-weight: 900; letter-spacing: 0.5px; border: none; box-shadow: none; z-index: 1;">+$3</span>
+                                <span style="position: absolute; top: -6px; left: -6px; background: rgba(37, 211, 102, 0.85); color: var(--white); font-size: 0.5rem; padding: 2px 6px; border-radius: 4px; font-weight: 900; letter-spacing: 0.5px; border: none; box-shadow: none; z-index: 1;">+$3</span>
                                 Straight
                             </label>
 
                             <input type="radio" id="tex2" name="calcTexture" value="Wavy" class="hidden-radio">
                             <label for="tex2" class="pill-label">
-                                <span style="position: absolute; top: -8px; right: -6px; background: rgba(37, 211, 102, 0.85); color: var(--white); font-size: 0.65rem; padding: 3px 6px; border-radius: 6px; font-weight: 900; letter-spacing: 0.5px; border: none; box-shadow: none; z-index: 1;">+$3</span>
+                                <span style="position: absolute; top: -6px; left: -6px; background: rgba(37, 211, 102, 0.85); color: var(--white); font-size: 0.5rem; padding: 2px 6px; border-radius: 4px; font-weight: 900; letter-spacing: 0.5px; border: none; box-shadow: none; z-index: 1;">+$3</span>
                                 Wavy
                             </label>
 
                             <input type="radio" id="tex3" name="calcTexture" value="Curly" class="hidden-radio">
                             <label for="tex3" class="pill-label">
-                                <span style="position: absolute; top: -8px; right: -6px; background: rgba(37, 211, 102, 0.85); color: var(--white); font-size: 0.65rem; padding: 3px 6px; border-radius: 6px; font-weight: 900; letter-spacing: 0.5px; border: none; box-shadow: none; z-index: 1;">+$3</span>
+                                <span style="position: absolute; top: -6px; left: -6px; background: rgba(37, 211, 102, 0.85); color: var(--white); font-size: 0.5rem; padding: 2px 6px; border-radius: 4px; font-weight: 900; letter-spacing: 0.5px; border: none; box-shadow: none; z-index: 1;">+$3</span>
                                 Curly
                             </label>
                         </div>
@@ -1270,7 +1267,9 @@
                     
                     <div class="calc-group">
                         <label>QUANTITY (GRAMS)</label>
-                        <div class="price-note" style="margin-top: -5px; margin-bottom: 5px; background-color: #e8f9ee; color: #25D366; border: none; border-radius: 4px; padding: 8px;"><i class="fa-solid fa-tags"></i> Promo: Flat rate $25/kg for Straight, Wavy & Curly (1000g+)</div>
+                        <div class="price-note" style="margin-top: -5px; margin-bottom: 5px; background-color: #e8f9ee; color: #25D366; border: none; border-radius: 4px; padding: 8px;">
+                            <i class="fa-solid fa-tags"></i> Promo: Flat rate $25/kg for Straight, Wavy & Curly (1000g+)
+                        </div>
                         <div class="pill-grid-3">
                             <input type="radio" id="w100" name="calcWeightRadio" value="100" class="hidden-radio" onchange="toggleManualWeight()">
                             <label for="w100" class="pill-label">100g</label>
@@ -1394,7 +1393,7 @@
                                     <label for="pay4" class="pill-label payment-pill">USDT</label>
 
                                     <input type="radio" id="pay5" name="calcPayment" value="Bank Transfer" class="hidden-radio">
-                                    <label for="pay5" class="pill-label payment-pill" style="position: relative; grid-column: span 2;">
+                                    <label for="pay5" id="pay5-label" class="pill-label payment-pill" style="position: relative; grid-column: span 2;">
                                         <span style="position: absolute; top: -6px; left: -6px; background: #FF1E1E; color: var(--white); font-size: 0.45rem; padding: 2px 5px; border-radius: 4px; font-weight: 900; letter-spacing: 0.5px; box-shadow: 0 2px 4px rgba(0,0,0,0.2); z-index: 1;">RECOMMENDED</span>
                                         <span>Bank Transfer</span>
                                     </label>
@@ -2406,7 +2405,6 @@
             checkoutState.discountAmount = 0; updateWAMessage();
         }
 
-        // UPDATE WA MESSAGE DENGAN FORMAT PENGELOMPOKAN TEXTURE BARU
         function updateWAMessage() {
             let msg = "*DETAIL ORDER*\n━━━━━━━━━━\n";
 
