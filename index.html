@@ -144,7 +144,8 @@
         .produk-header h2 { font-size: 2.2rem; letter-spacing: 0.5px; font-family: 'Lato', sans-serif; text-transform: none; font-weight: 800; color: var(--dark-blue); }
         .produk-header h2 .highlight-text { color: var(--circle-pink); }
         
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; align-items: start; }
+        /* 4 KOLOM PRODUCT */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; align-items: start; }
         
         .card { background: var(--white); padding: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; border-radius: 8px; border: 1px solid #f0f0f0; position: relative; display: flex; flex-direction: column; color: var(--black); }
         .card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
@@ -190,10 +191,12 @@
 
         /* --- PRICE LIST SECTION --- */
         .price-section { background-color: #F9F8F6; } 
-        .price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; align-items: start; width: 100%; max-width: 100%; margin: 0 auto; }
+        /* 4 KOLOM PRICE LIST */
+        .price-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; align-items: start; width: 100%; max-width: 100%; margin: 0 auto; }
         
-        @media (max-width: 1024px) and (min-width: 769px) {
+        @media (max-width: 1200px) and (min-width: 769px) {
             .price-grid { grid-template-columns: repeat(2, 1fr); }
+            .grid { grid-template-columns: repeat(2, 1fr); }
         }
         
         .price-card { background-color: var(--white); border-radius: 16px; padding: 30px 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); border: 1px solid #eaeaea; transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; align-items: start; } 
@@ -201,7 +204,7 @@
         .price-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: linear-gradient(90deg, var(--circle-pink), var(--black)); border-radius: 16px 16px 0 0; }
         
         .price-card-title { grid-column: span 2; text-align: center; margin-bottom: 5px; padding-bottom: 15px; border-bottom: 1px dashed #eaeaea; }
-        .price-card-title h3 { font-family: 'Lato', sans-serif; font-size: 1.6rem; font-weight: 900; color: var(--black); letter-spacing: 2px; margin: 0; }
+        .price-card-title h3 { font-family: 'Lato', sans-serif; font-size: 1.3rem; font-weight: 900; color: var(--black); letter-spacing: 2px; margin: 0; }
 
         .price-accordion { margin-bottom: 0; background-color: transparent; border: none; box-shadow: none; width: 100%; min-width: 0; scroll-margin-top: 100px; }
         
@@ -209,7 +212,7 @@
         .price-accordion:nth-of-type(2) .price-summary { border-radius: 0 8px 8px 0; }
         .price-accordion:nth-of-type(1)[open] .price-table-wrapper { border-right: 1px dashed #eaeaea; }
 
-        .price-summary { background: linear-gradient(135deg, #25D366 0%, #1da851 100%); color: var(--white); font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; padding: 15px 10px; cursor: pointer; list-style: none; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; gap: 10px; transition: all 0.3s; }
+        .price-summary { background: linear-gradient(135deg, #25D366 0%, #1da851 100%); color: var(--white); font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; padding: 15px 10px; cursor: pointer; list-style: none; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; gap: 10px; transition: all 0.3s; }
         .price-summary::-webkit-details-marker { display: none; }
         .price-summary:hover { background: linear-gradient(135deg, #1ebe56 0%, #158a41 100%); }
         
@@ -232,7 +235,6 @@
         
         .price-accordion[open] .price-summary { border-bottom-left-radius: 0; border-bottom-right-radius: 0; transition: 0s;} 
         
-        /* -- KODE YANG DIUBAH AGAR TEKS TIDAK KELUAR BATAS DAN SATU BARIS -- */
         .price-note { display: flex; justify-content: center; align-items: center; gap: 4px; background-color: rgba(216, 84, 107, 0.05); color: var(--circle-pink); font-size: 0.5rem; font-weight: 900; padding: 8px 2px; margin: 0; letter-spacing: 0; text-transform: uppercase; text-align: center; border-bottom: 1px solid #eaeaea; margin-bottom: 10px; white-space: nowrap; width: 100%; box-sizing: border-box; border-radius: 4px; overflow: hidden; }
         .price-note i { font-size: 0.8rem; color: var(--circle-pink); animation: pulse 2s infinite; }
         @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.15); } 100% { transform: scale(1); } }
@@ -240,9 +242,8 @@
         .price-table-wrapper { background-color: var(--white); padding: 20px 25px; border: 1px solid #eaeaea; border-top: none; border-radius: 0 0 8px 8px; margin-top: 0; box-shadow: 0 10px 25px rgba(0,0,0,0.02); overflow-x: auto; width: 100%; box-sizing: border-box; }
         .modern-table { width: 100%; border-collapse: collapse; font-family: 'Lato', sans-serif; }
         .modern-table thead { background-color: transparent; }
-        /* -- PADDING th DAN td DIKURANGI AGAR TABEL LEBIH PENDEK -- */
-        .modern-table th { padding: 8px 5px; font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; text-align: center; border-bottom: 2px solid var(--gold); color: var(--black); }
-        .modern-table td { padding: 8px 5px; text-align: center; font-size: 0.85rem; font-weight: 600; color: var(--gray); border-bottom: 1px solid #f5f5f5; transition: background-color 0.3s; }
+        .modern-table th { padding: 8px 5px; font-size: 0.55rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; text-align: center; border-bottom: 2px solid var(--gold); color: var(--black); }
+        .modern-table td { padding: 8px 5px; text-align: center; font-size: 0.75rem; font-weight: 600; color: var(--gray); border-bottom: 1px solid #f5f5f5; transition: background-color 0.3s; }
         .modern-table td:first-child { text-align: left; padding-left: 5px; font-weight: 700; color: var(--black); font-size: 0.8rem; white-space: nowrap; }
         .modern-table tbody tr:last-child td { border-bottom: none; }
         .modern-table tbody tr:hover td { background-color: #faf9f7; color: var(--black); }
@@ -289,7 +290,6 @@
         /* --- KALKULATOR PESANAN --- */
         .calculator-section { background-color: var(--white); padding: 80px 10%; border-top: 1px dashed #eaeaea; }
         
-        /* Flex Layout Desktop utk Form & Cart */
         .calc-wrapper { display: flex; flex-direction: column; width: 100%; }
         .calc-container { max-width: 600px; margin: 0 auto; background: #F9F8F6; padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eaeaea; position: relative; box-sizing: border-box; width: 100%;}
         .calc-container::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: linear-gradient(90deg, #25D366, var(--black)); border-radius: 12px 12px 0 0; }
@@ -307,6 +307,8 @@
         .calc-group select:focus, .calc-group input[type="number"]:focus, .calc-group input[type="text"]:focus { border-color: #25D366; box-shadow: 0 0 5px rgba(37, 211, 102, 0.3); }
         .calc-full { grid-column: span 1; width: 100%; }
 
+        /* GRID UNTUK PILIHAN TOMBOL */
+        .pill-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; width: 100%; }
         .pill-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; width: 100%; }
         .pill-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; width: 100%; }
         .item-centered { grid-column: 1 / -1; }
@@ -447,13 +449,11 @@
         /* --- MEDIA QUERY RESPONSIVE (TAMPILAN KHUSUS HP) --- */
         @media (max-width: 768px) {
             html { scroll-padding-top: 100px; }
-            /* Penyesuaian Navigasi HP untuk Logo */
             nav { flex-direction: column; padding: 12px 5%; gap: 15px; height: auto; align-items: center; justify-content: center;}
             
             .nav-brand { overflow: hidden; transition: all 0.3s ease; max-height: 60px; }
             .nav-brand.mobile-hide { opacity: 0; max-height: 0; margin: 0; padding: 0; pointer-events: none; }
             
-            /* Logo di HP lebih lebar supaya teks EMAHAIRSHOP tidak terpotong (E dan P terlihat) */
             .logo-nav-container { width: auto; min-width: 140px; margin-bottom: 2px;}
             .logo-nav-container .logo-main { font-size: 1rem; }
             .logo-nav-container .text-ext { font-size: 0.35rem; }
@@ -494,12 +494,10 @@
             .swiper-pagination-bullet { width: 5px !important; height: 5px !important; }
             .card h3 { font-size: 0.75rem; margin-bottom: 8px; line-height: 1.3; }
             
-            /* TINGGI KOTAK SPESIFIKASI DI HP DIPASTIKAN 1 BARIS (DISESUAIKAN UNTUK 2 KOTAK) */
             .specs-container { gap: 8px; margin-top: 10px; margin-bottom: 12px; }
             .spec-box { padding: 8px 4px; border-radius: 8px; min-width: 0; height: auto; justify-content: center; overflow: hidden; border: none; }
             .spec-box i { font-size: 0.9rem; margin-bottom: 4px; color: var(--white); }
             .spec-title { font-size: 0.4rem; line-height: 1; margin-bottom: 4px; padding-bottom: 4px; position: relative; font-weight: 800; letter-spacing: 0; white-space: nowrap; color: var(--white); width: 100%; text-align: center; }
-            /* Garis estetik di Mobile */
             .spec-title::after { content: ''; position: absolute; bottom: 0; left: 10%; width: 80%; height: 1px; background-color: rgba(255, 255, 255, 0.4); border-radius: 2px; }
             .spec-value { font-size: 0.65rem; display: block; line-height: 1; white-space: nowrap; letter-spacing: 0; font-weight: 900; color: var(--white); }
             
@@ -545,8 +543,12 @@
             .calc-header p { font-size: 0.7rem; white-space: normal; line-height: 1.4; letter-spacing: 0; font-weight: 400; margin:0;}
             .add-item-btn { margin-top: 15px !important; }
             .add-item-btn, .calc-btn { font-size: 0.65rem !important; padding: 8px 5px !important; white-space: nowrap !important; line-height: 1 !important; width: 100%; box-sizing: border-box; text-align: center; justify-content: center; margin: 0; }
+            
+            /* DI HP DIUBAH JADI 2 KOLOM AGAR TOMBOL NATURAL TIDAK KEKECILAN */
+            .pill-grid-4 { grid-template-columns: repeat(2, 1fr) !important; gap: 4px !important; width: 100%; margin: 0; padding: 0; }
             .pill-grid-3 { grid-template-columns: repeat(3, 1fr) !important; gap: 4px !important; width: 100%; margin: 0; padding: 0; } 
             .pill-grid-2 { grid-template-columns: repeat(2, 1fr) !important; gap: 4px !important; width: 100%; margin: 0; padding: 0; }
+            
             .pill-label { font-size: 0.55rem !important; padding: 4px 2px !important; min-height: 28px !important; letter-spacing: -0.2px; width: 100%; box-sizing: border-box; margin: 0; }
             .calc-group > label:not(.pill-label) { font-size: 0.65rem !important; letter-spacing: 1.5px !important; margin-bottom: 5px !important; margin-top: 5px !important; padding: 6px 5px !important; border-radius: 4px !important; width: 100% !important; }
             .quote-item-minimal { padding: 8px 0 !important; }
@@ -561,7 +563,6 @@
             #selectedPaymentText { font-size: 0.55rem !important; padding: 3px 6px !important; }
             #pay5-label span:first-child { font-size: 0.45rem; padding: 2px 4px; top: -8px; left: 0px; }
             
-            /* Penyesuaian Country & Courier jadi 2 kolom (Kiri-Kanan) di Mobile */
             .estimator-form { grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
             .form-group-ship label { font-size: 0.55rem !important; }
             .estimator-form input, .estimator-form select { padding: 8px 6px !important; font-size: 0.7rem !important; }
@@ -569,7 +570,6 @@
             .stat-row { padding-bottom: 4px; gap: 5px; }
             .stat-row span, .stat-row strong { font-size: 0.65rem !important; }
             
-            /* CSS TAMBAHAN UNTUK BANNER BOX MOBILE */
             .banner-box h4 { font-size: 0.85rem; margin-bottom: 6px; padding-bottom: 6px; letter-spacing: 0; }
             .banner-box h4::after { height: 1px; left: 10%; width: 80%; }
         }
@@ -1242,7 +1242,10 @@
 
                     <div class="calc-group">
                         <label>TEXTURE</label>
-                        <div class="pill-grid-3">
+                        <div class="pill-grid-4">
+                            <input type="radio" id="tex0" name="calcTexture" value="Natural" class="hidden-radio">
+                            <label for="tex0" class="pill-label">Natural</label>
+                            
                             <input type="radio" id="tex1" name="calcTexture" value="Straight" class="hidden-radio">
                             <label for="tex1" class="pill-label">Straight</label>
 
@@ -1553,11 +1556,9 @@
             pagination: { el: ".swiper-pagination", clickable: true }
         });
 
-        // Hiding/Showing Logo Header Logic (Sesuai Request Mobile)
         document.addEventListener('DOMContentLoaded', () => {
             const navLogo = document.getElementById('navLogo');
             
-            // Logic Sembunyikan Logo di HP setelah 2 detik
             setTimeout(() => {
                 if (window.innerWidth <= 768 && window.scrollY > 150) {
                     navLogo.classList.add('mobile-hide');
@@ -1566,18 +1567,17 @@
 
             window.addEventListener('scroll', () => {
                 if (window.innerWidth <= 768) {
-                    if (window.scrollY < 150) { // Jika di posisi atas (halaman about us)
+                    if (window.scrollY < 150) { 
                         navLogo.classList.remove('mobile-hide');
-                    } else { // Jika scroll ke bawah produk
+                    } else { 
                         navLogo.classList.add('mobile-hide');
                     }
                 } else {
-                    navLogo.classList.remove('mobile-hide'); // Desktop selalu muncul
+                    navLogo.classList.remove('mobile-hide'); 
                 }
             });
         });
 
-        // Generate Datalist Negara
         const countryArray = [
             "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cabo Verde", "Cambodia", "Cameroon", "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini", "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Korea", "North Macedonia", "Norway", "Oman", "Pakistan", "Palau", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Korea", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States of America", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"
         ];
@@ -1705,7 +1705,7 @@
             if (window.innerWidth <= 768) {
                 document.body.style.overflow = 'hidden';
             }
-            calculateShipping(); // Update estimasi ongkir
+            calculateShipping(); 
         }
 
         function closeCartModal() {
@@ -1715,13 +1715,10 @@
 
         function backToCart() {
             document.getElementById('checkoutModal').classList.remove('show');
-            document.body.style.overflow = ''; // Mencegah bug tidak bisa di-scroll di Desktop
-            
-            // Hanya pop-up modal khusus versi mobile
+            document.body.style.overflow = ''; 
             if (window.innerWidth <= 768) openCartModal(); 
         }
 
-        // FUNGSI UNTUK MENAMPILKAN PEMBAYARAN DAN MENUTUP ACCORDION OTOMATIS
         document.querySelectorAll('input[name="calcPayment"]').forEach(radio => {
             radio.addEventListener('change', (e) => {
                 const selectedText = document.getElementById('selectedPaymentText');
@@ -1761,7 +1758,7 @@
         let quoteItems = []; 
         let finalWhatsAppMessage = ""; 
         let currentEditIndex = -1; 
-        let currentModalStep = 1; // Variabel Status Step pada Modal
+        let currentModalStep = 1; 
         
         let checkoutState = {
             totalWeight: 0,
@@ -1798,7 +1795,7 @@
             if (countryInput && courierSelect && checkoutState.totalWeight > 0) {
                 let weightKg = checkoutState.totalWeight / 1000;
                 let roundedWeightKg = Math.ceil(weightKg);
-                if (roundedWeightKg < 1) roundedWeightKg = 1; // Minimum 1kg charge
+                if (roundedWeightKg < 1) roundedWeightKg = 1; 
                 
                 let cost = 0; let transitDays = 0; let ratePerKg = 0;
 
@@ -1812,7 +1809,6 @@
                 document.getElementById('shipCost').innerText = "$" + cost.toFixed(2);
                 document.getElementById('shipTransit').innerText = transitDays + " days after production";
 
-                // Tanggal Estimasi
                 const arrivalDate = new Date();
                 arrivalDate.setDate(arrivalDate.getDate() + 10 + transitDays);
                 const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -1833,7 +1829,6 @@
                     checkoutState.isCustomShipping = true; checkoutState.shippingFee = 0;
                 } else {
                     checkoutState.isCustomShipping = false;
-                    // Default estimasi tanpa pilih kurir
                     checkoutState.shippingFee = Math.ceil(checkoutState.totalWeight / 1000) * 60; 
                 }
             }
@@ -1847,7 +1842,7 @@
             const specificGroup = document.getElementById('specificColorGroup');
             
             if (colorType === 'Color') {
-                specificGroup.style.display = 'flex'; // Langsung tampilkan form teks
+                specificGroup.style.display = 'flex'; 
             } else {
                 specificGroup.style.display = 'none';
             }
@@ -1883,11 +1878,21 @@
             if (typeElement && qualityElement && textureElement && lengthElement && colorType && weight > 0) {
                 const type = typeElement.value; const quality = qualityElement.value;
                 const length = lengthElement.value; 
+                const texture = textureElement.value;
                 const priceType = (colorType === 'Natural') ? 'nat' : 'col';
                 
                 if(pricingDB[type] && pricingDB[type][quality] && pricingDB[type][quality][length]) {
                     const pricePer100g = pricingDB[type][quality][length][priceType];
-                    const itemPrice = (weight / 100) * pricePer100g;
+                    
+                    let textureSurcharge = (texture === 'Straight' || texture === 'Wavy' || texture === 'Curly') ? 3 : 0;
+                    
+                    let itemPrice = 0;
+                    if (weight >= 1000) {
+                        itemPrice = (weight / 1000) * 25; 
+                    } else {
+                        itemPrice = (weight / 100) * (pricePer100g + textureSurcharge);
+                    }
+                    
                     previewValue.innerText = "$" + itemPrice.toFixed(0);
                     previewContainer.style.display = "block";
                 } else { previewContainer.style.display = "none"; }
@@ -1930,7 +1935,6 @@
                 let spec = document.getElementById('calcSpecificColor').value.trim();
                 if (!spec) { alert("Please type the specific color you want."); return; }
                 
-                // Menambahkan otomatis # jika belum ada
                 if (!spec.startsWith('#')) {
                     spec = '#' + spec;
                 }
@@ -1941,7 +1945,15 @@
             }
 
             const pricePer100g = pricingDB[type][quality][length][priceType];
-            const itemPrice = (weight / 100) * pricePer100g;
+            
+            let textureSurcharge = (texture === 'Straight' || texture === 'Wavy' || texture === 'Curly') ? 3 : 0;
+            
+            let itemPrice = 0;
+            if (weight >= 1000) {
+                itemPrice = (weight / 1000) * 25; 
+            } else {
+                itemPrice = (weight / 100) * (pricePer100g + textureSurcharge);
+            }
 
             if (currentEditIndex === -1) {
                 quoteItems.push({ type, quality, length, texture, weight, colorType, displayColor, price: itemPrice });
@@ -1953,7 +1965,6 @@
                 addBtn.style.backgroundColor = ''; 
             }
             
-            // Reset forms
             if (typeElement) typeElement.checked = false; if (qualityElement) qualityElement.checked = false;
             if (textureElement) textureElement.checked = false;
             if (lengthElement) lengthElement.checked = false; 
@@ -1978,7 +1989,6 @@
                 document.querySelector(`input[name="calcColorType"][value="Natural"]`).checked = true;
             } else {
                 document.querySelector(`input[name="calcColorType"][value="Color"]`).checked = true;
-                // Hilangkan # saat diedit kembali jika diinginkan, atau biarkan
                 let colorVal = item.displayColor;
                 if (colorVal.startsWith('#')) colorVal = colorVal.substring(1);
                 document.getElementById('calcSpecificColor').value = colorVal;
@@ -2000,7 +2010,6 @@
             addBtn.style.backgroundColor = '#25D366'; 
 
             updateLivePrice(); 
-            // Jika di HP, tutup modal biar bisa ngedit
             if (window.innerWidth <= 768) closeCartModal(); 
             document.getElementById('quote').scrollIntoView({behavior: 'smooth'});
         }
@@ -2111,7 +2120,7 @@
             document.getElementById('btnModalNext').innerHTML = 'Proceed <i class="fa-solid fa-arrow-right"></i>';
             
             document.getElementById('recCountry').value = checkoutState.destCountry || ""; 
-            document.getElementById('fillLater').checked = false; // Reset checkbox
+            document.getElementById('fillLater').checked = false; 
             toggleFormFields();
             
             document.getElementById('checkoutModal').classList.add('show');
@@ -2176,7 +2185,6 @@
             if (isLater) {
                 finalMessage += `_Will be provided later via WhatsApp_\n\n`;
             } else {
-                // Ambil data Form Penerima
                 const name = document.getElementById('recName').value.trim();
                 const phone = document.getElementById('recPhone').value.trim();
                 const address = document.getElementById('recAddress').value.trim();
@@ -2195,7 +2203,6 @@
                 finalMessage += `_Country: ${country}_\n\n`;
             }
             
-            // Pindahkan teks Confirmasi agar ada di posisi paling bawah dengan format miring
             finalMessage = finalMessage.replace("_Please confirm availability and final pricing._", "") + "_Please confirm availability and final pricing._";
 
             const encodedMessage = encodeURIComponent(finalMessage);
@@ -2215,8 +2222,10 @@
             }
 
             const countryInput = document.getElementById('shipCountry').value;
-            if(!countryInput) {
-                alert("Please fill the Destination Country in Shipping Estimator.");
+            const courierInput = document.getElementById('shipCourier').value;
+
+            if(!countryInput || !courierInput) {
+                alert("Please fill the Destination Country and select Courier in Shipping Estimator.");
                 return;
             }
             
@@ -2297,7 +2306,7 @@
             
             document.getElementById('checkoutModalBody').innerHTML = modalHTML;
             updateWAMessage(); 
-            openCheckoutModal(); // Buka modal di step ke-1
+            openCheckoutModal(); 
         }
 
         function applyPromoCode() {
@@ -2449,9 +2458,9 @@
                 
                 msg += `*Estimasi Dana Diterima:*\n`;
                 if (checkoutState.isCustomShipping) {
-                    msg += `*${formattedIDR}* _(Belum termasuk ongkir)_\n`;
+                    msg += `_${formattedIDR}_ _(Belum termasuk ongkir)_\n`;
                 } else {
-                    msg += `*${formattedIDR}*\n`;
+                    msg += `_${formattedIDR}_\n`;
                 }
                 msg += `_(Kurs online saat ini: 1 USD = Rp ${formattedRate})_\n\n`;
             }
