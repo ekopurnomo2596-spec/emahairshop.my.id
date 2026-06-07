@@ -1239,32 +1239,30 @@
                         </div>
                     </div>
 
-                    <!-- TOMBOL TEXTURE 4 KOLOM DENGAN LABEL LEBIH BESAR -->
                     <div class="calc-group">
                         <label>TEXTURE</label>
-                        <!-- Catatan harga dihapus sesuai permintaan -->
                         <div class="pill-grid-4">
                             <input type="radio" id="tex0" name="calcTexture" value="Natural" class="hidden-radio">
                             <label for="tex0" class="pill-label">
-                                <span style="position: absolute; top: -8px; right: -6px; background: #25D366; color: var(--white); font-size: 0.65rem; padding: 3px 6px; border-radius: 6px; font-weight: 900; letter-spacing: 0.5px; box-shadow: 0 3px 6px rgba(0,0,0,0.3); z-index: 1;">+$0</span>
+                                <span style="position: absolute; top: -8px; right: -6px; background: rgba(37, 211, 102, 0.85); color: var(--white); font-size: 0.65rem; padding: 3px 6px; border-radius: 6px; font-weight: 900; letter-spacing: 0.5px; border: none; box-shadow: none; z-index: 1;">+$0</span>
                                 Natural
                             </label>
                             
                             <input type="radio" id="tex1" name="calcTexture" value="Straight" class="hidden-radio">
                             <label for="tex1" class="pill-label">
-                                <span style="position: absolute; top: -8px; right: -6px; background: #25D366; color: var(--white); font-size: 0.65rem; padding: 3px 6px; border-radius: 6px; font-weight: 900; letter-spacing: 0.5px; box-shadow: 0 3px 6px rgba(0,0,0,0.3); z-index: 1;">+$3</span>
+                                <span style="position: absolute; top: -8px; right: -6px; background: rgba(37, 211, 102, 0.85); color: var(--white); font-size: 0.65rem; padding: 3px 6px; border-radius: 6px; font-weight: 900; letter-spacing: 0.5px; border: none; box-shadow: none; z-index: 1;">+$3</span>
                                 Straight
                             </label>
 
                             <input type="radio" id="tex2" name="calcTexture" value="Wavy" class="hidden-radio">
                             <label for="tex2" class="pill-label">
-                                <span style="position: absolute; top: -8px; right: -6px; background: #25D366; color: var(--white); font-size: 0.65rem; padding: 3px 6px; border-radius: 6px; font-weight: 900; letter-spacing: 0.5px; box-shadow: 0 3px 6px rgba(0,0,0,0.3); z-index: 1;">+$3</span>
+                                <span style="position: absolute; top: -8px; right: -6px; background: rgba(37, 211, 102, 0.85); color: var(--white); font-size: 0.65rem; padding: 3px 6px; border-radius: 6px; font-weight: 900; letter-spacing: 0.5px; border: none; box-shadow: none; z-index: 1;">+$3</span>
                                 Wavy
                             </label>
 
                             <input type="radio" id="tex3" name="calcTexture" value="Curly" class="hidden-radio">
                             <label for="tex3" class="pill-label">
-                                <span style="position: absolute; top: -8px; right: -6px; background: #25D366; color: var(--white); font-size: 0.65rem; padding: 3px 6px; border-radius: 6px; font-weight: 900; letter-spacing: 0.5px; box-shadow: 0 3px 6px rgba(0,0,0,0.3); z-index: 1;">+$3</span>
+                                <span style="position: absolute; top: -8px; right: -6px; background: rgba(37, 211, 102, 0.85); color: var(--white); font-size: 0.65rem; padding: 3px 6px; border-radius: 6px; font-weight: 900; letter-spacing: 0.5px; border: none; box-shadow: none; z-index: 1;">+$3</span>
                                 Curly
                             </label>
                         </div>
@@ -1272,8 +1270,7 @@
                     
                     <div class="calc-group">
                         <label>QUANTITY (GRAMS)</label>
-                        <!-- Catatan Promo Flat $25/kg ditambahkan di sini -->
-                        <div class="price-note" style="margin-top: -5px; margin-bottom: 5px; background-color: #e8f9ee; color: #25D366; border: 1px dashed #25D366;"><i class="fa-solid fa-tags"></i> Promo: Flat rate $25/kg for all textures (1000g+)</div>
+                        <div class="price-note" style="margin-top: -5px; margin-bottom: 5px; background-color: #e8f9ee; color: #25D366; border: none; border-radius: 4px; padding: 8px;"><i class="fa-solid fa-tags"></i> Promo: Flat rate $25/kg for Straight, Wavy & Curly (1000g+)</div>
                         <div class="pill-grid-3">
                             <input type="radio" id="w100" name="calcWeightRadio" value="100" class="hidden-radio" onchange="toggleManualWeight()">
                             <label for="w100" class="pill-label">100g</label>
@@ -1903,7 +1900,8 @@
                     
                     let itemPrice = 0;
                     if (weight >= 1000) {
-                        itemPrice = (weight / 1000) * 25; 
+                        let textureFlat = (texture === 'Straight' || texture === 'Wavy' || texture === 'Curly') ? 25 * (weight / 1000) : 0;
+                        itemPrice = ((weight / 100) * pricePer100g) + textureFlat;
                     } else {
                         itemPrice = (weight / 100) * (pricePer100g + textureSurcharge);
                     }
@@ -1965,7 +1963,8 @@
             
             let itemPrice = 0;
             if (weight >= 1000) {
-                itemPrice = (weight / 1000) * 25; 
+                let textureFlat = (texture === 'Straight' || texture === 'Wavy' || texture === 'Curly') ? 25 * (weight / 1000) : 0;
+                itemPrice = ((weight / 100) * pricePer100g) + textureFlat;
             } else {
                 itemPrice = (weight / 100) * (pricePer100g + textureSurcharge);
             }
