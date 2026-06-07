@@ -232,15 +232,17 @@
         
         .price-accordion[open] .price-summary { border-bottom-left-radius: 0; border-bottom-right-radius: 0; transition: 0s;} 
         
-        .price-note { display: flex; justify-content: center; align-items: center; gap: 6px; background-color: rgba(216, 84, 107, 0.05); color: var(--circle-pink); font-size: 0.65rem; font-weight: 900; padding: 8px 0; margin: 0; letter-spacing: 0.5px; text-transform: uppercase; text-align: center; border-bottom: 1px solid #eaeaea; margin-bottom: 10px; white-space: nowrap; width: 100%; border-radius: 4px; }
+        /* -- KODE YANG DIUBAH AGAR TEKS TIDAK KELUAR BATAS DAN TABEL LEBIH PENDEK -- */
+        .price-note { display: flex; justify-content: center; align-items: center; gap: 6px; background-color: rgba(216, 84, 107, 0.05); color: var(--circle-pink); font-size: 0.55rem; font-weight: 900; padding: 8px 5px; margin: 0; letter-spacing: 0.5px; text-transform: uppercase; text-align: center; border-bottom: 1px solid #eaeaea; margin-bottom: 10px; white-space: normal; width: 100%; box-sizing: border-box; border-radius: 4px; }
         .price-note i { font-size: 0.8rem; color: var(--circle-pink); animation: pulse 2s infinite; }
         @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.15); } 100% { transform: scale(1); } }
 
         .price-table-wrapper { background-color: var(--white); padding: 20px 25px; border: 1px solid #eaeaea; border-top: none; border-radius: 0 0 8px 8px; margin-top: 0; box-shadow: 0 10px 25px rgba(0,0,0,0.02); overflow-x: auto; width: 100%; box-sizing: border-box; }
         .modern-table { width: 100%; border-collapse: collapse; font-family: 'Lato', sans-serif; }
         .modern-table thead { background-color: transparent; }
-        .modern-table th { padding: 15px 5px; font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; text-align: center; border-bottom: 2px solid var(--gold); color: var(--black); }
-        .modern-table td { padding: 15px 5px; text-align: center; font-size: 0.85rem; font-weight: 600; color: var(--gray); border-bottom: 1px solid #f5f5f5; transition: background-color 0.3s; }
+        /* -- PADDING th DAN td DIKURANGI AGAR TABEL LEBIH PENDEK -- */
+        .modern-table th { padding: 8px 5px; font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; text-align: center; border-bottom: 2px solid var(--gold); color: var(--black); }
+        .modern-table td { padding: 8px 5px; text-align: center; font-size: 0.85rem; font-weight: 600; color: var(--gray); border-bottom: 1px solid #f5f5f5; transition: background-color 0.3s; }
         .modern-table td:first-child { text-align: left; padding-left: 5px; font-weight: 700; color: var(--black); font-size: 0.8rem; white-space: nowrap; }
         .modern-table tbody tr:last-child td { border-bottom: none; }
         .modern-table tbody tr:hover td { background-color: #faf9f7; color: var(--black); }
