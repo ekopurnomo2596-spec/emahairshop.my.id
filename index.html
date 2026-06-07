@@ -2152,8 +2152,7 @@
             const isLater = document.getElementById('fillLater').checked;
             let finalMessage = finalWhatsAppMessage;
             
-            finalMessage += `━━━━━━━━━━\n\n`;
-            finalMessage += `*RECIPIENT DATA*\n`;
+            finalMessage += `\n*RECIPIENT DATA*\n`;
             finalMessage += `━━━━━━━━━━\n`;
 
             if (isLater) {
@@ -2433,7 +2432,7 @@
                 } else {
                     msg += `*${formattedIDR}*\n`;
                 }
-                msg += `(Kurs online saat ini: 1 USD = Rp ${formattedRate})\n\n`;
+                msg += `_(Kurs online saat ini: 1 USD = Rp ${formattedRate})_\n\n`;
             }
 
             msg += "_Please confirm availability and final pricing._"; 
