@@ -313,6 +313,24 @@
         .pill-label:hover { border-color: #a3e6be; background-color: #f0fdf4; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
         .hidden-radio:checked + .pill-label { background: #f0fdf4; color: var(--black); border: 1.5px solid #25D366; font-weight: 800; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.15); transform: translateY(-2px); }
         
+        /* DESAIN BADGE HARGA TEKSTUR PALING KIRI */
+        .tex-price-badge {
+            position: absolute;
+            left: 8px;
+            background: #e8f9ee; 
+            color: #25D366; 
+            font-size: 0.6rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+        .hidden-radio:checked + .pill-label .tex-price-badge {
+            background: #25D366;
+            color: var(--white);
+        }
+
         .add-item-btn { background-color: var(--dark-blue); color: var(--white); padding: 12px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; width: 100%; display: flex; justify-content: center; align-items: center; gap: 8px; text-transform: uppercase; font-size: 0.85rem;}
         .add-item-btn:hover { background-color: var(--black); }
 
@@ -543,8 +561,12 @@
             .pill-grid-3 { grid-template-columns: repeat(3, 1fr) !important; gap: 4px !important; width: 100%; margin: 0; padding: 0; } 
             .pill-grid-2 { grid-template-columns: repeat(2, 1fr) !important; gap: 4px !important; width: 100%; margin: 0; padding: 0; }
             
-            .pill-label { font-size: 0.55rem !important; padding: 4px 2px !important; min-height: 28px !important; letter-spacing: -0.2px; width: 100%; box-sizing: border-box; margin: 0; position: relative; }
+            .pill-label { font-size: 0.55rem !important; padding: 4px 2px !important; min-height: 28px !important; letter-spacing: -0.2px; width: 100%; box-sizing: border-box; margin: 0; position: relative; display: flex; align-items: center; justify-content: center; }
             .calc-group > label:not(.pill-label) { font-size: 0.65rem !important; letter-spacing: 1.5px !important; margin-bottom: 5px !important; margin-top: 5px !important; padding: 6px 5px !important; border-radius: 4px !important; width: 100% !important; }
+            
+            /* Penyesuaian tekstur HP (agar muat) */
+            .tex-price-badge { font-size: 0.5rem !important; padding: 2px 4px !important; left: 4px !important; }
+            
             .quote-item-minimal { padding: 8px 0 !important; }
             .quote-item-minimal-details strong { font-size: 0.65rem !important; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; max-width: 100%;}
             .quote-item-minimal-details span { font-size: 0.55rem !important; display: block; }
@@ -556,7 +578,6 @@
             .payment-pill { font-size: 0.8rem !important; padding: 12px 4px !important; justify-content: center !important; text-align: center !important; white-space: nowrap !important; }
             #selectedPaymentText { font-size: 0.55rem !important; padding: 3px 6px !important; }
             
-            /* Penyesuaian Lencana di HP untuk Bank Transfer */
             #pay5-label span:first-child { font-size: 0.45rem; padding: 2px 4px; top: -6px; left: -6px; }
             
             .estimator-form { grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
@@ -1241,25 +1262,25 @@
                         <div class="pill-grid-4">
                             <input type="radio" id="tex0" name="calcTexture" value="Natural" class="hidden-radio">
                             <label for="tex0" class="pill-label">
-                                <span style="position: absolute; top: -6px; left: -6px; background: rgba(37, 211, 102, 0.85); color: var(--white); font-size: 0.5rem; padding: 2px 6px; border-radius: 4px; font-weight: 900; letter-spacing: 0.5px; border: none; box-shadow: none; z-index: 1;">+$0</span>
+                                <span class="tex-price-badge">+$0</span>
                                 Natural
                             </label>
                             
                             <input type="radio" id="tex1" name="calcTexture" value="Straight" class="hidden-radio">
                             <label for="tex1" class="pill-label">
-                                <span style="position: absolute; top: -6px; left: -6px; background: rgba(37, 211, 102, 0.85); color: var(--white); font-size: 0.5rem; padding: 2px 6px; border-radius: 4px; font-weight: 900; letter-spacing: 0.5px; border: none; box-shadow: none; z-index: 1;">+$3</span>
+                                <span class="tex-price-badge">+$3</span>
                                 Straight
                             </label>
 
                             <input type="radio" id="tex2" name="calcTexture" value="Wavy" class="hidden-radio">
                             <label for="tex2" class="pill-label">
-                                <span style="position: absolute; top: -6px; left: -6px; background: rgba(37, 211, 102, 0.85); color: var(--white); font-size: 0.5rem; padding: 2px 6px; border-radius: 4px; font-weight: 900; letter-spacing: 0.5px; border: none; box-shadow: none; z-index: 1;">+$3</span>
+                                <span class="tex-price-badge">+$3</span>
                                 Wavy
                             </label>
 
                             <input type="radio" id="tex3" name="calcTexture" value="Curly" class="hidden-radio">
                             <label for="tex3" class="pill-label">
-                                <span style="position: absolute; top: -6px; left: -6px; background: rgba(37, 211, 102, 0.85); color: var(--white); font-size: 0.5rem; padding: 2px 6px; border-radius: 4px; font-weight: 900; letter-spacing: 0.5px; border: none; box-shadow: none; z-index: 1;">+$3</span>
+                                <span class="tex-price-badge">+$3</span>
                                 Curly
                             </label>
                         </div>
