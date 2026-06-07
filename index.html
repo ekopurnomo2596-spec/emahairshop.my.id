@@ -232,8 +232,8 @@
         
         .price-accordion[open] .price-summary { border-bottom-left-radius: 0; border-bottom-right-radius: 0; transition: 0s;} 
         
-        /* -- KODE YANG DIUBAH AGAR TEKS TIDAK KELUAR BATAS DAN TABEL LEBIH PENDEK -- */
-        .price-note { display: flex; justify-content: center; align-items: center; gap: 6px; background-color: rgba(216, 84, 107, 0.05); color: var(--circle-pink); font-size: 0.55rem; font-weight: 900; padding: 8px 5px; margin: 0; letter-spacing: 0.5px; text-transform: uppercase; text-align: center; border-bottom: 1px solid #eaeaea; margin-bottom: 10px; white-space: normal; width: 100%; box-sizing: border-box; border-radius: 4px; }
+        /* -- KODE YANG DIUBAH AGAR TEKS TIDAK KELUAR BATAS DAN SATU BARIS -- */
+        .price-note { display: flex; justify-content: center; align-items: center; gap: 4px; background-color: rgba(216, 84, 107, 0.05); color: var(--circle-pink); font-size: 0.5rem; font-weight: 900; padding: 8px 2px; margin: 0; letter-spacing: 0; text-transform: uppercase; text-align: center; border-bottom: 1px solid #eaeaea; margin-bottom: 10px; white-space: nowrap; width: 100%; box-sizing: border-box; border-radius: 4px; overflow: hidden; }
         .price-note i { font-size: 0.8rem; color: var(--circle-pink); animation: pulse 2s infinite; }
         @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.15); } 100% { transform: scale(1); } }
 
