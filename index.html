@@ -153,13 +153,13 @@
         .swiper-button-next:after, .swiper-button-prev:after { font-size: 15px !important; font-weight: bold; }
         .swiper-pagination-bullet-active { background: var(--circle-pink) !important; }
 
-        /* DESKTOP BOX SPESIFIKASI - DIPASTIKAN 1 BARIS (DISESUAIKAN UNTUK 2 KOTAK DENGAN TEMA PRICE-NOTE) */
+        /* DESKTOP BOX SPESIFIKASI - GAYA HIJAU WHATSAPP SOLID */
         .specs-container { display: flex; flex-direction: row; justify-content: center; gap: 15px; margin-top: 20px; margin-bottom: 20px; }
-        .spec-box { background-color: rgba(216, 84, 107, 0.05); color: var(--circle-pink); padding: 12px 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 8px; transition: 0.3s; flex: 1; text-align: center; line-height: 1.2; border: 1px dashed rgba(216, 84, 107, 0.4); overflow: hidden;}
-        .spec-box:hover { background-color: rgba(216, 84, 107, 0.1); transform: translateY(-3px); box-shadow: 0 6px 15px rgba(216, 84, 107, 0.15); }
-        .spec-box i { font-size: 1.1rem; margin-bottom: 4px; animation: pulse 2s infinite; }
-        .spec-title { font-size: 0.55rem; font-weight: 800; margin-bottom: 2px; color: var(--black); text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; }
-        .spec-value { font-size: 0.75rem; font-weight: 900; white-space: nowrap; }
+        .spec-box { background-color: #25D366; color: var(--white); padding: 12px 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 8px; transition: 0.3s; flex: 1; text-align: center; line-height: 1.2; border: none; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.2); overflow: hidden;}
+        .spec-box:hover { background-color: #1ebe56; transform: translateY(-3px); box-shadow: 0 6px 15px rgba(37, 211, 102, 0.3); }
+        .spec-box i { font-size: 1.1rem; margin-bottom: 4px; animation: pulse 2s infinite; color: var(--white); }
+        .spec-title { font-size: 0.55rem; font-weight: 800; margin-bottom: 2px; color: var(--white); opacity: 0.9; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; }
+        .spec-value { font-size: 0.75rem; font-weight: 900; white-space: nowrap; color: var(--white); }
 
         .accordion-wrapper { margin-top: 15px; background: #fafafa; border: 1px solid #eaeaea; border-radius: 6px; padding: 0 15px; margin-bottom: 20px; }
         .custom-details { border-bottom: 1px solid #eaeaea; padding: 12px 0; }
@@ -186,7 +186,11 @@
 
         /* --- PRICE LIST SECTION --- */
         .price-section { background-color: #F9F8F6; } 
-        .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 30px; align-items: start; max-width: 1250px; margin: 0 auto; }
+        .price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; align-items: start; width: 100%; max-width: 100%; margin: 0 auto; }
+        
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .price-grid { grid-template-columns: repeat(2, 1fr); }
+        }
         
         .price-card { background-color: var(--white); border-radius: 16px; padding: 30px 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); border: 1px solid #eaeaea; transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; align-items: start; } 
         .price-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.08); }
@@ -486,10 +490,10 @@
             
             /* TINGGI KOTAK SPESIFIKASI DI HP DIPASTIKAN 1 BARIS (DISESUAIKAN UNTUK 2 KOTAK) */
             .specs-container { gap: 8px; margin-top: 10px; margin-bottom: 12px; }
-            .spec-box { padding: 6px 4px; border-radius: 6px; min-width: 0; height: auto; justify-content: center; overflow: hidden; }
-            .spec-box i { font-size: 0.85rem; margin-bottom: 2px; }
-            .spec-title { font-size: 0.4rem; line-height: 1; margin-bottom: 3px; font-weight: 800; letter-spacing: 0; white-space: nowrap; color: var(--black); }
-            .spec-value { font-size: 0.55rem; display: block; line-height: 1; white-space: nowrap; letter-spacing: 0; font-weight: 900;}
+            .spec-box { padding: 6px 4px; border-radius: 6px; min-width: 0; height: auto; justify-content: center; overflow: hidden; border: none; }
+            .spec-box i { font-size: 0.85rem; margin-bottom: 2px; color: var(--white); }
+            .spec-title { font-size: 0.4rem; line-height: 1; margin-bottom: 3px; font-weight: 800; letter-spacing: 0; white-space: nowrap; color: var(--white); opacity: 0.9; }
+            .spec-value { font-size: 0.55rem; display: block; line-height: 1; white-space: nowrap; letter-spacing: 0; font-weight: 900; color: var(--white); }
             
             .accordion-wrapper { padding: 0 6px; margin-bottom: 12px; }
             .custom-summary { font-size: 0.55rem; padding: 8px 0; letter-spacing: 0; }
