@@ -144,7 +144,7 @@
         .produk-header h2 { font-size: 2.2rem; letter-spacing: 0.5px; font-family: 'Lato', sans-serif; text-transform: none; font-weight: 800; color: var(--dark-blue); }
         .produk-header h2 .highlight-text { color: var(--circle-pink); }
         
-        /* 3 KOLOM PRODUCT UNTUK DESKTOP (KEMBALI KE SEMULA) */
+        /* 3 KOLOM PRODUCT UNTUK DESKTOP */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; align-items: start; }
         
         .card { background: var(--white); padding: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; border-radius: 8px; border: 1px solid #f0f0f0; position: relative; display: flex; flex-direction: column; color: var(--black); }
@@ -191,7 +191,7 @@
 
         /* --- PRICE LIST SECTION --- */
         .price-section { background-color: #F9F8F6; } 
-        /* 3 KOLOM PRICE LIST UNTUK DESKTOP (KEMBALI KE SEMULA) */
+        /* 3 KOLOM PRICE LIST UNTUK DESKTOP */
         .price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; align-items: start; width: 100%; max-width: 100%; margin: 0 auto; }
         
         @media (max-width: 1024px) and (min-width: 769px) {
@@ -2233,17 +2233,25 @@
 
             const paymentSelect = paymentElement.value;
 
-            let totalWeight = 0; let totalPrice = 0; let groupedItems = {};
+            let totalWeight = 0; let totalPrice = 0; 
+            let groupedItems = {};
             
+            // LOGIKA GROUPING BARU (Dikelompokkan hingga Texture)
             quoteItems.forEach(item => {
                 totalWeight += item.weight; totalPrice += item.price;
                 if (!groupedItems[item.quality]) groupedItems[item.quality] = {};
-                if (!groupedItems[item.quality][item.type]) groupedItems[item.quality][item.type] = [];
-                groupedItems[item.quality][item.type].push(item);
+                if (!groupedItems[item.quality][item.type]) groupedItems[item.quality][item.type] = {};
+                if (!groupedItems[item.quality][item.type][item.texture]) groupedItems[item.quality][item.type][item.texture] = [];
+                groupedItems[item.quality][item.type][item.texture].push(item);
             });
 
+            // LOGIKA SORTING BARU (Berdasarkan Inci)
             for (const quality in groupedItems) {
-                for (const type in groupedItems[quality]) groupedItems[quality][type].sort((a, b) => parseInt(a.length) - parseInt(b.length));
+                for (const type in groupedItems[quality]) {
+                    for (const texture in groupedItems[quality][type]) {
+                        groupedItems[quality][type][texture].sort((a, b) => parseInt(a.length) - parseInt(b.length));
+                    }
+                }
             }
 
             checkoutState.totalWeight = totalWeight;
@@ -2258,20 +2266,24 @@
             if (paymentSelect === "PayPal") paypalFee = checkoutState.baseTotal * 0.05;
             checkoutState.paypalFee = paypalFee;
 
+            // HTML UNTUK MODAL CHECKOUT
             let modalHTML = ``;
             for (const [quality, types] of Object.entries(groupedItems)) {
                 modalHTML += `<div class="modal-item-title">${quality.toUpperCase()}</div>`;
-                for (const [type, items] of Object.entries(types)) {
+                for (const [type, textures] of Object.entries(types)) {
                     modalHTML += `<div style="font-weight: 700; font-size: 0.8rem; color: var(--gray); margin-top: 5px; text-transform: uppercase;">${type}</div>`;
-                    items.forEach(item => {
-                        let lenStr = item.length.replace(" inches", '"');
-                        let weightStr = item.weight >= 1000 ? (item.weight / 1000) + 'kg' : item.weight + 'g';
-                        modalHTML += `
-                            <div class="modal-item-row" style="padding-left: 10px; border-bottom: 1px dotted #eee;">
-                                <span>${item.texture}, ${lenStr}, ${weightStr}, ${item.displayColor}</span>
-                                <strong>$${item.price.toFixed(0)}</strong>
-                            </div>`;
-                    });
+                    for (const [texture, items] of Object.entries(textures)) {
+                        modalHTML += `<div style="font-weight: 600; font-size: 0.75rem; color: var(--dark-blue); margin-top: 2px; padding-left: 5px;">${texture} Texture</div>`;
+                        items.forEach(item => {
+                            let lenStr = item.length.replace(" inches", '"');
+                            let weightStr = item.weight >= 1000 ? (item.weight / 1000) + 'kg' : item.weight + 'g';
+                            modalHTML += `
+                                <div class="modal-item-row" style="padding-left: 15px; border-bottom: 1px dotted #eee;">
+                                    <span>- ${lenStr}, ${weightStr}, ${item.displayColor}</span>
+                                    <strong>$${item.price.toFixed(0)}</strong>
+                                </div>`;
+                        });
+                    }
                 }
             }
 
@@ -2383,33 +2395,38 @@
             checkoutState.discountAmount = 0; updateWAMessage();
         }
 
-        // UPDATE WA MESSAGE DENGAN TEXTURE FORMAT
+        // UPDATE WA MESSAGE DENGAN FORMAT PENGELOMPOKAN TEXTURE BARU
         function updateWAMessage() {
             let msg = "*DETAIL ORDER*\n━━━━━━━━━━\n";
 
             let groupedItems = {};
             quoteItems.forEach(item => {
                 if (!groupedItems[item.quality]) groupedItems[item.quality] = {};
-                if (!groupedItems[item.quality][item.type]) groupedItems[item.quality][item.type] = [];
-                groupedItems[item.quality][item.type].push(item);
+                if (!groupedItems[item.quality][item.type]) groupedItems[item.quality][item.type] = {};
+                if (!groupedItems[item.quality][item.type][item.texture]) groupedItems[item.quality][item.type][item.texture] = [];
+                groupedItems[item.quality][item.type][item.texture].push(item);
             });
 
             for (const quality in groupedItems) {
-                for (const type in groupedItems[quality]) groupedItems[quality][type].sort((a, b) => parseInt(a.length) - parseInt(b.length));
+                for (const type in groupedItems[quality]) {
+                    for (const texture in groupedItems[quality][type]) {
+                        groupedItems[quality][type][texture].sort((a, b) => parseInt(a.length) - parseInt(b.length));
+                    }
+                }
             }
 
             for (const [quality, types] of Object.entries(groupedItems)) {
                 msg += `_${quality.toUpperCase()}_\n`; 
-                for (const [type, items] of Object.entries(types)) {
+                for (const [type, textures] of Object.entries(types)) {
                     msg += `_${type}_\n`; 
-                    items.forEach(item => {
-                        let lenStr = item.length.replace(" inches", '"');
-                        let weightStr = item.weight >= 1000 ? (item.weight / 1000) + 'kg' : item.weight + 'g';
-                        
-                        // Perubahan Format WhatsApp (Texture)
-                        msg += `_${item.texture} Texture_\n`;
-                        msg += `_- ${lenStr} ${weightStr} ${item.displayColor} $${item.price.toFixed(0)}_\n`;
-                    });
+                    for (const [texture, items] of Object.entries(textures)) {
+                        msg += `_${texture} Texture_\n`;
+                        items.forEach(item => {
+                            let lenStr = item.length.replace(" inches", '"');
+                            let weightStr = item.weight >= 1000 ? (item.weight / 1000) + 'kg' : item.weight + 'g';
+                            msg += `_- ${lenStr} ${weightStr} ${item.displayColor} $${item.price.toFixed(0)}_\n`;
+                        });
+                    }
                 }
             }
 
