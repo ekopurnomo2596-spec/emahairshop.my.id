@@ -344,7 +344,7 @@
         
         .checkout-modal-header { border-bottom: 1px solid #eaeaea; padding-bottom: 10px; margin-bottom: 15px; }
         .checkout-modal-header h3 { font-family: 'Lato', sans-serif; font-size: 1.3rem; font-weight: 900; color: var(--black); text-transform: none; margin: 0; }
-        .checkout-modal-body { font-size: 0.85rem; line-height: 1.5; margin-bottom: 20px; max-height: 55vh; overflow-y: auto; padding-right: 5px; }
+        .checkout-modal-body { font-size: 0.85rem; line-height: 1.5; margin-bottom: 20px; }
         .modal-item-row { display: flex; justify-content: space-between; border-bottom: 1px dashed #eaeaea; padding: 6px 0; }
         .modal-item-title { font-weight: 700; color: var(--dark-blue); font-size: 0.9rem; margin-top: 10px; }
         .modal-summary-row { display: flex; justify-content: space-between; padding: 4px 0; font-size: 0.9rem; }
@@ -1456,17 +1456,58 @@
         <button class="sticky-cart-btn"><i class="fa-solid fa-cart-shopping"></i> View Cart</button>
     </div>
 
-    <!-- Modal Konfirmasi Akhir (Review Order Sebelum Chat WA) -->
+    <!-- Modal Konfirmasi Akhir (Review Order & Form Penerima) -->
     <div id="checkoutModal" class="lightbox">
-        <div class="lightbox-content checkout-modal-content">
+        <div class="lightbox-content checkout-modal-content" style="max-height: 90vh; display: flex; flex-direction: column;">
             <div class="checkout-modal-header">
-                <h3>Order Confirmation</h3>
+                <h3 id="checkoutModalTitle">Order Confirmation</h3>
             </div>
-            <div class="checkout-modal-body" id="checkoutModalBody">
+            
+            <div style="overflow-y: auto; padding-right: 5px; flex: 1;" id="checkoutScrollArea">
+                <!-- Step 1: Summary -->
+                <div id="step1Summary">
+                    <div class="checkout-modal-body" id="checkoutModalBody" style="margin-bottom: 0;"></div>
                 </div>
-            <div class="checkout-modal-footer">
-                <button onclick="backToCart()" class="btn-cancel"><i class="fa-solid fa-arrow-left"></i> Back</button>
-                <button onclick="proceedToWhatsApp()" class="btn-confirm"><i class="fa-brands fa-whatsapp"></i> Send Order</button>
+
+                <!-- Step 2: Form Penerima -->
+                <div id="step2Form" style="display: none; padding-top: 10px; margin-bottom: 20px;">
+                    <div style="background: #F9F8F6; padding: 15px; border-radius: 8px; border: 1px solid #eaeaea;">
+                        <p style="font-size: 0.8rem; color: var(--gray); margin-bottom: 15px; text-align: center; font-weight: 600;">Please fill in your shipping details.</p>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 12px;">
+                            <div style="display: flex; flex-direction: column; gap: 4px;">
+                                <label for="recName" style="font-size: 0.7rem; font-weight: 800; color: var(--dark-blue); text-transform: uppercase;">Full Name *</label>
+                                <input type="text" id="recName" placeholder="Enter recipient name" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-family: 'Lato', sans-serif; font-size: 0.85rem; outline: none; box-sizing: border-box;">
+                            </div>
+                            
+                            <div style="display: flex; flex-direction: column; gap: 4px;">
+                                <label for="recPhone" style="font-size: 0.7rem; font-weight: 800; color: var(--dark-blue); text-transform: uppercase;">Phone Number *</label>
+                                <input type="tel" id="recPhone" placeholder="E.g. +1 234 567 8900" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-family: 'Lato', sans-serif; font-size: 0.85rem; outline: none; box-sizing: border-box;">
+                            </div>
+                            
+                            <div style="display: flex; flex-direction: column; gap: 4px;">
+                                <label for="recAddress" style="font-size: 0.7rem; font-weight: 800; color: var(--dark-blue); text-transform: uppercase;">Full Address *</label>
+                                <textarea id="recAddress" placeholder="Street, City, State/Province" rows="2" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-family: 'Lato', sans-serif; font-size: 0.85rem; resize: none; outline: none; box-sizing: border-box;"></textarea>
+                            </div>
+                            
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                <div style="display: flex; flex-direction: column; gap: 4px;">
+                                    <label for="recPostcode" style="font-size: 0.7rem; font-weight: 800; color: var(--dark-blue); text-transform: uppercase;">Post Code *</label>
+                                    <input type="text" id="recPostcode" placeholder="Postal/Zip" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-family: 'Lato', sans-serif; font-size: 0.85rem; outline: none; box-sizing: border-box;">
+                                </div>
+                                <div style="display: flex; flex-direction: column; gap: 4px;">
+                                    <label for="recCountry" style="font-size: 0.7rem; font-weight: 800; color: var(--dark-blue); text-transform: uppercase;">Country *</label>
+                                    <input type="text" id="recCountry" placeholder="Country" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-family: 'Lato', sans-serif; font-size: 0.85rem; outline: none; box-sizing: border-box;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="checkout-modal-footer" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #eaeaea;">
+                <button id="btnModalBack" onclick="handleModalBack()" class="btn-cancel"><i class="fa-solid fa-arrow-left"></i> Back</button>
+                <button id="btnModalNext" onclick="handleModalNext()" class="btn-confirm">Proceed <i class="fa-solid fa-arrow-right"></i></button>
             </div>
         </div>
     </div>
@@ -1698,6 +1739,7 @@
         let quoteItems = []; 
         let finalWhatsAppMessage = ""; 
         let currentEditIndex = -1; 
+        let currentModalStep = 1; // Variabel Status Step pada Modal
         
         let checkoutState = {
             totalWeight: 0,
@@ -2032,13 +2074,87 @@
             }
         }
 
+        // --- FUNGSI MODAL STEP 1 & STEP 2 ---
+        function openCheckoutModal() {
+            currentModalStep = 1;
+            document.getElementById('checkoutModalTitle').innerText = "Order Confirmation";
+            document.getElementById('step1Summary').style.display = 'block';
+            document.getElementById('step2Form').style.display = 'none';
+            
+            document.getElementById('btnModalBack').innerHTML = '<i class="fa-solid fa-arrow-left"></i> Back';
+            document.getElementById('btnModalNext').innerHTML = 'Proceed <i class="fa-solid fa-arrow-right"></i>';
+            
+            document.getElementById('recCountry').value = checkoutState.destCountry || ""; 
+            
+            document.getElementById('checkoutModal').classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function handleModalNext() {
+            if (currentModalStep === 1) {
+                currentModalStep = 2;
+                document.getElementById('checkoutModalTitle').innerText = "Recipient Data";
+                document.getElementById('step1Summary').style.display = 'none';
+                document.getElementById('step2Form').style.display = 'block';
+                
+                document.getElementById('btnModalBack').innerHTML = '<i class="fa-solid fa-arrow-left"></i> Summary';
+                document.getElementById('btnModalNext').innerHTML = '<i class="fa-brands fa-whatsapp"></i> Send Order';
+                
+                document.getElementById('checkoutScrollArea').scrollTop = 0; 
+            } else if (currentModalStep === 2) {
+                proceedToWhatsApp();
+            }
+        }
+
+        function handleModalBack() {
+            if (currentModalStep === 2) {
+                currentModalStep = 1;
+                document.getElementById('checkoutModalTitle').innerText = "Order Confirmation";
+                document.getElementById('step1Summary').style.display = 'block';
+                document.getElementById('step2Form').style.display = 'none';
+                
+                document.getElementById('btnModalBack').innerHTML = '<i class="fa-solid fa-arrow-left"></i> Back';
+                document.getElementById('btnModalNext').innerHTML = 'Proceed <i class="fa-solid fa-arrow-right"></i>';
+            } else {
+                closeCheckoutModal();
+                if (window.innerWidth <= 768) openCartModal(); 
+            }
+        }
+
         function closeCheckoutModal() {
             document.getElementById('checkoutModal').classList.remove('show');
             document.body.style.overflow = '';
         }
 
         function proceedToWhatsApp() {
-            const encodedMessage = encodeURIComponent(finalWhatsAppMessage);
+            // Ambil data Form Penerima
+            const name = document.getElementById('recName').value.trim();
+            const phone = document.getElementById('recPhone').value.trim();
+            const address = document.getElementById('recAddress').value.trim();
+            const postcode = document.getElementById('recPostcode').value.trim();
+            const country = document.getElementById('recCountry').value.trim();
+
+            if (!name || !phone || !address || !postcode || !country) {
+                alert("Please fill in all recipient fields before sending the order.");
+                return;
+            }
+
+            let finalMessage = finalWhatsAppMessage;
+            
+            // Tambahkan Data Penerima ke dalam Pesan WA
+            finalMessage += `━━━━━━━━━━\n\n`;
+            finalMessage += `RECIPIENT DATA\n`;
+            finalMessage += `━━━━━━━━━━\n`;
+            finalMessage += `Name: *${name}*\n`;
+            finalMessage += `Phone: *${phone}*\n`;
+            finalMessage += `Address: *${address}*\n`;
+            finalMessage += `Post Code: *${postcode}*\n`;
+            finalMessage += `Country: *${country}*\n\n`;
+            
+            // Pindahkan teks Confirmasi agar ada di posisi paling bawah
+            finalMessage = finalMessage.replace("Please confirm my order.", "") + "Please confirm my order.";
+
+            const encodedMessage = encodeURIComponent(finalMessage);
             window.open("https://api.whatsapp.com/send/?phone=6285868872566&text=" + encodedMessage, '_blank');
             closeCheckoutModal();
         }
@@ -2138,10 +2254,8 @@
             </div>`;
             
             document.getElementById('checkoutModalBody').innerHTML = modalHTML;
-            document.getElementById('checkoutModal').classList.add('show');
-            document.body.style.overflow = 'hidden';
-
             updateWAMessage(); 
+            openCheckoutModal(); // Buka modal di step ke-1
         }
 
         function applyPromoCode() {
