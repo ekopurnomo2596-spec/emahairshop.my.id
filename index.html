@@ -582,6 +582,7 @@
     </nav>
 
     <section id="about" class="about">
+        <!-- Teks pembuka kecil untuk mempermanis tanpa logo besar -->
         <div data-aos="fade-down" style="margin-bottom: 20px;">
              <span style="color: var(--gold); font-family: 'Lato', sans-serif; font-size: 0.8rem; font-weight: 900; letter-spacing: 3px; text-transform: uppercase;"></span>
         </div>
@@ -1190,6 +1191,7 @@
 
     <section id="quote" class="calculator-section">
         <div class="calc-wrapper">
+            <!-- Sisi Kiri: Form -->
             <div class="calc-container" data-aos="fade-up">
                 <div class="calc-header">
                     <h3>Order Form</h3>
@@ -1295,6 +1297,7 @@
                         </div>
                     </div>
 
+                    <!-- Hanya tampilkan form teks jika Custom Color dipilih -->
                     <div class="calc-group" id="specificColorGroup" style="display: none;">
                         <label for="calcSpecificColor" style="background: transparent; color: var(--gray); border: none; font-size: 0.65rem; padding: 0; margin-bottom: 0;">TYPE SPECIFIC COLOR</label>
                         <input type="text" id="calcSpecificColor" placeholder="e.g. Piano, Ombre, 613, dll">
@@ -1312,6 +1315,7 @@
                 </div>
             </div>
             
+            <!-- Sisi Kanan (Desktop) / Modal (HP): Panel Cart -->
             <div id="cartPanel" class="cart-panel" data-aos="fade-up" data-aos-delay="100">
                 <div class="checkout-modal-content" style="max-height: 90vh; display: flex; flex-direction: column;">
                     <div class="checkout-modal-header" style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #eaeaea; padding-bottom: 10px; margin-bottom: 10px;">
@@ -1331,6 +1335,7 @@
                         </div>
 
                         <div id="quoteItemList" class="quote-item-list">
+                            <!-- Helper text kalau kosong di Desktop -->
                             <div style='text-align:center; padding:20px 0; color:var(--gray); font-size: 0.85rem; font-weight: 700;'>Your cart is empty.</div>
                         </div>
                         
@@ -1412,7 +1417,8 @@
                     </div>
                 </div>
             </div>
-            </div>
+            <!-- Akhir Sisi Kanan (Cart Panel) -->
+        </div>
     </section>
 
     <section id="contact" class="kontak">
@@ -1446,6 +1452,7 @@
         <i class="fa-solid fa-arrow-up"></i>
     </a>
 
+    <!-- Sticky banner khusus Mobile -->
     <div id="stickyCartBanner" class="sticky-cart-banner" onclick="openCartModal()">
         <div class="sticky-cart-info">
             <span id="stickyCartItems">0 ITEM(S) IN CART</span>
@@ -1454,6 +1461,7 @@
         <button class="sticky-cart-btn"><i class="fa-solid fa-cart-shopping"></i> View Cart</button>
     </div>
 
+    <!-- Modal Konfirmasi Akhir (Review Order & Form Penerima) -->
     <div id="checkoutModal" class="lightbox">
         <div class="lightbox-content checkout-modal-content" style="max-height: 90vh; display: flex; flex-direction: column;">
             <div class="checkout-modal-header">
@@ -1461,20 +1469,24 @@
             </div>
             
             <div style="overflow-y: auto; padding-right: 5px; flex: 1;" id="checkoutScrollArea">
+                <!-- Step 1: Summary -->
                 <div id="step1Summary">
                     <div class="checkout-modal-body" id="checkoutModalBody" style="margin-bottom: 0;"></div>
                 </div>
 
+                <!-- Step 2: Form Penerima -->
                 <div id="step2Form" style="display: none; padding-top: 10px; margin-bottom: 10px;">
                     <div style="background: #F9F8F6; padding: 15px; border-radius: 8px; border: 1px solid #eaeaea;">
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
                             <p style="font-size: 0.8rem; color: var(--gray); margin: 0; font-weight: 700;">Shipping Details</p>
+                            <!-- Label Tombol PROVIDE LATER -->
                             <label class="price-note" style="cursor: pointer; width: auto; padding: 4px 10px; margin: 0; font-size: 0.6rem; gap: 6px;">
                                 <input type="checkbox" id="fillLater" onchange="toggleFormFields()" style="margin: 0;"> PROVIDE LATER
                             </label>
                         </div>
                         
                         <div id="recipientFields" style="display: flex; flex-direction: column; gap: 12px; transition: opacity 0.3s;">
+                            <!-- Format baris penuh seperti sebelumnya -->
                             <div style="display: flex; flex-direction: column; gap: 4px;">
                                 <label for="recName" style="font-size: 0.7rem; font-weight: 800; color: var(--dark-blue); text-transform: uppercase;">Full Name *</label>
                                 <input type="text" id="recName" placeholder="Enter recipient name" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-family: 'Lato', sans-serif; font-size: 0.85rem; outline: none; box-sizing: border-box;">
@@ -1512,6 +1524,7 @@
         </div>
     </div>
 
+    <!-- Image Zooming Modal -->
     <div id="imageLightbox" class="lightbox">
         <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
         <span class="lightbox-arrow lightbox-prev" onclick="showImage(currentIndex - 1); event.stopPropagation();">&#10094;</span>
@@ -2169,8 +2182,8 @@
                 finalMessage += `Country: *${country}*\n\n`;
             }
             
-            // Pindahkan teks Confirmasi agar ada di posisi paling bawah
-            finalMessage = finalMessage.replace("Please confirm availability and final pricing.", "") + "Please confirm availability and final pricing.";
+            // Pindahkan teks Confirmasi agar ada di posisi paling bawah dengan format miring
+            finalMessage = finalMessage.replace("_Please confirm availability and final pricing._", "") + "_Please confirm availability and final pricing._";
 
             const encodedMessage = encodeURIComponent(finalMessage);
             window.open("https://api.whatsapp.com/send/?phone=6285868872566&text=" + encodedMessage, '_blank');
@@ -2427,7 +2440,7 @@
                 msg += `_(Kurs online saat ini: 1 USD = Rp ${formattedRate})_\n\n`;
             }
 
-            msg += "Please confirm availability and final pricing."; 
+            msg += "_Please confirm availability and final pricing._"; 
             finalWhatsAppMessage = msg;
         }
     </script>
