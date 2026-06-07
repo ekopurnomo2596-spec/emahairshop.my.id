@@ -2170,11 +2170,11 @@
                     return;
                 }
 
-                finalMessage += `Name: *${name}*\n`;
-                finalMessage += `Phone: *${phone}*\n`;
-                finalMessage += `Address: *${address}*\n`;
-                finalMessage += `Post Code: *${postcode}*\n`;
-                finalMessage += `Country: *${country}*\n\n`;
+                finalMessage += `_Name: ${name}_\n`;
+                finalMessage += `_Phone: ${phone}_\n`;
+                finalMessage += `_Address: ${address}_\n`;
+                finalMessage += `_Post Code: ${postcode}_\n`;
+                finalMessage += `_Country: ${country}_\n\n`;
             }
             
             // Pindahkan teks Confirmasi agar ada di posisi paling bawah dengan format miring
@@ -2357,7 +2357,7 @@
         }
 
         function updateWAMessage() {
-            let msg = "*DETAIL ORDER*\n━━━━━━━━━━\n\n";
+            let msg = "*DETAIL ORDER*\n━━━━━━━━━━\n";
 
             let groupedItems = {};
             quoteItems.forEach(item => {
@@ -2371,56 +2371,59 @@
             }
 
             for (const [quality, types] of Object.entries(groupedItems)) {
-                msg += `*${quality.toUpperCase()}*\n`; 
+                msg += `_${quality.toUpperCase()}_\n`; 
                 for (const [type, items] of Object.entries(types)) {
                     msg += `_${type}_\n`; 
                     items.forEach(item => {
                         let lenStr = item.length.replace(" inches", '"');
                         let weightStr = item.weight >= 1000 ? (item.weight / 1000) + 'kg' : item.weight + 'g';
-                        msg += `${lenStr}  ${weightStr}  ${item.displayColor} *$${item.price.toFixed(0)}*\n`;
+                        msg += `_${lenStr}_ _${weightStr}_ _${item.displayColor}_ _$${item.price.toFixed(0)}_\n`;
                     });
                 }
-                msg += `\n`;
             }
-
-            let totalWeightStrWA = checkoutState.totalWeight >= 1000 ? (checkoutState.totalWeight / 1000) + ' kg' : checkoutState.totalWeight + ' Grams';
-            msg += `Total : *${totalWeightStrWA}*\n`;
-            msg += `Subtotal: *$${checkoutState.totalPrice.toFixed(0)}*\n\n`;
 
             let finalAmt = checkoutState.baseTotal;
             if (checkoutState.isPromoApplied) {
                 finalAmt -= checkoutState.discountAmount;
                 if (finalAmt < 0) finalAmt = 0; 
-                msg += `Promo Applied: ${checkoutState.appliedPromoCode} (-$${checkoutState.discountAmount})\n`;
+                msg += `_Promo Applied: ${checkoutState.appliedPromoCode} (-$${checkoutState.discountAmount})_\n`;
             }
             
             if (checkoutState.paymentMethod === 'PayPal' && checkoutState.paypalFee > 0) {
-                msg += `PayPal Fee (5%): $${checkoutState.paypalFee.toFixed(2)}\n`;
+                msg += `_PayPal Fee (5%): $${checkoutState.paypalFee.toFixed(2)}_\n`;
             }
             
             finalAmt += checkoutState.paypalFee;
             let finalDisplayStr = (finalAmt % 1 === 0) ? finalAmt.toFixed(0) : finalAmt.toFixed(2);
 
-            // Perubahan di sini: Hanya menampilkan Shipping Fee (tanpa rincian kurir & negara)
             if (checkoutState.isCustomShipping) {
-                msg += `Shipping Fee: *TBD*\n`;
-                msg += `*Total Amount: $${finalDisplayStr} + Shipping*\n`;
+                msg += `_Shipping Fee: TBD_\n`;
+                msg += `_Total Amount: $${finalDisplayStr} + Shipping_\n`;
             } else {
-                msg += `Shipping Fee: *$${checkoutState.shippingFee.toFixed(2)}*\n`;
-                msg += `*Total Amount: $${finalDisplayStr}*\n`;
+                msg += `_Shipping Fee: $${checkoutState.shippingFee.toFixed(2)}_\n`;
+                msg += `_Total Amount: $${finalDisplayStr}_\n`;
             }
 
-            msg += `━━━━━━━━━━\n\n`;
-            msg += `*SHIPPING INFO*\n`;
+            msg += `\n*SHIPPING INFO*\n`;
             msg += `━━━━━━━━━━\n`;
-            msg += `Destination: *${checkoutState.destCountry}*\n`;
-            if (checkoutState.courierInfo) msg += `Courier: *${checkoutState.courierInfo}*\n`;
+            msg += `_Destination: ${checkoutState.destCountry}_\n`;
+            if (checkoutState.courierInfo) msg += `_Courier: ${checkoutState.courierInfo}_\n`;
             if (!checkoutState.isCustomShipping && checkoutState.estArrivalDate) {
-                msg += `Est. Arrival: *${checkoutState.estArrivalDate}*\n`;
+                msg += `_Est. Arrival: ${checkoutState.estArrivalDate}_\n`;
             }
-            msg += `Payment Method: *${checkoutState.paymentMethod}*\n\n`;
+            msg += `_Payment Method: ${checkoutState.paymentMethod}_\n\n`;
 
             const method = checkoutState.paymentMethod;
+
+            if (method === "Bank Transfer") {
+                msg += `*DETAIL BANK*\n`;
+                msg += `━━━━━━━━━━\n`;
+                msg += `_Bank : BANK CENTRAL ASIA (BCA)_\n`;
+                msg += `_Account Name : Eko Purnomo_\n`;
+                msg += `_Account Number : 0971427883_\n`;
+                msg += `_SWIFT Code : CENAIDJAXXX_\n\n`;
+            }
+
             if (method === "Bank Transfer" || method === "MoneyGram" || method === "Western Union") {
                 const totalIDR = finalAmt * currentUSDtoIDR; 
                 const formattedIDR = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(totalIDR).replace('Rp', 'Rp ');
