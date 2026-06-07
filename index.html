@@ -313,7 +313,7 @@
         .item-centered { grid-column: 1 / -1; }
         .hidden-radio { display: none; }
 
-        /* TAMBAHAN POSISI RELATIVE UNTUK MENAMPUNG BADGE DI DALAM PILL LABEL */
+        /* POSISI RELATIVE UNTUK MENAMPUNG BADGE DI DALAM PILL LABEL */
         .pill-label { position: relative; background: #f8f9fa; border: 1px solid #dcdcdc; border-radius: 6px; padding: 8px 4px; font-size: 0.85rem; font-family: 'Lato', sans-serif; font-weight: 400; text-align: center; cursor: pointer; transition: all 0.3s ease; color: var(--gray); user-select: none; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; box-sizing: border-box; line-height: 1.2; }
         .pill-label:hover { border-color: #a3e6be; background-color: #f0fdf4; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
         .hidden-radio:checked + .pill-label { background: #f0fdf4; color: var(--black); border: 1.5px solid #25D366; font-weight: 800; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.15); transform: translateY(-2px); }
@@ -1239,37 +1239,66 @@
                         </div>
                     </div>
 
-                    <!-- TOMBOL TEXTURE 4 KOLOM & CATATAN HARGA -->
+                    <!-- TOMBOL TEXTURE 4 KOLOM DENGAN LABEL LEBIH BESAR -->
                     <div class="calc-group">
                         <label>TEXTURE</label>
-                        <div class="price-note" style="margin-top: -5px; margin-bottom: 5px;"><i class="fa-solid fa-bullhorn"></i> Natural +$0 | Straight, Wavy, Curly +$3/100g (+$25/1kg)</div>
+                        <!-- Catatan harga dihapus sesuai permintaan -->
                         <div class="pill-grid-4">
                             <input type="radio" id="tex0" name="calcTexture" value="Natural" class="hidden-radio">
                             <label for="tex0" class="pill-label">
-                                <span style="position: absolute; top: -6px; right: -4px; background: #25D366; color: var(--white); font-size: 0.45rem; padding: 2px 5px; border-radius: 4px; font-weight: 900; letter-spacing: 0.5px; box-shadow: 0 2px 4px rgba(0,0,0,0.2); z-index: 1;">+$0</span>
+                                <span style="position: absolute; top: -8px; right: -6px; background: #25D366; color: var(--white); font-size: 0.65rem; padding: 3px 6px; border-radius: 6px; font-weight: 900; letter-spacing: 0.5px; box-shadow: 0 3px 6px rgba(0,0,0,0.3); z-index: 1;">+$0</span>
                                 Natural
                             </label>
                             
                             <input type="radio" id="tex1" name="calcTexture" value="Straight" class="hidden-radio">
                             <label for="tex1" class="pill-label">
-                                <span style="position: absolute; top: -6px; right: -4px; background: #25D366; color: var(--white); font-size: 0.45rem; padding: 2px 5px; border-radius: 4px; font-weight: 900; letter-spacing: 0.5px; box-shadow: 0 2px 4px rgba(0,0,0,0.2); z-index: 1;">+$3</span>
+                                <span style="position: absolute; top: -8px; right: -6px; background: #25D366; color: var(--white); font-size: 0.65rem; padding: 3px 6px; border-radius: 6px; font-weight: 900; letter-spacing: 0.5px; box-shadow: 0 3px 6px rgba(0,0,0,0.3); z-index: 1;">+$3</span>
                                 Straight
                             </label>
 
                             <input type="radio" id="tex2" name="calcTexture" value="Wavy" class="hidden-radio">
                             <label for="tex2" class="pill-label">
-                                <span style="position: absolute; top: -6px; right: -4px; background: #25D366; color: var(--white); font-size: 0.45rem; padding: 2px 5px; border-radius: 4px; font-weight: 900; letter-spacing: 0.5px; box-shadow: 0 2px 4px rgba(0,0,0,0.2); z-index: 1;">+$3</span>
+                                <span style="position: absolute; top: -8px; right: -6px; background: #25D366; color: var(--white); font-size: 0.65rem; padding: 3px 6px; border-radius: 6px; font-weight: 900; letter-spacing: 0.5px; box-shadow: 0 3px 6px rgba(0,0,0,0.3); z-index: 1;">+$3</span>
                                 Wavy
                             </label>
 
                             <input type="radio" id="tex3" name="calcTexture" value="Curly" class="hidden-radio">
                             <label for="tex3" class="pill-label">
-                                <span style="position: absolute; top: -6px; right: -4px; background: #25D366; color: var(--white); font-size: 0.45rem; padding: 2px 5px; border-radius: 4px; font-weight: 900; letter-spacing: 0.5px; box-shadow: 0 2px 4px rgba(0,0,0,0.2); z-index: 1;">+$3</span>
+                                <span style="position: absolute; top: -8px; right: -6px; background: #25D366; color: var(--white); font-size: 0.65rem; padding: 3px 6px; border-radius: 6px; font-weight: 900; letter-spacing: 0.5px; box-shadow: 0 3px 6px rgba(0,0,0,0.3); z-index: 1;">+$3</span>
                                 Curly
                             </label>
                         </div>
                     </div>
                     
+                    <div class="calc-group">
+                        <label>QUANTITY (GRAMS)</label>
+                        <!-- Catatan Promo Flat $25/kg ditambahkan di sini -->
+                        <div class="price-note" style="margin-top: -5px; margin-bottom: 5px; background-color: #e8f9ee; color: #25D366; border: 1px dashed #25D366;"><i class="fa-solid fa-tags"></i> Promo: Flat rate $25/kg for all textures (1000g+)</div>
+                        <div class="pill-grid-3">
+                            <input type="radio" id="w100" name="calcWeightRadio" value="100" class="hidden-radio" onchange="toggleManualWeight()">
+                            <label for="w100" class="pill-label">100g</label>
+
+                            <input type="radio" id="w200" name="calcWeightRadio" value="200" class="hidden-radio" onchange="toggleManualWeight()">
+                            <label for="w200" class="pill-label">200g</label>
+
+                            <input type="radio" id="w300" name="calcWeightRadio" value="300" class="hidden-radio" onchange="toggleManualWeight()">
+                            <label for="w300" class="pill-label">300g</label>
+
+                            <input type="radio" id="w400" name="calcWeightRadio" value="400" class="hidden-radio" onchange="toggleManualWeight()">
+                            <label for="w400" class="pill-label">400g</label>
+
+                            <input type="radio" id="w500" name="calcWeightRadio" value="500" class="hidden-radio" onchange="toggleManualWeight()">
+                            <label for="w500" class="pill-label">500g</label>
+
+                            <input type="radio" id="wCustom" name="calcWeightRadio" value="Custom" class="hidden-radio" onchange="toggleManualWeight()">
+                            <label for="wCustom" class="pill-label">Manual</label>
+                        </div>
+                        
+                        <div id="manualWeightGroup" style="display: none; margin-top: 8px;">
+                            <input type="number" id="calcWeight" placeholder="Type grams (e.g. 1500)" min="100" step="100">
+                        </div>
+                    </div>
+
                     <div class="calc-group">
                         <label>LENGTH</label>
                         <div class="pill-grid-3">
@@ -1293,33 +1322,6 @@
 
                             <input type="radio" id="len28" name="calcLength" value="28 inches" class="hidden-radio">
                             <label for="len28" class="pill-label item-centered">28"</label>
-                        </div>
-                    </div>
-                    
-                    <div class="calc-group">
-                        <label>QUANTITY (GRAMS)</label>
-                        <div class="pill-grid-3">
-                            <input type="radio" id="w100" name="calcWeightRadio" value="100" class="hidden-radio" onchange="toggleManualWeight()">
-                            <label for="w100" class="pill-label">100g</label>
-
-                            <input type="radio" id="w200" name="calcWeightRadio" value="200" class="hidden-radio" onchange="toggleManualWeight()">
-                            <label for="w200" class="pill-label">200g</label>
-
-                            <input type="radio" id="w300" name="calcWeightRadio" value="300" class="hidden-radio" onchange="toggleManualWeight()">
-                            <label for="w300" class="pill-label">300g</label>
-
-                            <input type="radio" id="w400" name="calcWeightRadio" value="400" class="hidden-radio" onchange="toggleManualWeight()">
-                            <label for="w400" class="pill-label">400g</label>
-
-                            <input type="radio" id="w500" name="calcWeightRadio" value="500" class="hidden-radio" onchange="toggleManualWeight()">
-                            <label for="w500" class="pill-label">500g</label>
-
-                            <input type="radio" id="wCustom" name="calcWeightRadio" value="Custom" class="hidden-radio" onchange="toggleManualWeight()">
-                            <label for="wCustom" class="pill-label">Manual</label>
-                        </div>
-                        
-                        <div id="manualWeightGroup" style="display: none; margin-top: 8px;">
-                            <input type="number" id="calcWeight" placeholder="Type grams (e.g. 1500)" min="100" step="100">
                         </div>
                     </div>
 
@@ -1799,6 +1801,7 @@
         }
         window.addEventListener('load', fetchLiveExchangeRate);
         
+        // --- SHIPPING ESTIMATOR LOGIC ---
         function calculateShipping() {
             const countryInput = document.getElementById('shipCountry').value;
             const courierSelect = document.getElementById('shipCourier').value;
@@ -2404,6 +2407,7 @@
             checkoutState.discountAmount = 0; updateWAMessage();
         }
 
+        // UPDATE WA MESSAGE DENGAN FORMAT PENGELOMPOKAN TEXTURE BARU
         function updateWAMessage() {
             let msg = "*DETAIL ORDER*\n━━━━━━━━━━\n";
 
