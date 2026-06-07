@@ -144,8 +144,8 @@
         .produk-header h2 { font-size: 2.2rem; letter-spacing: 0.5px; font-family: 'Lato', sans-serif; text-transform: none; font-weight: 800; color: var(--dark-blue); }
         .produk-header h2 .highlight-text { color: var(--circle-pink); }
         
-        /* 4 KOLOM PRODUCT */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; align-items: start; }
+        /* 3 KOLOM PRODUCT UNTUK DESKTOP (KEMBALI KE SEMULA) */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; align-items: start; }
         
         .card { background: var(--white); padding: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; border-radius: 8px; border: 1px solid #f0f0f0; position: relative; display: flex; flex-direction: column; color: var(--black); }
         .card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
@@ -191,12 +191,11 @@
 
         /* --- PRICE LIST SECTION --- */
         .price-section { background-color: #F9F8F6; } 
-        /* 4 KOLOM PRICE LIST */
-        .price-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; align-items: start; width: 100%; max-width: 100%; margin: 0 auto; }
+        /* 3 KOLOM PRICE LIST UNTUK DESKTOP (KEMBALI KE SEMULA) */
+        .price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; align-items: start; width: 100%; max-width: 100%; margin: 0 auto; }
         
-        @media (max-width: 1200px) and (min-width: 769px) {
+        @media (max-width: 1024px) and (min-width: 769px) {
             .price-grid { grid-template-columns: repeat(2, 1fr); }
-            .grid { grid-template-columns: repeat(2, 1fr); }
         }
         
         .price-card { background-color: var(--white); border-radius: 16px; padding: 30px 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); border: 1px solid #eaeaea; transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; align-items: start; } 
@@ -204,7 +203,7 @@
         .price-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: linear-gradient(90deg, var(--circle-pink), var(--black)); border-radius: 16px 16px 0 0; }
         
         .price-card-title { grid-column: span 2; text-align: center; margin-bottom: 5px; padding-bottom: 15px; border-bottom: 1px dashed #eaeaea; }
-        .price-card-title h3 { font-family: 'Lato', sans-serif; font-size: 1.3rem; font-weight: 900; color: var(--black); letter-spacing: 2px; margin: 0; }
+        .price-card-title h3 { font-family: 'Lato', sans-serif; font-size: 1.6rem; font-weight: 900; color: var(--black); letter-spacing: 2px; margin: 0; }
 
         .price-accordion { margin-bottom: 0; background-color: transparent; border: none; box-shadow: none; width: 100%; min-width: 0; scroll-margin-top: 100px; }
         
@@ -212,7 +211,7 @@
         .price-accordion:nth-of-type(2) .price-summary { border-radius: 0 8px 8px 0; }
         .price-accordion:nth-of-type(1)[open] .price-table-wrapper { border-right: 1px dashed #eaeaea; }
 
-        .price-summary { background: linear-gradient(135deg, #25D366 0%, #1da851 100%); color: var(--white); font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; padding: 15px 10px; cursor: pointer; list-style: none; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; gap: 10px; transition: all 0.3s; }
+        .price-summary { background: linear-gradient(135deg, #25D366 0%, #1da851 100%); color: var(--white); font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; padding: 15px 10px; cursor: pointer; list-style: none; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; gap: 10px; transition: all 0.3s; }
         .price-summary::-webkit-details-marker { display: none; }
         .price-summary:hover { background: linear-gradient(135deg, #1ebe56 0%, #158a41 100%); }
         
@@ -242,8 +241,8 @@
         .price-table-wrapper { background-color: var(--white); padding: 20px 25px; border: 1px solid #eaeaea; border-top: none; border-radius: 0 0 8px 8px; margin-top: 0; box-shadow: 0 10px 25px rgba(0,0,0,0.02); overflow-x: auto; width: 100%; box-sizing: border-box; }
         .modern-table { width: 100%; border-collapse: collapse; font-family: 'Lato', sans-serif; }
         .modern-table thead { background-color: transparent; }
-        .modern-table th { padding: 8px 5px; font-size: 0.55rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; text-align: center; border-bottom: 2px solid var(--gold); color: var(--black); }
-        .modern-table td { padding: 8px 5px; text-align: center; font-size: 0.75rem; font-weight: 600; color: var(--gray); border-bottom: 1px solid #f5f5f5; transition: background-color 0.3s; }
+        .modern-table th { padding: 8px 5px; font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; text-align: center; border-bottom: 2px solid var(--gold); color: var(--black); }
+        .modern-table td { padding: 8px 5px; text-align: center; font-size: 0.85rem; font-weight: 600; color: var(--gray); border-bottom: 1px solid #f5f5f5; transition: background-color 0.3s; }
         .modern-table td:first-child { text-align: left; padding-left: 5px; font-weight: 700; color: var(--black); font-size: 0.8rem; white-space: nowrap; }
         .modern-table tbody tr:last-child td { border-bottom: none; }
         .modern-table tbody tr:hover td { background-color: #faf9f7; color: var(--black); }
@@ -544,7 +543,6 @@
             .add-item-btn { margin-top: 15px !important; }
             .add-item-btn, .calc-btn { font-size: 0.65rem !important; padding: 8px 5px !important; white-space: nowrap !important; line-height: 1 !important; width: 100%; box-sizing: border-box; text-align: center; justify-content: center; margin: 0; }
             
-            /* DI HP DIUBAH JADI 2 KOLOM AGAR TOMBOL NATURAL TIDAK KEKECILAN */
             .pill-grid-4 { grid-template-columns: repeat(2, 1fr) !important; gap: 4px !important; width: 100%; margin: 0; padding: 0; }
             .pill-grid-3 { grid-template-columns: repeat(3, 1fr) !important; gap: 4px !important; width: 100%; margin: 0; padding: 0; } 
             .pill-grid-2 { grid-template-columns: repeat(2, 1fr) !important; gap: 4px !important; width: 100%; margin: 0; padding: 0; }
@@ -1240,8 +1238,10 @@
                         </div>
                     </div>
 
+                    <!-- TOMBOL TEXTURE 4 KOLOM & CATATAN HARGA -->
                     <div class="calc-group">
                         <label>TEXTURE</label>
+                        <div class="price-note" style="margin-top: -5px; margin-bottom: 5px;"><i class="fa-solid fa-bullhorn"></i> Natural +$0 | Straight, Wavy, Curly +$3</div>
                         <div class="pill-grid-4">
                             <input type="radio" id="tex0" name="calcTexture" value="Natural" class="hidden-radio">
                             <label for="tex0" class="pill-label">Natural</label>
@@ -2383,6 +2383,7 @@
             checkoutState.discountAmount = 0; updateWAMessage();
         }
 
+        // UPDATE WA MESSAGE DENGAN TEXTURE FORMAT
         function updateWAMessage() {
             let msg = "*DETAIL ORDER*\n━━━━━━━━━━\n";
 
@@ -2404,7 +2405,10 @@
                     items.forEach(item => {
                         let lenStr = item.length.replace(" inches", '"');
                         let weightStr = item.weight >= 1000 ? (item.weight / 1000) + 'kg' : item.weight + 'g';
-                        msg += `_${item.texture}_ _${lenStr}_ _${weightStr}_ _${item.displayColor}_ _$${item.price.toFixed(0)}_\n`;
+                        
+                        // Perubahan Format WhatsApp (Texture)
+                        msg += `_${item.texture} Texture_\n`;
+                        msg += `_- ${lenStr} ${weightStr} ${item.displayColor} $${item.price.toFixed(0)}_\n`;
                     });
                 }
             }
