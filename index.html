@@ -1470,34 +1470,40 @@
                 </div>
 
                 <!-- Step 2: Form Penerima -->
-                <div id="step2Form" style="display: none; padding-top: 10px; margin-bottom: 20px;">
-                    <div style="background: #F9F8F6; padding: 15px; border-radius: 8px; border: 1px solid #eaeaea;">
-                        <p style="font-size: 0.8rem; color: var(--gray); margin-bottom: 15px; text-align: center; font-weight: 600;">Please fill in your shipping details.</p>
+                <div id="step2Form" style="display: none; padding-top: 10px; margin-bottom: 10px;">
+                    <div style="background: #F9F8F6; padding: 12px; border-radius: 8px; border: 1px solid #eaeaea;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                            <p style="font-size: 0.75rem; color: var(--gray); margin: 0; font-weight: 700;">Shipping Details</p>
+                            <label style="font-size: 0.65rem; font-weight: 800; color: var(--circle-pink); display: flex; align-items: center; gap: 4px; cursor: pointer;">
+                                <input type="checkbox" id="fillLater" onchange="toggleFormFields()"> Provide Later
+                            </label>
+                        </div>
                         
-                        <div style="display: flex; flex-direction: column; gap: 12px;">
-                            <div style="display: flex; flex-direction: column; gap: 4px;">
-                                <label for="recName" style="font-size: 0.7rem; font-weight: 800; color: var(--dark-blue); text-transform: uppercase;">Full Name *</label>
-                                <input type="text" id="recName" placeholder="Enter recipient name" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-family: 'Lato', sans-serif; font-size: 0.85rem; outline: none; box-sizing: border-box;">
-                            </div>
-                            
-                            <div style="display: flex; flex-direction: column; gap: 4px;">
-                                <label for="recPhone" style="font-size: 0.7rem; font-weight: 800; color: var(--dark-blue); text-transform: uppercase;">Phone Number *</label>
-                                <input type="tel" id="recPhone" placeholder="E.g. +1 234 567 8900" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-family: 'Lato', sans-serif; font-size: 0.85rem; outline: none; box-sizing: border-box;">
-                            </div>
-                            
-                            <div style="display: flex; flex-direction: column; gap: 4px;">
-                                <label for="recAddress" style="font-size: 0.7rem; font-weight: 800; color: var(--dark-blue); text-transform: uppercase;">Full Address *</label>
-                                <textarea id="recAddress" placeholder="Street, City, State/Province" rows="2" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-family: 'Lato', sans-serif; font-size: 0.85rem; resize: none; outline: none; box-sizing: border-box;"></textarea>
-                            </div>
-                            
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                                <div style="display: flex; flex-direction: column; gap: 4px;">
-                                    <label for="recPostcode" style="font-size: 0.7rem; font-weight: 800; color: var(--dark-blue); text-transform: uppercase;">Post Code *</label>
-                                    <input type="text" id="recPostcode" placeholder="Postal/Zip" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-family: 'Lato', sans-serif; font-size: 0.85rem; outline: none; box-sizing: border-box;">
+                        <div id="recipientFields" style="display: flex; flex-direction: column; gap: 8px; transition: opacity 0.3s;">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                                <div style="display: flex; flex-direction: column; gap: 3px;">
+                                    <label for="recName" style="font-size: 0.6rem; font-weight: 800; color: var(--dark-blue); text-transform: uppercase;">Full Name *</label>
+                                    <input type="text" id="recName" placeholder="Name" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 6px; font-family: 'Lato', sans-serif; font-size: 0.75rem; outline: none; box-sizing: border-box;">
                                 </div>
-                                <div style="display: flex; flex-direction: column; gap: 4px;">
-                                    <label for="recCountry" style="font-size: 0.7rem; font-weight: 800; color: var(--dark-blue); text-transform: uppercase;">Country *</label>
-                                    <input type="text" id="recCountry" placeholder="Country" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-family: 'Lato', sans-serif; font-size: 0.85rem; outline: none; box-sizing: border-box;">
+                                <div style="display: flex; flex-direction: column; gap: 3px;">
+                                    <label for="recPhone" style="font-size: 0.6rem; font-weight: 800; color: var(--dark-blue); text-transform: uppercase;">Phone *</label>
+                                    <input type="tel" id="recPhone" placeholder="Phone" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 6px; font-family: 'Lato', sans-serif; font-size: 0.75rem; outline: none; box-sizing: border-box;">
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; flex-direction: column; gap: 3px;">
+                                <label for="recAddress" style="font-size: 0.6rem; font-weight: 800; color: var(--dark-blue); text-transform: uppercase;">Full Address *</label>
+                                <textarea id="recAddress" placeholder="Street, City, State/Province" rows="2" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 6px; font-family: 'Lato', sans-serif; font-size: 0.75rem; resize: none; outline: none; box-sizing: border-box;"></textarea>
+                            </div>
+                            
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                                <div style="display: flex; flex-direction: column; gap: 3px;">
+                                    <label for="recPostcode" style="font-size: 0.6rem; font-weight: 800; color: var(--dark-blue); text-transform: uppercase;">Post Code *</label>
+                                    <input type="text" id="recPostcode" placeholder="Postal/Zip" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 6px; font-family: 'Lato', sans-serif; font-size: 0.75rem; outline: none; box-sizing: border-box;">
+                                </div>
+                                <div style="display: flex; flex-direction: column; gap: 3px;">
+                                    <label for="recCountry" style="font-size: 0.6rem; font-weight: 800; color: var(--dark-blue); text-transform: uppercase;">Country *</label>
+                                    <input type="text" list="countryList" id="recCountry" placeholder="Country" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 6px; font-family: 'Lato', sans-serif; font-size: 0.75rem; outline: none; box-sizing: border-box;">
                                 </div>
                             </div>
                         </div>
@@ -2085,9 +2091,23 @@
             document.getElementById('btnModalNext').innerHTML = 'Proceed <i class="fa-solid fa-arrow-right"></i>';
             
             document.getElementById('recCountry').value = checkoutState.destCountry || ""; 
+            document.getElementById('fillLater').checked = false; // Reset checkbox
+            toggleFormFields();
             
             document.getElementById('checkoutModal').classList.add('show');
             document.body.style.overflow = 'hidden';
+        }
+
+        function toggleFormFields() {
+            const isLater = document.getElementById('fillLater').checked;
+            const fields = document.getElementById('recipientFields');
+            if (isLater) {
+                fields.style.opacity = '0.4';
+                fields.style.pointerEvents = 'none';
+            } else {
+                fields.style.opacity = '1';
+                fields.style.pointerEvents = 'auto';
+            }
         }
 
         function handleModalNext() {
@@ -2127,29 +2147,34 @@
         }
 
         function proceedToWhatsApp() {
-            // Ambil data Form Penerima
-            const name = document.getElementById('recName').value.trim();
-            const phone = document.getElementById('recPhone').value.trim();
-            const address = document.getElementById('recAddress').value.trim();
-            const postcode = document.getElementById('recPostcode').value.trim();
-            const country = document.getElementById('recCountry').value.trim();
-
-            if (!name || !phone || !address || !postcode || !country) {
-                alert("Please fill in all recipient fields before sending the order.");
-                return;
-            }
-
+            const isLater = document.getElementById('fillLater').checked;
             let finalMessage = finalWhatsAppMessage;
             
-            // Tambahkan Data Penerima ke dalam Pesan WA
             finalMessage += `━━━━━━━━━━\n\n`;
-            finalMessage += `RECIPIENT DATA\n`;
+            finalMessage += `*RECIPIENT DATA*\n`;
             finalMessage += `━━━━━━━━━━\n`;
-            finalMessage += `Name: *${name}*\n`;
-            finalMessage += `Phone: *${phone}*\n`;
-            finalMessage += `Address: *${address}*\n`;
-            finalMessage += `Post Code: *${postcode}*\n`;
-            finalMessage += `Country: *${country}*\n\n`;
+
+            if (isLater) {
+                finalMessage += `_Will be provided later via WhatsApp_\n\n`;
+            } else {
+                // Ambil data Form Penerima
+                const name = document.getElementById('recName').value.trim();
+                const phone = document.getElementById('recPhone').value.trim();
+                const address = document.getElementById('recAddress').value.trim();
+                const postcode = document.getElementById('recPostcode').value.trim();
+                const country = document.getElementById('recCountry').value.trim();
+
+                if (!name || !phone || !address || !postcode || !country) {
+                    alert("Please fill in all recipient fields or check 'Provide Later'.");
+                    return;
+                }
+
+                finalMessage += `Name: *${name}*\n`;
+                finalMessage += `Phone: *${phone}*\n`;
+                finalMessage += `Address: *${address}*\n`;
+                finalMessage += `Post Code: *${postcode}*\n`;
+                finalMessage += `Country: *${country}*\n\n`;
+            }
             
             // Pindahkan teks Confirmasi agar ada di posisi paling bawah
             finalMessage = finalMessage.replace("Please confirm my order.", "") + "Please confirm my order.";
