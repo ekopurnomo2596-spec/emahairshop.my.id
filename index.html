@@ -313,7 +313,8 @@
         .item-centered { grid-column: 1 / -1; }
         .hidden-radio { display: none; }
 
-        .pill-label { background: #f8f9fa; border: 1px solid #dcdcdc; border-radius: 6px; padding: 8px 4px; font-size: 0.85rem; font-family: 'Lato', sans-serif; font-weight: 400; text-align: center; cursor: pointer; transition: all 0.3s ease; color: var(--gray); user-select: none; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; box-sizing: border-box; line-height: 1.2; }
+        /* TAMBAHAN POSISI RELATIVE UNTUK MENAMPUNG BADGE DI DALAM PILL LABEL */
+        .pill-label { position: relative; background: #f8f9fa; border: 1px solid #dcdcdc; border-radius: 6px; padding: 8px 4px; font-size: 0.85rem; font-family: 'Lato', sans-serif; font-weight: 400; text-align: center; cursor: pointer; transition: all 0.3s ease; color: var(--gray); user-select: none; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; box-sizing: border-box; line-height: 1.2; }
         .pill-label:hover { border-color: #a3e6be; background-color: #f0fdf4; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
         .hidden-radio:checked + .pill-label { background: #f0fdf4; color: var(--black); border: 1.5px solid #25D366; font-weight: 800; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.15); transform: translateY(-2px); }
         
@@ -547,7 +548,7 @@
             .pill-grid-3 { grid-template-columns: repeat(3, 1fr) !important; gap: 4px !important; width: 100%; margin: 0; padding: 0; } 
             .pill-grid-2 { grid-template-columns: repeat(2, 1fr) !important; gap: 4px !important; width: 100%; margin: 0; padding: 0; }
             
-            .pill-label { font-size: 0.55rem !important; padding: 4px 2px !important; min-height: 28px !important; letter-spacing: -0.2px; width: 100%; box-sizing: border-box; margin: 0; }
+            .pill-label { font-size: 0.55rem !important; padding: 4px 2px !important; min-height: 28px !important; letter-spacing: -0.2px; width: 100%; box-sizing: border-box; margin: 0; position: relative; }
             .calc-group > label:not(.pill-label) { font-size: 0.65rem !important; letter-spacing: 1.5px !important; margin-bottom: 5px !important; margin-top: 5px !important; padding: 6px 5px !important; border-radius: 4px !important; width: 100% !important; }
             .quote-item-minimal { padding: 8px 0 !important; }
             .quote-item-minimal-details strong { font-size: 0.65rem !important; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; max-width: 100%;}
@@ -1241,19 +1242,31 @@
                     <!-- TOMBOL TEXTURE 4 KOLOM & CATATAN HARGA -->
                     <div class="calc-group">
                         <label>TEXTURE</label>
-                        <div class="price-note" style="margin-top: -5px; margin-bottom: 5px;"><i class="fa-solid fa-bullhorn"></i> Natural +$0 | Straight, Wavy, Curly +$3</div>
+                        <div class="price-note" style="margin-top: -5px; margin-bottom: 5px;"><i class="fa-solid fa-bullhorn"></i> Natural +$0 | Straight, Wavy, Curly +$3/100g (+$25/1kg)</div>
                         <div class="pill-grid-4">
                             <input type="radio" id="tex0" name="calcTexture" value="Natural" class="hidden-radio">
-                            <label for="tex0" class="pill-label">Natural</label>
+                            <label for="tex0" class="pill-label">
+                                <span style="position: absolute; top: -6px; right: -4px; background: #25D366; color: var(--white); font-size: 0.45rem; padding: 2px 5px; border-radius: 4px; font-weight: 900; letter-spacing: 0.5px; box-shadow: 0 2px 4px rgba(0,0,0,0.2); z-index: 1;">+$0</span>
+                                Natural
+                            </label>
                             
                             <input type="radio" id="tex1" name="calcTexture" value="Straight" class="hidden-radio">
-                            <label for="tex1" class="pill-label">Straight</label>
+                            <label for="tex1" class="pill-label">
+                                <span style="position: absolute; top: -6px; right: -4px; background: #25D366; color: var(--white); font-size: 0.45rem; padding: 2px 5px; border-radius: 4px; font-weight: 900; letter-spacing: 0.5px; box-shadow: 0 2px 4px rgba(0,0,0,0.2); z-index: 1;">+$3</span>
+                                Straight
+                            </label>
 
                             <input type="radio" id="tex2" name="calcTexture" value="Wavy" class="hidden-radio">
-                            <label for="tex2" class="pill-label">Wavy</label>
+                            <label for="tex2" class="pill-label">
+                                <span style="position: absolute; top: -6px; right: -4px; background: #25D366; color: var(--white); font-size: 0.45rem; padding: 2px 5px; border-radius: 4px; font-weight: 900; letter-spacing: 0.5px; box-shadow: 0 2px 4px rgba(0,0,0,0.2); z-index: 1;">+$3</span>
+                                Wavy
+                            </label>
 
                             <input type="radio" id="tex3" name="calcTexture" value="Curly" class="hidden-radio">
-                            <label for="tex3" class="pill-label">Curly</label>
+                            <label for="tex3" class="pill-label">
+                                <span style="position: absolute; top: -6px; right: -4px; background: #25D366; color: var(--white); font-size: 0.45rem; padding: 2px 5px; border-radius: 4px; font-weight: 900; letter-spacing: 0.5px; box-shadow: 0 2px 4px rgba(0,0,0,0.2); z-index: 1;">+$3</span>
+                                Curly
+                            </label>
                         </div>
                     </div>
                     
@@ -1786,7 +1799,6 @@
         }
         window.addEventListener('load', fetchLiveExchangeRate);
         
-        // --- SHIPPING ESTIMATOR LOGIC ---
         function calculateShipping() {
             const countryInput = document.getElementById('shipCountry').value;
             const courierSelect = document.getElementById('shipCourier').value;
@@ -2236,7 +2248,6 @@
             let totalWeight = 0; let totalPrice = 0; 
             let groupedItems = {};
             
-            // LOGIKA GROUPING BARU (Dikelompokkan hingga Texture)
             quoteItems.forEach(item => {
                 totalWeight += item.weight; totalPrice += item.price;
                 if (!groupedItems[item.quality]) groupedItems[item.quality] = {};
@@ -2245,7 +2256,6 @@
                 groupedItems[item.quality][item.type][item.texture].push(item);
             });
 
-            // LOGIKA SORTING BARU (Berdasarkan Inci)
             for (const quality in groupedItems) {
                 for (const type in groupedItems[quality]) {
                     for (const texture in groupedItems[quality][type]) {
@@ -2266,7 +2276,6 @@
             if (paymentSelect === "PayPal") paypalFee = checkoutState.baseTotal * 0.05;
             checkoutState.paypalFee = paypalFee;
 
-            // HTML UNTUK MODAL CHECKOUT
             let modalHTML = ``;
             for (const [quality, types] of Object.entries(groupedItems)) {
                 modalHTML += `<div class="modal-item-title">${quality.toUpperCase()}</div>`;
@@ -2395,7 +2404,6 @@
             checkoutState.discountAmount = 0; updateWAMessage();
         }
 
-        // UPDATE WA MESSAGE DENGAN FORMAT PENGELOMPOKAN TEXTURE BARU
         function updateWAMessage() {
             let msg = "*DETAIL ORDER*\n━━━━━━━━━━\n";
 
