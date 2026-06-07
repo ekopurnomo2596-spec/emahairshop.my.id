@@ -153,13 +153,15 @@
         .swiper-button-next:after, .swiper-button-prev:after { font-size: 15px !important; font-weight: bold; }
         .swiper-pagination-bullet-active { background: var(--circle-pink) !important; }
 
-        /* DESKTOP BOX SPESIFIKASI - GAYA HIJAU WHATSAPP SOLID */
+        /* DESKTOP BOX SPESIFIKASI - DESAIN ESTETIK DENGAN GARIS TRANSTPARAN */
         .specs-container { display: flex; flex-direction: row; justify-content: center; gap: 15px; margin-top: 20px; margin-bottom: 20px; }
-        .spec-box { background-color: #25D366; color: var(--white); padding: 12px 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 8px; transition: 0.3s; flex: 1; text-align: center; line-height: 1.2; border: none; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.2); overflow: hidden;}
-        .spec-box:hover { background-color: #1ebe56; transform: translateY(-3px); box-shadow: 0 6px 15px rgba(37, 211, 102, 0.3); }
-        .spec-box i { font-size: 1.1rem; margin-bottom: 4px; animation: pulse 2s infinite; color: var(--white); }
-        .spec-title { font-size: 0.55rem; font-weight: 800; margin-bottom: 2px; color: var(--white); opacity: 0.9; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; }
-        .spec-value { font-size: 0.75rem; font-weight: 900; white-space: nowrap; color: var(--white); }
+        .spec-box { background: linear-gradient(135deg, #25D366 0%, #1da851 100%); color: var(--white); padding: 14px 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 10px; transition: 0.3s; flex: 1; text-align: center; line-height: 1.2; border: none; box-shadow: 0 5px 15px rgba(37, 211, 102, 0.2); position: relative; overflow: hidden;}
+        .spec-box:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(37, 211, 102, 0.35); }
+        .spec-box i { font-size: 1.2rem; margin-bottom: 6px; color: var(--white); animation: pulse 2s infinite; }
+        .spec-title { font-size: 0.55rem; font-weight: 800; margin-bottom: 6px; padding-bottom: 6px; position: relative; color: var(--white); text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; width: 100%; }
+        /* Garis putih estetik di bawah tulisan */
+        .spec-title::after { content: ''; position: absolute; bottom: 0; left: 15%; width: 70%; height: 1.5px; background-color: rgba(255, 255, 255, 0.4); border-radius: 2px; }
+        .spec-value { font-size: 0.75rem; font-weight: 900; white-space: nowrap; color: var(--white); letter-spacing: 0.5px;}
 
         .accordion-wrapper { margin-top: 15px; background: #fafafa; border: 1px solid #eaeaea; border-radius: 6px; padding: 0 15px; margin-bottom: 20px; }
         .custom-details { border-bottom: 1px solid #eaeaea; padding: 12px 0; }
@@ -490,10 +492,12 @@
             
             /* TINGGI KOTAK SPESIFIKASI DI HP DIPASTIKAN 1 BARIS (DISESUAIKAN UNTUK 2 KOTAK) */
             .specs-container { gap: 8px; margin-top: 10px; margin-bottom: 12px; }
-            .spec-box { padding: 6px 4px; border-radius: 6px; min-width: 0; height: auto; justify-content: center; overflow: hidden; border: none; }
-            .spec-box i { font-size: 0.85rem; margin-bottom: 2px; color: var(--white); }
-            .spec-title { font-size: 0.4rem; line-height: 1; margin-bottom: 3px; font-weight: 800; letter-spacing: 0; white-space: nowrap; color: var(--white); opacity: 0.9; }
-            .spec-value { font-size: 0.55rem; display: block; line-height: 1; white-space: nowrap; letter-spacing: 0; font-weight: 900; color: var(--white); }
+            .spec-box { padding: 8px 4px; border-radius: 8px; min-width: 0; height: auto; justify-content: center; overflow: hidden; border: none; }
+            .spec-box i { font-size: 0.9rem; margin-bottom: 4px; color: var(--white); }
+            .spec-title { font-size: 0.45rem; line-height: 1; margin-bottom: 4px; padding-bottom: 4px; position: relative; font-weight: 800; letter-spacing: 0.5px; white-space: nowrap; color: var(--white); width: 100%;}
+            /* Garis estetik di Mobile */
+            .spec-title::after { content: ''; position: absolute; bottom: 0; left: 10%; width: 80%; height: 1px; background-color: rgba(255, 255, 255, 0.4); border-radius: 2px; }
+            .spec-value { font-size: 0.65rem; display: block; line-height: 1; white-space: nowrap; letter-spacing: 0; font-weight: 900; color: var(--white); }
             
             .accordion-wrapper { padding: 0 6px; margin-bottom: 12px; }
             .custom-summary { font-size: 0.55rem; padding: 8px 0; letter-spacing: 0; }
