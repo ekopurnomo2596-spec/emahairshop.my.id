@@ -2566,10 +2566,16 @@
             msg += `━━━━━━━━━━\n`;
             msg += `_Destination: ${checkoutState.destCountry}_\n`;
             if (checkoutState.courierInfo) msg += `_Courier: ${checkoutState.courierInfo}_\n`;
-            if (!checkoutState.isCustomShipping && checkoutState.estArrivalDate) {
+            if (checkoutState.estArrivalDate) {
                 msg += `_Est. Arrival: ${checkoutState.estArrivalDate}_\n`;
             }
             msg += `_Payment Method: ${checkoutState.paymentMethod}_\n\n`;
+
+            // Menambahkan pertanyaan otomatis jika berat >= 5kg
+            if (checkoutState.isCustomShipping && checkoutState.courierInfo) {
+                let weightInKg = (checkoutState.totalWeight / 1000).toFixed(1);
+                msg += `*Notes: Please inform the shipping cost for ${weightInKg} kg using ${checkoutState.courierInfo}.*\n\n`;
+            }
 
             const method = checkoutState.paymentMethod;
 
