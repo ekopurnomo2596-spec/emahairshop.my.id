@@ -1890,16 +1890,18 @@
                 let roundedWeightKg = Math.ceil(weightKg);
                 if (roundedWeightKg < 1) roundedWeightKg = 1; 
                 
-                let cost = 0; let transitDays = 0; let ratePerKg = 0;
+                let baseCost = 0; 
+                let transitDays = 0;
 
-                if (courierSelect === "DHL Express") { ratePerKg = 60; transitDays = 4; } 
-                else if (courierSelect === "FedEx") { ratePerKg = 70; transitDays = 6; } 
-                else if (courierSelect === "EMS") { ratePerKg = 50; transitDays = 12; }
+                // Atur harga dasar (1kg pertama) dan waktu transit sesuai kurir
+                if (courierSelect === "DHL Express") { baseCost = 60; transitDays = 4; } 
+                else if (courierSelect === "FedEx") { baseCost = 70; transitDays = 6; } 
+                else if (courierSelect === "EMS") { baseCost = 50; transitDays = 12; }
                 
-                cost = roundedWeightKg * ratePerKg;
+                // Logika Harga: Harga dasar (1kg) + $30 untuk setiap tambahan 1kg berikutnya
+                let cost = baseCost + ((roundedWeightKg - 1) * 30);
 
                 document.getElementById('shipWeight').innerText = weightKg.toFixed(1) + " kg";
-                document.getElementById('shipCost').innerText = "$" + cost.toFixed(2);
                 document.getElementById('shipTransit').innerText = transitDays + " days after production";
 
                 const arrivalDate = new Date();
@@ -1908,21 +1910,38 @@
                 const formattedDate = arrivalDate.toLocaleDateString('en-US', dateOptions);
                 document.getElementById('shipEstDate').innerText = formattedDate;
 
-                checkoutState.shippingFee = cost;
+                // Cek jika berat 5kg atau lebih, alihkan ke WhatsApp
+                if (weightKg >= 5) {
+                    checkoutState.shippingFee = 0;
+                    checkoutState.isCustomShipping = true;
+                    document.getElementById('shipCost').innerText = "Ask via WA";
+                } else {
+                    checkoutState.shippingFee = cost;
+                    checkoutState.isCustomShipping = false;
+                    document.getElementById('shipCost').innerText = "$" + cost.toFixed(2);
+                }
+
                 checkoutState.destCountry = countryInput;
                 checkoutState.courierInfo = courierSelect;
                 checkoutState.estArrivalDate = formattedDate;
-                checkoutState.isCustomShipping = false; 
 
                 resultDiv.style.display = 'block';
             } else {
                 resultDiv.style.display = 'none';
                 checkoutState.destCountry = "";
-                if(checkoutState.totalWeight > 10000) {
-                    checkoutState.isCustomShipping = true; checkoutState.shippingFee = 0;
+                
+                // Fallback perhitungan jika kurir belum dipilih tapi keranjang ada isinya
+                let weightKg = checkoutState.totalWeight / 1000;
+                let roundedWeightKg = Math.ceil(weightKg);
+                if (roundedWeightKg < 1) roundedWeightKg = 1;
+                
+                if (weightKg >= 5) {
+                    checkoutState.isCustomShipping = true; 
+                    checkoutState.shippingFee = 0;
                 } else {
                     checkoutState.isCustomShipping = false;
-                    checkoutState.shippingFee = Math.ceil(checkoutState.totalWeight / 1000) * 60; 
+                    // Menggunakan base harga DHL (60) untuk patokan sementara
+                    checkoutState.shippingFee = 60 + ((roundedWeightKg - 1) * 30); 
                 }
             }
         }
