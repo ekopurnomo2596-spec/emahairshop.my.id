@@ -313,20 +313,52 @@
         .pill-label:hover { border-color: #a3e6be; background-color: #f0fdf4; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
         .hidden-radio:checked + .pill-label { background: #f0fdf4; color: var(--black); border: 1.5px solid #25D366; font-weight: 800; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.15); transform: translateY(-2px); }
         
-        /* DESAIN BADGE HARGA TEKSTUR PALING KIRI */
+        /* ANIMASI DENYUT JANTUNG UNTUK HARGA TEKSTUR */
+        @keyframes heartbeatPrice {
+            0% { transform: scale(1); }
+            15% { transform: scale(1.15); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.15); }
+            60% { transform: scale(1); }
+            100% { transform: scale(1); }
+        }
+
+        /* LAYOUT BARU AGAR TEKS TETAP CENTER & HARGA DI KIRI */
+        .tex-pill {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 6px; /* Memberikan sedikit ruang */
+        }
+        .tex-badge-wrap {
+            flex: 1 1 0%;
+            display: flex;
+            justify-content: flex-start; /* Dorong harga ke kiri mentok */
+            min-width: 0;
+        }
+        .tex-text {
+            flex: none;
+            text-align: center; /* Teks murni di tengah */
+            white-space: nowrap;
+        }
+        .tex-spacer {
+            flex: 1 1 0%;
+            min-width: 0; /* Elemen penyeimbang kosong di sisi kanan */
+        }
+
+        /* DESAIN BADGE HARGA TEKSTUR */
         .tex-price-badge {
-            position: absolute;
-            left: 8px;
             background: #e8f9ee; 
             color: #25D366; 
             font-size: 0.6rem;
-            padding: 2px 6px;
+            padding: 2px 4px;
             border-radius: 4px;
             font-weight: 900;
             letter-spacing: 0.5px;
             transition: all 0.3s ease;
+            animation: heartbeatPrice 2s infinite ease-in-out;
         }
-        .hidden-radio:checked + .pill-label .tex-price-badge {
+        .hidden-radio:checked + .tex-pill .tex-price-badge {
             background: #25D366;
             color: var(--white);
         }
@@ -565,7 +597,7 @@
             .calc-group > label:not(.pill-label) { font-size: 0.65rem !important; letter-spacing: 1.5px !important; margin-bottom: 5px !important; margin-top: 5px !important; padding: 6px 5px !important; border-radius: 4px !important; width: 100% !important; }
             
             /* Penyesuaian tekstur HP (agar muat) */
-            .tex-price-badge { font-size: 0.5rem !important; padding: 2px 4px !important; left: 4px !important; }
+            .tex-price-badge { font-size: 0.5rem !important; padding: 2px 4px !important; }
             
             .quote-item-minimal { padding: 8px 0 !important; }
             .quote-item-minimal-details strong { font-size: 0.65rem !important; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; max-width: 100%;}
@@ -1260,28 +1292,33 @@
                     <div class="calc-group">
                         <label>TEXTURE</label>
                         <div class="pill-grid-4">
+                            <!-- PERUBAHAN HTML UNTUK TEXTURE -->
                             <input type="radio" id="tex0" name="calcTexture" value="Natural" class="hidden-radio">
-                            <label for="tex0" class="pill-label">
-                                <span class="tex-price-badge">+$0</span>
-                                Natural
+                            <label for="tex0" class="pill-label tex-pill">
+                                <span class="tex-badge-wrap"><span class="tex-price-badge">+$0</span></span>
+                                <span class="tex-text">Natural</span>
+                                <span class="tex-spacer"></span>
                             </label>
                             
                             <input type="radio" id="tex1" name="calcTexture" value="Straight" class="hidden-radio">
-                            <label for="tex1" class="pill-label">
-                                <span class="tex-price-badge">+$3</span>
-                                Straight
+                            <label for="tex1" class="pill-label tex-pill">
+                                <span class="tex-badge-wrap"><span class="tex-price-badge">+$3</span></span>
+                                <span class="tex-text">Straight</span>
+                                <span class="tex-spacer"></span>
                             </label>
 
                             <input type="radio" id="tex2" name="calcTexture" value="Wavy" class="hidden-radio">
-                            <label for="tex2" class="pill-label">
-                                <span class="tex-price-badge">+$3</span>
-                                Wavy
+                            <label for="tex2" class="pill-label tex-pill">
+                                <span class="tex-badge-wrap"><span class="tex-price-badge">+$3</span></span>
+                                <span class="tex-text">Wavy</span>
+                                <span class="tex-spacer"></span>
                             </label>
 
                             <input type="radio" id="tex3" name="calcTexture" value="Curly" class="hidden-radio">
-                            <label for="tex3" class="pill-label">
-                                <span class="tex-price-badge">+$3</span>
-                                Curly
+                            <label for="tex3" class="pill-label tex-pill">
+                                <span class="tex-badge-wrap"><span class="tex-price-badge">+$3</span></span>
+                                <span class="tex-text">Curly</span>
+                                <span class="tex-spacer"></span>
                             </label>
                         </div>
                     </div>
