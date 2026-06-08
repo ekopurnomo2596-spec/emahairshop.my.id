@@ -363,6 +363,26 @@
             color: var(--white);
         }
 
+        /* ANIMASI KODE PROMO DI CART YANG LEBIH ELEGAN (HITAM PUTIH) */
+        @keyframes promoAttention {
+            0% { background-color: var(--black); box-shadow: 0 0 0 0 rgba(17, 17, 17, 0.4); }
+            50% { background-color: #333333; box-shadow: 0 0 10px 2px rgba(17, 17, 17, 0.2); }
+            100% { background-color: var(--black); box-shadow: 0 0 0 0 rgba(17, 17, 17, 0); }
+        }
+        .promo-code-animate {
+            font-size: 0.75rem; 
+            font-weight: 900; 
+            background-color: var(--black); 
+            color: var(--white) !important;
+            padding: 6px 12px; 
+            border-radius: 6px; 
+            display: inline-block; 
+            margin-top: 8px;
+            letter-spacing: 1px;
+            border: 1px solid #444;
+            animation: promoAttention 2.5s infinite ease-in-out; /* Animasi tidak bikin pusing, hanya transisi latar lembut */
+        }
+
         .add-item-btn { background-color: var(--dark-blue); color: var(--white); padding: 12px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; width: 100%; display: flex; justify-content: center; align-items: center; gap: 8px; text-transform: uppercase; font-size: 0.85rem;}
         .add-item-btn:hover { background-color: var(--black); }
 
@@ -415,7 +435,10 @@
         
         .upsell-container { background: #f8f9fa; border: 1px solid #eaeaea; border-radius: 8px; padding: 12px; margin-bottom: 15px; text-align: center; }
         .upsell-text { font-size: 0.75rem; font-weight: 800; color: var(--dark-blue); margin-bottom: 8px; letter-spacing: 0.5px; }
-        .upsell-text span { color: var(--circle-pink); }
+        
+        /* Menghapus warna pink bawaan agar kode promo tetap hitam-putih bersih */
+        .upsell-text span:not(.promo-code-animate) { color: var(--circle-pink); }
+        
         .progress-bar-bg { width: 100%; height: 8px; background: #e2e8f0; border-radius: 10px; overflow: hidden; position: relative; }
         .progress-bar-fill { height: 100%; background: linear-gradient(90deg, #f6ad55, #ed8936); border-radius: 10px; transition: width 0.4s ease-in-out; }
         .progress-bar-fill.success { background: linear-gradient(90deg, #48bb78, #38a169); }
@@ -597,7 +620,8 @@
             .calc-group > label:not(.pill-label) { font-size: 0.65rem !important; letter-spacing: 1.5px !important; margin-bottom: 5px !important; margin-top: 5px !important; padding: 6px 5px !important; border-radius: 4px !important; width: 100% !important; }
             
             /* Penyesuaian tekstur HP (agar muat) */
-            .tex-price-badge { font-size: 0.5rem !important; padding: 2px 4px !important; }
+            .pill-grid-4 .pill-label { padding-left: 30px !important; }
+            .tex-price-badge { font-size: 0.5rem !important; padding: 2px 4px !important; left: 2px !important; }
             
             .quote-item-minimal { padding: 8px 0 !important; }
             .quote-item-minimal-details strong { font-size: 0.65rem !important; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; max-width: 100%;}
@@ -2155,18 +2179,18 @@
                 if (currentWeight < 500) {
                     let diff = 500 - currentWeight;
                     progressPercent = (currentWeight / 500) * 100;
-                    upsellText.innerHTML = `🔥 Add <span>${diff}g</span> more to reach minimum order & unlock $25 Promo!`;
+                    upsellText.innerHTML = `🔥 Add <span style="color: var(--circle-pink);">${diff}g</span> more to reach minimum order & unlock $25 Promo!`;
                     upsellProgressBar.className = 'progress-bar-fill'; 
                 } else if (currentWeight >= 500 && currentWeight < 1000) {
                     let diff = 1000 - currentWeight;
                     progressPercent = 100;
                     let randomCode25 = Math.random() < 0.5 ? 'EMAQUEEN25' : 'EMAJUNE25';
-                    upsellText.innerHTML = `🎉 Awesome! You unlocked the <span>$25 Promo</span>!<br><span style="font-size: 0.75rem; color: var(--black); font-weight: bold; background: #e8f9ee; padding: 2px 6px; border-radius: 4px; display: inline-block; margin-top: 5px; border: 1px dashed #25D366;">Use Code: ${randomCode25}</span><br><span style="font-size: 0.65rem; color: var(--gray); font-weight: 600; text-transform: none; display: block; margin-top: 5px;">💡 Want <strong>$50 off</strong>? Just add <span>${diff}g</span> more!</span>`;
+                    upsellText.innerHTML = `🎉 Awesome! You unlocked the <span style="color: var(--circle-pink);">$25 Promo</span>!<br><span class="promo-code-animate">Use Code: ${randomCode25}</span><br><span style="font-size: 0.65rem; color: var(--gray); font-weight: 600; text-transform: none; display: block; margin-top: 5px;">💡 Want <strong>$50 off</strong>? Just add <span style="color: var(--circle-pink);">${diff}g</span> more!</span>`;
                     upsellProgressBar.className = 'progress-bar-fill success'; 
                 } else {
                     progressPercent = 100;
                     let randomCode50 = Math.random() < 0.5 ? 'EMAQUEEN50' : 'EMAJUNE50';
-                    upsellText.innerHTML = `🎉 Incredible! You've unlocked the highest <span>$50 Promo</span>!<br><span style="font-size: 0.75rem; color: var(--black); font-weight: bold; background: #e8f9ee; padding: 2px 6px; border-radius: 4px; display: inline-block; margin-top: 5px; border: 1px dashed #25D366;">Use Code: ${randomCode50}</span>`;
+                    upsellText.innerHTML = `🎉 Incredible! You've unlocked the highest <span style="color: var(--circle-pink);">$50 Promo</span>!<br><span class="promo-code-animate">Use Code: ${randomCode50}</span>`;
                     upsellProgressBar.className = 'progress-bar-fill success'; 
                 }
                 upsellProgressBar.style.width = `${progressPercent}%`;
